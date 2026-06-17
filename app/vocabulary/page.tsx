@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Papa from 'papaparse';
 import Flashcard from '../components/Flashcard';
 import { VocabCard } from '../types';
 
-export default function VocabularyPage() {
+function VocabularyPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -392,5 +392,17 @@ export default function VocabularyPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function VocabularyPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+        <div className="text-white text-2xl">Loading...</div>
+      </div>
+    }>
+      <VocabularyPageContent />
+    </Suspense>
   );
 }

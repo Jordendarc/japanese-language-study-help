@@ -102,8 +102,7 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight }: Flashcard
           transform: `translateX(${swipeOffset}px) rotate(${rotation}deg) ${isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'}`,
           opacity: opacity,
           transition: isDragging ? 'none' : 'transform 0.5s, opacity 0.3s',
-          transformStyle: 'preserve-3d',
-          perspective: '1000px'
+          transformStyle: 'preserve-3d'
         }}
         onClick={handleClick}
         onTouchStart={handleTouchStart}
@@ -116,11 +115,8 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight }: Flashcard
       >
         {/* Front of card */}
         <div className="absolute w-full h-full backface-hidden bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center justify-center" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
-          <div className="text-6xl font-bold text-gray-800 mb-4">
+          <div className="text-4xl sm:text-6xl font-bold text-gray-800 mb-4">
             {card.vocab}
-          </div>
-          <div className="text-3xl text-indigo-600 mb-6">
-            {card.reading}
           </div>
           {lessonText && (
             <div className="text-sm text-gray-500 mt-auto">
@@ -131,16 +127,19 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight }: Flashcard
 
         {/* Back of card */}
         <div className="absolute w-full h-full backface-hidden bg-gray-50 rounded-2xl shadow-2xl p-8 flex flex-col items-center justify-center rotate-y-180" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
-          <div className="text-4xl font-semibold text-gray-800 mb-4 text-center">
+          <div className="text-2xl sm:text-3xl text-indigo-600 mb-4">
+            {card.reading}
+          </div>
+          <div className="text-2xl sm:text-4xl font-semibold text-gray-800 mb-4 text-center">
             {meaning}
           </div>
 
           {card.example_jp && card.example_en && (
             <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-indigo-600 w-full max-w-lg">
-              <div className="text-lg text-gray-700 mb-2">
+              <div className="text-base sm:text-lg text-gray-700 mb-2">
                 {card.example_jp}
               </div>
-              <div className="text-base text-gray-500 italic">
+              <div className="text-sm sm:text-base text-gray-500 italic">
                 {card.example_en}
               </div>
             </div>

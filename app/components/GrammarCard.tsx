@@ -99,8 +99,7 @@ export default function GrammarCardComponent({ card, onSwipeLeft, onSwipeRight }
           transform: `translateX(${swipeOffset}px) rotate(${rotation}deg) ${isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'}`,
           opacity: opacity,
           transition: isDragging ? 'none' : 'transform 0.5s, opacity 0.3s',
-          transformStyle: 'preserve-3d',
-          perspective: '1000px'
+          transformStyle: 'preserve-3d'
         }}
         onClick={handleClick}
         onTouchStart={handleTouchStart}
@@ -113,7 +112,7 @@ export default function GrammarCardComponent({ card, onSwipeLeft, onSwipeRight }
       >
         {/* Front of card */}
         <div className="absolute w-full h-full backface-hidden bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center justify-center" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
-          <div className="text-5xl font-bold text-gray-800 mb-6 text-center">
+          <div className="text-3xl sm:text-5xl font-bold text-gray-800 mb-6 text-center">
             {card.point}
           </div>
           {card.jlpt && (
