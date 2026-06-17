@@ -1,65 +1,149 @@
-import Image from "next/image";
+'use client';
+
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import Papa from 'papaparse';
+import { VocabCard, GrammarCard } from './types';
 
 export default function Home() {
+  const router = useRouter();
+  const [loading, setLoading] = useState(true);
+  const [vocabCount, setVocabCount] = useState(0);
+  const [grammarCount, setGrammarCount] = useState(0);
+  const [vocabLessons, setVocabLessons] = useState<string[]>([]);
+  const [grammarLessons, setGrammarLessons] = useState<string[]>([]);
+
+  useEffect(() => {
+    // Load both CSV files to get counts and lessons
+    Promise.all([
+      fetch('/vocab.csv').then(r => r.text()),
+      fetch('/grammar.csv').then(r => r.text())
+    ])
+      .then(([vocabText, grammarText]) => {
+        // Parse vocabulary
+        Papa.parse<VocabCard>(vocabText, {
+          header: true,
+          skipEmptyLines: true,
+          complete: (results) => {
+            setVocabCount(results.data.length);
+            const lessons = [...new Set(results.data.map(card => card.lesson).filter(Boolean))].sort();
+            setVocabLessons(lessons);
+          },
+        });
+
+        // Parse grammar
+        Papa.parse<GrammarCard>(grammarText, {
+          header: true,
+          skipEmptyLines: true,
+          complete: (results) => {
+            setGrammarCount(results.data.length);
+            const lessons = [...new Set(results.data.map(card => card.lesson).filter(Boolean))].sort();
+            setGrammarLessons(lessons);
+          },
+        });
+
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error loading CSV:', error);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center">
+        <div className="text-white text-2xl">Loading...</div>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-gradient-to-br from-blue-600 to-purple-700 p-4 sm:p-8">
+      <div className="max-w-4xl mx-auto">
+        {/* Header */}
+        <header className="text-center mb-12">
+          <h1 className="text-5xl sm:text-6xl font-bold text-white mb-4">
+            Japanese Study App
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-white/80 text-xl">
+            Choose what you'd like to study
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        </header>
+
+        {/* Study Mode Cards */}
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          {/* Vocabulary Card */}
+          <button
+            onClick={() => router.push('/vocabulary')}
+            className="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all hover:scale-105 text-left group"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-3xl font-bold text-indigo-600">Vocabulary</h2>
+              <div className="text-4xl">📝</div>
+            </div>
+            <p className="text-gray-600 mb-4">
+              Study Japanese vocabulary with example sentences
+            </p>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-gray-500">{vocabCount} cards</span>
+              <span className="text-gray-500">Lessons {vocabLessons[0]}-{vocabLessons[vocabLessons.length - 1]}</span>
+            </div>
+            <div className="mt-4 text-indigo-600 font-semibold group-hover:translate-x-2 transition-transform">
+              Start studying →
+            </div>
+          </button>
+
+          {/* Grammar Card */}
+          <button
+            onClick={() => router.push('/grammar')}
+            className="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all hover:scale-105 text-left group"
           >
-            Documentation
-          </a>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-3xl font-bold text-purple-600">Grammar</h2>
+              <div className="text-4xl">📚</div>
+            </div>
+            <p className="text-gray-600 mb-4">
+              Master Japanese grammar patterns and usage
+            </p>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-gray-500">{grammarCount} cards</span>
+              <span className="text-gray-500">Lessons {grammarLessons[0]}-{grammarLessons[grammarLessons.length - 1]}</span>
+            </div>
+            <div className="mt-4 text-purple-600 font-semibold group-hover:translate-x-2 transition-transform">
+              Start studying →
+            </div>
+          </button>
         </div>
-      </main>
+
+        {/* Features */}
+        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white">
+          <h3 className="text-2xl font-bold mb-6 text-center">Features</h3>
+          <div className="grid sm:grid-cols-3 gap-6">
+            <div className="text-center">
+              <div className="text-3xl mb-2">🔄</div>
+              <h4 className="font-semibold mb-1">Spaced Repetition</h4>
+              <p className="text-sm text-white/80">Review cards you struggle with</p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl mb-2">📖</div>
+              <h4 className="font-semibold mb-1">Lesson Filter</h4>
+              <p className="text-sm text-white/80">Study specific lessons</p>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl mb-2">⌨️</div>
+              <h4 className="font-semibold mb-1">Keyboard Shortcuts</h4>
+              <p className="text-sm text-white/80">Arrow keys for fast review</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Instructions */}
+        <div className="mt-8 text-center text-white/70 text-sm">
+          <p className="mb-2">💡 Tip: Use ← for "Need Practice" and → for "Got It!"</p>
+          <p>Click or tap cards to flip them and see the answer</p>
+        </div>
+      </div>
     </div>
   );
 }
