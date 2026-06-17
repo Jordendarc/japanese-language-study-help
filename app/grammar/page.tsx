@@ -22,6 +22,8 @@ function GrammarPageContent() {
   const [selectedLessons, setSelectedLessons] = useState<string[]>([]);
   const [showLessonSelector, setShowLessonSelector] = useState(false);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
+  const [triggerGreen, setTriggerGreen] = useState(false);
+  const [triggerRed, setTriggerRed] = useState(false);
 
   // Load data
   useEffect(() => {
@@ -76,22 +78,30 @@ function GrammarPageContent() {
   }, [selectedLessons, allGrammarCards]);
 
   const handleGotIt = () => {
-    if (currentIndex < currentQueue.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      startNextRound();
-    }
-    setTotalReviewed(prev => prev + 1);
+    setTriggerGreen(true);
+    setTimeout(() => {
+      setTriggerGreen(false);
+      if (currentIndex < currentQueue.length - 1) {
+        setCurrentIndex(currentIndex + 1);
+      } else {
+        startNextRound();
+      }
+      setTotalReviewed(prev => prev + 1);
+    }, 600);
   };
 
   const handleNeedPractice = () => {
-    setReviewQueue([...reviewQueue, currentQueue[currentIndex]]);
-    if (currentIndex < currentQueue.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      startNextRound();
-    }
-    setTotalReviewed(prev => prev + 1);
+    setTriggerRed(true);
+    setTimeout(() => {
+      setTriggerRed(false);
+      setReviewQueue([...reviewQueue, currentQueue[currentIndex]]);
+      if (currentIndex < currentQueue.length - 1) {
+        setCurrentIndex(currentIndex + 1);
+      } else {
+        startNextRound();
+      }
+      setTotalReviewed(prev => prev + 1);
+    }, 600);
   };
 
   const handlePrevious = () => {
@@ -324,38 +334,34 @@ function GrammarPageContent() {
             card={currentQueue[currentIndex]}
             onSwipeLeft={handleNeedPractice}
             onSwipeRight={handleGotIt}
+            triggerGreenAnimation={triggerGreen}
+            triggerRedAnimation={triggerRed}
           />
         </div>
 
-        {/* Previous Card Button */}
-        <div className="mb-4">
+        {/* Action Buttons */}
+        <div className="flex gap-3 w-full max-w-2xl items-center justify-center mb-4 mx-auto">
+          <button
+            onClick={handleNeedPractice}
+            className="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-6 px-6 rounded-xl shadow-lg transition-all hover:scale-105 text-4xl"
+            aria-label="Need Practice"
+          >
+            ✗
+          </button>
           <button
             onClick={handlePrevious}
             disabled={currentIndex === 0}
-            className="w-full bg-gray-500 hover:bg-gray-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-all hover:scale-105 text-lg"
+            className="bg-gray-400 hover:bg-gray-500 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-all hover:scale-105 text-xl"
+            aria-label="Previous Card"
           >
-            <div className="flex items-center justify-center gap-2">
-              <span className="text-xl">↑</span>
-              <span>Previous Card</span>
-            </div>
-          </button>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex gap-4 mb-4">
-          <button
-            onClick={handleNeedPractice}
-            className="flex-1 bg-red-500 hover:bg-red-600 text-white font-semibold py-6 px-6 rounded-xl shadow-lg transition-all hover:scale-105 text-lg"
-          >
-            <div className="text-2xl mb-1">←</div>
-            <div>Need Practice</div>
+            ↑
           </button>
           <button
             onClick={handleGotIt}
-            className="flex-1 bg-green-500 hover:bg-green-600 text-white font-semibold py-6 px-6 rounded-xl shadow-lg transition-all hover:scale-105 text-lg"
+            className="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-6 rounded-xl shadow-lg transition-all hover:scale-105 text-4xl"
+            aria-label="Got It"
           >
-            <div className="text-2xl mb-1">→</div>
-            <div>Got It!</div>
+            ✓
           </button>
         </div>
 

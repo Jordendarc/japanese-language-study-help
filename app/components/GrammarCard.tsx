@@ -8,12 +8,15 @@ interface GrammarCardProps {
   card: GrammarCard;
   onSwipeLeft?: () => void;
   onSwipeRight?: () => void;
+  triggerGreenAnimation?: boolean;
+  triggerRedAnimation?: boolean;
 }
 
-export default function GrammarCardComponent({ card, onSwipeLeft, onSwipeRight }: GrammarCardProps) {
+export default function GrammarCardComponent({ card, onSwipeLeft, onSwipeRight, triggerGreenAnimation, triggerRedAnimation }: GrammarCardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [swipeOffset, setSwipeOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [animationState, setAnimationState] = useState<'none' | 'green' | 'red'>('none');
   const startXRef = useRef(0);
   const wasDraggingRef = useRef(false);
 
@@ -21,7 +24,17 @@ export default function GrammarCardComponent({ card, onSwipeLeft, onSwipeRight }
   useEffect(() => {
     setIsFlipped(false);
     setSwipeOffset(0);
+    setAnimationState('none');
   }, [card]);
+
+  // Handle animation triggers
+  useEffect(() => {
+    if (triggerGreenAnimation) {
+      setAnimationState('green');
+    } else if (triggerRedAnimation) {
+      setAnimationState('red');
+    }
+  }, [triggerGreenAnimation, triggerRedAnimation]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     startXRef.current = e.touches[0].clientX;
@@ -93,7 +106,7 @@ export default function GrammarCardComponent({ card, onSwipeLeft, onSwipeRight }
   const opacity = 1 - Math.abs(swipeOffset) / 300;
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl mx-auto relative">
       <div
         className="relative w-full min-h-[450px] cursor-pointer"
         style={{
@@ -176,6 +189,32 @@ export default function GrammarCardComponent({ card, onSwipeLeft, onSwipeRight }
           </div>
         </div>
       </div>
+
+      {/* Color Flash Overlay */}
+      {animationState !== 'none' && (
+        <div
+          className="absolute inset-0 rounded-2xl pointer-events-none"
+          style={{
+            backgroundColor: animationState === 'green' ? '#22c55e' : '#ef4444',
+            animation: 'flash 0.4s ease-out forwards',
+            zIndex: 10
+          }}
+        />
+      )}
+
+      <style jsx>{`
+        @keyframes flash {
+          0% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 0.8;
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+      `}</style>
     </div>
   );
 }

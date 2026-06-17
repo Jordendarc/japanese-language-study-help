@@ -8,12 +8,15 @@ interface FlashcardProps {
   card: VocabCard;
   onSwipeLeft?: () => void;
   onSwipeRight?: () => void;
+  triggerGreenAnimation?: boolean;
+  triggerRedAnimation?: boolean;
 }
 
-export default function Flashcard({ card, onSwipeLeft, onSwipeRight }: FlashcardProps) {
+export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGreenAnimation, triggerRedAnimation }: FlashcardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [swipeOffset, setSwipeOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [animationState, setAnimationState] = useState<'none' | 'green' | 'red'>('none');
   const startXRef = useRef(0);
   const wasDraggingRef = useRef(false);
 
@@ -24,7 +27,17 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight }: Flashcard
   useEffect(() => {
     setIsFlipped(false);
     setSwipeOffset(0);
+    setAnimationState('none');
   }, [card]);
+
+  // Handle animation triggers
+  useEffect(() => {
+    if (triggerGreenAnimation) {
+      setAnimationState('green');
+    } else if (triggerRedAnimation) {
+      setAnimationState('red');
+    }
+  }, [triggerGreenAnimation, triggerRedAnimation]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     startXRef.current = e.touches[0].clientX;
@@ -96,7 +109,7 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight }: Flashcard
   const opacity = 1 - Math.abs(swipeOffset) / 300;
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
+    <div className="w-full max-w-2xl mx-auto relative">
       <div
         className="relative w-full h-96 cursor-pointer"
         style={{
@@ -116,11 +129,13 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight }: Flashcard
       >
         {/* Front of card */}
         <div className="absolute w-full h-full backface-hidden bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center justify-center" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
-          <div className="text-4xl sm:text-6xl font-bold text-gray-800 mb-4">
-            {card.vocab}
+          <div className="flex-1 flex items-center justify-center">
+            <div className="text-4xl sm:text-6xl font-bold text-gray-800">
+              {card.vocab}
+            </div>
           </div>
           {lessonText && (
-            <div className="text-sm text-gray-500 mt-auto">
+            <div className="text-sm text-gray-500">
               {lessonText}
             </div>
           )}
@@ -155,6 +170,32 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight }: Flashcard
           )}
         </div>
       </div>
+
+      {/* Color Flash Overlay */}
+      {animationState !== 'none' && (
+        <div
+          className="absolute inset-0 rounded-2xl pointer-events-none"
+          style={{
+            backgroundColor: animationState === 'green' ? '#22c55e' : '#ef4444',
+            animation: 'flash 0.4s ease-out forwards',
+            zIndex: 10
+          }}
+        />
+      )}
+
+      <style jsx>{`
+        @keyframes flash {
+          0% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 0.8;
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+      `}</style>
     </div>
   );
 }
