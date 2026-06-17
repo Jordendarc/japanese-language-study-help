@@ -2,6 +2,7 @@
 
 import { VocabCard } from '../types';
 import { useState, useRef, useEffect } from 'react';
+import Furigana from './Furigana';
 
 interface FlashcardProps {
   card: VocabCard;
@@ -134,16 +135,18 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight }: Flashcard
             {meaning}
           </div>
 
-          {card.example_jp && card.example_en && (
+          {(card.example_jp && card.example_en) ? (
             <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-indigo-600 w-full max-w-lg">
-              <div className="text-base sm:text-lg text-gray-700 mb-2">
-                {card.example_jp}
-              </div>
+              <Furigana text={card.example_jp} className="text-base sm:text-lg text-gray-700 mb-2" />
               <div className="text-sm sm:text-base text-gray-500 italic">
                 {card.example_en}
               </div>
             </div>
-          )}
+          ) : card.example ? (
+            <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-indigo-600 w-full max-w-lg">
+              <Furigana text={card.example} className="text-base sm:text-lg text-gray-700" />
+            </div>
+          ) : null}
 
           {lessonText && (
             <div className="text-sm text-gray-500 mt-auto">

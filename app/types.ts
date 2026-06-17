@@ -5,6 +5,7 @@ export interface VocabCard {
   my_meaning: string;
   example_jp: string;
   example_en: string;
+  example: string;
   lesson: string;
   page: string;
 }

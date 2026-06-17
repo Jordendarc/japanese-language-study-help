@@ -137,12 +137,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        {/* Instructions */}
-        <div className="mt-8 text-center text-white/70 text-sm">
-          <p className="mb-2">💡 Tip: Use ← for "Need Practice" and → for "Got It!"</p>
-          <p>Click or tap cards to flip them and see the answer</p>
-        </div>
       </div>
     </div>
   );

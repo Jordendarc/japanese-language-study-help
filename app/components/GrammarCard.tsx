@@ -2,6 +2,7 @@
 
 import { GrammarCard } from '../types';
 import { useState, useRef, useEffect } from 'react';
+import Furigana from './Furigana';
 
 interface GrammarCardProps {
   card: GrammarCard;
@@ -146,9 +147,7 @@ export default function GrammarCardComponent({ card, onSwipeLeft, onSwipeRight }
               <div>
                 <div className="text-sm font-semibold text-indigo-600 uppercase mb-1">Example</div>
                 <div className="bg-white p-4 rounded-lg border-l-4 border-green-500">
-                  <div className="text-lg text-gray-800 mb-2">
-                    {card.example_jp}
-                  </div>
+                  <Furigana text={card.example_jp} className="text-lg text-gray-800 mb-2" />
                   <div className="text-base text-gray-600 italic">
                     {card.example_en}
                   </div>

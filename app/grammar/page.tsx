@@ -233,7 +233,6 @@ function GrammarPageContent() {
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2">
             Grammar Flashcards
           </h1>
-          <p className="text-white/80 text-lg">Click card to flip</p>
         </header>
 
         {/* Lesson Selector */}
@@ -358,11 +357,6 @@ function GrammarPageContent() {
             <div className="text-2xl mb-1">→</div>
             <div>Got It!</div>
           </button>
-        </div>
-
-        {/* Hint */}
-        <div className="text-center text-white/70 italic">
-          Use arrow keys: ← Need Practice | → Got It | ↑ Previous
         </div>
 
         {/* Completion Modal */}
