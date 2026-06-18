@@ -71,6 +71,19 @@ export default function Home() {
           </p>
         </header>
 
+        {/* Search Button */}
+        <div className="mb-8">
+          <button
+            onClick={() => router.push('/search')}
+            className="w-full bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all hover:scale-[1.02] group"
+          >
+            <div className="flex items-center justify-center gap-4">
+              <div className="text-3xl">🔍</div>
+              <div className="text-2xl font-bold text-gray-800">Search All Content</div>
+            </div>
+          </button>
+        </div>
+
         {/* Study Mode Cards */}
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Vocabulary Card */}
