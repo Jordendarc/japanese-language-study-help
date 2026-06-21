@@ -20,7 +20,7 @@ export default function Home() {
     Promise.all([
       fetch('/vocab.csv').then(r => r.text()),
       fetch('/grammar.csv').then(r => r.text()),
-      fetch('/matome/glmjson.json').then(r => r.json())
+      fetch('/matome/glmjsonwithhiragana.json').then(r => r.json())
     ])
       .then(([vocabText, grammarText, matomeData]) => {
         // Parse vocabulary

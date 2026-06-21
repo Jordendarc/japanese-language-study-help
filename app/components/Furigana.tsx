@@ -13,9 +13,12 @@ export default function Furigana({ text, className = '' }: FuriganaProps) {
   const parseText = (input: string) => {
     const segments: Array<{ kanji: string; reading: string } | { text: string }> = [];
 
-    // Regex to match kanji/katakana (not hiragana) followed by reading in parentheses
-    // [\u4E00-\u9FAF] = Kanji, [\u30A0-\u30FF] = Katakana
-    const regex = /([\u4E00-\u9FAF\u30A0-\u30FF]+)（([^（）]+?)）/g;
+    // Regex to match kanji/katakana/symbols (not hiragana) followed by reading in parentheses
+    // [\u4E00-\u9FAF] = Kanji
+    // [\u30A0-\u30FF] = Katakana
+    // \u3005 = 々 (iteration mark)
+    // [\uFF66-\uFF9F] = Half-width katakana
+    const regex = /([\u4E00-\u9FAF\u30A0-\u30FF\u3005\uFF66-\uFF9F]+)（([^（）]+?)）/g;
     let match;
     let lastIndex = 0;
 

@@ -7,6 +7,7 @@ import { WordBankQuestion } from '../components/WordBankQuestion';
 import { MultipleChoiceQuestion } from '../components/MultipleChoiceQuestion';
 import { ReadingQuestion } from '../components/ReadingQuestion';
 import { WordOrderQuestion } from '../components/WordOrderQuestion';
+import Furigana from '../../components/Furigana';
 
 interface FlatQuestion {
   problemId: number;
@@ -31,7 +32,7 @@ export default function MatomeTestPage() {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
-    fetch('/matome/glmjson.json')
+    fetch('/matome/glmjsonwithhiragana.json')
       .then(r => r.json())
       .then(data => {
         const tests = data.tests as MatomeTest[];
@@ -245,7 +246,7 @@ export default function MatomeTestPage() {
                   <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-emerald-50 rounded-lg border-l-4 border-emerald-500">
                     <div className="text-xs sm:text-sm text-emerald-700 font-semibold mb-2">Reading Passage:</div>
                     <div className="text-sm sm:text-base leading-relaxed text-gray-900 whitespace-pre-wrap">
-                      {firstQuestion.passage}
+                      <Furigana text={firstQuestion.passage} />
                     </div>
                   </div>
                 )}

@@ -21,7 +21,7 @@ export default function MatomePage() {
   const [lessons, setLessons] = useState<LessonSummary[]>([]);
 
   useEffect(() => {
-    fetch('/matome/glmjson.json')
+    fetch('/matome/glmjsonwithhiragana.json')
       .then(r => r.json())
       .then(data => {
         const tests = data.tests as MatomeTest[];

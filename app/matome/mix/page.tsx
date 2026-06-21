@@ -16,7 +16,7 @@ export default function MatomeMixPage() {
   const [selectedLessons, setSelectedLessons] = useState<Set<number>>(new Set());
 
   useEffect(() => {
-    fetch('/matome/glmjson.json')
+    fetch('/matome/glmjsonwithhiragana.json')
       .then(r => r.json())
       .then(data => {
         const tests = data.tests as MatomeTest[];
