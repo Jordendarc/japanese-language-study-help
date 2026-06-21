@@ -130,7 +130,7 @@ export function WordOrderQuestion({
                         ? 'font-bold text-red-700'
                         : ''
                     }`}>
-                      {option}
+                      <Furigana text={option} />
                     </span>
                     {showCorrect && isCorrectOption && (
                       <span className="ml-auto text-green-600 font-bold">✓ ★</span>

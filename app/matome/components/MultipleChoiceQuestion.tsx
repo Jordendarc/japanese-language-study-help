@@ -105,7 +105,7 @@ export function MultipleChoiceQuestion({
                         ? 'font-bold text-red-700'
                         : 'text-gray-900'
                     }`}>
-                      {option}
+                      <Furigana text={option} />
                     </span>
                     {showCorrect && isCorrectOption && (
                       <span className="flex-shrink-0 text-green-600 font-bold text-sm sm:text-base">✓</span>
