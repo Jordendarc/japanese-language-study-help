@@ -167,48 +167,48 @@ export default function MatomeTestPage() {
     <div className="min-h-screen bg-gradient-to-br from-emerald-500 to-teal-600 p-4 sm:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <header className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 mb-8">
+        <header className="bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 mb-6 sm:mb-8">
           <button
             onClick={() => router.push('/matome')}
-            className="mb-4 text-emerald-600 hover:text-emerald-700 transition-colors flex items-center gap-2"
+            className="mb-3 sm:mb-4 text-emerald-600 hover:text-emerald-700 transition-colors flex items-center gap-2 text-sm sm:text-base"
           >
             <span>←</span>
             <span>Back to Tests</span>
           </button>
-          <div className="flex items-center justify-between mb-4">
-            <h1 className="text-4xl sm:text-5xl font-bold text-emerald-600">
-              Lesson {lesson} Test
+          <div className="flex items-center justify-between mb-3 sm:mb-4">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-emerald-600">
+              Lesson {lesson}
             </h1>
-            <div className="text-4xl">✅</div>
+            <div className="text-3xl sm:text-4xl">✅</div>
           </div>
 
           {submitted ? (
-            <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-6 border-2 border-emerald-200">
+            <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg sm:rounded-xl p-4 sm:p-6 border-2 border-emerald-200">
               <div className="text-center mb-4">
-                <div className="text-5xl font-bold text-emerald-600 mb-2">
+                <div className="text-3xl sm:text-5xl font-bold text-emerald-600 mb-2">
                   {score} / {flatQuestions.length}
                 </div>
-                <div className="text-xl text-gray-700">
+                <div className="text-lg sm:text-xl text-gray-700">
                   {Math.round((score / flatQuestions.length) * 100)}% Correct
                 </div>
               </div>
-              <div className="flex gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <button
                   onClick={handleRetry}
-                  className="px-6 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-700 transition-colors"
+                  className="px-6 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-700 transition-colors text-sm sm:text-base"
                 >
                   Try Again
                 </button>
                 <button
                   onClick={() => router.push('/matome')}
-                  className="px-6 py-3 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-700 transition-colors"
+                  className="px-6 py-3 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-700 transition-colors text-sm sm:text-base"
                 >
                   Back to Tests
                 </button>
               </div>
             </div>
           ) : (
-            <div className="flex items-center justify-between text-gray-600">
+            <div className="flex items-center justify-between text-gray-600 text-sm sm:text-base">
               <div>
                 <span className="font-semibold">{flatQuestions.length}</span> questions
               </div>
@@ -235,16 +235,16 @@ export default function MatomeTestPage() {
           }
 
           return (
-            <div key={problemId} className="mb-8">
+            <div key={problemId} className="mb-6 sm:mb-8">
               {/* Section Header */}
-              <div className="bg-white rounded-t-2xl shadow-lg p-6">
-                <h2 className="text-2xl font-bold text-emerald-700">
+              <div className="bg-white rounded-t-xl sm:rounded-t-2xl shadow-lg p-4 sm:p-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-emerald-700">
                   {sectionTitle}
                 </h2>
                 {firstQuestion.passage && (
-                  <div className="mt-4 p-4 bg-emerald-50 rounded-lg border-l-4 border-emerald-500">
-                    <div className="text-sm text-emerald-700 font-semibold mb-2">Reading Passage:</div>
-                    <div className="text-base leading-relaxed text-gray-900 whitespace-pre-wrap">
+                  <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-emerald-50 rounded-lg border-l-4 border-emerald-500">
+                    <div className="text-xs sm:text-sm text-emerald-700 font-semibold mb-2">Reading Passage:</div>
+                    <div className="text-sm sm:text-base leading-relaxed text-gray-900 whitespace-pre-wrap">
                       {firstQuestion.passage}
                     </div>
                   </div>
@@ -252,7 +252,7 @@ export default function MatomeTestPage() {
               </div>
 
               {/* Questions */}
-              <div className="bg-white rounded-b-2xl shadow-lg p-6 space-y-4">
+              <div className="bg-white rounded-b-xl sm:rounded-b-2xl shadow-lg p-4 sm:p-6 space-y-3 sm:space-y-4">
                 {problemQuestions.map((question) => {
                   const questionIndex = flatQuestions.indexOf(question);
                   const userAnswer = userAnswers.get(questionIndex) || '';
@@ -328,11 +328,11 @@ export default function MatomeTestPage() {
 
         {/* Submit Button */}
         {!submitted && (
-          <div className="bg-white rounded-2xl shadow-2xl p-8 sticky bottom-4">
+          <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-8 sticky bottom-2 sm:bottom-4">
             <button
               onClick={handleSubmit}
               disabled={userAnswers.size === 0}
-              className={`w-full py-4 rounded-xl font-bold text-xl transition-all ${
+              className={`w-full py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-xl transition-all ${
                 userAnswers.size === 0
                   ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   : userAnswers.size === flatQuestions.length
@@ -341,10 +341,10 @@ export default function MatomeTestPage() {
               }`}
             >
               {userAnswers.size === 0
-                ? 'Answer at least one question to submit'
+                ? 'Answer at least one'
                 : userAnswers.size === flatQuestions.length
                 ? 'Submit Test'
-                : `Submit (${userAnswers.size}/${flatQuestions.length} answered)`}
+                : `Submit (${userAnswers.size}/${flatQuestions.length})`}
             </button>
           </div>
         )}

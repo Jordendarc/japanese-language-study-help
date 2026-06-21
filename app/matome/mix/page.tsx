@@ -105,28 +105,28 @@ export default function MatomeMixPage() {
         </header>
 
         {/* Selection Summary */}
-        <div className="bg-white rounded-2xl shadow-2xl p-6 mb-6">
-          <div className="flex items-center justify-between mb-4">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-6 mb-4 sm:mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3 sm:gap-4">
             <div>
-              <div className="text-2xl font-bold text-purple-600">
-                {selectedLessons.size} {selectedLessons.size === 1 ? 'Lesson' : 'Lessons'} Selected
+              <div className="text-xl sm:text-2xl font-bold text-purple-600">
+                {selectedLessons.size} {selectedLessons.size === 1 ? 'Lesson' : 'Lessons'}
               </div>
-              <div className="text-gray-600">
-                {totalQuestions} total questions
+              <div className="text-sm sm:text-base text-gray-600">
+                {totalQuestions} questions
               </div>
             </div>
             <div className="flex gap-2">
               <button
                 onClick={selectAll}
-                className="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors font-semibold"
+                className="px-3 sm:px-4 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors font-semibold text-sm sm:text-base"
               >
                 Select All
               </button>
               <button
                 onClick={clearAll}
-                className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors font-semibold"
+                className="px-3 sm:px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors font-semibold text-sm sm:text-base"
               >
-                Clear All
+                Clear
               </button>
             </div>
           </div>
@@ -134,47 +134,47 @@ export default function MatomeMixPage() {
           {selectedLessons.size > 0 && (
             <button
               onClick={startMixedTest}
-              className="w-full py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-bold text-xl hover:from-purple-600 hover:to-pink-600 transition-all hover:scale-[1.02] shadow-lg"
+              className="w-full py-3 sm:py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg sm:rounded-xl font-bold text-base sm:text-xl hover:from-purple-600 hover:to-pink-600 transition-all hover:scale-[1.02] shadow-lg"
             >
-              Start Mixed Test ({totalQuestions} questions)
+              Start Mixed Test ({totalQuestions})
             </button>
           )}
         </div>
 
         {/* Lesson Selection */}
-        <div className="bg-white rounded-2xl shadow-2xl p-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">Select Lessons</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Select Lessons</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
             {lessons.map(lesson => {
               const isSelected = selectedLessons.has(lesson.lesson);
               return (
                 <button
                   key={lesson.lesson}
                   onClick={() => toggleLesson(lesson.lesson)}
-                  className={`p-6 rounded-xl border-2 transition-all text-left ${
+                  className={`p-4 sm:p-6 rounded-lg sm:rounded-xl border-2 transition-all text-left ${
                     isSelected
                       ? 'bg-purple-50 border-purple-500 ring-2 ring-purple-200'
                       : 'bg-gray-50 border-gray-200 hover:border-purple-300 hover:bg-purple-50'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <div className="text-2xl font-bold text-purple-600">
-                      Lesson {lesson.lesson}
+                    <div className="text-lg sm:text-2xl font-bold text-purple-600">
+                      L{lesson.lesson}
                     </div>
-                    <div className={`w-6 h-6 rounded border-2 flex items-center justify-center ${
+                    <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded border-2 flex items-center justify-center ${
                       isSelected
                         ? 'bg-purple-500 border-purple-500'
                         : 'bg-white border-gray-300'
                     }`}>
                       {isSelected && (
-                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                         </svg>
                       )}
                     </div>
                   </div>
-                  <div className="text-gray-600">
-                    {lesson.totalQuestions} questions
+                  <div className="text-xs sm:text-base text-gray-600">
+                    {lesson.totalQuestions} qs
                   </div>
                 </button>
               );

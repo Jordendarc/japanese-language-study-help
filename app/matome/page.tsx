@@ -102,72 +102,72 @@ export default function MatomePage() {
         </header>
 
         {/* Mix Lessons Button */}
-        <div className="mb-8">
+        <div className="mb-6">
           <button
             onClick={() => router.push('/matome/mix')}
-            className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all hover:scale-[1.02] group"
+            className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl sm:rounded-2xl shadow-2xl p-6 sm:p-8 hover:shadow-3xl transition-all hover:scale-[1.02] group"
           >
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="text-5xl">🎲</div>
-              <h2 className="text-4xl font-bold">Mix Lessons</h2>
+            <div className="flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+              <div className="text-4xl sm:text-5xl">🎲</div>
+              <h2 className="text-2xl sm:text-4xl font-bold">Mix Lessons</h2>
             </div>
-            <p className="text-white/90 text-lg mb-2">
+            <p className="text-white/90 text-sm sm:text-lg mb-2">
               Select multiple lessons and get a shuffled mixed test
             </p>
-            <div className="text-white font-semibold group-hover:translate-x-2 transition-transform inline-block">
+            <div className="text-white font-semibold group-hover:translate-x-2 transition-transform inline-block text-sm sm:text-base">
               Start mixing →
             </div>
           </button>
         </div>
 
         {/* Lesson Cards */}
-        <div className="grid gap-6">
+        <div className="grid gap-4 sm:gap-6">
           {lessons.map(lesson => (
             <button
               key={lesson.lesson}
               onClick={() => router.push(`/matome/${lesson.lesson}`)}
-              className="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all hover:scale-[1.02] text-left group"
+              className="bg-white rounded-xl sm:rounded-2xl shadow-2xl p-6 sm:p-8 hover:shadow-3xl transition-all hover:scale-[1.02] text-left group"
             >
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-4xl font-bold text-emerald-600">
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <h2 className="text-3xl sm:text-4xl font-bold text-emerald-600">
                   Lesson {lesson.lesson}
                 </h2>
-                <div className="text-5xl">✅</div>
+                <div className="text-4xl sm:text-5xl">✅</div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                <div className="bg-emerald-50 rounded-lg p-4">
-                  <div className="text-sm text-gray-600 mb-1">Word Bank Fill-in</div>
-                  <div className="text-2xl font-bold text-emerald-600">
-                    {lesson.sections.wordBank} questions
+              <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-4 sm:mb-6">
+                <div className="bg-emerald-50 rounded-lg p-3 sm:p-4">
+                  <div className="text-xs sm:text-sm text-gray-600 mb-1">Word Bank</div>
+                  <div className="text-lg sm:text-2xl font-bold text-emerald-600">
+                    {lesson.sections.wordBank}
                   </div>
                 </div>
 
-                <div className="bg-emerald-50 rounded-lg p-4">
-                  <div className="text-sm text-gray-600 mb-1">Multiple Choice</div>
-                  <div className="text-2xl font-bold text-emerald-600">
-                    {lesson.sections.multipleChoice} questions
+                <div className="bg-emerald-50 rounded-lg p-3 sm:p-4">
+                  <div className="text-xs sm:text-sm text-gray-600 mb-1">Multiple Choice</div>
+                  <div className="text-lg sm:text-2xl font-bold text-emerald-600">
+                    {lesson.sections.multipleChoice}
                   </div>
                 </div>
 
-                <div className="bg-emerald-50 rounded-lg p-4">
-                  <div className="text-sm text-gray-600 mb-1">Word Order</div>
-                  <div className="text-2xl font-bold text-emerald-600">
-                    {lesson.sections.wordOrder} questions
+                <div className="bg-emerald-50 rounded-lg p-3 sm:p-4">
+                  <div className="text-xs sm:text-sm text-gray-600 mb-1">Word Order</div>
+                  <div className="text-lg sm:text-2xl font-bold text-emerald-600">
+                    {lesson.sections.wordOrder}
                   </div>
                 </div>
 
-                <div className="bg-emerald-50 rounded-lg p-4">
-                  <div className="text-sm text-gray-600 mb-1">Reading Comprehension</div>
-                  <div className="text-2xl font-bold text-emerald-600">
-                    {lesson.sections.reading} questions
+                <div className="bg-emerald-50 rounded-lg p-3 sm:p-4">
+                  <div className="text-xs sm:text-sm text-gray-600 mb-1">Reading</div>
+                  <div className="text-lg sm:text-2xl font-bold text-emerald-600">
+                    {lesson.sections.reading}
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between text-sm sm:text-base">
                 <div className="text-gray-600">
-                  Total: <span className="font-bold text-gray-800">{lesson.totalQuestions}</span> questions
+                  Total: <span className="font-bold text-gray-800">{lesson.totalQuestions}</span>
                 </div>
                 <div className="text-emerald-600 font-semibold group-hover:translate-x-2 transition-transform">
                   Start test →
