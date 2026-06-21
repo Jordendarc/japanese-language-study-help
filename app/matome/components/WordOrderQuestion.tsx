@@ -29,7 +29,7 @@ export function WordOrderQuestion({
   const parts = sentence.split('()');
 
   return (
-    <div className={`bg-white rounded-xl p-6 shadow-md ${
+    <div className={`bg-white rounded-lg sm:rounded-xl p-3 sm:p-6 shadow-md ${
       showCorrect
         ? isCorrect
           ? 'ring-2 ring-green-500'
@@ -38,16 +38,21 @@ export function WordOrderQuestion({
           : ''
         : ''
     }`}>
-      <div className="flex items-start gap-4">
-        <div className="flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center font-bold">
+      <div className="flex sm:hidden mb-2">
+        <div className="w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center font-bold text-sm">
+          {questionNumber}
+        </div>
+      </div>
+      <div className="flex items-start gap-3 sm:gap-4">
+        <div className="hidden sm:flex flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-full items-center justify-center font-bold">
           {questionNumber}
         </div>
         <div className="flex-1">
-          <div className="mb-4">
-            <div className="text-sm text-emerald-700 font-semibold mb-2">
-              Put the words in the correct order. Which word goes in the ★ position?
+          <div className="mb-3 sm:mb-4">
+            <div className="text-xs sm:text-sm text-emerald-700 font-semibold mb-2">
+              Which word goes in the ★ position?
             </div>
-            <div className="text-lg leading-relaxed text-gray-900 mb-3">
+            <div className="text-base sm:text-lg leading-relaxed text-gray-900 mb-2 sm:mb-3">
               <Furigana text={parts[0]} />
               {parts.slice(1).map((part, idx) => (
                 <span key={idx}>
@@ -61,9 +66,9 @@ export function WordOrderQuestion({
           </div>
 
           {showCorrect && question.correctOrder && (
-            <div className="mb-4 p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-              <div className="text-sm text-blue-700 font-semibold mb-1">Correct word order:</div>
-              <div className="text-base text-gray-900">
+            <div className="mb-3 sm:mb-4 p-2 sm:p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+              <div className="text-xs sm:text-sm text-blue-700 font-semibold mb-1">Correct order:</div>
+              <div className="text-sm sm:text-base text-gray-900">
                 {question.correctOrder.map((word, idx) => (
                   <span key={idx}>
                     {word === question.answer ? (

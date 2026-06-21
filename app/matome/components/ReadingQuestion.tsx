@@ -27,7 +27,7 @@ export function ReadingQuestion({
   const isAnswered = selectedAnswer !== '';
 
   return (
-    <div className={`bg-white rounded-xl p-6 shadow-md ${
+    <div className={`bg-white rounded-lg sm:rounded-xl p-3 sm:p-6 shadow-md ${
       showCorrect
         ? isCorrect
           ? 'ring-2 ring-green-500'
@@ -36,29 +36,34 @@ export function ReadingQuestion({
           : ''
         : ''
     }`}>
-      <div className="flex items-start gap-4">
-        <div className="flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center font-bold">
+      <div className="flex sm:hidden mb-2">
+        <div className="w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center font-bold text-sm">
+          {questionNumber}
+        </div>
+      </div>
+      <div className="flex items-start gap-3 sm:gap-4">
+        <div className="hidden sm:flex flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-full items-center justify-center font-bold">
           {questionNumber}
         </div>
         <div className="flex-1">
           {passage && (
-            <div className="mb-4 p-4 bg-gray-50 rounded-lg border-l-4 border-emerald-500">
-              <div className="text-sm text-emerald-700 mb-2 font-semibold">Passage:</div>
-              <div className="text-base leading-relaxed text-gray-900">
+            <div className="mb-3 sm:mb-4 p-2 sm:p-4 bg-gray-50 rounded-lg border-l-4 border-emerald-500">
+              <div className="text-xs sm:text-sm text-emerald-700 mb-2 font-semibold">Passage:</div>
+              <div className="text-sm sm:text-base leading-relaxed text-gray-900">
                 <Furigana text={passage} />
               </div>
             </div>
           )}
 
-          <div className="text-base mb-4 leading-relaxed text-gray-900">
+          <div className="text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed text-gray-900">
             <Furigana text={question.sentence_jp || ''} />
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
             <button
               onClick={() => !showCorrect && onAnswerChange('true')}
               disabled={showCorrect}
-              className={`flex-1 p-4 rounded-lg border-2 transition-all font-bold ${
+              className={`flex-1 p-3 sm:p-4 rounded-lg border-2 transition-all font-bold text-sm sm:text-base ${
                 showCorrect
                   ? correctAnswer === 'true'
                     ? 'bg-green-50 border-green-500 text-green-700 ring-2 ring-green-200'
@@ -84,7 +89,7 @@ export function ReadingQuestion({
             <button
               onClick={() => !showCorrect && onAnswerChange('false')}
               disabled={showCorrect}
-              className={`flex-1 p-4 rounded-lg border-2 transition-all font-bold ${
+              className={`flex-1 p-3 sm:p-4 rounded-lg border-2 transition-all font-bold text-sm sm:text-base ${
                 showCorrect
                   ? correctAnswer === 'false'
                     ? 'bg-green-50 border-green-500 text-green-700 ring-2 ring-green-200'

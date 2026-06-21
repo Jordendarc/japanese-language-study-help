@@ -24,11 +24,12 @@ export function MultipleChoiceQuestion({
   const isAnswered = selectedAnswer !== '';
 
   // Parse sentence to show blank
+  // Note: Uses half-width parentheses with full-width space: (　)
   const sentence = question.sentence_jp || '';
-  const parts = sentence.split('（　）');
+  const parts = sentence.split('(　)');
 
   return (
-    <div className={`bg-white rounded-xl p-6 shadow-md ${
+    <div className={`bg-white rounded-lg sm:rounded-xl p-3 sm:p-6 shadow-md ${
       showCorrect
         ? isCorrect
           ? 'ring-2 ring-green-500'
@@ -37,16 +38,23 @@ export function MultipleChoiceQuestion({
           : ''
         : ''
     }`}>
-      <div className="flex items-start gap-4">
-        <div className="flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center font-bold">
+      <div className="flex sm:hidden mb-2">
+        <div className="w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center font-bold text-sm">
+          {questionNumber}
+        </div>
+      </div>
+      <div className="flex items-start gap-3 sm:gap-4">
+        <div className="hidden sm:flex flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-full items-center justify-center font-bold">
           {questionNumber}
         </div>
         <div className="flex-1">
-          <div className="text-lg mb-4 leading-relaxed text-gray-900">
+          <div className="text-base sm:text-lg mb-3 sm:mb-4 leading-relaxed text-gray-900">
             <Furigana text={parts[0]} />
-            <span className="mx-2 px-3 py-1 bg-gray-100 rounded-lg font-bold text-gray-500">
+            {' '}
+            <span className="inline mx-1 px-2 py-0.5 bg-gray-100 rounded font-bold text-gray-500 text-sm align-baseline whitespace-nowrap">
               ___
             </span>
+            {' '}
             {parts[1] && <Furigana text={parts[1]} />}
           </div>
 
@@ -74,12 +82,12 @@ export function MultipleChoiceQuestion({
                   key={idx}
                   onClick={() => !showCorrect && onAnswerChange(option)}
                   disabled={showCorrect}
-                  className={`w-full text-left p-4 rounded-lg border-2 transition-all ${bgClass} ${
+                  className={`w-full text-left p-3 sm:p-4 rounded-lg border-2 transition-all ${bgClass} ${
                     !showCorrect ? 'cursor-pointer' : 'cursor-default'
                   }`}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-sm font-bold ${
+                  <div className="flex items-start gap-2 sm:gap-3">
+                    <div className={`flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 flex items-center justify-center text-xs sm:text-sm font-bold mt-0.5 ${
                       showCorrect && isCorrectOption
                         ? 'bg-green-500 border-green-500 text-white'
                         : showCorrect && isSelected && !isCorrect
@@ -90,20 +98,20 @@ export function MultipleChoiceQuestion({
                     }`}>
                       {optionNumber}
                     </div>
-                    <span className={`text-gray-900 ${
+                    <span className={`flex-1 text-sm sm:text-base break-words ${
                       showCorrect && isCorrectOption
                         ? 'font-bold text-green-700'
                         : showCorrect && isSelected && !isCorrect
                         ? 'font-bold text-red-700'
-                        : ''
+                        : 'text-gray-900'
                     }`}>
                       {option}
                     </span>
                     {showCorrect && isCorrectOption && (
-                      <span className="ml-auto text-green-600 font-bold">✓</span>
+                      <span className="flex-shrink-0 text-green-600 font-bold text-sm sm:text-base">✓</span>
                     )}
                     {showCorrect && isSelected && !isCorrect && (
-                      <span className="ml-auto text-red-600 font-bold">✗</span>
+                      <span className="flex-shrink-0 text-red-600 font-bold text-sm sm:text-base">✗</span>
                     )}
                   </div>
                 </button>

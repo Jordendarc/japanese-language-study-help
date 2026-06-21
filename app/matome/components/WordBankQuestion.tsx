@@ -24,11 +24,12 @@ export function WordBankQuestion({
   const isAnswered = selectedAnswer !== '';
 
   // Parse sentence to show blank
+  // Note: Uses half-width parentheses with full-width space: (　)
   const sentence = question.sentence_jp || '';
-  const parts = sentence.split('（　）');
+  const parts = sentence.split('(　)');
 
   return (
-    <div className={`bg-white rounded-xl p-6 shadow-md ${
+    <div className={`bg-white rounded-lg sm:rounded-xl p-3 sm:p-6 shadow-md ${
       showCorrect
         ? isCorrect
           ? 'ring-2 ring-green-500'
@@ -37,12 +38,17 @@ export function WordBankQuestion({
           : ''
         : ''
     }`}>
-      <div className="flex items-start gap-4">
-        <div className="flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center font-bold">
+      <div className="flex sm:hidden mb-2">
+        <div className="w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center font-bold text-sm">
+          {questionNumber}
+        </div>
+      </div>
+      <div className="flex items-start gap-3 sm:gap-4">
+        <div className="hidden sm:flex flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-full items-center justify-center font-bold">
           {questionNumber}
         </div>
         <div className="flex-1">
-          <div className="text-lg mb-4 leading-relaxed text-gray-900">
+          <div className="text-base sm:text-lg mb-3 sm:mb-4 leading-relaxed text-gray-900">
             <Furigana text={parts[0]} />
             {showCorrect && !isCorrect && selectedAnswer ? (
               <>
@@ -54,7 +60,7 @@ export function WordBankQuestion({
                 value={selectedAnswer}
                 onChange={(e) => onAnswerChange(e.target.value)}
                 disabled={showCorrect}
-                className={`mx-2 px-3 py-1 border-2 rounded-lg font-bold ${
+                className={`mx-1 sm:mx-2 px-2 sm:px-3 py-1 text-sm sm:text-base border-2 rounded-lg font-bold ${
                   showCorrect
                     ? isCorrect
                       ? 'border-green-500 bg-green-50 text-green-700'
@@ -64,7 +70,7 @@ export function WordBankQuestion({
                     : 'border-emerald-300 focus:border-emerald-500 focus:outline-none'
                 }`}
               >
-                <option value="">選んでください</option>
+                <option value="">選択</option>
                 {question.options?.map((option, idx) => (
                   <option key={idx} value={option}>
                     {option}

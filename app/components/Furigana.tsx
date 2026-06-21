@@ -54,7 +54,7 @@ export default function Furigana({ text, className = '' }: FuriganaProps) {
   const segments = parseText(text);
 
   return (
-    <div className={`furigana-container ${className}`}>
+    <span className={`furigana-container ${className}`}>
       {segments.map((segment, index) => {
         if ('text' in segment) {
           // Plain text segment
@@ -78,6 +78,7 @@ export default function Furigana({ text, className = '' }: FuriganaProps) {
       <style jsx>{`
         .furigana-container {
           line-height: 2.2;
+          display: inline;
         }
         .furigana-ruby,
         .furigana-plain {
@@ -88,6 +89,6 @@ export default function Furigana({ text, className = '' }: FuriganaProps) {
           color: #666;
         }
       `}</style>
-    </div>
+    </span>
   );
 }
