@@ -25,3 +25,33 @@ export interface GrammarCard {
 }
 
 export type StudyMode = 'vocabulary' | 'grammar';
+
+// GLM JSON format
+export interface MatomeProblem {
+  id: number;
+  type: 'word_bank' | 'multiple_choice' | 'reading' | 'word_order';
+  wordBank?: string[];
+  choices?: string[];
+  sentences?: Array<{
+    text: string;
+    answer: string;
+    choices?: string[];
+    correctOrder?: string[];
+  }>;
+  passage?: string;
+  statements?: Array<{
+    text: string;
+    isTrue: boolean;
+  }>;
+}
+
+export interface MatomeTest {
+  lesson: number;
+  problems: MatomeProblem[];
+}
+
+export interface UserAnswer {
+  questionIndex: number;
+  selectedAnswer: string;
+  isCorrect: boolean;
+}

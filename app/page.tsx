@@ -3,23 +3,26 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Papa from 'papaparse';
-import { VocabCard, GrammarCard } from './types';
+import { VocabCard, GrammarCard, MatomeTest } from './types';
 
 export default function Home() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [vocabCount, setVocabCount] = useState(0);
   const [grammarCount, setGrammarCount] = useState(0);
+  const [matomeCount, setMatomeCount] = useState(0);
   const [vocabLessons, setVocabLessons] = useState<string[]>([]);
   const [grammarLessons, setGrammarLessons] = useState<string[]>([]);
+  const [matomeLessons, setMatomeLessons] = useState<number[]>([]);
 
   useEffect(() => {
-    // Load both CSV files to get counts and lessons
+    // Load CSV files and matome JSON to get counts and lessons
     Promise.all([
       fetch('/vocab.csv').then(r => r.text()),
-      fetch('/grammar.csv').then(r => r.text())
+      fetch('/grammar.csv').then(r => r.text()),
+      fetch('/matome/glmjson.json').then(r => r.json())
     ])
-      .then(([vocabText, grammarText]) => {
+      .then(([vocabText, grammarText, matomeData]) => {
         // Parse vocabulary
         Papa.parse<VocabCard>(vocabText, {
           header: true,
@@ -42,10 +45,26 @@ export default function Home() {
           },
         });
 
+        // Parse matome data
+        const tests = matomeData.tests as MatomeTest[];
+        const totalQuestions = tests.reduce((sum, test) => {
+          return sum + test.problems.reduce((pSum, problem) => {
+            if (problem.type === 'word_bank' || problem.type === 'multiple_choice' || problem.type === 'word_order') {
+              return pSum + (problem.sentences?.length || 0);
+            } else if (problem.type === 'reading') {
+              return pSum + (problem.statements?.length || 0);
+            }
+            return pSum;
+          }, 0);
+        }, 0);
+        setMatomeCount(totalQuestions);
+        const lessons = tests.map(t => t.lesson).sort((a, b) => a - b);
+        setMatomeLessons(lessons);
+
         setLoading(false);
       })
       .catch(error => {
-        console.error('Error loading CSV:', error);
+        console.error('Error loading data:', error);
         setLoading(false);
       });
   }, []);
@@ -85,7 +104,7 @@ export default function Home() {
         </div>
 
         {/* Study Mode Cards */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
           {/* Vocabulary Card */}
           <button
             onClick={() => router.push('/vocabulary')}
@@ -125,6 +144,27 @@ export default function Home() {
             </div>
             <div className="mt-4 text-purple-600 font-semibold group-hover:translate-x-2 transition-transform">
               Start studying →
+            </div>
+          </button>
+
+          {/* Matome Tests Card */}
+          <button
+            onClick={() => router.push('/matome')}
+            className="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all hover:scale-105 text-left group"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-3xl font-bold text-emerald-600">Matome Tests</h2>
+              <div className="text-4xl">✅</div>
+            </div>
+            <p className="text-gray-600 mb-4">
+              Practice with comprehensive lesson tests
+            </p>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-gray-500">{matomeCount} questions</span>
+              <span className="text-gray-500">Lessons {matomeLessons[0]}-{matomeLessons[matomeLessons.length - 1]}</span>
+            </div>
+            <div className="mt-4 text-emerald-600 font-semibold group-hover:translate-x-2 transition-transform">
+              Take a test →
             </div>
           </button>
         </div>
