@@ -45,17 +45,17 @@ export function ReadingQuestion({
         <div className="hidden sm:flex flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-full items-center justify-center font-bold">
           {questionNumber}
         </div>
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           {passage && (
             <div className="mb-3 sm:mb-4 p-2 sm:p-4 bg-gray-50 rounded-lg border-l-4 border-emerald-500">
               <div className="text-xs sm:text-sm text-emerald-700 mb-2 font-semibold">Passage:</div>
-              <div className="text-sm sm:text-base leading-relaxed text-gray-900">
+              <div className="text-sm sm:text-base leading-relaxed text-gray-900 break-words overflow-wrap-anywhere">
                 <Furigana text={passage} />
               </div>
             </div>
           )}
 
-          <div className="text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed text-gray-900">
+          <div className="text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed text-gray-900 break-words overflow-wrap-anywhere">
             <Furigana text={question.sentence_jp || ''} />
           </div>
 

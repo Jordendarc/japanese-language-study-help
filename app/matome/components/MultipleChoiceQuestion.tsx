@@ -47,11 +47,11 @@ export function MultipleChoiceQuestion({
         <div className="hidden sm:flex flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-full items-center justify-center font-bold">
           {questionNumber}
         </div>
-        <div className="flex-1">
-          <div className="text-base sm:text-lg mb-3 sm:mb-4 leading-relaxed text-gray-900">
+        <div className="flex-1 min-w-0">
+          <div className="text-base sm:text-lg mb-3 sm:mb-4 leading-relaxed text-gray-900 break-words overflow-wrap-anywhere">
             <Furigana text={parts[0]} />
             {' '}
-            <span className="inline mx-1 px-2 py-0.5 bg-gray-100 rounded font-bold text-gray-500 text-sm align-baseline whitespace-nowrap">
+            <span className="inline-block mx-1 px-2 py-0.5 bg-gray-100 rounded font-bold text-gray-500 text-sm align-baseline whitespace-nowrap">
               ___
             </span>
             {' '}
@@ -98,7 +98,7 @@ export function MultipleChoiceQuestion({
                     }`}>
                       {optionNumber}
                     </div>
-                    <span className={`flex-1 text-sm sm:text-base break-words ${
+                    <span className={`flex-1 min-w-0 text-sm sm:text-base break-words overflow-wrap-anywhere ${
                       showCorrect && isCorrectOption
                         ? 'font-bold text-green-700'
                         : showCorrect && isSelected && !isCorrect

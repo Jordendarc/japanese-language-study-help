@@ -47,16 +47,16 @@ export function WordOrderQuestion({
         <div className="hidden sm:flex flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-full items-center justify-center font-bold">
           {questionNumber}
         </div>
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <div className="mb-3 sm:mb-4">
             <div className="text-xs sm:text-sm text-emerald-700 font-semibold mb-2">
               Which word goes in the ★ position?
             </div>
-            <div className="text-base sm:text-lg leading-relaxed text-gray-900 mb-2 sm:mb-3">
+            <div className="text-base sm:text-lg leading-relaxed text-gray-900 mb-2 sm:mb-3 break-words overflow-wrap-anywhere">
               <Furigana text={parts[0]} />
               {parts.slice(1).map((part, idx) => (
                 <span key={idx}>
-                  <span className="mx-1 px-2 py-1 bg-gray-100 rounded text-gray-500 font-mono">
+                  <span className="inline-block mx-1 px-2 py-1 bg-gray-100 rounded text-gray-500 font-mono whitespace-nowrap">
                     {idx === parts.length - 2 ? '★' : '___'}
                   </span>
                   <Furigana text={part} />
@@ -123,7 +123,7 @@ export function WordOrderQuestion({
                     }`}>
                       {optionNumber}
                     </div>
-                    <span className={`text-gray-900 ${
+                    <span className={`flex-1 min-w-0 text-sm sm:text-base break-words overflow-wrap-anywhere text-gray-900 ${
                       showCorrect && isCorrectOption
                         ? 'font-bold text-green-700'
                         : showCorrect && isSelected && !isCorrect

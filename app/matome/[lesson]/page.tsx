@@ -115,10 +115,17 @@ export default function MatomeTestPage() {
     let correctCount = 0;
     flatQuestions.forEach((q, idx) => {
       const userAnswer = userAnswers.get(idx) || '';
+      console.log(`Question ${idx + 1}:`, {
+        userAnswer,
+        correctAnswer: q.answer,
+        match: userAnswer === q.answer,
+        type: q.problemType,
+      });
       if (userAnswer === q.answer) {
         correctCount++;
       }
     });
+    console.log('Total correct:', correctCount, 'out of', flatQuestions.length);
     setScore(correctCount);
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });

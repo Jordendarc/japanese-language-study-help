@@ -47,20 +47,20 @@ export function WordBankQuestion({
         <div className="hidden sm:flex flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-full items-center justify-center font-bold">
           {questionNumber}
         </div>
-        <div className="flex-1">
-          <div className="text-base sm:text-lg mb-3 sm:mb-4 leading-relaxed text-gray-900">
+        <div className="flex-1 min-w-0">
+          <div className="text-base sm:text-lg mb-3 sm:mb-4 leading-relaxed text-gray-900 break-words overflow-wrap-anywhere">
             <Furigana text={parts[0]} />
             {showCorrect && !isCorrect && selectedAnswer ? (
               <>
-                <span className="line-through text-red-500">{selectedAnswer}</span>
-                <span className="text-green-600 font-bold ml-2">{question.answer}</span>
+                <span className="inline-block line-through text-red-500">{selectedAnswer}</span>
+                <span className="inline-block text-green-600 font-bold ml-2">{question.answer}</span>
               </>
             ) : (
               <select
                 value={selectedAnswer}
                 onChange={(e) => onAnswerChange(e.target.value)}
                 disabled={showCorrect}
-                className={`mx-1 sm:mx-2 px-2 sm:px-3 py-1 text-sm sm:text-base border-2 rounded-lg font-bold ${
+                className={`inline-block mx-1 sm:mx-2 px-2 sm:px-3 py-1 text-sm sm:text-base border-2 rounded-lg font-bold ${
                   showCorrect
                     ? isCorrect
                       ? 'border-green-500 bg-green-50 text-green-700'
