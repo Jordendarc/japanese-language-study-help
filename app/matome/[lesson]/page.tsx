@@ -245,7 +245,7 @@ export default function MatomeTestPage() {
           return (
             <div key={problemId} className="mb-6 sm:mb-8">
               {/* Section Header */}
-              <div className="bg-white rounded-t-xl sm:rounded-t-2xl shadow-lg p-4 sm:p-6">
+              <div className="bg-white rounded-t-xl sm:rounded-t-2xl shadow-lg p-2 sm:p-6">
                 <h2 className="text-xl sm:text-2xl font-bold text-emerald-700">
                   {sectionTitle}
                 </h2>
@@ -260,7 +260,7 @@ export default function MatomeTestPage() {
               </div>
 
               {/* Questions */}
-              <div className="bg-white rounded-b-xl sm:rounded-b-2xl shadow-lg p-4 sm:p-6 space-y-3 sm:space-y-4">
+              <div className="bg-white rounded-b-xl sm:rounded-b-2xl shadow-lg p-2 sm:p-6 space-y-3 sm:space-y-4">
                 {problemQuestions.map((question) => {
                   const questionIndex = flatQuestions.indexOf(question);
                   const userAnswer = userAnswers.get(questionIndex) || '';
