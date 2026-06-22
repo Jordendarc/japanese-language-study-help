@@ -24,6 +24,7 @@ function GrammarPageContent() {
   const [showCompletionModal, setShowCompletionModal] = useState(false);
   const [triggerGreen, setTriggerGreen] = useState(false);
   const [triggerRed, setTriggerRed] = useState(false);
+  const [sessionRestored, setSessionRestored] = useState(false);
 
   // Load data
   useEffect(() => {
@@ -40,10 +41,29 @@ function GrammarPageContent() {
             const lessons = [...new Set(results.data.map(card => card.lesson).filter(Boolean))].sort();
             setAvailableLessons(lessons);
 
-            // Get lessons from URL or default to all
-            const urlLessons = searchParams.get('lessons');
-            const lessonsToSelect = urlLessons ? urlLessons.split(',') : lessons;
-            setSelectedLessons(lessonsToSelect);
+            // Try to restore session first
+            const savedSession = sessionStorage.getItem('grammar-flashcard-session');
+            if (savedSession) {
+              try {
+                const session = JSON.parse(savedSession);
+                setCurrentQueue(session.currentQueue || []);
+                setReviewQueue(session.reviewQueue || []);
+                setCurrentIndex(session.currentIndex || 0);
+                setRound(session.round || 1);
+                setTotalReviewed(session.totalReviewed || 0);
+                setSelectedLessons(session.selectedLessons || lessons);
+                setSessionRestored(true);
+              } catch (e) {
+                console.error('Error restoring session:', e);
+              }
+            }
+
+            // If no session restored, use URL or default
+            if (!savedSession) {
+              const urlLessons = searchParams.get('lessons');
+              const lessonsToSelect = urlLessons ? urlLessons.split(',') : lessons;
+              setSelectedLessons(lessonsToSelect);
+            }
 
             setLoading(false);
           },
@@ -58,6 +78,12 @@ function GrammarPageContent() {
   // Filter and update queue when lessons change
   useEffect(() => {
     if (allGrammarCards.length === 0) return;
+
+    // Skip if we just restored a session
+    if (sessionRestored) {
+      setSessionRestored(false);
+      return;
+    }
 
     const filtered = selectedLessons.length === 0
       ? allGrammarCards
@@ -76,6 +102,30 @@ function GrammarPageContent() {
       router.replace('/grammar');
     }
   }, [selectedLessons, allGrammarCards]);
+
+  // Save session state whenever it changes
+  useEffect(() => {
+    if (currentQueue.length === 0) return;
+
+    const session = {
+      currentQueue,
+      reviewQueue,
+      currentIndex,
+      round,
+      totalReviewed,
+      selectedLessons,
+    };
+
+    sessionStorage.setItem('grammar-flashcard-session', JSON.stringify(session));
+  }, [currentQueue, reviewQueue, currentIndex, round, totalReviewed, selectedLessons]);
+
+  // Clear session storage when navigating away
+  useEffect(() => {
+    // Clear session on component unmount (navigation)
+    return () => {
+      sessionStorage.removeItem('grammar-flashcard-session');
+    };
+  }, []);
 
   const handleGotIt = () => {
     setTriggerGreen(true);
