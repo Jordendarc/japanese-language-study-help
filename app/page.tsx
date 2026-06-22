@@ -14,15 +14,17 @@ export default function Home() {
   const [vocabLessons, setVocabLessons] = useState<string[]>([]);
   const [grammarLessons, setGrammarLessons] = useState<string[]>([]);
   const [matomeLessons, setMatomeLessons] = useState<number[]>([]);
+  const [kanjiCount, setKanjiCount] = useState(0);
 
   useEffect(() => {
     // Load CSV files and matome JSON to get counts and lessons
     Promise.all([
       fetch('/vocab.csv').then(r => r.text()),
       fetch('/grammar.csv').then(r => r.text()),
-      fetch('/matome/glmjsonwithhiragana.json').then(r => r.json())
+      fetch('/matome/glmjsonwithhiragana.json').then(r => r.json()),
+      fetch('/kanji/kanjiWithMeanings.json').then(r => r.json())
     ])
-      .then(([vocabText, grammarText, matomeData]) => {
+      .then(([vocabText, grammarText, matomeData, kanjiData]) => {
         // Parse vocabulary
         Papa.parse<VocabCard>(vocabText, {
           header: true,
@@ -60,6 +62,9 @@ export default function Home() {
         setMatomeCount(totalQuestions);
         const lessons = tests.map(t => t.lesson).sort((a, b) => a - b);
         setMatomeLessons(lessons);
+
+        // Set kanji count
+        setKanjiCount(kanjiData.length);
 
         setLoading(false);
       })
@@ -104,7 +109,7 @@ export default function Home() {
         </div>
 
         {/* Study Mode Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Vocabulary Card */}
           <button
             onClick={() => router.push('/vocabulary')}
@@ -165,6 +170,27 @@ export default function Home() {
             </div>
             <div className="mt-4 text-emerald-600 font-semibold group-hover:translate-x-2 transition-transform">
               Take a test →
+            </div>
+          </button>
+
+          {/* Kanji Dictionary Card */}
+          <button
+            onClick={() => router.push('/kanji')}
+            className="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all hover:scale-105 text-left group"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-3xl font-bold text-orange-600">漢字 Dictionary</h2>
+              <div className="text-4xl">📚</div>
+            </div>
+            <p className="text-gray-600 mb-4">
+              Browse kanji with all related vocabulary
+            </p>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-gray-500">{kanjiCount} kanji</span>
+              <span className="text-gray-500">With examples</span>
+            </div>
+            <div className="mt-4 text-orange-600 font-semibold group-hover:translate-x-2 transition-transform">
+              Browse kanji →
             </div>
           </button>
         </div>

@@ -12,22 +12,74 @@ interface FlashcardProps {
   triggerRedAnimation?: boolean;
 }
 
+interface KanjiMeaning {
+  kanji: string;
+  meanings: string[];
+}
+
 export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGreenAnimation, triggerRedAnimation }: FlashcardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [swipeOffset, setSwipeOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [animationState, setAnimationState] = useState<'none' | 'green' | 'red'>('none');
+  const [showKanjiBreakdown, setShowKanjiBreakdown] = useState(false);
+  const [kanjiBreakdown, setKanjiBreakdown] = useState<KanjiMeaning[]>([]);
+  const [kanjiDataLoaded, setKanjiDataLoaded] = useState(false);
   const startXRef = useRef(0);
   const wasDraggingRef = useRef(false);
 
   const meaning = card.my_meaning || card.english;
   const lessonText = card.lesson ? `Lesson ${card.lesson}${card.page ? ', p.' + card.page : ''}` : '';
 
+  // Function to extract kanji from text
+  const extractKanji = (text: string): string[] => {
+    if (!text) return [];
+    const kanjiRegex = /[\u4E00-\u9FAF]/g;
+    const matches = text.match(kanjiRegex);
+    return matches ? [...new Set(matches)] : [];
+  };
+
+  // Load kanji meanings when breakdown is shown
+  const loadKanjiBreakdown = async () => {
+    if (kanjiDataLoaded) {
+      setShowKanjiBreakdown(!showKanjiBreakdown);
+      return;
+    }
+
+    const kanji = extractKanji(card.vocab);
+    if (kanji.length === 0) {
+      setShowKanjiBreakdown(!showKanjiBreakdown);
+      return;
+    }
+
+    try {
+      const response = await fetch('/kanji/kanjiWithMeanings.json');
+      const allKanjiData = await response.json();
+
+      const breakdown: KanjiMeaning[] = kanji.map(k => {
+        const found = allKanjiData.find((item: any) => item.kanji === k);
+        return {
+          kanji: k,
+          meanings: found?.meanings || ['(meaning not found)']
+        };
+      });
+
+      setKanjiBreakdown(breakdown);
+      setKanjiDataLoaded(true);
+      setShowKanjiBreakdown(true);
+    } catch (error) {
+      console.error('Error loading kanji data:', error);
+    }
+  };
+
   // Reset flip state when card changes
   useEffect(() => {
     setIsFlipped(false);
     setSwipeOffset(0);
     setAnimationState('none');
+    setShowKanjiBreakdown(false);
+    setKanjiDataLoaded(false);
+    setKanjiBreakdown([]);
   }, [card]);
 
   // Handle animation triggers
@@ -129,6 +181,39 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
       >
         {/* Front of card */}
         <div className="absolute w-full h-full backface-hidden bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center justify-center" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
+          {/* Kanji Breakdown Button */}
+          {extractKanji(card.vocab).length > 0 && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                loadKanjiBreakdown();
+              }}
+              className="absolute top-4 right-4 px-3 py-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-lg text-xs sm:text-sm font-medium transition-colors z-10"
+            >
+              漢字 {showKanjiBreakdown ? '▲' : '▼'}
+            </button>
+          )}
+
+          {/* Kanji Breakdown Display */}
+          {showKanjiBreakdown && kanjiBreakdown.length > 0 && (
+            <div
+              className="absolute top-14 right-4 bg-indigo-50 border-2 border-indigo-200 rounded-lg p-3 shadow-lg z-10 max-w-xs"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="text-xs sm:text-sm font-semibold text-indigo-700 mb-2">Kanji Breakdown:</div>
+              <div className="space-y-2">
+                {kanjiBreakdown.map((k, idx) => (
+                  <div key={idx} className="flex items-start gap-2">
+                    <div className="text-2xl font-bold text-indigo-600 flex-shrink-0">{k.kanji}</div>
+                    <div className="text-xs sm:text-sm text-gray-700 pt-1">
+                      {k.meanings.join(', ')}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="flex-1 flex items-center justify-center">
             <div className="text-4xl sm:text-6xl font-bold text-gray-800">
               {card.vocab}
