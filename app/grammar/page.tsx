@@ -41,8 +41,8 @@ function GrammarPageContent() {
             const lessons = [...new Set(results.data.map(card => card.lesson).filter(Boolean))].sort();
             setAvailableLessons(lessons);
 
-            // Try to restore session first
-            const savedSession = sessionStorage.getItem('grammar-flashcard-session');
+            // Try to restore from localStorage first
+            const savedSession = localStorage.getItem('grammar-flashcard-session');
             if (savedSession) {
               try {
                 const session = JSON.parse(savedSession);
@@ -116,14 +116,14 @@ function GrammarPageContent() {
       selectedLessons,
     };
 
-    sessionStorage.setItem('grammar-flashcard-session', JSON.stringify(session));
+    localStorage.setItem('grammar-flashcard-session', JSON.stringify(session));
   }, [currentQueue, reviewQueue, currentIndex, round, totalReviewed, selectedLessons]);
 
-  // Clear session storage when navigating away
+  // Clear localStorage when navigating away
   useEffect(() => {
     // Clear session on component unmount (navigation)
     return () => {
-      sessionStorage.removeItem('grammar-flashcard-session');
+      localStorage.removeItem('grammar-flashcard-session');
     };
   }, []);
 

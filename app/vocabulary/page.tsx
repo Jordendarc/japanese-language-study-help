@@ -41,8 +41,8 @@ function VocabularyPageContent() {
             const lessons = [...new Set(results.data.map(card => card.lesson).filter(Boolean))].sort();
             setAvailableLessons(lessons);
 
-            // Try to restore session first
-            const savedSession = sessionStorage.getItem('vocab-flashcard-session');
+            // Try to restore from localStorage first
+            const savedSession = localStorage.getItem('vocab-flashcard-session');
             if (savedSession) {
               try {
                 const session = JSON.parse(savedSession);
@@ -116,22 +116,14 @@ function VocabularyPageContent() {
       selectedLessons,
     };
 
-    sessionStorage.setItem('vocab-flashcard-session', JSON.stringify(session));
+    localStorage.setItem('vocab-flashcard-session', JSON.stringify(session));
   }, [currentQueue, reviewQueue, currentIndex, round, totalReviewed, selectedLessons]);
 
-  // Clear session storage when navigating away
+  // Clear localStorage when navigating away
   useEffect(() => {
-    const handleBeforeUnload = () => {
-      // Only clear if actually navigating away (not just refreshing)
-      const navigation = (window.performance as any)?.getEntriesByType?.('navigation')?.[0];
-      if (navigation && navigation.type === 'navigate') {
-        sessionStorage.removeItem('vocab-flashcard-session');
-      }
-    };
-
     // Clear session on component unmount (navigation)
     return () => {
-      sessionStorage.removeItem('vocab-flashcard-session');
+      localStorage.removeItem('vocab-flashcard-session');
     };
   }, []);
 
