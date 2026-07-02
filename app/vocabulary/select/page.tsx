@@ -64,7 +64,7 @@ export default function VocabularySelectPage() {
 
     setSelectedLessonsByTextbook(prev => {
       const newMap = new Map(prev);
-      const textbookLessons = new Set(newMap.get(textbook) || new Set());
+      const textbookLessons = new Set<string>(newMap.get(textbook) || new Set<string>());
 
       if (textbookLessons.has(lesson)) {
         textbookLessons.delete(lesson);
