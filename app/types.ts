@@ -7,7 +7,9 @@ export interface VocabCard {
   example_en: string;
   example: string;
   lesson: string;
+  section: string;
   page: string;
+  textbook: string;
 }
 
 export interface GrammarCard {

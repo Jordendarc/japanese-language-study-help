@@ -25,6 +25,7 @@ function GrammarPageContent() {
   const [triggerGreen, setTriggerGreen] = useState(false);
   const [triggerRed, setTriggerRed] = useState(false);
   const [sessionRestored, setSessionRestored] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   // Load data
   useEffect(() => {
@@ -128,6 +129,8 @@ function GrammarPageContent() {
   }, []);
 
   const handleGotIt = () => {
+    if (isProcessing) return; // Prevent double-clicks
+    setIsProcessing(true);
     setTriggerGreen(true);
     setTimeout(() => {
       setTriggerGreen(false);
@@ -137,10 +140,13 @@ function GrammarPageContent() {
         startNextRound();
       }
       setTotalReviewed(prev => prev + 1);
+      setIsProcessing(false);
     }, 600);
   };
 
   const handleNeedPractice = () => {
+    if (isProcessing) return; // Prevent double-clicks
+    setIsProcessing(true);
     setTriggerRed(true);
     setTimeout(() => {
       setTriggerRed(false);
@@ -151,6 +157,7 @@ function GrammarPageContent() {
         startNextRound();
       }
       setTotalReviewed(prev => prev + 1);
+      setIsProcessing(false);
     }, 600);
   };
 

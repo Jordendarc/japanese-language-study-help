@@ -19,7 +19,7 @@ export default function Home() {
   useEffect(() => {
     // Load CSV files and matome JSON to get counts and lessons
     Promise.all([
-      fetch('/vocab.csv').then(r => r.text()),
+      fetch('/vocabfull.csv').then(r => r.text()),
       fetch('/grammar.csv').then(r => r.text()),
       fetch('/matome/glmjsonwithhiragana.json').then(r => r.json()),
       fetch('/kanji/kanjiWithMeanings.json').then(r => r.json())
@@ -31,8 +31,8 @@ export default function Home() {
           skipEmptyLines: true,
           complete: (results) => {
             setVocabCount(results.data.length);
-            const lessons = [...new Set(results.data.map(card => card.lesson).filter(Boolean))].sort();
-            setVocabLessons(lessons);
+            const textbooks = [...new Set(results.data.map(card => card.textbook).filter(t => t && t.length > 5))].sort();
+            setVocabLessons(textbooks);
           },
         });
 
@@ -112,7 +112,7 @@ export default function Home() {
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Vocabulary Card */}
           <button
-            onClick={() => router.push('/vocabulary')}
+            onClick={() => router.push('/vocabulary/select')}
             className="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all hover:scale-105 text-left group"
           >
             <div className="flex items-center justify-between mb-4">
@@ -124,7 +124,7 @@ export default function Home() {
             </p>
             <div className="flex items-center justify-between text-sm">
               <span className="text-gray-500">{vocabCount} cards</span>
-              <span className="text-gray-500">Lessons {vocabLessons[0]}-{vocabLessons[vocabLessons.length - 1]}</span>
+              <span className="text-gray-500">{vocabLessons.length} textbook{vocabLessons.length !== 1 ? 's' : ''}</span>
             </div>
             <div className="mt-4 text-indigo-600 font-semibold group-hover:translate-x-2 transition-transform">
               Start studying →

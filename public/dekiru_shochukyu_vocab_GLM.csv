@@ -1,0 +1,930 @@
+vocab,reading,english,my_meaning,example_jp,example_en,example,lesson,section,page,textbook
+方,かた,person (respectful language referring to someone else),,あの方はどなたですか。,Who is that person?,,1,1,1,できる日本語 初中級 本冊
+者,もの,person (humble language referring to oneself),,私のような者はできません。,Someone like me cannot do it.,,1,1,1,できる日本語 初中級 本冊
+チラシ,,leaflet, flyer,flyer,チラシを配ります。,I will distribute flyers.,,1,1,1,できる日本語 初中級 本冊
+ホームページ,,website,,会社のホームページを見ます。,I look at the company's website.,,1,1,1,できる日本語 初中級 本冊
+学生証,がくせいしょう,student ID,,学生証を見せてください。,Please show your student ID.,,1,1,1,できる日本語 初中級 本冊
+資格外活動許可書,しかくがいかつどうきょかしょ,permission for engaging in activity outside visa status,work permit for students,資格外活動許可書をもらいました。,I received my work permit.,,1,1,1,できる日本語 初中級 本冊
+面接,めんせつ,interview,,面接は明日あります。,The interview is tomorrow.,,1,1,1,できる日本語 初中級 本冊
+履歴書,りれきしょ,resume, CV,,履歴書を書きました。,I wrote my resume.,,1,1,1,できる日本語 初中級 本冊
+半年,はんとし,half-year,,日本に来てから半年です。,It has been half a year since I came to Japan.,,1,1,1,できる日本語 初中級 本冊
+（お）刺身,さしみ,sashimi (thinly sliced, raw seafood),,刺身はおいしいです。,Sashimi is delicious.,,1,1,1,できる日本語 初中級 本冊
+日常会話,にちじょうかいわ,daily conversation,,日常会話ができるようになりたいです。,I want to be able to do daily conversation.,,1,1,1,できる日本語 初中級 本冊
+問い合わせ,といあわせ,inquiry,,電話で問い合わせをします。,I will make an inquiry by phone.,,1,1,1,できる日本語 初中級 本冊
+希望・する,きぼう・する,desire,,夜の仕事を希望します。,I desire a night job.,,1,1,1,できる日本語 初中級 本冊
+募集・する,ぼしゅう・する,recruit, put out a call for,,アルバイトを募集しています。,They are recruiting part-time workers.,,1,1,1,できる日本語 初中級 本冊
+思い出す,おもいだす,remember, recall,,昔のことを思い出します。,I remember things from the past.,,1,1,1,できる日本語 初中級 本冊
+入力・する,にゅうりょく・する,input,,パスワードを入力してください。,Please input your password.,,1,1,1,できる日本語 初中級 本冊
+それでは,,well, then (at beginning of a sentence),Well then,それでは、始めましょう。,Well then, let's begin.,,1,1,1,できる日本語 初中級 本冊
+では,,in that case, if so,In that case,では、また明日。,In that case, see you tomorrow.,,1,1,1,できる日本語 初中級 本冊
+いらっしゃいます,go, come (respectful language referring to someone else),to be/go/come (respectful),社長はいらっしゃいますか。,Is the president here?,,1,1,1,できる日本語 初中級 本冊
+申します,もうします,call oneself (humble language), my name is,am/say (humble),私田中と申します。,My name is Tanaka.,,1,1,1,できる日本語 初中級 本冊
+参ります,まいります,go, come (humble language referring to oneself),go/come (humble),明日そちらへ参ります。,I will go there tomorrow.,,1,1,1,できる日本語 初中級 本冊
+少々お待ちください,しょうしょうおまちください,Please wait a moment,,少々お待ちください。,Please wait a moment.,,1,1,1,できる日本語 初中級 本冊
+お先に失礼します,おさきにしつれいします,Excuse me for going ahead of you,,お先に失礼します。,Excuse me for leaving before you.,,1,1,1,できる日本語 初中級 本冊
+こちらへどうぞ,,Please come this way,,こちらへどうぞ。,Please come this way.,,1,1,1,できる日本語 初中級 本冊
+失礼します,しつれいします,Excuse me,,失礼します。,Excuse me.,,1,1,1,できる日本語 初中級 本冊
+よろしくお願いいたします,よろしくおねがいいたします,I am looking forward to knowing you,Please take care of me,よろしくお願いいたします。,I look forward to working with you.,,1,1,1,できる日本語 初中級 本冊
+楽器,がっき,musical instrument,,楽器を演奏します。,I play a musical instrument.,,1,2,1,できる日本語 初中級 本冊
+建物,たてもの,building,,高い建物があります。,There is a tall building.,,1,2,1,できる日本語 初中級 本冊
+歴史,れきし,history,,日本の歴史を勉強します。,I study Japanese history.,,1,2,1,できる日本語 初中級 本冊
+意見,いけん,opinion,,意見を言ってください。,Please give your opinion.,,1,2,1,できる日本語 初中級 本冊
+お年寄り,おとしより,elderly person,,お年寄りに席を譲ります。,I give my seat to the elderly.,,1,2,1,できる日本語 初中級 本冊
+言葉,ことば,words, language,,新しい言葉を覚えます。,I memorize new words.,,1,2,1,できる日本語 初中級 本冊
+自分,じぶん,oneself,,自分で宿題をします。,I do homework by myself.,,1,2,1,できる日本語 初中級 本冊
+話,はなし,conversation,,友達と話をします。,I talk with my friend.,,1,2,1,できる日本語 初中級 本冊
+野外ライブ,やがいライブ,live outdoor concert,,野外ライブに行きます。,I go to an outdoor live concert.,,1,2,1,できる日本語 初中級 本冊
+～個,こ,things (counter word),,りんごを3個買いました。,I bought 3 apples.,,1,2,1,できる日本語 初中級 本冊
+聞き取る,ききとる,hear and understand,,英語が聞き取れません。,I cannot hear and understand English.,,1,2,1,できる日本語 初中級 本冊
+覚える,おぼえる,remember, memorize,,単語を覚えます。,I memorize vocabulary.,,1,2,1,できる日本語 初中級 本冊
+応援・する,おうえん・する,encourage, cheer on,,友達を応援します。,I cheer on my friend.,,1,2,1,できる日本語 初中級 本冊
+サイクリング・する,,do cycling,,週末にサイクリングをします。,I go cycling on weekends.,,1,2,1,できる日本語 初中級 本冊
+遅い,おそい,slow,slow (speed),このパソコンは遅いです。,This computer is slow.,,1,2,1,できる日本語 初中級 本冊
+速い,はやい,fast,fast (speed),あの人は走るのが速いです。,That person is fast at running.,,1,2,1,できる日本語 初中級 本冊
+つまらない,,boring,,この映画はつまらないです。,This movie is boring.,,1,2,1,できる日本語 初中級 本冊
+得意（な）,とくい,good at (something),good at,私は料理が得意です。,I am good at cooking.,,1,2,1,できる日本語 初中級 本冊
+苦手（な）,にがて,bad at (something),bad at,私は数学が苦手です。,I am bad at math.,,1,2,1,できる日本語 初中級 本冊
+無理（な）,むり,unable to do (something),impossible,それは無理です。,That is impossible.,,1,2,1,できる日本語 初中級 本冊
+朝早く,あさはやく,early morning,,朝早く起きます。,I wake up early in the morning.,,1,2,1,できる日本語 初中級 本冊
+字幕,じまく,subtitles,,字幕をつけて見ます。,I watch it with subtitles.,,1,もう一度聞こう,2,できる日本語 初中級 本冊
+大好き（な）,だいすき,favorite,,私は映画が大好きです。,I love movies.,,1,もう一度聞こう,2,できる日本語 初中級 本冊
+まず,,at first (at beginning of a sentence),First,まず、名前を書いてください。,First, please write your name.,,1,もう一度聞こう,2,できる日本語 初中級 本冊
+恥ずかしい,はずかしい,embarrassing,,間違えて恥ずかしかったです。,I was embarrassed because I made a mistake.,,2,話読聞書,3,できる日本語 初中級 本冊
+次,つぎ,next,,次の駅で降ります。,I will get off at the next station.,,2,話読聞書,3,できる日本語 初中級 本冊
+うれしい,,happy, glad,,プレゼントをもらってうれしいです。,I am happy to receive a present.,,2,話読聞書,3,できる日本語 初中級 本冊
+画面,がめん,screen,,画面が大きいスマホがいいです。,I want a smartphone with a big screen.,,2,1,3,できる日本語 初中級 本冊
+腕時計,うでどけい,wristwatch,,腕時計をなくしました。,I lost my wristwatch.,,2,1,3,できる日本語 初中級 本冊
+セーター,,sweater,,暖かいセーターを着ています。,I am wearing a warm sweater.,,2,1,3,できる日本語 初中級 本冊
+スーツケース,,suitcase,,スーツケースが重いです。,The suitcase is heavy.,,2,1,3,できる日本語 初中級 本冊
+コート,,coat,,新しいコートを買いました。,I bought a new coat.,,2,1,3,できる日本語 初中級 本冊
+棚,たな,shelf,,棚に本を置きます。,I put books on the shelf.,,2,1,3,できる日本語 初中級 本冊
+指輪,ゆびわ,ring,,きれいな指輪をもらいました。,I received a beautiful ring.,,2,1,3,できる日本語 初中級 本冊
+サイズ,,size,,靴のサイズはいくつですか。,What is your shoe size?,,2,1,3,できる日本語 初中級 本冊
+数字,すうじ,number,,数字を読んでください。,Please read the numbers.,,2,1,3,できる日本語 初中級 本冊
+ヒール,,(high) heels,,ヒールの高い靴は足が痛いです。,Shoes with high heels make my feet hurt.,,2,1,3,できる日本語 初中級 本冊
+ボタン,,button,,ボタンが取れました。,The button came off.,,2,1,3,できる日本語 初中級 本冊
+ジーンズ,,jeans,,ジーンズを履いています。,I am wearing jeans.,,2,1,3,できる日本語 初中級 本冊
+売り場,うりば,sales section,,靴の売り場はどこですか。,Where is the shoe section?,,2,1,3,できる日本語 初中級 本冊
+動く,うごく,move,,この時計は動いています。,This clock is moving.,,2,1,3,できる日本語 初中級 本冊
+説明・する,せつめい・する,explain,,使い方を説明します。,I will explain how to use it.,,2,1,3,できる日本語 初中級 本冊
+配達・する,はいたつ・する,deliver,,午後荷物を配達してください。,Please deliver the luggage in the afternoon.,,2,1,3,できる日本語 初中級 本冊
+重い,おもい,heavy (weight),,この荷物は重いです。,This luggage is heavy.,,2,1,3,できる日本語 初中級 本冊
+軽い,かるい,light (weight),,このかばんは軽いです。,This bag is light.,,2,1,3,できる日本語 初中級 本冊
+ちょうどいい,,perfect,just right,この大きさはちょうどいいです。,This size is just right.,,2,1,3,できる日本語 初中級 本冊
+丈夫（な）,じょうぶ,sturdy,durable,この鞄は丈夫です。,This bag is durable.,,2,1,3,できる日本語 初中級 本冊
+もっと,,more,,もっと大きいかばんがほしいです。,I want a larger bag.,,2,1,3,できる日本語 初中級 本冊
+ちょっと,,a little,,ちょっと待ってください。,Please wait a little.,,2,1,3,できる日本語 初中級 本冊
+いかがですか,,How is it?,,この色はいかがですか。,How is this color?,,2,1,3,できる日本語 初中級 本冊
+かしこまりました,,I understand (humble language),Certainly,かしこまりました。,Certainly.,,2,1,3,できる日本語 初中級 本冊
+壁,かべ,wall,,壁にポスターをはります。,I put a poster on the wall.,,2,2,3,できる日本語 初中級 本冊
+カレンダー,,calendar,,壁にカレンダーをかけます。,I hang a calendar on the wall.,,2,2,3,できる日本語 初中級 本冊
+世界地図,せかいちず,world map,,世界地図を見ます。,I look at a world map.,,2,2,3,できる日本語 初中級 本冊
+最新,さいしん,latest, newest,latest,最新のスマホを買いました。,I bought the latest smartphone.,,2,2,3,できる日本語 初中級 本冊
+飲み放題,のみほうだい,unlimited drinks,,飲み放題で注文します。,I will order the unlimited drinks.,,2,2,3,できる日本語 初中級 本冊
+期間限定,きかんげんてい,limited period,,これは期間限定の商品です。,This is a limited-time product.,,2,2,3,できる日本語 初中級 本冊
+セット,,set,,セットで注文したほうが得です。,It is a better deal to order as a set.,,2,2,3,できる日本語 初中級 本冊
+フロアガイド,,floor guide,,フロアガイドをもらいました。,I received a floor guide.,,2,2,3,できる日本語 初中級 本冊
+意味,いみ,meaning,,この言葉の意味を知っていますか。,Do you know the meaning of this word?,,2,2,3,できる日本語 初中級 本冊
+営業中,えいぎょうちゅう,open (for business),Open,あの店はまだ営業中です。,That store is still open.,,2,2,3,できる日本語 初中級 本冊
+大盛り,おおもり,extra-large helping,large portion,ご飯を大盛りにしてください。,Please give me a large portion of rice.,,2,2,3,できる日本語 初中級 本冊
+おかわり,refill, second helping,,おかわりをお願いします。,I would like a refill.,,2,2,3,できる日本語 初中級 本冊
+送料,そうりょう,shipping charges,,送料はいくらですか。,How much are the shipping charges?,,2,2,3,できる日本語 初中級 本冊
+タイムサービス,,limited time offer,happy hour,タイムサービスで半額です。,It is half-price during the happy hour.,,2,2,3,できる日本語 初中級 本冊
+定休日,ていきゅうび,regular holiday,,今日は定休日です。,Today is the regular holiday.,,2,2,3,できる日本語 初中級 本冊
+本日,ほんじつ,today,today (formal),本日はお休みです。,We are closed today.,,2,2,3,できる日本語 初中級 本冊
+半額,はんがく,half-price,,半額で買いました。,I bought it for half-price.,,2,2,3,できる日本語 初中級 本冊
+レディースデー,,Lady's Day,,レディースデーだから安いです。,It is cheap because it is Lady's Day.,,2,2,3,できる日本語 初中級 本冊
+量,りょう,amount,,量が多くて食べられません。,The amount is too large, so I can't eat it.,,2,2,3,できる日本語 初中級 本冊
+親子丼,おやこどん,oyako-don (bowl of rice topped with boiled chicken and eggs),,親子丼を食べたことがあります。,I have eaten oyako-don before.,,2,2,3,できる日本語 初中級 本冊
+牛丼,ぎゅうどん,gyu-don (bowl of rice topped with seasoned beef),,牛丼は安くておいしいです。,Gyu-don is cheap and delicious.,,2,2,3,できる日本語 初中級 本冊
+サンドイッチ,,sandwich,,サンドイッチを作りました。,I made a sandwich.,,2,2,3,できる日本語 初中級 本冊
+ソース,,sauce,,とんかつにソースをかける。,Put sauce on pork cutlet.,,2,2,3,できる日本語 初中級 本冊
+～券,けん,ticket,,割引券を持っています。,I have a discount ticket.,,2,2,3,できる日本語 初中級 本冊
+かける,,hang, attach,,カレンダーをかける。,Hang up a calendar.,,2,2,3,できる日本語 初中級 本冊
+貼る,はる,affix,,壁にポスターを貼ります。,I affix a poster to the wall.,,2,2,3,できる日本語 初中級 本冊
+かける,,put on (something),put on (liquid/seasoning),ソースをかける。,Put on sauce.,,2,2,3,できる日本語 初中級 本冊
+注文・する,ちゅうもん・する,order,,コーヒーを注文しました。,I ordered coffee.,,2,2,3,できる日本語 初中級 本冊
+割引・する,わりびき・する,discount,,この本は割引されます。,This book will be discounted.,,2,2,3,できる日本語 初中級 本冊
+両替・する,りょうがえ・する,exchange for small money,change into small bills/coins,一万円札を両替してください。,Please change this 10,000 yen bill.,,2,2,4,できる日本語 初中級 本冊
+得（な）,とく,good at (something),a good deal, advantageous,このシャツはとても得です。,This shirt is a really good deal.,,2,2,4,できる日本語 初中級 本冊
+特別（な）,とくべつ,special,,特別な料理を作ります。,I will make a special dish.,,2,2,4,できる日本語 初中級 本冊
+どういう,,what kind of,,どういう意味ですか。,What kind of meaning is it?,,2,2,4,できる日本語 初中級 本冊
+もう,,another,,もう一杯お願いします。,Another drink, please.,,2,2,4,できる日本語 初中級 本冊
+大変,たいへん,very,very/extremely,大変おいしいです。,It is very delicious.,,2,もう一度聞こう,4,できる日本語 初中級 本冊
+デザート,,dessert,,食後にデザートを食べます。,I eat dessert after a meal.,,2,もう一度聞こう,4,できる日本語 初中級 本冊
+笑顔,えがお,smile,,笑顔が素敵です。,Your smile is wonderful.,,3,話読聞書,5,できる日本語 初中級 本冊
+悲しい,かなしい,sad,,映画を見て悲しくなりました。,I became sad after watching the movie.,,3,話読聞書,5,できる日本語 初中級 本冊
+給料,きゅうりょう,salary,,給料が上がりました。,My salary went up.,,3,1,5,できる日本語 初中級 本冊
+サークル,,club, group,,大学でサークルに入りました。,I joined a club in college.,,3,1,5,できる日本語 初中級 本冊
+説明会,せつめいかい,explanatory meeting,,明日説明会があります。,There is an explanatory meeting tomorrow.,,3,1,5,できる日本語 初中級 本冊
+専門学校,せんもんがっこう,vocational school,,専門学校で日本語を勉強します。,I study Japanese at a vocational school.,,3,1,5,できる日本語 初中級 本冊
+見学会,けんがくかい,observation tour,,工場の見学会に参加します。,I participate in the factory observation tour.,,3,1,5,できる日本語 初中級 本冊
+学部,がくぶ,academic department,,経済学部の学生です。,I am a student in the economics department.,,3,1,5,できる日本語 初中級 本冊
+経済,けいざい,economics, economy,,経済について勉強します。,I study about the economy.,,3,1,5,できる日本語 初中級 本冊
+法律,ほうりつ,law,,法律を守らなければなりません。,You must obey the law.,,3,1,5,できる日本語 初中級 本冊
+カナダ,,Canada,,カナダから来ました。,I came from Canada.,,3,1,5,できる日本語 初中級 本冊
+聴解,ちょうかい,listening comprehension,,聴解のテストは難しかったです。,The listening comprehension test was difficult.,,3,1,5,できる日本語 初中級 本冊
+アクセサリー,,jewelry,,きれいなアクセサリーをつけています。,I am wearing pretty jewelry.,,3,1,5,できる日本語 初中級 本冊
+一生懸命,いっしょうけんめい,(do) one's very best,,一生懸命勉強します。,I will study with my utmost effort.,,3,1,5,できる日本語 初中級 本冊
+答え,こたえ,answer, response,,質問の答えがわかりません。,I don't know the answer to the question.,,3,1,5,できる日本語 初中級 本冊
+試験,しけん,examination,,明日試験があります。,There is an exam tomorrow.,,3,1,5,できる日本語 初中級 本冊
+将来,しょうらい,future,,将来の夢は何ですか。,What is your future dream?,,3,1,5,できる日本語 初中級 本冊
+ビジネス,,business,,ビジネスのメールを書きます。,I write business emails.,,3,1,5,できる日本語 初中級 本冊
+日本語能力試験,にほんごのうりょくしけん,Japanese Language Proficiency Test,,日本語能力試験を受けます。,I will take the JLPT.,,3,1,5,できる日本語 初中級 本冊
+間違い,まちがい,mistake,,間違いを直してください。,Please correct the mistake.,,3,1,5,できる日本語 初中級 本冊
+寮,りょう,dormitory,,学校の寮に住んでいます。,I live in the school dormitory.,,3,1,5,できる日本語 初中級 本冊
+目標,もくひょう,goal, target,,目標を決めました。,I decided on a goal.,,3,1,5,できる日本語 初中級 本冊
+～料,りょう,charges, fees,,授業料を払います。,I pay tuition fees.,,3,1,5,できる日本語 初中級 本冊
+翻訳・する,ほんやく・する,translate,,英語を日本語に翻訳します。,I translate English into Japanese.,,3,1,5,できる日本語 初中級 本冊
+調べる,しらべる,examine,,インターネットで調べます。,I examine it on the internet.,,3,1,5,できる日本語 初中級 本冊
+見学・する,けんがく・する,tour, observe,,工場を見学します。,I will tour the factory.,,3,1,5,できる日本語 初中級 本冊
+相談・する,そうだん・する,consult with, ask someone's advice,,先生に相談します。,I will consult with my teacher.,,3,1,5,できる日本語 初中級 本冊
+貯金・する,ちょきん・する,save up money,,毎月貯金しています。,I save money every month.,,3,1,5,できる日本語 初中級 本冊
+留学・する,りゅうがく・する,study abroad,,アメリカに留学したいです。,I want to study abroad in America.,,3,1,5,できる日本語 初中級 本冊
+開く,ひらく,open,,自分の店を開く。,Open your own store.,,3,1,5,できる日本語 初中級 本冊
+続ける,つづける,continue,,日本語の勉強を続けます。,I will continue studying Japanese.,,3,1,5,できる日本語 初中級 本冊
+やめる,,stop,,アルバイトをやめました。,I quit my part-time job.,,3,1,5,できる日本語 初中級 本冊
+受ける,うける,receive,,試験を受けます。,I will take an exam.,,3,1,5,できる日本語 初中級 本冊
+案内・する,あんない・する,guide,,ホテルまで案内します。,I will guide you to the hotel.,,3,1,5,できる日本語 初中級 本冊
+進学・する,しんがく・する,proceed to higher education,,大学に進学します。,I will proceed to higher education.,,3,1,5,できる日本語 初中級 本冊
+通学・する,つうがく・する,commute to school,,毎日電車で通学します。,I commute to school by train every day.,,3,1,5,できる日本語 初中級 本冊
+選ぶ,えらぶ,select, choose,,自分の道を選びます。,I will choose my own path.,,3,1,5,できる日本語 初中級 本冊
+迷う,まよう,waver, hesitate,to be undecided,国へ帰るかどうか迷っている。,I am undecided about whether to return to my country.,,3,1,5,できる日本語 初中級 本冊
+考える,かんがえる,think about,,将来のことを考えます。,I think about the future.,,3,1,5,できる日本語 初中級 本冊
+決める,きめる,decide,,进路を決めました。,I decided on my career path.,,3,1,5,できる日本語 初中級 本冊
+合格・する,ごうかく・する,pass (an examination),,試験に合格しました。,I passed the exam.,,3,1,5,できる日本語 初中級 本冊
+専攻・する,せんこう・する,specialize in, major in,,経済を専攻しています。,I am majoring in economics.,,3,1,5,できる日本語 初中級 本冊
+悩む,なやむ,be troubled over, be worried about,,仕事で悩んでいます。,I am worried about work.,,3,1,5,できる日本語 初中級 本冊
+就職・する,しゅうしょく・する,find a job,,来年就職します。,I will find a job next year.,,3,1,5,できる日本語 初中級 本冊
+確認・する,かくにん・する,confirm, check,,スケジュールを確認します。,I check the schedule.,,3,1,5,できる日本語 初中級 本冊
+正しい,ただしい,correct,,これは正しい答えです。,This is the correct answer.,,3,1,5,できる日本語 初中級 本冊
+建築家,けんちくか,architect,,建築家になりたいです。,I want to become an architect.,,3,2,5,できる日本語 初中級 本冊
+デザイナー,,designer,,服のデザイナーです。,I am a clothing designer.,,3,2,5,できる日本語 初中級 本冊
+夢,ゆめ,dream,,夢がかないました。,My dream came true.,,3,2,5,できる日本語 初中級 本冊
+スーツ,,business suit,,面接でスーツを着ます。,I wear a business suit for the interview.,,3,2,5,できる日本語 初中級 本冊
+願書,がんしょ,application,,大学に願書を出しました。,I submitted my application to the university.,,3,2,5,できる日本語 初中級 本冊
+事務室,じむしつ,office,,事務室にいます。,I am in the office.,,3,2,5,できる日本語 初中級 本冊
+書類,しょるい,documents,,書類を持ってきてください。,Please bring the documents.,,3,2,5,できる日本語 初中級 本冊
+～中,じゅう,during (a period),,今日中に終わらせます。,I will finish it within today.,,3,2,5,できる日本語 初中級 本冊
+経営・する,けいえい・する,manage (a business),,自分の会社を経営しています。,I manage my own company.,,3,2,5,できる日本語 初中級 本冊
+体験・する,たいけん・する,experience,,日本の文化を体験します。,I experience Japanese culture.,,3,2,6,できる日本語 初中級 本冊
+頑張る,がんばる,do one's best,,試験に頑張ります。,I will do my best on the exam.,,3,2,6,できる日本語 初中級 本冊
+スピーチ・する,,give a speech,,みんなの前でスピーチをします。,I will give a speech in front of everyone.,,3,2,6,できる日本語 初中級 本冊
+受験・する,じゅけん・する,take an examination,,大学を受験します。,I will take a university entrance exam.,,3,2,6,できる日本語 初中級 本冊
+復習・する,ふくしゅう・する,review (a lesson),,家で復習します。,I review at home.,,3,2,6,できる日本語 初中級 本冊
+予習・する,よしゅう・する,prepare for (a lesson),,明日の授業の予習をします。,I prepare for tomorrow's class.,,3,2,6,できる日本語 初中級 本冊
+デッサン・する,,produce a drawing,,美術館でデッサンをします。,I produce a drawing at the art museum.,,3,2,6,できる日本語 初中級 本冊
+通訳,つうやく,interpreting,,通訳の仕事をします。,I do interpreting work.,,3,もう一度聞こう,6,できる日本語 初中級 本冊
+パティシエ,,pastry baker (from the French word pâtissier),,パティシエになりたいです。,I want to become a pastry baker.,,3,もう一度聞こう,6,できる日本語 初中級 本冊
+味,あじ,taste, flavor,,このスープは味が薄いです。,This soup has a weak flavor.,,4,話読聞書,7,できる日本語 初中級 本冊
+タコ,,octopus,,タコを食べたことがあります。,I have eaten octopus.,,4,話読聞書,7,できる日本語 初中級 本冊
+たこ焼き,たこやき,takoyaki (fried octopus dumpling balls),,たこ焼きを作りました。,I made takoyaki.,,4,話読聞書,7,できる日本語 初中級 本冊
+におい,,smell,,いいにおいがします。,It smells good.,,4,話読聞書,7,できる日本語 初中級 本冊
+～がする,,make a (noise, smell),,変なにおいがします。,There is a strange smell.,,4,話読聞書,7,できる日本語 初中級 本冊
+通る,とおる,pass through,,この道を通ってください。,Please pass through this road.,,4,話読聞書,7,できる日本語 初中級 本冊
+似る,にる,be similar to,,母に似ています。,I am similar to my mother.,,4,話読聞書,7,できる日本語 初中級 本冊
+丸い,まるい,round,,丸いテーブルがあります。,There is a round table.,,4,話読聞書,7,できる日本語 初中級 本冊
+小さな,ちいさな,small,,小さな猫がいます。,There is a small cat.,,4,話読聞書,7,できる日本語 初中級 本冊
+美容院,びよういん,beauty salon,,美容院で髪を切りました。,I cut my hair at a beauty salon.,,4,1,7,できる日本語 初中級 本冊
+空港,くうこう,airport,,空港へ友達を迎えに行きます。,I go to the airport to pick up my friend.,,4,1,7,できる日本語 初中級 本冊
+歯科,しか,dentist,,歯科に行かなければなりません。,I have to go to the dentist.,,4,1,7,できる日本語 初中級 本冊
+市民,しみん,citizen,,市民の皆さんに知らせます。,I will inform the citizens.,,4,1,7,できる日本語 初中級 本冊
+三味線,しゃみせん,shamisen (three-stringed Japanese musical instrument),,三味線を弾きます。,I play the shamisen.,,4,1,7,できる日本語 初中級 本冊
+種類,しゅるい,type,,いろいろな種類の魚がいます。,There are various types of fish.,,4,1,7,できる日本語 初中級 本冊
+水道,すいどう,water service,,水道が止まりました。,The water service stopped.,,4,1,7,できる日本語 初中級 本冊
+てんぷら,,tempura (battered and deep-fried vegetables and seafood),,てんぷらが好きです。,I like tempura.,,4,1,7,できる日本語 初中級 本冊
+不動産,ふどうさん,real estate,,不動産屋でアパートを探します。,I look for an apartment at a real estate agency.,,4,1,7,できる日本語 初中級 本冊
+交流会,こうりゅうかい,(cultural) exchange meeting,,交流会に参加します。,I participate in the exchange meeting.,,4,1,7,できる日本語 初中級 本冊
+小学校,しょうがっこう,elementary school,,小学校で英語を教えます。,I teach English at an elementary school.,,4,1,7,できる日本語 初中級 本冊
+市役所,しやくしょ,city hall,,市役所で手続きをします。,I do paperwork at city hall.,,4,1,7,できる日本語 初中級 本冊
+情報,じょうほう,information,,インターネットで情報を集めます。,I gather information on the internet.,,4,1,7,できる日本語 初中級 本冊
+タオル,,towel,,タオルで汗を拭きます。,I wipe my sweat with a towel.,,4,1,7,できる日本語 初中級 本冊
+茶道,さどう,sado (traditional Japanese tea ceremony),,茶道を習っています。,I am learning sado.,,4,1,7,できる日本語 初中級 本冊
+センター,,center,,国際センターに行きます。,I go to the international center.,,4,1,7,できる日本語 初中級 本冊
+～場,じょう,place, location,,サッカー場で遊びました。,I played at the soccer field.,,4,1,7,できる日本語 初中級 本冊
+～口,ぐち,entrance, exit,,西口で待っています。,I am waiting at the west exit.,,4,1,7,できる日本語 初中級 本冊
+かかる,,take,,この仕事は2時間かかります。,This work takes 2 hours.,,4,1,7,できる日本語 初中級 本冊
+質問・する,しつもん・する,ask a question,,先生に質問します。,I ask the teacher a question.,,4,1,7,できる日本語 初中級 本冊
+カット・する,,cut,,髪をカットしました。,I cut my hair.,,4,1,7,できる日本語 初中級 本冊
+紹介・する,しょうかい・する,introduce,,友達を先生に紹介します。,I introduce my friend to the teacher.,,4,1,7,できる日本語 初中級 本冊
+修理・する,しゅうり・する,repair,,壊れたテレビを修理します。,I repair the broken TV.,,4,1,7,できる日本語 初中級 本冊
+知らせる,しらせる,notify, inform,,変更を知らせます。,I will notify you of the changes.,,4,1,7,できる日本語 初中級 本冊
+止まる,とまる,stop,,水が止まる。,The water has stopped running.,,4,1,7,できる日本語 初中級 本冊
+出る,でる,operate,to depart (vehicles),バスが出る。,The bus departs.,,4,1,7,できる日本語 初中級 本冊
+着く,つく,arrive,,ホテルに着きました。,I arrived at the hotel.,,4,1,7,できる日本語 初中級 本冊
+利用・する,りよう・する,use,,図書館を利用します。,I use the library.,,4,1,7,できる日本語 初中級 本冊
+必要（な）,ひつよう,needed, necessary,,パスポートが必要です。,A passport is necessary.,,4,1,7,できる日本語 初中級 本冊
+大使館,たいしかん,embassy,,大使館でパスポートを作ります。,I make my passport at the embassy.,,4,2,7,できる日本語 初中級 本冊
+メートル,,meter (units of measurement),,ここから駅まで500メートルです。,It is 500 meters from here to the station.,,4,2,7,できる日本語 初中級 本冊
+次,つぎ,next,,次の信号を右に曲がってください。,Please turn right at the next traffic light.,,4,2,7,できる日本語 初中級 本冊
+坂,さか,hill, slope,,急な坂を上ります。,I go up a steep slope.,,4,2,7,できる日本語 初中級 本冊
+～階建て,かいだて,building with ~ floors,,この建物は4階建てです。,This building has 4 floors.,,4,2,7,できる日本語 初中級 本冊
+～番線,ばんせん,number ~ train/subway line,,3番線から電車が出ます。,The train leaves from platform 3.,,4,2,7,できる日本語 初中級 本冊
+～行き,ゆき,destination,,これは新宿行きの電車です。,This is the train bound for Shinjuku.,,4,2,7,できる日本語 初中級 本冊
+上る,のぼる,move upward,,階段を上ります。,I go up the stairs.,,4,2,7,できる日本語 初中級 本冊
+下りる,おりる,move downward,,山を下りります。,I go down the mountain.,,4,2,7,できる日本語 初中級 本冊
+駐車・する,ちゅうしゃ・する,park (a vehicle),,ここに駐車しないでください。,Please do not park here.,,4,2,7,できる日本語 初中級 本冊
+中学校,ちゅうがっこう,middle school, junior high school,,中学校の先生になります。,I will become a junior high school teacher.,,4,もう一度聞こう,7,できる日本語 初中級 本冊
+池,いけ,pond,,公園に池があります。,There is a pond in the park.,,5,1,8,できる日本語 初中級 本冊
+階段,かいだん,stairs,,階段から落ちました。,I fell down the stairs.,,5,1,8,できる日本語 初中級 本冊
+切符,きっぷ,ticket,,切符を買いました。,I bought a ticket.,,5,1,8,できる日本語 初中級 本冊
+線路,せんろ,(train, subway) line,,線路に物を落とさないでください。,Please do not drop things on the tracks.,,5,1,8,できる日本語 初中級 本冊
+定期券,ていきけん,commuter pass,,定期券を使います。,I use a commuter pass.,,5,1,8,できる日本語 初中級 本冊
+ケース,,case,,このケースは丈夫です。,This case is durable.,,5,1,8,できる日本語 初中級 本冊
+忘れ物,わすれもの,"lost items, lost-and-found",,忘れ物をしました。,I left something behind.,,5,1,8,できる日本語 初中級 本冊
+鍵,かぎ,key,,鍵をかけてください。,Please lock the door.,,5,1,8,できる日本語 初中級 本冊
+辺,へん,area,,この辺にコンビニがありますか。,Is there a convenience store around this area?,,5,1,8,できる日本語 初中級 本冊
+途中,とちゅう,in the middle of (doing something),,途中で雨が降りました。,It rained in the middle of the way.,,5,1,8,できる日本語 初中級 本冊
+カード,,card,,カードで払います。,I pay by card.,,5,1,8,できる日本語 初中級 本冊
+銀行のカード,ぎんこうのカード,bank card,,銀行のカードを落としました。,I dropped my bank card.,,5,1,8,できる日本語 初中級 本冊
+革,かわ,leather,,革のかばんです。,It is a leather bag.,,5,1,8,できる日本語 初中級 本冊
+教科書,きょうかしょ,textbook,,教科書を読んでいます。,I am reading the textbook.,,5,1,8,できる日本語 初中級 本冊
+警官,けいかん,policeman,,警官に道を聞きました。,I asked a policeman for directions.,,5,1,8,できる日本語 初中級 本冊
+ハート,,heart,,ハートの形をしたケーキです。,It is a heart-shaped cake.,,5,1,8,できる日本語 初中級 本冊
+ピンク,,pink,,ピンクの服を着ています。,I am wearing pink clothes.,,5,1,8,できる日本語 初中級 本冊
+星,ほし,star,,夜空に星が見えます。,I can see stars in the night sky.,,5,1,8,できる日本語 初中級 本冊
+緑,みどり,green,,緑の多い公園です。,It is a park with a lot of greenery.,,5,1,8,できる日本語 初中級 本冊
+横長,よこなが,long from side to side,,横長のテーブルです。,It is a horizontally long table.,,5,1,8,できる日本語 初中級 本冊
+色,いろ,color,,色が違います。,The colors are different.,,5,1,8,できる日本語 初中級 本冊
+大きさ,おおきさ,size,,部屋の大きさを測ります。,I measure the size of the room.,,5,1,8,できる日本語 初中級 本冊
+形,かたち,shape,,変な形をしています。,It has a strange shape.,,5,1,8,できる日本語 初中級 本冊
+預かる,あずかる,"leave (something, someone) in someone's care, check in (baggage)",to keep, look after,荷物を預かってもらえますか。,Can you look after my luggage?,,5,1,8,できる日本語 初中級 本冊
+落とす,おとす,drop,,財布を落としました。,I dropped my wallet.,,5,1,8,できる日本語 初中級 本冊
+なくなる,,lose (something),to be lost, to go missing,自転車がなくなった。,My bicycle went missing.,,5,1,8,できる日本語 初中級 本冊
+乗り過ごす,のりすごす,miss one's stop,,電車を乗り過ごしました。,I missed my stop on the train.,,5,1,8,できる日本語 初中級 本冊
+間違える,まちがえる,make a mistake,,道を間違えました。,I made a mistake on the road.,,5,1,8,できる日本語 初中級 本冊
+迷う,まよう,lose (one's way),to get lost,道に迷う。,Get lost.,,5,1,8,できる日本語 初中級 本冊
+転ぶ,ころぶ,fall down,,道で転びました。,I fell down on the street.,,5,1,8,できる日本語 初中級 本冊
+心配・する,しんぱい・する,worry,,試験のことを心配しています。,I am worrying about the exam.,,5,1,8,できる日本語 初中級 本冊
+気がつく,きがつく,notice, realize,,間違いに気がつきました。,I noticed the mistake.,,5,1,8,できる日本語 初中級 本冊
+付く,つく,attach,,ポケットが付いています。,A pocket is attached.,,5,1,8,できる日本語 初中級 本冊
+見つかる,みつかる,find,to be found,なくしたかばんが見つかりました。,The bag I lost was found.,,5,1,8,できる日本語 初中級 本冊
+出る,でる,"go out, leave",to leave, exit,駅を出ます。,Leave the station.,,5,1,8,できる日本語 初中級 本冊
+乗り換える,のりかえる,change (trains, planes),,新宿で電車に乗り換えます。,I change trains at Shinjuku.,,5,1,8,できる日本語 初中級 本冊
+連絡・する,れんらく・する,contact,,家族に連絡します。,I will contact my family.,,5,1,8,できる日本語 初中級 本冊
+困る,こまる,be in trouble,,お金がなくて困っています。,I am in trouble because I have no money.,,5,1,8,できる日本語 初中級 本冊
+さっき,,a moment ago,,さっき友達に会いました。,I met my friend a moment ago.,,5,1,8,できる日本語 初中級 本冊
+しばらく,,in a little while,,しばらくお待ちください。,Please wait a little while.,,5,1,8,できる日本語 初中級 本冊
+全部で,ぜんぶで,altogether,,全部でいくらですか。,How much is it altogether?,,5,1,8,できる日本語 初中級 本冊
+急に,きゅうに,suddenly,,急に雨が降りました。,It suddenly rained.,,5,1,8,できる日本語 初中級 本冊
+確かに,たしかに,I am certain that,certainly, surely,確かにあの人は来ました。,That person certainly came.,,5,1,8,できる日本語 初中級 本冊
+それが……,,That is ….,Well, the thing is...,それが……、財布を忘れたんです。,Well, the thing is... I forgot my wallet.,,5,1,8,できる日本語 初中級 本冊
+どうしよう,,What should I do?,,道に迷ってどうしよう。,I'm lost, what should I do?,,5,1,8,できる日本語 初中級 本冊
+コインロッカー,,coin locker,,コインロッカーに荷物を入れます。,I put my luggage in a coin locker.,,5,2,8,できる日本語 初中級 本冊
+特急,とっきゅう,limited express (train),,特急に乗ります。,I ride the limited express.,,5,2,8,できる日本語 初中級 本冊
+終点,しゅうてん,final stop,,この電車の終点はどこですか。,What is the final stop of this train?,,5,2,8,できる日本語 初中級 本冊
+終電,しゅうでん,final train,,終電に間に合いません。,I won't make it in time for the last train.,,5,2,8,できる日本語 初中級 本冊
+タクシー,,taxi,,タクシーで帰りました。,I went home by taxi.,,5,2,8,できる日本語 初中級 本冊
+急行,きゅうこう,express (train),,急行は速いです。,The express train is fast.,,5,2,8,できる日本語 初中級 本冊
+アナウンス・する,,announce,,駅でアナウンスします。,They announce at the station.,,5,2,8,できる日本語 初中級 本冊
+変える,かえる,change,,予定を変えました。,I changed my plans.,,5,2,8,できる日本語 初中級 本冊
+安心・する,あんしん・する,"relieve (someone's fears), give peace of mind",,無事で安心しました。,I am relieved that you are safe.,,5,2,8,できる日本語 初中級 本冊
+遅刻・する,ちこく・する,be late,,学校に遅刻しました。,I was late for school.,,5,2,8,できる日本語 初中級 本冊
+寝坊・する,ねぼう・する,sleep late,,今日寝坊しました。,I slept late today.,,5,2,8,できる日本語 初中級 本冊
+戻る,もどる,return,,家に戻ります。,I return home.,,5,2,8,できる日本語 初中級 本冊
+すぐ,,immediately,,すぐに行きます。,I will go immediately.,,5,2,8,できる日本語 初中級 本冊
+びっくり,,surprise,to be surprised,びっくりしました。,I was surprised.,,5,2,9,できる日本語 初中級 本冊
+本当に,ほんとうに,"really, truly",really,本当にありがとうございます。,Thank you very much.,,5,2,9,できる日本語 初中級 本冊
+もう少し,もうすこし,a little more,,もう少し待ってください。,Please wait a little more.,,5,2,9,できる日本語 初中級 本冊
+ゆっくり,,slowly,,ゆっくり話してください。,Please speak slowly.,,5,2,9,できる日本語 初中級 本冊
+白,しろ,white,,白いシャツを着ています。,I am wearing a white shirt.,,5,もう一度聞こう,9,できる日本語 初中級 本冊
+窓口,まどぐち,(ticket) counter,,窓口で切符を買います。,I buy a ticket at the ticket counter.,,5,もう一度聞こう,9,できる日本語 初中級 本冊
+～号車,ごうしゃ,number ~ train,,4号車に乗ってください。,Please ride in car number 4.,,5,もう一度聞こう,9,できる日本語 初中級 本冊
+～ずつ,,every ~,,一人に2つずつ渡してください。,Please give 2 to each person.,,5,もう一度聞こう,9,できる日本語 初中級 本冊
+自然,しぜん,nature,,自然がきれいな場所です。,It is a place with beautiful nature.,,6,話読聞書,10,できる日本語 初中級 本冊
+ラベンダー畑,ラベンダーばたけ,Lavender Farm,,ラベンダー畑で写真を撮りました。,I took pictures at the lavender farm.,,6,話読聞書,10,できる日本語 初中級 本冊
+湿原,しつげん,marsh,,湿原を散歩します。,I walk through the marsh.,,6,話読聞書,10,できる日本語 初中級 本冊
+牧場,ぼくじょう,ranch,,牧場で牛を見ました。,I saw cows at the ranch.,,6,話読聞書,10,できる日本語 初中級 本冊
+ジャガイモ,,potato,,ジャガイモを切ります。,I cut the potato.,,6,話読聞書,10,できる日本語 初中級 本冊
+トウモロコシ,,corn,,トウモロコシを食べました。,I ate corn.,,6,話読聞書,10,できる日本語 初中級 本冊
+ウニ,,sea urchin,,ウニは初めて食べました。,I ate sea urchin for the first time.,,6,話読聞書,10,できる日本語 初中級 本冊
+乗馬,じょうば,horseback riding,,乗馬を体験しました。,I experienced horseback riding.,,6,話読聞書,10,できる日本語 初中級 本冊
+カヌー,,canoe,,カヌーに乗りました。,I rode a canoe.,,6,話読聞書,10,できる日本語 初中級 本冊
+楽しむ,たのしむ,enjoy,,旅行を楽しみます。,I will enjoy the trip.,,6,話読聞書,10,できる日本語 初中級 本冊
+カニ,,crab,,カニが食べたいです。,I want to eat crab.,,6,1,10,できる日本語 初中級 本冊
+着物,きもの,clothing,kimono,着物を着てお祭りに行きます。,I will wear a kimono to the festival.,,6,1,10,できる日本語 初中級 本冊
+ショッピングセンター,,shopping center, mall,,ショッピングセンターで買い物をします。,I shop at the shopping center.,,6,1,10,できる日本語 初中級 本冊
+水族館,すいぞくかん,aquarium,,水族館でイルカを見ました。,I saw dolphins at the aquarium.,,6,1,10,できる日本語 初中級 本冊
+スノーボード,,snowboard,,冬にスノーボードをします。,I snowboard in the winter.,,6,1,10,できる日本語 初中級 本冊
+船,ふね,ship, boat,,船で島に行きます。,I go to the island by ship.,,6,1,10,できる日本語 初中級 本冊
+雰囲気,ふんいき,atmosphere, mood,,ここの雰囲気が好きです。,I like the atmosphere here.,,6,1,10,できる日本語 初中級 本冊
+街,まち,town,,きれいな街です。,It is a clean town.,,6,1,10,できる日本語 初中級 本冊
+こっち,,this way (informal),,こっちに来てください。,Please come this way.,,6,1,10,できる日本語 初中級 本冊
+そっち,,that way (informal),,そっちは危ないですよ。,It's dangerous over there.,,6,1,10,できる日本語 初中級 本冊
+市内,しない,within the city,,市内を観光します。,I will sightsee within the city.,,6,1,10,できる日本語 初中級 本冊
+最後,さいご,last,,最後まで頑張ります。,I will do my best until the end.,,6,1,10,できる日本語 初中級 本冊
+旅館,りょかん,Japanese-style inn,,旅館に泊まりました。,I stayed at a Japanese-style inn.,,6,1,10,できる日本語 初中級 本冊
+朝食,ちょうしょく,breakfast,,朝食は7時からです。,Breakfast is from 7 o'clock.,,6,1,10,できる日本語 初中級 本冊
+夕食,ゆうしょく,dinner,,夕食を作ります。,I will make dinner.,,6,1,10,できる日本語 初中級 本冊
+観光地,かんこうち,tourist spot,,ここは有名な観光地です。,This is a famous tourist spot.,,6,1,10,できる日本語 初中級 本冊
+登山,とざん,mountain climbing,,週末に登山に行きます。,I go mountain climbing on weekends.,,6,1,10,できる日本語 初中級 本冊
+虫,むし,bugs, insects,,山で虫がたくさんいます。,There are many bugs in the mountains.,,6,1,10,できる日本語 初中級 本冊
+宿泊,しゅくはく,lodging,,宿泊の手続きをします。,I do the lodging procedures.,,6,1,10,できる日本語 初中級 本冊
+代金,だいきん,"charges, fees",payment,代金を払いました。,I paid the charges.,,6,1,10,できる日本語 初中級 本冊
+内容,ないよう,details,,内容を確認してください。,Please check the details.,,6,1,10,できる日本語 初中級 本冊
+なし,,none,,予約はなしです。,There are no reservations.,,6,1,10,できる日本語 初中級 本冊
+値段,ねだん,price,,値段が高いです。,The price is high.,,6,1,10,できる日本語 初中級 本冊
+大人,おとな,adult,,大人は2人です。,There are two adults.,,6,1,10,できる日本語 初中級 本冊
+～付き,つき,~ included,,朝食付きの部屋を予約しました。,I booked a room with breakfast included.,,6,1,10,できる日本語 初中級 本冊
+～泊～日,はく～にち,~ nights ~ days,,2泊3日の旅行に行きます。,I am going on a 2-night, 3-day trip.,,6,1,10,できる日本語 初中級 本冊
+～費,ひ,~ fee,,交通費を安くしたいです。,I want to keep transportation fees low.,,6,1,10,できる日本語 初中級 本冊
+待ち合わせる,まちあわせる,meet with,,駅前で友達と待ち合わせる。,I will meet my friend in front of the station.,,6,1,10,できる日本語 初中級 本冊
+ガイド・する,,guide,,外国人にガイドをします。,I will guide the foreigner.,,6,1,10,できる日本語 初中級 本冊
+観光・する,かんこう・する,go sightseeing, tour,,京都で観光します。,I will go sightseeing in Kyoto.,,6,1,10,できる日本語 初中級 本冊
+出発・する,しゅっぱつ・する,leave, depart,,朝7時に出発します。,We depart at 7 AM.,,6,1,10,できる日本語 初中級 本冊
+キャンプ・する,,camp,,山でキャンプをします。,I will camp in the mountains.,,6,1,10,できる日本語 初中級 本冊
+珍しい,めずらしい,unusual,,珍しい花を見ました。,I saw an unusual flower.,,6,1,10,できる日本語 初中級 本冊
+伝統的（な）,でんとうてき,traditional,,伝統的な建物です。,It is a traditional building.,,6,1,10,できる日本語 初中級 本冊
+それに,,also, in addition,,それに、天気もいいです。,Also, the weather is good.,,6,1,10,できる日本語 初中級 本冊
+どっち,,which,,どっちが好きですか。,Which do you like?,,6,1,10,できる日本語 初中級 本冊
+イルカ,,dolphin,,イルカのショーを見ました。,I watched the dolphin show.,,6,2,10,できる日本語 初中級 本冊
+ショー,,show,,ショーが始まります。,The show begins.,,6,2,10,できる日本語 初中級 本冊
+手袋,てぶくろ,gloves,,寒いので手袋をします。,It's cold, so I wear gloves.,,6,2,10,できる日本語 初中級 本冊
+マフラー,,scarf,,マフラーを巻きます。,I wrap a scarf around my neck.,,6,2,10,できる日本語 初中級 本冊
+年末,ねんまつ,end of year,,年末は忙しいです。,The end of the year is busy.,,6,2,10,できる日本語 初中級 本冊
+ガイドブック,,guidebook,,ガイドブックを見ながら歩きます。,I walk while looking at a guidebook.,,6,2,10,できる日本語 初中級 本冊
+パーク,,park,,テーマパークに行きました。,I went to the theme park.,,6,2,10,できる日本語 初中級 本冊
+早割,はやわり,discount for early purchase,,早割でチケットを買いました。,I bought a ticket with an early purchase discount.,,6,2,10,できる日本語 初中級 本冊
+～中,ちゅう,during ~,,旅行中、写真をたくさん撮りました。,I took a lot of pictures during the trip.,,6,2,10,できる日本語 初中級 本冊
+取る,とる,take,,休みを取る。,Take a vacation.,,6,2,10,できる日本語 初中級 本冊
+ぬれる,,get wet,,雨で服がぬれました。,My clothes got wet from the rain.,,6,2,10,できる日本語 初中級 本冊
+用意・する,ようい・する,prepare,,旅行の準備を用意します。,I prepare for the trip.,,6,2,10,できる日本語 初中級 本冊
+伝える,つたえる,tell (someone something),,,ニュースを友達に伝えます。,I tell the news to my friend.,,6,2,10,できる日本語 初中級 本冊
+コピー・する,,make a photocopy,,この書類をコピーしてください。,Please make a photocopy of this document.,,6,2,10,できる日本語 初中級 本冊
+お願いします,おねがいします,Please (do it).,,お願いします。,Please.,,6,2,10,できる日本語 初中級 本冊
+あとで,,later,,あとで電話します。,I will call you later.,,6,もう一度聞こう,10,できる日本語 初中級 本冊
+相手,あいて,the other person,,相手の気持ちを考えます。,I think about the other person's feelings.,,7,話読聞書,11,できる日本語 初中級 本冊
+習慣,しゅうかん,"custom, tradition, habit",,毎朝ジョギングする習慣があります。,I have a habit of jogging every morning.,,7,話読聞書,11,できる日本語 初中級 本冊
+違い,ちがい,difference,,日本と自分の国の違いを話します。,I talk about the differences between Japan and my country.,,7,話読聞書,11,できる日本語 初中級 本冊
+驚く,おどろく,surprise,to be surprised,日本の习惯に驚きました。,I was surprised by Japanese customs.,,7,話読聞書,11,できる日本語 初中級 本冊
+失礼（な）,しつれい,"rude, impolite",rude,人の話している時に寝るのは失礼です。,It is rude to sleep while someone is talking.,,7,話読聞書,11,できる日本語 初中級 本冊
+もう一度,もういちど,one more time, again,,もう一度言ってください。,Please say it one more time.,,7,話読聞書,11,できる日本語 初中級 本冊
+会議,かいぎ,"conference, meeting",,会議に出ます。,I attend a meeting.,,7,1,11,できる日本語 初中級 本冊
+課長,かちょう,section chief,,課長と話しました。,I talked with the section chief.,,7,1,11,できる日本語 初中級 本冊
+社長,しゃちょう,company president,,社長は今いません。,The president is not here now.,,7,1,11,できる日本語 初中級 本冊
+ご存じ,ごぞんじ,know (respectful language),to know (respectful),ご存じですか。,Do you know?,,7,1,11,できる日本語 初中級 本冊
+どなた,,who (polite),,どなたですか。,Who is it?,,7,1,11,できる日本語 初中級 本冊
+ミステリー,,mystery,,ミステリーの本を読みます。,I read mystery books.,,7,1,11,できる日本語 初中級 本冊
+出身,しゅっしん,"hometown, home country",,出身はどこですか。,Where is your hometown?,,7,1,11,できる日本語 初中級 本冊
+ごろ,,around, about,,3時ごろに来てください。,Please come around 3 o'clock.,,7,1,11,できる日本語 初中級 本冊
+いらっしゃる,,come, go, be (respectful language),to be/go/come (respectful),社長はいらっしゃいますか。,Is the president here?,,7,1,11,できる日本語 初中級 本冊
+おっしゃる,,say (respectful language),to say (respectful),社長がおっしゃいました。,The president said so.,,7,1,11,できる日本語 初中級 本冊
+ご覧になる,ごらんになる,"look at, see (respectful language)",to see/look (respectful),こちらをご覧になってください。,Please look at this.,,7,1,11,できる日本語 初中級 本冊
+なさる,,do (respectful language),to do (respectful),社長は何をなさいますか。,What will the president do?,,7,1,11,できる日本語 初中級 本冊
+召し上がる,めしあがる,"eat, drink (respectful language)",to eat/drink (respectful),どうぞお召し上がりください。,Please eat/drink.,,7,1,11,できる日本語 初中級 本冊
+出席・する,しゅっせき・する,attend,,会議に出席します。,I will attend the meeting.,,7,1,11,できる日本語 初中級 本冊
+退院・する,たいいん・する,"leave the hospital, be discharged",,明日退院します。,I will be discharged from the hospital tomorrow.,,7,1,11,できる日本語 初中級 本冊
+このくらい,,this much,,このくらいでいいですか。,Is this much okay?,,7,2,11,できる日本語 初中級 本冊
+皮,かわ,"skin, peel",,リンゴの皮をむきます。,I peel the apple skin.,,7,2,11,できる日本語 初中級 本冊
+キャベツ,,cabbage,,キャベツを切ります。,I cut the cabbage.,,7,2,11,できる日本語 初中級 本冊
+ジャガイモ,,potato,,ジャガイモを茹でます。,I boil the potatoes.,,7,2,11,できる日本語 初中級 本冊
+大根,だいこん,Japanese radish,,大根をおろします。,I grate the Japanese radish.,,7,2,11,できる日本語 初中級 本冊
+タマネギ,,onion,,タマネギを炒めます。,I fry the onions.,,7,2,11,できる日本語 初中級 本冊
+ニンジン,,carrot,,ニンジンを細かく切ります。,I finely chop the carrots.,,7,2,11,できる日本語 初中級 本冊
+ネギ,,green onion,,味噌汁にネギを入れます。,I put green onions in the miso soup.,,7,2,11,できる日本語 初中級 本冊
+半分,はんぶん,half,,りんごを半分にします。,I cut the apple in half.,,7,2,11,できる日本語 初中級 本冊
+カップ,,cup,,カップにお茶を入れます。,I pour tea into a cup.,,7,2,11,できる日本語 初中級 本冊
+クリーム,,cream,,ケーキにクリームを乗せます。,I put cream on the cake.,,7,2,11,できる日本語 初中級 本冊
+ゼリー,,jello, gelatin,,ゼリーを作りました。,I made jello.,,7,2,11,できる日本語 初中級 本冊
+ソース,,sauce,,パスタのソースを作る。,Make pasta sauce.,,7,2,11,できる日本語 初中級 本冊
+パスタ,,pasta,,パスタを茹でます。,I boil the pasta.,,7,2,11,できる日本語 初中級 本冊
+味,あじ,"taste, flavor",,このスープは味が濃いです。,This soup has a rich flavor.,,7,2,11,できる日本語 初中級 本冊
+はちみつ,,honey,,はちみつを入れて飲みます。,I drink it with honey.,,7,2,11,できる日本語 初中級 本冊
+みそ汁,みそしる,miso soup (traditional Japanese bean paste soup),,毎朝みそ汁を飲みます。,I drink miso soup every morning.,,7,2,11,できる日本語 初中級 本冊
+火,ひ,heat,,火が強いです。,The heat is strong.,,7,2,11,できる日本語 初中級 本冊
+強火,つよび,strong heat,,強火で炒めてください。,Please fry it on high heat.,,7,2,11,できる日本語 初中級 本冊
+弱火,よわび,low heat,,弱火で20分煮ます。,I simmer it on low heat for 20 minutes.,,7,2,11,できる日本語 初中級 本冊
+ルー,,roux, thickening agent for soup or sauce,,カレーにルーを入れます。,I put roux in the curry.,,7,2,11,できる日本語 初中級 本冊
+グラム,,gram,,牛肉を200グラム買いました。,I bought 200 grams of beef.,,7,2,11,できる日本語 初中級 本冊
+できあがり,,finished,,料理ができあがりました。,The cooking is finished.,,7,2,11,できる日本語 初中級 本冊
+むく,,peel,,ジャガイモの皮をむきます。,I peel the potato.,,7,2,11,できる日本語 初中級 本冊
+焼く,やく,"fry, grill, toast, bake, roast",,パンを焼きます。,I toast the bread.,,7,2,11,できる日本語 初中級 本冊
+沸かす,わかす,boil (water),,お湯を沸かします。,I boil water.,,7,2,11,できる日本語 初中級 本冊
+冷やす,ひやす,cool,,ジュースを冷やします。,I cool the juice.,,7,2,11,できる日本語 初中級 本冊
+煮る,にる,boil (food in water),,野菜を煮ます。,I boil the vegetables.,,7,2,11,できる日本語 初中級 本冊
+ゆでる,,boil (food, mostly vegetables or eggs, in water),,卵をゆでます。,I boil the eggs.,,7,2,11,できる日本語 初中級 本冊
+変わる,かわる,change,,味が変わりました。,The taste changed.,,7,2,11,できる日本語 初中級 本冊
+沸騰・する,ふっとう・する,bring to a boil,,水が沸騰しました。,The water came to a boil.,,7,2,11,できる日本語 初中級 本冊
+炒める,いためる,fry,,野菜を炒めます。,I fry the vegetables.,,7,2,11,できる日本語 初中級 本冊
+厚い,あつい,"thick, having wide thickness",thick,このステーキは厚いです。,This steak is thick.,,7,2,11,できる日本語 初中級 本冊
+薄い,うすい,"thin, weak",thin (flat objects) / mild (flavor),肉を薄く切ります。,Cut the meat thinly.,,7,2,11,できる日本語 初中級 本冊
+濃い,こい,"dense, rich, thick",strong, rich (flavor),このコーヒーは濃いです。,This coffee is strong.,,7,2,11,できる日本語 初中級 本冊
+細かい,こまかい,"fine, small",finely, small,野菜を細かく切ります。,I finely chop the vegetables.,,7,2,11,できる日本語 初中級 本冊
+細い,ほそい,narrow,thin (width),細い道を歩きます。,I walk on a narrow road.,,7,2,11,できる日本語 初中級 本冊
+弱い,よわい,weak,mild (flavor),このお茶は味が弱いです。,This tea has a mild flavor.,,7,2,12,できる日本語 初中級 本冊
+まず,,at first (at beginning of a sentence),First,まず、野菜を切ります。,First, cut the vegetables.,,7,2,12,できる日本語 初中級 本冊
+次に,つぎに,next,Next,次に、肉を入れます。,Next, put in the meat.,,7,2,12,できる日本語 初中級 本冊
+最後に,さいごに,"finally, lastly",Finally,最後に、塩を入れます。,Finally, put in the salt.,,7,2,12,できる日本語 初中級 本冊
+調味料,ちょうみりょう,seasonings,,いろいろな調味料を使います。,I use various seasonings.,,7,もう一度聞こう,12,できる日本語 初中級 本冊
+鍋,なべ,pan,,鍋で料理を作ります。,I cook in a pan.,,7,もう一度聞こう,12,できる日本語 初中級 本冊
+肉じゃが,にくじゃが,(simmered) meat and potatoes,,肉じゃがを作りました。,I made meat and potatoes.,,7,もう一度聞こう,12,できる日本語 初中級 本冊
+遠慮・する,えんりょ・する,"refrain from, hesitate",,遠慮しないで食べてください。,Please eat without hesitating.,,7,もう一度聞こう,12,できる日本語 初中級 本冊
+もちろん,,of course,,もちろん、行きますよ。,Of course, I will go.,,7,もう一度聞こう,12,できる日本語 初中級 本冊
+だいたい,,mostly, most of the time,mostly, generally,だいたい毎日日本語を勉強します。,I generally study Japanese almost every day.,,7,もう一度聞こう,12,できる日本語 初中級 本冊
+お邪魔します,おじゃまします,"excuse me for interrupting, excuse me for intruding",,お邪魔します。,Excuse me for intruding.,,7,もう一度聞こう,12,できる日本語 初中級 本冊
+よくいらっしゃいました,,thank you for coming,Welcome,よくいらっしゃいました。,Welcome.,,7,もう一度聞こう,12,できる日本語 初中級 本冊
+明るい,あかるい,bright,,明るい部屋ですね。,It's a bright room, isn't it?,,8,話読聞書,13,できる日本語 初中級 本冊
+うれしい,,happy, glad,,プレゼントをもらってうれしいです。,I am happy to receive a present.,,8,話読聞書,13,できる日本語 初中級 本冊
+（お）団子,だんご,rice dumpling,,お団子が好きです。,I like rice dumplings.,,8,1,13,できる日本語 初中級 本冊
+肉じゃが,にくじゃが,(simmered) meat and potatoes,,母の肉じゃがはおいしいです。,My mother's meat and potatoes is delicious.,,8,1,13,できる日本語 初中級 本冊
+湖,みずうみ,lake,,湖でボートに乗りました。,I rode a boat on the lake.,,8,1,13,できる日本語 初中級 本冊
+運転手,うんてんしゅ,driver,,タクシーの運転手に道を聞きました。,I asked the taxi driver for directions.,,8,1,13,できる日本語 初中級 本冊
+駅員,えきいん,station employee,,駅員に聞きました。,I asked the station employee.,,8,1,13,できる日本語 初中級 本冊
+お巡りさん,おまわりさん,policeman,,お巡りさんに助けてもらいました。,I was helped by a policeman.,,8,1,13,できる日本語 初中級 本冊
+～さん,,"Mr./Mrs./Miss/Ms., and added to certain professions as a term of respect",,駅員さん、すみません。,Excuse me, station employee.,,8,1,13,できる日本語 初中級 本冊
+送る,おくる,"send off, take (someone somewhere)",to take (someone) home,車でうちまで送ります。,Take someone home by car.,,8,1,13,できる日本語 初中級 本冊
+直す,なおす,"fix, correct, repair",to fix, to repair,壊れた時計を直します。,I fix the broken clock.,,8,1,13,できる日本語 初中級 本冊
+譲る,ゆずる,"pass on, transfer to",to give, hand over,使わない本を友達に譲りました。,I gave my unused books to a friend.,,8,1,13,できる日本語 初中級 本冊
+連れて行く,つれていく,take someone along,,子供を公園に連れて行きます。,I take my child to the park.,,8,1,13,できる日本語 初中級 本冊
+教える,おしえる,"teach, give information",to tell (information),駅への行き方を教えました。,I told someone how to go to the station.,,8,1,13,できる日本語 初中級 本冊
+拾う,ひろう,pick up,to pick up (from the ground),道で財布を拾いました。,I picked up a wallet on the street.,,8,1,13,できる日本語 初中級 本冊
+届ける,とどける,"send, deliver",to deliver,荷物を届けます。,I deliver the luggage.,,8,1,13,できる日本語 初中級 本冊
+迎えに来る,むかえにくる,come get (someone),,駅まで迎えに来てください。,Please come pick me up at the station.,,8,1,13,できる日本語 初中級 本冊
+捕る,とる,catch,to catch (a bug, fish, criminal),虫を捕りました。,I caught a bug.,,8,1,13,できる日本語 初中級 本冊
+そんなに,,like that, so much,that much, so,そんなに食べないでください。,Please don't eat that much.,,8,1,13,できる日本語 初中級 本冊
+花瓶,かびん,flower vase,,花瓶に花を入れます。,I put flowers in the vase.,,8,2,13,できる日本語 初中級 本冊
+茶碗,ちゃわん,"china cup, china bowl",,茶碗を割ってしまいました。,I broke the china bowl.,,8,2,13,できる日本語 初中級 本冊
+机,つくえ,desk,,机の上に本があります。,There is a book on the desk.,,8,2,13,できる日本語 初中級 本冊
+本棚,ほんだな,bookshelf,,本棚に本を並べます。,I line up books on the bookshelf.,,8,2,13,できる日本語 初中級 本冊
+近所,きんじょ,neighborhood,,近所の人と挨拶します。,I greet the people in the neighborhood.,,8,2,13,できる日本語 初中級 本冊
+～先,さき,place where ~,,アルバイト先で働いています。,I am working at my part-time job.,,8,2,13,できる日本語 初中級 本冊
+教授,きょうじゅ,professor,,大学教授と話しました。,I talked with a university professor.,,8,2,13,できる日本語 初中級 本冊
+部長,ぶちょう,department manager,,部長に報告します。,I report to the department manager.,,8,2,13,できる日本語 初中級 本冊
+資料,しりょう,"documents, information materials",,資料を作成します。,I create the documents.,,8,2,13,できる日本語 初中級 本冊
+いただく,,(gratefully) receive (humble language referring to oneself),to receive (humble),先生から本をいただきました。,I received a book from my teacher.,,8,2,13,できる日本語 初中級 本冊
+くださる,,(gratefully) receive from someone (respectful language referring to someone else),to give (respectful),先生が本をくださいました。,My teacher gave me a book.,,8,2,13,できる日本語 初中級 本冊
+どういたしまして,,You're welcome,,どういたしまして。,You're welcome.,,8,2,13,できる日本語 初中級 本冊
+チヂミ,,chijimi (Korean-style pancake),,チヂミを食べました。,I ate chijimi.,,8,もう一度聞こう,13,できる日本語 初中級 本冊
+飾る,かざる,decorate,,部屋を花で飾ります。,I decorate the room with flowers.,,8,もう一度聞こう,13,できる日本語 初中級 本冊
+乾杯,かんぱい,"Bottoms up!, Cheers",,乾杯！,Cheers!,,8,もう一度聞こう,13,できる日本語 初中級 本冊
+大切さ,たいせつさ,importance,,命の大切さを知りました。,I learned the importance of life.,,9,話読聞書,14,できる日本語 初中級 本冊
+恥ずかしい,はずかしい,embarrassing,,間違えて恥ずかしかったです。,I was embarrassed because I made a mistake.,,9,話読聞書,14,できる日本語 初中級 本冊
+ですから,,therefore,,雨ですから、傘を持っていきます。,It is raining, therefore I will take an umbrella.,,9,話読聞書,14,できる日本語 初中級 本冊
+裏,うら,rear,,家の裏に庭があります。,There is a garden in the rear of the house.,,9,1,14,できる日本語 初中級 本冊
+紙,かみ,paper,,紙に名前を書きます。,I write my name on the paper.,,9,1,14,できる日本語 初中級 本冊
+シフト,,shift,,今週のシフトを見てください。,Please look at this week's shift.,,9,1,14,できる日本語 初中級 本冊
+スタッフ,,staff,,新しいスタッフが来ました。,A new staff member came.,,9,1,14,できる日本語 初中級 本冊
+タイムカード,,time card,,タイムカードを忘れました。,I forgot my time card.,,9,1,14,できる日本語 初中級 本冊
+表,ひょう,"table, chart",,表を作ります。,I make a chart.,,9,1,14,できる日本語 初中級 本冊
+ホール,,hall,,ホールをお掃除します。,I clean the hall.,,9,1,14,できる日本語 初中級 本冊
+毎月,まいつき,every month,,毎月お金を送ります。,I send money every month.,,9,1,14,できる日本語 初中級 本冊
+髪の毛,かみのけ,hair,,髪の毛が長いです。,My hair is long.,,9,1,14,できる日本語 初中級 本冊
+スニーカー,,sneakers,,スニーカーで走ります。,I run in sneakers.,,9,1,14,できる日本語 初中級 本冊
+隅,すみ,corner,,部屋の隅に机があります。,There is a desk in the corner of the room.,,9,1,14,できる日本語 初中級 本冊
+調理場,ちょうりば,"cooking place, kitchen (of a restaurant)",,調理場に入らないでください。,Please do not enter the kitchen.,,9,1,14,できる日本語 初中級 本冊
+伝票,でんぴょう,order slip,,伝票を持ってきます。,I will bring the order slip.,,9,1,14,できる日本語 初中級 本冊
+道具,どうぐ,tool,,料理に使う道具を買います。,I buy tools used for cooking.,,9,1,14,できる日本語 初中級 本冊
+床,ゆか,floor,,床を掃除します。,I clean the floor.,,9,1,14,できる日本語 初中級 本冊
+予定,よてい,"schedule, plan",,明日の予定はありますか。,Do you have plans tomorrow?,,9,1,14,できる日本語 初中級 本冊
+温度,おんど,temperature,,部屋の温度を上げます。,I raise the room temperature.,,9,1,14,できる日本語 初中級 本冊
+代わり,かわり,in place of,,私の代わりに行ってください。,Please go in my place.,,9,1,14,できる日本語 初中級 本冊
+洗剤,せんざい,"detergent, cleanser",,洗剤で洗濯します。,I wash clothes with detergent.,,9,1,14,できる日本語 初中級 本冊
+都合,つごう,schedule,,都合がいいですか。,Is it convenient for you?,,9,1,14,できる日本語 初中級 本冊
+マニュアル,,manual,,マニュアルを読んでください。,Please read the manual.,,9,1,14,できる日本語 初中級 本冊
+オーブン,,oven,,オーブンでケーキを焼きます。,I bake a cake in the oven.,,9,1,14,できる日本語 初中級 本冊
+汚れ,よごれ,dirtiness,,汚れを落とします。,I remove the dirtiness.,,9,1,14,できる日本語 初中級 本冊
+ルール,,rule,,ルールを守ってください。,Please follow the rules.,,9,1,14,できる日本語 初中級 本冊
+～様,さま,"sir, madam (more respectful than san)",,お客様にお茶を出します。,I serve tea to the customer.,,9,1,14,できる日本語 初中級 本冊
+押す,おす,punch,to stamp,タイムカードを押す。,Punch a time card.,,9,1,14,できる日本語 初中級 本冊
+断る,ことわる,"turn down, deny",,友達の誘いを断りました。,I turned down my friend's invitation.,,9,1,14,できる日本語 初中級 本冊
+出す,だす,"take out, come out",to put out,ごみを出す。,Take out the garbage.,,9,1,14,できる日本語 初中級 本冊
+渡す,わたす,hand over,,メニューをお客さんに渡します。,I hand the menu to the customer.,,9,1,14,できる日本語 初中級 本冊
+着替える,きがえる,change clothes,,仕事着に着替えます。,I change into my work clothes.,,9,1,14,できる日本語 初中級 本冊
+つける,,attach, put on,to put on (accessories),アクセサリーをつける。,Put on jewelry.,,9,1,14,できる日本語 初中級 本冊
+おしゃべり・する,,talk, chat,to chat,お客様とおしゃべりする。,Chat with the customer.,,9,1,14,できる日本語 初中級 本冊
+チェック・する,,check,,注文をチェックします。,I check the order.,,9,1,14,できる日本語 初中級 本冊
+乾く,かわく,dry,,洗濯物が乾きました。,The laundry dried.,,9,1,14,できる日本語 初中級 本冊
+しまう,,put away,,道具を箱にしまいます。,I put the tools away in a box.,,9,1,14,できる日本語 初中級 本冊
+滑る,すべる,slide,,氷の上で滑りました。,I slid on the ice.,,9,1,14,できる日本語 初中級 本冊
+運ぶ,はこぶ,carry,,重い荷物を運びます。,I carry heavy luggage.,,9,1,14,できる日本語 初中級 本冊
+拭く,ふく,wipe,,テーブルを拭きます。,I wipe the table.,,9,1,14,できる日本語 初中級 本冊
+干す,ほす,hang out to dry,,布団を外に干します。,I hang the futon out to dry outside.,,9,1,14,できる日本語 初中級 本冊
+片付ける,かたづける,clean up,,部屋を片付けます。,I clean up the room.,,9,1,14,できる日本語 初中級 本冊
+燃える,もえる,burn,,燃えるごみと燃えないごみを分けます。,I separate burnable and unburnable garbage.,,9,1,14,できる日本語 初中級 本冊
+あいさつ・する,,greet,,朝、先生にあいさつします。,I greet the teacher in the morning.,,9,1,14,できる日本語 初中級 本冊
+空く,あく,"become empty, vacant",to become vacant,席が空きました。,A seat became vacant.,,9,1,14,できる日本語 初中級 本冊
+上がる,あがる,rise,to go up, to rise,温度が上がります。,The temperature rises.,,9,1,14,できる日本語 初中級 本冊
+代わる,かわる,replace,to substitute, take over,アルバイトを代わる。,Replace someone's shift.,,9,1,14,できる日本語 初中級 本冊
+呼ぶ,よぶ,call,,お客さんを呼びます。,I call the customer.,,9,1,14,できる日本語 初中級 本冊
+上げる,あげる,raise,to raise,温度を上げます。,I raise the temperature.,,9,1,14,できる日本語 初中級 本冊
+下げる,さげる,lower,to lower,温度を下げます。,I lower the temperature.,,9,1,14,できる日本語 初中級 本冊
+足りる,たりる,be enough,to be enough,お金が足りません。,There is not enough money.,,9,1,14,できる日本語 初中級 本冊
+邪魔（な）,じゃま,"distraction, hindrance",in the way, a nuisance,荷物が邪魔です。,The luggage is in the way.,,9,1,14,できる日本語 初中級 本冊
+丁寧（な）,ていねい,polite,polite, careful,丁寧に説明します。,I explain carefully/politely.,,9,1,14,できる日本語 初中級 本冊
+しっかり,,properly, adequately,firmly, properly,しっかり閉めてください。,Please close it firmly.,,9,1,14,できる日本語 初中級 本冊
+絶対に,ぜったいに,absolutely,,絶対に遅刻しません。,I will absolutely not be late.,,9,1,14,できる日本語 初中級 本冊
+はっきり,,clearly,,はっきり言ってください。,Please say it clearly.,,9,1,14,できる日本語 初中級 本冊
+大きな,おおきな,large,,大きな声で話します。,I talk in a loud voice.,,9,1,14,できる日本語 初中級 本冊
+お手洗い,おてあらい,"washroom, toilet",,お手洗いはどこですか。,Where is the washroom?,,9,2,14,できる日本語 初中級 本冊
+ガソリン,,gasoline,,ガソリンを入れます。,I put in gasoline.,,9,2,14,できる日本語 初中級 本冊
+ひも,,string,,ひもで結びます。,I tie it with a string.,,9,2,14,できる日本語 初中級 本冊
+袋,ふくろ,"bag, pouch",,袋を開けます。,I open the bag.,,9,2,15,できる日本語 初中級 本冊
+モップ,,mop,,モップで床を掃除します。,I clean the floor with a mop.,,9,2,15,できる日本語 初中級 本冊
+引き出し,ひきだし,drawer,,引き出しにペンを入れます。,I put a pen in the drawer.,,9,2,15,できる日本語 初中級 本冊
+バター,,butter,,パンにバターを塗ります。,I spread butter on the bread.,,9,2,15,できる日本語 初中級 本冊
+鍋,なべ,pan,,鍋でスープを作ります。,I make soup in a pan.,,9,2,15,できる日本語 初中級 本冊
+瓶,びん,"bottle, jar",,瓶に花を入れます。,I put flowers in a bottle.,,9,2,15,できる日本語 初中級 本冊
+ガス,,gas,,ガスを使って料理します。,I cook using gas.,,9,2,15,できる日本語 初中級 本冊
+～袋,ぶくろ,~ bag,,ごみ袋を買ってください。,Please buy a garbage bag.,,9,2,15,できる日本語 初中級 本冊
+かける,,put on,to sit down,いすにかける。,Sit on a chair.,,9,2,15,できる日本語 初中級 本冊
+決まる,きまる,decide,,予定が決まりました。,The schedule was decided.,,9,2,15,できる日本語 初中級 本冊
+確かめる,たしかめる,"make sure, confirm",,時間を確かめてください。,Please confirm the time.,,9,2,15,できる日本語 初中級 本冊
+注意・する,ちゅうい・する,pay attention,to warn, to be careful,ご注意ください。,Pay attention.,,9,2,15,できる日本語 初中級 本冊
+なくなる,,become empty,to run out,ガソリンがなくなった。,I ran out of gasoline.,,9,2,15,できる日本語 初中級 本冊
+切れる,きれる,run out of,to run out (of supplies/time),ティッシュが切れました。,The tissues ran out.,,9,2,15,できる日本語 初中級 本冊
+焦げる,こげる,get burned,,パンが焦げました。,The bread got burned.,,9,2,15,できる日本語 初中級 本冊
+破れる,やぶれる,break,to tear,服が破れました。,My clothes tore.,,9,2,15,できる日本語 初中級 本冊
+そのままにする,,leave as is, unchanged,to leave as it is,部屋をそのままにします。,I leave the room as it is.,,9,2,15,できる日本語 初中級 本冊
+並べる,ならべる,line up,,椅子を並べます。,I line up the chairs.,,9,2,15,できる日本語 初中級 本冊
+休憩・する,きゅうけい・する,take a break,,10分休憩します。,I will take a 10-minute break.,,9,2,15,できる日本語 初中級 本冊
+届く,とどく,reach,to arrive, to reach,荷物が届きました。,The luggage arrived.,,9,2,15,できる日本語 初中級 本冊
+少々,しょうしょう,a little bit,a little, a moment,少々お待ちください。,Please wait a moment.,,9,2,15,できる日本語 初中級 本冊
+お先にどうぞ,おさきにどうぞ,Please go ahead,,お先にどうぞ。,Please go ahead.,,9,2,15,できる日本語 初中級 本冊
+申し訳ないんですが,もうしわけないんですが,"I am sorry, but …",,申し訳ないんですが、お時間はいいですか。,I am sorry, but do you have time?,,9,2,15,できる日本語 初中級 本冊
+気をつける,きをつける,be careful,,足元に気をつけてください。,Please be careful of your footing.,,9,もう一度聞こう,15,できる日本語 初中級 本冊
+最初に,さいしょに,first of all,,最初に名前を書いてください。,First of all, please write your name.,,9,もう一度聞こう,15,できる日本語 初中級 本冊
+先に,さきに,"before, in front, in first",,先に食べてください。,Please eat before me.,,9,もう一度聞こう,15,できる日本語 初中級 本冊
+王様,おうさま,king,,王様の話を聞きました。,I heard a story about a king.,,10,話読聞書,16,できる日本語 初中級 本冊
+お菓子,おかし,"snack, sweets",,お菓子が好きです。,I like sweets.,,10,話読聞書,16,できる日本語 初中級 本冊
+丸い,まるい,round,,丸いお皿です。,It is a round plate.,,10,話読聞書,16,できる日本語 初中級 本冊
+あめ,,candy, sweets,,あめを食べています。,I am eating candy.,,10,話読聞書,16,できる日本語 初中級 本冊
+クルミ,,walnut,,クルミを入れたケーキです。,It is a cake with walnuts.,,10,話読聞書,16,できる日本語 初中級 本冊
+ゴマ,,sesame,,ゴマをかけます。,I sprinkle sesame.,,10,話読聞書,16,できる日本語 初中級 本冊
+誰でも,だれでも,anyone,,誰でもできます。,Anyone can do it.,,10,話読聞書,16,できる日本語 初中級 本冊
+伸ばす,のばす,"stretch, extend",,手を伸ばします。,I stretch out my hand.,,10,話読聞書,16,できる日本語 初中級 本冊
+巻く,まく,"wind up, wrap around",,テープを巻きます。,I wind up the tape.,,10,話読聞書,16,できる日本語 初中級 本冊
+おばあさん,,an old lady,,道で知らないおばあさんに会いました。,I met an old lady I didn't know on the street.,,10,1,16,できる日本語 初中級 本冊
+おじいさん,,an old man,,近所のおじいさんに挨拶しました。,I greeted an old man in the neighborhood.,,10,1,16,できる日本語 初中級 本冊
+赤ちゃん,あかちゃん,baby,,赤ちゃんが泣いています。,The baby is crying.,,10,1,16,できる日本語 初中級 本冊
+蚊,か,mosquito,,蚊に刺されました。,I was bitten by a mosquito.,,10,1,16,できる日本語 初中級 本冊
+係,かかり,person in charge,,係の人に聞いてください。,Please ask the person in charge.,,10,1,16,できる日本語 初中級 本冊
+口紅,くちべに,lipstick,,口紅を塗ります。,I put on lipstick.,,10,1,16,できる日本語 初中級 本冊
+誰か,だれか,someone,,誰か来ましたか。,Did someone come?,,10,1,16,できる日本語 初中級 本冊
+泥棒,どろぼう,"thief, burglar",,泥棒に入られました。,I was robbed by a burglar.,,10,1,16,できる日本語 初中級 本冊
+～点,てん,point(s),,テストで100点を取りました。,I got 100 points on the test.,,10,1,16,できる日本語 初中級 本冊
+シングル,,single,,シングルの部屋を予約します。,I book a single room.,,10,1,16,できる日本語 初中級 本冊
+ツイン,,twin,,ツインの部屋をお願いします。,I would like a twin room.,,10,1,16,できる日本語 初中級 本冊
+フロント,,front desk,,フロントに鍵を渡します。,I hand the key to the front desk.,,10,1,16,できる日本語 初中級 本冊
+ところ,,"place, location",,駅員さんのところに行きます。,I go to the station employee's location.,,10,1,16,できる日本語 初中級 本冊
+アイスクリーム,,ice cream,,アイスクリームを食べます。,I eat ice cream.,,10,1,16,できる日本語 初中級 本冊
+サンプル,,sample,,サンプルをもらいました。,I received a sample.,,10,1,16,できる日本語 初中級 本冊
+商品,しょうひん,"product, goods",,新しい商品を買いました。,I bought a new product.,,10,1,16,できる日本語 初中級 本冊
+まんじゅう,,manju (bun with bean-jam filling),,まんじゅうをお土産に買います。,I buy manju as a souvenir.,,10,1,16,できる日本語 初中級 本冊
+ライブ,,live (concert, broadcast),,ライブに行きました。,I went to a live concert.,,10,1,16,できる日本語 初中級 本冊
+ロック,,rock,,ロックが好きです。,I like rock music.,,10,1,16,できる日本語 初中級 本冊
+かむ,,chew,,よくかんで食べてください。,Please chew well and eat.,,10,1,16,できる日本語 初中級 本冊
+壊す,こわす,"break, destroy",,おもちゃを壊しました。,I broke the toy.,,10,1,16,できる日本語 初中級 本冊
+刺す,さす,"bite, sting, stick with",,蚊に刺されます。,I get bitten by a mosquito.,,10,1,16,できる日本語 初中級 本冊
+誘う,さそう,"invite, take out",,友達を映画に誘います。,I invite my friend to a movie.,,10,1,16,できる日本語 初中級 本冊
+叱る,しかる,scold,,子供を叱りました。,I scolded the child.,,10,1,16,できる日本語 初中級 本冊
+頼む,たのむ,"ask, request",,友達に頼みます。,I ask my friend.,,10,1,16,できる日本語 初中級 本冊
+違う,ちがう,"differ from, be different",to be different,考え方が違います。,The way of thinking is different.,,10,1,16,できる日本語 初中級 本冊
+取る,とる,"take, get",to get (a score),テストで100点を取りたいです。,I want to get 100 points on the test.,,10,1,16,できる日本語 初中級 本冊
+踏む,ふむ,step on,,足を踏まれました。,My foot was stepped on.,,10,1,16,できる日本語 初中級 本冊
+褒める,ほめる,praise,,先生に褒められました。,I was praised by the teacher.,,10,1,16,できる日本語 初中級 本冊
+招待・する,しょうたい・する,"invite, ask",,パーティーに招待します。,I invite you to a party.,,10,1,16,できる日本語 初中級 本冊
+配る,くばる,distribute,,プリントを配ります。,I distribute the printouts.,,10,1,16,できる日本語 初中級 本冊
+ぶつかる,,hit, run against,,壁にぶつかりました。,I hit the wall.,,10,1,16,できる日本語 初中級 本冊
+撮影・する,さつえい・する,"take a picture, record video",,,写真を撮影します。,I will take a picture.,,10,1,16,できる日本語 初中級 本冊
+発売・する,はつばい・する,sell,,新しいスマホが発売されます。,A new smartphone will be sold.,,10,1,16,できる日本語 初中級 本冊
+注意・する,ちゅうい・する,"advise, admonish",to warn, to scold,駅で係の人に注意されました。,I was warned by the station staff.,,10,1,16,できる日本語 初中級 本冊
+うまい,,taste good, delicious,delicious (casual),このラーメンはうまい！,This ramen is delicious!,,10,1,16,できる日本語 初中級 本冊
+いっぱい,,full,,お腹がいっぱいです。,My stomach is full.,,10,1,16,できる日本語 初中級 本冊
+あれ？,,What?,Huh? What?,あれ？、かぎがない。,Huh? I don't have the key.,,10,1,16,できる日本語 初中級 本冊
+会場,かいじょう,"meeting place, conference hall",,会場が広いです。,The meeting place is large.,,10,2,16,できる日本語 初中級 本冊
+あっち,,(over) there (informal),,あっちに行きましょう。,Let's go over there.,,10,2,16,できる日本語 初中級 本冊
+お化け屋敷,おばけやしき,haunted house,,お化け屋敷が怖いです。,Haunted houses are scary.,,10,2,16,できる日本語 初中級 本冊
+向こう,むこう,"over there, the opposite (other) side",,向こうから人が来ます。,A person is coming from over there.,,10,2,16,できる日本語 初中級 本冊
+トラ,,tiger,,トラは強い動物です。,The tiger is a strong animal.,,10,2,16,できる日本語 初中級 本冊
+ミルク,,milk,,コーヒーにミルクを入れます。,I put milk in my coffee.,,10,2,16,できる日本語 初中級 本冊
+屋根,やね,roof,,屋根の上に猫がいます。,There is a cat on the roof.,,10,2,16,できる日本語 初中級 本冊
+鉛筆,えんぴつ,pencil,,鉛筆で書きます。,I write with a pencil.,,10,2,16,できる日本語 初中級 本冊
+月,つき,"moon, month",,今日は月がきれいです。,The moon is beautiful today.,,10,2,16,できる日本語 初中級 本冊
+プロ,,pro, professional,,彼はプロの写真家です。,He is a pro photographer.,,10,2,16,できる日本語 初中級 本冊
+モデル,,model,,モデルになりたいです。,I want to become a model.,,10,2,16,できる日本語 初中級 本冊
+多く,おおく,many,,多くの人が集まりました。,Many people gathered.,,10,2,17,できる日本語 初中級 本冊
+鏡,かがみ,mirror,,鏡を見ます。,I look in the mirror.,,10,2,17,できる日本語 初中級 本冊
+カタカナ,,Japanese katakana script,,カタカナで名前を書いてください。,Please write your name in katakana.,,10,2,17,できる日本語 初中級 本冊
+国際,こくさい,international,,国際会議があります。,There is an international conference.,,10,2,17,できる日本語 初中級 本冊
+柔道,じゅうどう,judo,,柔道を習っています。,I am learning judo.,,10,2,17,できる日本語 初中級 本冊
+世界,せかい,world,,世界の色々な国に行きたいです。,I want to go to various countries in the world.,,10,2,17,できる日本語 初中級 本冊
+麦,むぎ,"wheat, barley, flour",,麦からパンを作ります。,Bread is made from wheat.,,10,2,17,できる日本語 初中級 本冊
+工場,こうじょう,factory,,工場で働きます。,I work at a factory.,,10,2,17,できる日本語 初中級 本冊
+博物館,はくぶつかん,museum,,博物館で歴史を学びます。,I learn history at the museum.,,10,2,17,できる日本語 初中級 本冊
+ヨーロッパ,,Europe,,ヨーロッパへ旅行します。,I will travel to Europe.,,10,2,17,できる日本語 初中級 本冊
+おやき,,oyaki (Japanese dumpling popular in Nagano prefecture),,おやきを買いました。,I bought oyaki.,,10,2,17,できる日本語 初中級 本冊
+～中,じゅう,"all over ~, throughout ~",,世界中に友達がいます。,I have friends all over the world.,,10,2,17,できる日本語 初中級 本冊
+～時代,じだい,~ period,,江戸時代は長かったです。,The Edo period was long.,,10,2,17,できる日本語 初中級 本冊
+向かう,むかう,"leave for, face (a certain direction)",to head towards,駅に向かいます。,I head towards the station.,,10,2,17,できる日本語 初中級 本冊
+逃げる,にげる,"run away, escape",to run away, to escape,泥棒が逃げました。,The burglar ran away.,,10,2,17,できる日本語 初中級 本冊
+生きる,いきる,"live, to be alive",to live,自然の中で生きる。,Live in nature.,,10,2,17,できる日本語 初中級 本冊
+生まれる,うまれる,be born,,日本で生まれました。,I was born in Japan.,,10,2,17,できる日本語 初中級 本冊
+行う,おこなう,perform,,実験を行います。,I perform an experiment.,,10,2,17,できる日本語 初中級 本冊
+造る,つくる,"create, build",to build, construct,お城を造りました。,They built a castle.,,10,2,17,できる日本語 初中級 本冊
+開く,ひらく,"open, hold",to be held (an event),来月、コンサートが開かれる。,A concert will be held next month.,,10,2,17,できる日本語 初中級 本冊
+建てる,たてる,build,,新しい家を建てます。,I build a new house.,,10,2,17,できる日本語 初中級 本冊
+発見・する,はっけん・する,"find, discover",,新しい星を発見しました。,I discovered a new star.,,10,2,17,できる日本語 初中級 本冊
+発明・する,はつめい・する,invent,,エジソンが電球を発明しました。,Edison invented the light bulb.,,10,2,17,できる日本語 初中級 本冊
+これから,,from now on, after this,,これから頑張ります。,I will do my best from now on.,,10,2,17,できる日本語 初中級 本冊
+～によって,,due to ~,,台風によって電車が止まりました。,The train stopped due to the typhoon.,,10,2,17,できる日本語 初中級 本冊
+乗り場,のりば,"platform, gate, loading zone",,バスの乗り場はどこですか。,Where is the bus platform?,,10,もう一度聞こう,17,できる日本語 初中級 本冊
+ロープウエー,,ropeway,,ロープウエーに乗りました。,I rode the ropeway.,,10,もう一度聞こう,17,できる日本語 初中級 本冊
+遠く,とおく,far away,,遠くに山が見えます。,I can see mountains far away.,,10,もう一度聞こう,17,できる日本語 初中級 本冊
+お待たせ,おまたせ,Sorry to keep you waiting,,お待たせしました。,Sorry to keep you waiting.,,10,もう一度聞こう,17,できる日本語 初中級 本冊
+ちょうど,,exactly, precisely,,ちょうど12時に来ました。,I came exactly at 12 o'clock.,,10,もう一度聞こう,17,できる日本語 初中級 本冊
+八百屋,やおや,"vegetable vendor, green grocery",,八百屋で野菜を買います。,I buy vegetables at the green grocery.,,11,話読聞書,18,できる日本語 初中級 本冊
+おじさん,,"uncle, mister (polite term used to refer to middle-aged men)",middle-aged man, uncle,おじさんに道を聞きました。,I asked a middle-aged man for directions.,,11,話読聞書,18,できる日本語 初中級 本冊
+苦労,くろう,"trouble, burden",hardship, trouble,両親の苦労を知りました。,I learned about my parents' hardships.,,11,話読聞書,18,できる日本語 初中級 本冊
+親しい,したしい,"familiar, intimate",close (relationship),親しい友達に会いました。,I met a close friend.,,11,話読聞書,18,できる日本語 初中級 本冊
+何度も,なんども,"over and over again, many times",,何度も説明しました。,I explained over and over again.,,11,話読聞書,18,できる日本語 初中級 本冊
+話しかける,はなしかける,"talk to, speak to",,道で知らない人に話しかけられました。,A stranger talked to me on the street.,,11,話読聞書,18,できる日本語 初中級 本冊
+彼,かれ,boyfriend,,国の彼に会いたいです。,I miss my boyfriend back home.,,11,1,18,できる日本語 初中級 本冊
+彼女,かのじょ,girlfriend,,国の彼女に会いたいです。,I miss my girlfriend back home.,,11,1,18,できる日本語 初中級 本冊
+こと,,"matters about ~, things about ~",,将来のことを考える。,Think about things about the future.,,11,1,18,できる日本語 初中級 本冊
+興味,きょうみ,interest,,日本の文化に興味があります。,I have an interest in Japanese culture.,,11,1,18,できる日本語 初中級 本冊
+ボランティア,,volunteer,,ボランティア活動をします。,I do volunteer activities.,,11,1,18,できる日本語 初中級 本冊
+物価,ぶっか,prices of commodities,,日本の物価は高いです。,Prices in Japan are high.,,11,1,18,できる日本語 初中級 本冊
+敬語,けいご,respectful language,,敬語の使い方が難しいです。,How to use respectful language is difficult.,,11,1,18,できる日本語 初中級 本冊
+文化,ぶんか,culture,,異なる文化に触れます。,I experience a different culture.,,11,1,18,できる日本語 初中級 本冊
+違い,ちがい,difference,,文化の違いを学びます。,I learn about cultural differences.,,11,1,18,できる日本語 初中級 本冊
+無理,むり,"overdo, take something too far",to push oneself too hard,無理をして、病気になりました。,I overdid it and got sick.,,11,1,18,できる日本語 初中級 本冊
+～代,だい,"~ charges, ~ fees",,食事代を払いました。,I paid the dining charges.,,11,1,18,できる日本語 初中級 本冊
+持つ,もつ,"have, hold",,日本の文化に興味を持っています。,I have an interest in Japanese culture.,,11,1,18,できる日本語 初中級 本冊
+節約・する,せつやく・する,"economize, be thrifty",,電気代を節約します。,I economize on electricity bills.,,11,1,18,できる日本語 初中級 本冊
+外食・する,がいしょく・する,"dine out, eat out",,週末は外食します。,I dine out on weekends.,,11,1,18,できる日本語 初中級 本冊
+ダイエット・する,,diet,,ダイエットをしています。,I am on a diet.,,11,1,18,できる日本語 初中級 本冊
+太る,ふとる,"gain weight, get fat",,最近太りました。,I gained weight recently.,,11,1,18,できる日本語 初中級 本冊
+折れる,おれる,break,to break (off),鉛筆が折れました。,The pencil broke.,,11,1,18,できる日本語 初中級 本冊
+故障・する,こしょう・する,"get out of order, break down",to break down,エレベーターが故障しました。,The elevator broke down.,,11,1,18,できる日本語 初中級 本冊
+学ぶ,まなぶ,"learn, study",,学校で多くのことを学びます。,I learn many things at school.,,11,1,18,できる日本語 初中級 本冊
+育てる,そだてる,"raise (a child), bring up",to raise (a child/pet),犬を育てています。,I am raising a dog.,,11,1,18,できる日本語 初中級 本冊
+研究・する,けんきゅう・する,research,,日本語の文法を研究します。,I research Japanese grammar.,,11,1,18,できる日本語 初中級 本冊
+あんまり,,not much, not very,not very, あんまり,あんまり暑くないです。,It is not very hot.,,11,1,18,できる日本語 初中級 本冊
+だいたい,,most of the time,mostly, generally,だいたい毎日勉強します。,I study mostly every day.,,11,1,18,できる日本語 初中級 本冊
+駅前,えきまえ,in front of the train station,,駅前で待ち合わせましょう。,Let's meet up in front of the station.,,11,2,18,できる日本語 初中級 本冊
+具合,ぐあい,"condition, health",,体の具合が悪いです。,I am in bad condition (health).,,11,2,18,できる日本語 初中級 本冊
+区役所,くやくしょ,ward office,,区役所に行かなければなりません。,I have to go to the ward office.,,11,2,18,できる日本語 初中級 本冊
+今夜,こんや,tonight,,今夜は家にいます。,I am at home tonight.,,11,2,18,できる日本語 初中級 本冊
+出張・する,しゅっちょう・する,go on a business trip,,明日出張します。,I will go on a business trip tomorrow.,,11,2,18,できる日本語 初中級 本冊
+打つ,うつ,hit,to hit (a ball),ボールを打ちます。,I hit the ball.,,11,2,18,できる日本語 初中級 本冊
+回る,まわる,go around,to go around,世界中を回りたいです。,I want to go around the world.,,11,2,18,できる日本語 初中級 本冊
+投げる,なげる,throw,to throw,ボールを投げます。,I throw the ball.,,11,2,18,できる日本語 初中級 本冊
+あきらめる,,give up,,夢をあきらめないでください。,Please don't give up on your dream.,,11,2,18,できる日本語 初中級 本冊
+機会,きかい,"chance, opportunity",,日本語を話す機会が少ないです。,There are few chances to speak Japanese.,,11,もう一度聞こう,18,できる日本語 初中級 本冊
+地域,ちいき,"area, region",,この地域は安全です。,This area is safe.,,11,もう一度聞こう,18,できる日本語 初中級 本冊
+チーム,,team,,強いチームです。,It is a strong team.,,11,もう一度聞こう,18,できる日本語 初中級 本冊
+～君,くん,suffix for boy's names that indicates respect and familiarity,,田中君はいますか。,Is Tanaka-kun here?,,11,もう一度聞こう,18,できる日本語 初中級 本冊
+シュート・する,,shoot,,ゴールに向かってシュートします。,I shoot towards the goal.,,11,もう一度聞こう,18,できる日本語 初中級 本冊
+お帰りなさい,おかえりなさい,Welcome home.,,お帰りなさい。,Welcome home.,,11,もう一度聞こう,18,できる日本語 初中級 本冊
+よし,,"good, come on",,よし、やろう！,Alright, let's do it!,,11,もう一度聞こう,18,できる日本語 初中級 本冊
+インスタント,,instant,,インスタントラーメンを食べます。,I eat instant ramen.,,12,話読聞書,19,できる日本語 初中級 本冊
+食品,しょくひん,food,,インスタント食品を買わないようにしています。,I try not to buy instant food.,,12,話読聞書,19,できる日本語 初中級 本冊
+冷凍・する,れいとう・する,freeze,,肉を冷凍しました。,I froze the meat.,,12,話読聞書,19,できる日本語 初中級 本冊
+残す,のこす,"leave, save",to leave behind,料理を残さずに食べてください。,Please eat the food without leaving any behind.,,12,話読聞書,19,できる日本語 初中級 本冊
+残る,のこる,be left remaining,,まだ料理が残っています。,There is still food left over.,,12,話読聞書,19,できる日本語 初中級 本冊
+おにぎり,,rice ball,,おにぎりを作りました。,I made rice balls.,,12,1,19,できる日本語 初中級 本冊
+元気,げんき,"healthy, lively, spirited",,元気な子供です。,It is a lively child.,,12,1,19,できる日本語 初中級 本冊
+元気がない,げんきがない,"feel down, low-spirited",to feel down, to look tired,最近元気がないですね。,You look tired recently.,,12,1,19,できる日本語 初中級 本冊
+胃,い,stomach,,胃が痛いです。,I have a stomachache.,,12,1,19,できる日本語 初中級 本冊
+痛み,いたみ,pain,,痛みが治まりました。,The pain went away.,,12,1,19,できる日本語 初中級 本冊
+疲れ,つかれ,"fatigue, tiredness",,,お風呂で疲れを取りました。,I relieved my fatigue in the bath.,,12,1,19,できる日本語 初中級 本冊
+湿布,しっぷ,cold (hot) compress,,湿布を貼ります。,I put on a compress.,,12,1,19,できる日本語 初中級 本冊
+うがい,,gargling,,毎日うがいをします。,I gargle every day.,,12,1,19,できる日本語 初中級 本冊
+ジム,,gym, gymnasium,,ジムで運動します。,I exercise at the gym.,,12,1,19,できる日本語 初中級 本冊
+氷,こおり,ice,,氷を入れてください。,Please put in ice.,,12,1,19,できる日本語 初中級 本冊
+ドレッシング,,dressing,,サラダにドレッシングをかけます。,I put dressing on the salad.,,12,1,19,できる日本語 初中級 本冊
+～金,きん,"~ fee, ~ charge",,ジムの入会金は高いです。,The gym's admission fee is expensive.,,12,1,19,できる日本語 初中級 本冊
+酔う,よう,"get drunk, feel sick (at the stomach)",,お酒に酔いました。,I got drunk on alcohol.,,12,1,19,できる日本語 初中級 本冊
+取れる,とれる,"relieve, break free from",to come off, to be relieved,痛みが取れました。,The pain is gone.,,12,1,19,できる日本語 初中級 本冊
+入会・する,にゅうかい・する,"join, become a member of a group",,ジムに入会しました。,I joined the gym.,,12,1,19,できる日本語 初中級 本冊
+さす,,hold over one's head,to hold (an umbrella),傘をさす。,Open an umbrella.,,12,1,19,できる日本語 初中級 本冊
+ガンガン,,pounding, throbbing,,頭がガンガンする。,I have a pounding headache.,,12,1,19,できる日本語 初中級 本冊
+パンパン,,tight and throbbing,,歩きすぎて、足がパンパンだ。,I walked too much and my legs are throbbing.,,12,1,19,できる日本語 初中級 本冊
+フラフラ,,dizzy and unsteady,,熱があるので、フラフラする。,I have a fever, so I am dizzy.,,12,1,19,できる日本語 初中級 本冊
+ムカムカ,,nauseous,,食べすぎて、胃がムカムカする。,I ate too much and feel sick to my stomach.,,12,1,19,できる日本語 初中級 本冊
+肩,かた,shoulder,,肩がこりました。,My shoulders are stiff.,,12,2,19,できる日本語 初中級 本冊
+首,くび,neck,,首が痛いです。,My neck hurts.,,12,2,19,できる日本語 初中級 本冊
+カロリー,,calorie,,カロリーを気にしています。,I am conscious of calories.,,12,2,19,できる日本語 初中級 本冊
+ジューサー,,juicer,,ジューサーでジュースを作ります。,I make juice with a juicer.,,12,2,19,できる日本語 初中級 本冊
+体脂肪計,たいしぼうけい,body fat scale,,体脂肪計に乗ります。,I step on the body fat scale.,,12,2,19,できる日本語 初中級 本冊
+体脂肪率,たいしぼうりつ,body fat percentage,,体脂肪率が下がりました。,My body fat percentage dropped.,,12,2,19,できる日本語 初中級 本冊
+ネックストレッチ,,neck stretch,,ネックストレッチをします。,I do a neck stretch.,,12,2,19,できる日本語 初中級 本冊
+マッサージ器,マッサージき,massage machine,,マッサージ器を使います。,I use a massage machine.,,12,2,19,できる日本語 初中級 本冊
+万歩計,まんぽけい,pedometer,,万歩計をつけて歩きます。,I walk wearing a pedometer.,,12,2,19,できる日本語 初中級 本冊
+ストレス,,stress,,ストレスがたまります。,Stress builds up.,,12,2,19,できる日本語 初中級 本冊
+虫歯,むしば,(tooth) cavity,,虫歯が痛いです。,My cavity hurts.,,12,2,19,できる日本語 初中級 本冊
+ビタミンＣ,,vitamin C,,ビタミンＣをとります。,I take vitamin C.,,12,2,19,できる日本語 初中級 本冊
+方法,ほうほう,"method, technique, way of doing something",,勉強の方法を変えました。,I changed my study method.,,12,2,19,できる日本語 初中級 本冊
+健康,けんこう,"health, fitness",health,健康に気をつけています。,I take care of my health.,,12,2,19,できる日本語 初中級 本冊
+栄養,えいよう,nutrition,nutrition,栄養のバランスが大切です。,Nutritional balance is important.,,12,2,19,できる日本語 初中級 本冊
+ショウガ,,ginger,ginger,ショウガを入れて煮ます。,I boil it with ginger.,,12,2,19,できる日本語 初中級 本冊
+バランス,,balance,balance,勉強と遊びのバランスを取ります。,I balance studying and playing.,,12,2,19,できる日本語 初中級 本冊
+～不足,ぶそく,"deficiency in ~, not enough ~",lack of ~,運動不足で太りました。,I gained weight due to a lack of exercise.,,12,2,19,できる日本語 初中級 本冊
+取る,とる,"break free from, relieve",to get rid of (fatigue/pain),疲れを取るために風呂に入ります。,I take a bath to get rid of fatigue.,,12,2,19,できる日本語 初中級 本冊
+測る,はかる,measure,to measure,体温を測ります。,I measure my body temperature.,,12,2,19,できる日本語 初中級 本冊
+計算・する,けいさん・する,calculate,to calculate,電卓で計算します。,I calculate using a calculator.,,12,2,19,できる日本語 初中級 本冊
+マッサージ・する,,massage,to massage,肩をマッサージしてもらいます。,I get my shoulders massaged.,,12,2,19,できる日本語 初中級 本冊
+たまる,,build up,to build up / to accumulate,ストレスがたまっています。,Stress is building up.,,12,2,20,できる日本語 初中級 本冊
+やせる,,"lose weight, become thin",to lose weight,ジムに通ってやせました。,I lost weight by going to the gym.,,12,2,20,できる日本語 初中級 本冊
+こる,,become stiff,to get stiff (muscles),肩がこって痛いです。,My shoulders are stiff and hurt.,,12,2,20,できる日本語 初中級 本冊
+動かす,うごかす,"move, set in motion",to move (something),体をたくさん動かします。,I move my body a lot.,,12,2,20,できる日本語 初中級 本冊
+眠る,ねむる,sleep,to sleep,昨夜はよく眠れました。,I was able to sleep well last night.,,12,2,20,できる日本語 初中級 本冊
+冷える,ひえる,"chill, get cold",to get cold,冬は足が冷えます。,My feet get cold in the winter.,,12,2,20,できる日本語 初中級 本冊
+このごろ,,"these days, nowadays",these days,このごろ寒いですね。,It's cold these days, isn't it?,12,2,20,できる日本語 初中級 本冊
+ふーん,,well…,I see / Hmm...,ふーん、そうなんですか。,I see, is that so?,12,2,20,できる日本語 初中級 本冊
+グレープフルーツ,,grapefruit,grapefruit,朝にグレープフルーツを食べます。,I eat grapefruit in the morning.,,12,もう一度聞こう,20,できる日本語 初中級 本冊
+二日酔い,ふつかよい,hangover,hangover,二日酔いで頭が痛いです。,I have a headache from a hangover.,,12,もう一度聞こう,20,できる日本語 初中級 本冊
+温める,あたためる,warm,to warm up,冷めた料理を温めます。,I warm up the cold food.,,12,もう一度聞こう,20,できる日本語 初中級 本冊
+気をつける,きをつける,be careful,to be careful,健康に気をつけてください。,Please be careful of your health.,,12,もう一度聞こう,20,できる日本語 初中級 本冊
+自然,しぜん,nature,nature,自然を大切にしましょう。,Let's cherish nature.,,13,話読聞書,21,できる日本語 初中級 本冊
+釣る,つる,fish,to fish,川で魚を釣ります。,I fish in the river.,,13,話読聞書,21,できる日本語 初中級 本冊
+不利（な）,ふり,disadvantageous,disadvantageous,不利な条件で試合をした。,I played the match under disadvantageous conditions.,,13,話読聞書,21,できる日本語 初中級 本冊
+手に入れる,てにいれる,"obtain, acquire",to obtain / to get one's hands on,やっと欲しい本を手に入れた。,I finally obtained the book I wanted.,,13,話読聞書,21,できる日本語 初中級 本冊
+親,おや,parent,parent,親と一緒に住んでいます。,I live with my parents.,,13,1,21,できる日本語 初中級 本冊
+父親,ちちおや,father,father,父親は会社員です。,My father is a company employee.,,13,1,21,できる日本語 初中級 本冊
+母親,ははおや,mother,mother,母親は料理が上手です。,My mother is good at cooking.,,13,1,21,できる日本語 初中級 本冊
+子ども,こども,"child, kid",child,近所の子どもと公園で遊びます。,I play with the neighborhood children in the park.,,13,1,21,できる日本語 初中級 本冊
+家事,かじ,housework,housework,母は毎日家事をしています。,My mother does housework every day.,,13,1,21,できる日本語 初中級 本冊
+コーチ,,coach,coach,コーチにアドバイスをもらいます。,I get advice from the coach.,,13,1,21,できる日本語 初中級 本冊
+塾,じゅく,after-school cram school,cram school,塾に通っています。,I attend a cram school.,,13,1,21,できる日本語 初中級 本冊
+数学,すうがく,"mathematics, math",math,数学のテストが難しかったです。,The math test was difficult.,,13,1,21,できる日本語 初中級 本冊
+ゲームセンター,,game center,game center / arcade,ゲームセンターで遊びました。,I played at the game center.,,13,1,21,できる日本語 初中級 本冊
+ころ,,when I was ~,at the age of ~ / when I was ~,5歳のころ、よく外で遊びました。,When I was 5, I often played outside.,,13,1,21,できる日本語 初中級 本冊
+～キロ,,"~ kilometers, ~ kilograms",~ km / ~ kg,毎日5キロ走っています。,I run 5 kilometers every day.,,13,1,21,できる日本語 初中級 本冊
+～ずつ,,every ~,~ each / every ~,1人に2枚ずつ配ってください。,Please hand out 2 to each person.,,13,1,21,できる日本語 初中級 本冊
+騒ぐ,さわぐ,"be noisy, act up",to be noisy / to make a ruckus,隣の部屋が騒いでいます。,The next room is being noisy.,,13,1,21,できる日本語 初中級 本冊
+世話・する,せわ・する,take care of,to take care of,小さい時に祖父母の世話をしました。,I took care of my grandparents when I was little.,,13,1,21,できる日本語 初中級 本冊
+えらい,,"great, excellent, well done",great / admirable,えらい！よく頑張ったね。,Great! You did your best.,,13,1,21,できる日本語 初中級 本冊
+この間,このあいだ,"the other day, during this time",the other day,この間、偶然友達に会いました。,The other day, I ran into a friend by chance.,,13,1,21,できる日本語 初中級 本冊
+必ず,かならず,"by all means, certainly",without fail / certainly,毎日必ず日記を書きます。,I certainly write in my diary every day.,,13,1,21,できる日本語 初中級 本冊
+やっぱり,,after all,after all / as I thought,やっぱり家が一番いいですね。,Home is the best place after all.,,13,1,21,できる日本語 初中級 本冊
+夜遅く,よるおそく,late at night,late at night,夜遅くまで仕事をします。,I work until late at night.,,13,1,21,できる日本語 初中級 本冊
+うち,,"I, me",I / my (informal),うちの親は厳しかったです。,My parents were strict.,,13,2,21,できる日本語 初中級 本冊
+海外,かいがい,overseas,overseas,海外で生活してみたいです。,I want to try living overseas.,,13,2,21,できる日本語 初中級 本冊
+曲,きょく,song track,song / music track,この曲を知っていますか。,Do you know this song?,13,2,21,できる日本語 初中級 本冊
+教育,きょういく,education,education,教育は大切です。,Education is important.,,13,2,21,できる日本語 初中級 本冊
+化粧品,けしょうひん,cosmetics,cosmetics / makeup,新しい化粧品を買いました。,I bought new cosmetics.,,13,2,21,できる日本語 初中級 本冊
+けんか・する,,argue,to argue / to fight,兄とけんかしました。,I argued with my older brother.,,13,2,21,できる日本語 初中級 本冊
+泣く,なく,cry,to cry,映画を見て泣きました。,I cried watching the movie.,,13,2,21,できる日本語 初中級 本冊
+残す,のこす,"leave, save",to leave behind,ご飯を残さないで食べてください。,Please eat without leaving any rice behind.,,13,2,21,できる日本語 初中級 本冊
+やる,,do,to do (casual),宿題をやる。,Do my homework.,,13,2,21,できる日本語 初中級 本冊
+厳しい,きびしい,"strict, severe",strict,父はとても厳しかったです。,My father was very strict.,,13,2,21,できる日本語 初中級 本冊
+うれしい,,"happy, glad",happy,プレゼントをもらってうれしいです。,I am happy to receive a present.,,13,2,21,できる日本語 初中級 本冊
+熱心（な）,ねっしん,"eager, enthusiastic, devoted",eager / enthusiastic,彼は仕事に熱心です。,He is enthusiastic about his work.,,13,2,21,できる日本語 初中級 本冊
+何でも,なんでも,anything,anything / whatever,何でも食べます。,I eat anything.,,13,2,21,できる日本語 初中級 本冊
+僕,ぼく,"I, me (informal, used primarily by young men)",I (masculine, casual),僕は学生です。,I am a student.,,13,もう一度聞こう,21,できる日本語 初中級 本冊
+祖母,そぼ,grandmother,grandmother,祖母の家に行きます。,I go to my grandmother's house.,,13,もう一度聞こう,21,できる日本語 初中級 本冊
+おもちゃ,,toy,toy,子どもにおもちゃを買いました。,I bought a toy for the child.,,13,もう一度聞こう,21,できる日本語 初中級 本冊
+役に立つ,やくにたつ,be useful,to be useful,この本は勉強に役に立ちます。,This book is useful for studying.,,13,もう一度聞こう,21,できる日本語 初中級 本冊
+ちゃんと,,properly,properly,ちゃんと薬を飲んでください。,Please take your medicine properly.,,13,もう一度聞こう,21,できる日本語 初中級 本冊
+仕方がない,しかたがない,"no choice, have no alternative",it can't be helped,雨なので、仕方がないから家にいます。,It's raining, so it can't be helped, I'm staying home.,,13,もう一度聞こう,21,できる日本語 初中級 本冊
+漫画家,まんがか,cartoonist,manga artist / cartoonist,漫画家になりたいです。,I want to become a manga artist.,,14,話読聞書,22,できる日本語 初中級 本冊
+～部,ぶ,"~ department, ~ section",~ department / ~ section,営業部に所属しています。,I belong to the sales department.,,14,話読聞書,22,できる日本語 初中級 本冊
+メジャー（な）,,major,major (widespread),これはメジャーなスポーツです。,This is a major sport.,,14,話読聞書,22,できる日本語 初中級 本冊
+連載・する,れんさい・する,appear serially (in a publication),to be serialized,この漫画は雑誌に連載されています。,This manga is serialized in a magazine.,,14,話読聞書,22,できる日本語 初中級 本冊
+スタート・する,,start,to start,新しいビジネスをスタートします。,I will start a new business.,,14,話読聞書,22,できる日本語 初中級 本冊
+ヒット・する,,be a hit,to be a hit,その歌は大ヒットしました。,That song was a big hit.,,14,話読聞書,22,できる日本語 初中級 本冊
+奨学金,しょうがくきん,scholarship,scholarship,奨学金をもらって留学しました。,I studied abroad on a scholarship.,,14,話読聞書,22,できる日本語 初中級 本冊
+支援・する,しえん・する,support,to support,発展途上国を支援します。,I support developing countries.,,14,話読聞書,22,できる日本語 初中級 本冊
+女の子,おんなのこ,girl,girl,女の子が花を持っています。,A girl is holding a flower.,,14,1,22,できる日本語 初中級 本冊
+おせち料理,おせちりょうり,traditional New Year's food (primarily food eaten to celebrate the New Year),traditional New Year food,お正月におせち料理を食べます。,I eat traditional New Year food during the New Year.,,14,1,22,できる日本語 初中級 本冊
+行事,ぎょうじ,"event, occasion",event / festival,学校でいろいろな行事があります。,There are various events at school.,,14,1,22,できる日本語 初中級 本冊
+敬老の日,けいろうのひ,Respect-for-the-Aged Day (a national holiday held in September for revering the elderly and wishing them a long life),Respect for the Aged Day,敬老の日におばあちゃんにプレゼントをあげました。,I gave my grandmother a present on Respect for the Aged Day.,,14,1,22,できる日本語 初中級 本冊
+（お）正月,しょうがつ,New Year's holidays,New Year's holidays,お正月に実家に帰ります。,I return to my parents' house for the New Year's holidays.,,14,1,22,できる日本語 初中級 本冊
+七五三,しちごさん,"Seven-Five-Three Festival (celebrating the growth of children: boys at three and five, girls at three and seven years old)",Shichi-Go-San (7-5-3 Festival),七五三で神社に行きました。,I went to a shrine for Shichi-Go-San.,,14,1,22,できる日本語 初中級 本冊
+新年,しんねん,New Year's Day,New Year,新年を楽しく過ごしました。,I spent the New Year enjoyably.,,14,1,22,できる日本語 初中級 本冊
+成人式,せいじんしき,Coming-of-Age Ceremony (celebrating when a person reaches 20 years old and is considered an adult),Coming-of-Age Ceremony,姉は成人式で着物を着ました。,My older sister wore a kimono for her Coming-of-Age Ceremony.,,14,1,22,できる日本語 初中級 本冊
+節分,せつぶん,"Traditional end of winter (the day before the traditional beginning of spring, around February 3; beans are thrown to ward off evil)",Setsubun (end of winter),節分に豆をまきます。,I throw beans during Setsubun.,,14,1,22,できる日本語 初中級 本冊
+ひなまつり,,Doll Festival (held on March 3 to celebrate the growth of young girls),Hinamatsuri (Doll Festival),ひなまつりにひな人形を飾ります。,I decorate with hina dolls for Hinamatsuri.,,14,1,22,できる日本語 初中級 本冊
+（お）赤飯,せきはん,festive red rice,sekihan (red rice),お祝いにお赤飯を作りました。,I made sekihan for the celebration.,,14,1,22,できる日本語 初中級 本冊
+布,ぬの,fabric,fabric / cloth,きれいな布で服を作ります。,I make clothes with beautiful fabric.,,14,1,22,できる日本語 初中級 本冊
+年賀状,ねんがじょう,new year's greeting card,New Year's card,友達に年賀状を出しました。,I sent a New Year's card to my friend.,,14,1,22,できる日本語 初中級 本冊
+はがき,,postcard,postcard,きれいなはがきをもらいました。,I received a beautiful postcard.,,14,1,22,できる日本語 初中級 本冊
+ふろしき,,cloth for wrapping things,furoshiki (wrapping cloth),ふろしきで荷物を包みます。,I wrap luggage with a furoshiki.,,14,1,22,できる日本語 初中級 本冊
+ランドセル,,"satchel, school backpack for elementary school",randoseru (school backpack),姪にランドセルを買ってあげました。,I bought a randoseru for my niece.,,14,1,22,できる日本語 初中級 本冊
+ウナギ,,eel,eel,夏にウナギを食べます。,I eat eel in the summer.,,14,1,22,できる日本語 初中級 本冊
+大晦日,おおみそか,new year's eve,New Year's Eve,大晦日に除夜の鐘を聞きます。,I listen to the New Year's Eve bell on New Year's Eve.,,14,1,22,できる日本語 初中級 本冊
+数,かず,number,number (quantity),参加する数が増えました。,The number of participants increased.,,14,1,22,できる日本語 初中級 本冊
+（お）金持ち,かねもち,rich person,rich person,金持ちになりたいです。,I want to become a rich person.,,14,1,22,できる日本語 初中級 本冊
+スイカ,,watermelon,watermelon,夏はスイカがおいしいです。,Watermelon is delicious in the summer.,,14,1,22,できる日本語 初中級 本冊
+ブルーベリー,,blueberry,blueberry,ブルーベリーでケーキを作ります。,I make a cake with blueberries.,,14,1,22,できる日本語 初中級 本冊
+ミカン,,tangerine,tangerine,冬はミカンをたくさん食べます。,I eat a lot of tangerines in the winter.,,14,1,22,できる日本語 初中級 本冊
+豆,まめ,bean,bean,豆を煮て食べます。,I boil and eat beans.,,14,1,22,できる日本語 初中級 本冊
+ユズ,,yuzu (Chinese lemon),yuzu,お風呂にユズを入れます。,I put yuzu in the bath.,,14,1,22,できる日本語 初中級 本冊
+冬至,とうじ,winter solstice,winter solstice,冬至にかぼちゃを食べます。,I eat pumpkin on the winter solstice.,,14,1,22,できる日本語 初中級 本冊
+年,とし,"age, year",age,年を取ったと感じます。,I feel that I have gotten older.,,14,1,22,できる日本語 初中級 本冊
+土用の丑の日,どようのうしのひ,Midsummer Day of the Ox,Day of the Ox in midsummer,土用の丑の日にウナギを食べる人が多いです。,Many people eat eel on the Day of the Ox in midsummer.,,14,1,22,できる日本語 初中級 本冊
+招き猫,まねきねこ,"Welcoming cat (statue of a cat with its front paw beckoning customers, used as a storefront decoration)",maneki-neko (beckoning cat),店の前に招き猫が置いてあります。,There is a beckoning cat placed in front of the store.,,14,1,22,できる日本語 初中級 本冊
+遊び,あそび,"game, play",play / game,子どもの頃、よく外で遊びました。,When I was a child, I often played outside.,,14,1,22,できる日本語 初中級 本冊
+お盆,おぼん,obon festival,Obon festival,お盆に休みを取ります。,I take a vacation during the Obon festival.,,14,1,22,できる日本語 初中級 本冊
+空手,からて,karate,karate,空手を習っています。,I am learning karate.,,14,1,22,できる日本語 初中級 本冊
+餃子,ぎょうざ,"dumpling, potstickers",gyoza (dumplings),手作りの餃子はおいしいです。,Handmade gyoza are delicious.,,14,1,22,できる日本語 初中級 本冊
+ごちそう,,"big meal, feast",feast / delicious food,母がごちそうを作ってくれました。,My mother made a feast for us.,,14,1,22,できる日本語 初中級 本冊
+シチュー,,stew,stew,寒い日にシチューがいいです。,Stew is good on a cold day.,,14,1,22,できる日本語 初中級 本冊
+将棋,しょうぎ,shogi (Japanese chess),shogi (Japanese chess),父と将棋をします。,I play shogi with my father.,,14,1,22,できる日本語 初中級 本冊
+先祖,せんぞ,ancestor,ancestor,お盆に先祖のお墓参りをします。,I visit my ancestors' graves during Obon.,,14,1,22,できる日本語 初中級 本冊
+チェス,,chess,chess,チェスは面白いゲームです。,Chess is an interesting game.,,14,1,22,できる日本語 初中級 本冊
+テコンドー,,tae kwon do,taekwondo,テコンドーは韓国の武道です。,Taekwondo is a Korean martial art.,,14,1,22,できる日本語 初中級 本冊
+焼き鳥,やきとり,yakitori (skewered grilled chicken),yakitori,居酒屋で焼き鳥を頼みました。,I ordered yakitori at an izakaya.,,14,1,23,できる日本語 初中級 本冊
+大勢,おおぜい,"crowd, in large numbers",a large number of people,お祭りに大勢の人が来ました。,A large number of people came to the festival.,,14,1,23,できる日本語 初中級 本冊
+カボチャ,,pumpkin,pumpkin,カボチャのスープを作りました。,I made pumpkin soup.,,14,1,23,できる日本語 初中級 本冊
+山車,だし,parade float,festival float (dashi),山車を引いて歩きます。,We pull the festival float and walk.,,14,1,23,できる日本語 初中級 本冊
+～型,がた,type ~,~ type / ~ model,血液型はA型です。,My blood type is type A.,,14,1,23,できる日本語 初中級 本冊
+～県,けん,~ prefecture,~ prefecture,私は長崎県から来ました。,I am from Nagasaki prefecture.,,14,1,23,できる日本語 初中級 本冊
+祈る,いのる,pray,to pray,幸せを祈ります。,I pray for your happiness.,,14,1,23,できる日本語 初中級 本冊
+祝う,いわう,"celebrate, mark an occasion of, congratulate on",to celebrate,友達の誕生日を祝います。,I celebrate my friend's birthday.,,14,1,23,できる日本語 初中級 本冊
+包む,つつむ,"wrap up, roll up",to wrap,プレゼントをきれいな紙で包みます。,I wrap the present in beautiful paper.,,14,1,23,できる日本語 初中級 本冊
+お祝い・する,おいわい・する,celebrate,to celebrate,結婚のお祝いをします。,I celebrate a wedding.,,14,1,23,できる日本語 初中級 本冊
+成長・する,せいちょう・する,"grow, develop",to grow up,子どもがすくすく成長しています。,The child is growing up healthily.,,14,1,23,できる日本語 初中級 本冊
+感謝・する,かんしゃ・する,"thank, express appreciation",to express gratitude,毎日に感謝します。,I express gratitude for every day.,,14,1,23,できる日本語 初中級 本冊
+飾る,かざる,"decorate, put up a decoration",to decorate,クリスマスツリーを飾ります。,I decorate the Christmas tree.,,14,1,23,できる日本語 初中級 本冊
+長生き・する,ながいき・する,live a long life,to live a long life,元気で長生きしたいです。,I want to live a long life in good health.,,14,1,23,できる日本語 初中級 本冊
+夏バテ・する,なつバテ・する,suffer from the summer heat,to suffer from summer fatigue,暑いので夏バテしました。,It was hot, so I suffered from summer fatigue.,,14,1,23,できる日本語 初中級 本冊
+踊る,おどる,dance,to dance,音楽に合わせて踊ります。,I dance to the music.,,14,1,23,できる日本語 初中級 本冊
+おもちゃ,,toy,toy,弟におもちゃを買いました。,I bought a toy for my younger brother.,,14,2,23,できる日本語 初中級 本冊
+彼女,かのじょ,she,she,彼女は英語が上手です。,She is good at English.,,14,2,23,できる日本語 初中級 本冊
+彼,かれ,he,he,彼はイギリスに留学したことがあります。,He has studied in the U.K. before.,,14,2,23,できる日本語 初中級 本冊
+みんな,,everyone,everyone,みんなで一緒に歌いましょう。,Let's sing together everyone.,,14,2,23,できる日本語 初中級 本冊
+置物,おきもの,ornament,ornament / figurine,棚にきれいな置物があります。,There is a beautiful ornament on the shelf.,,14,2,23,できる日本語 初中級 本冊
+火事,かじ,fire,fire,火事に気をつけてください。,Please be careful of fires.,,14,2,23,できる日本語 初中級 本冊
+カメ,,"turtle, tortoise",turtle,カメがゆっくり歩いています。,The turtle is walking slowly.,,14,2,23,できる日本語 初中級 本冊
+菊,きく,chrysanthemum,chrysanthemum,秋に菊の花が咲きます。,Chrysanthemum flowers bloom in autumn.,,14,2,23,できる日本語 初中級 本冊
+くし,,hair comb,comb,くしで髪をとかします。,I comb my hair with a comb.,,14,2,23,できる日本語 初中級 本冊
+5円玉,ごえんだま,five yen coin,5-yen coin,お賽銭に5円玉を入れます。,I put a 5-yen coin as an offering.,,14,2,23,できる日本語 初中級 本冊
+食器,しょっき,"dishes, tableware",tableware / dishes,新しい食器を買いました。,I bought new tableware.,,14,2,23,できる日本語 初中級 本冊
+シンボル,,symbol,symbol,桜は日本のシンボルです。,The cherry blossom is a symbol of Japan.,,14,2,23,できる日本語 初中級 本冊
+ストーブ,,"stove, space heater",space heater / stove,冬はストーブをつけます。,I turn on the space heater in the winter.,,14,2,23,できる日本語 初中級 本冊
+（お）葬式,そうしき,funeral ceremony,funeral,先週、お葬式に参加しました。,I attended a funeral last week.,,14,2,23,できる日本語 初中級 本冊
+涙,なみだ,tears,tears,感動して涙が出ました。,I was moved to tears.,,14,2,23,できる日本語 初中級 本冊
+ハンカチ,,handkerchief,handkerchief,ハンカチで涙を拭きました。,I wiped my tears with a handkerchief.,,14,2,23,できる日本語 初中級 本冊
+（お）見舞い,みまい,visit a sick person,visiting a sick person / get-well gift,友達のお見舞いに行きます。,I go to visit my sick friend.,,14,2,23,できる日本語 初中級 本冊
+ライター,,lighter,lighter,ライターでタバコに火をつけます。,I use a lighter to light a cigarette.,,14,2,23,できる日本語 初中級 本冊
+～祝い,いわい,in celebration of ~,~ celebration gift,結婚祝いに花を贈ります。,I give flowers as a wedding present.,,14,2,23,できる日本語 初中級 本冊
+贈る,おくる,give a gift,to give (a gift),友達に誕生日プレゼントを贈ります。,I give a birthday present to my friend.,,14,2,23,できる日本語 初中級 本冊
+増える,ふえる,"increase, grow in number",to increase,外国人の観光客が増えました。,Foreign tourists have increased.,,14,2,23,できる日本語 初中級 本冊
+発音・する,はつおん・する,pronounce,to pronounce,英語の発音を練習します。,I practice English pronunciation.,,14,2,23,できる日本語 初中級 本冊
+連想・する,れんそう・する,make an association of ideas,to associate with,桜を見ると春を連想します。,Seeing cherry blossoms makes me associate it with spring.,,14,2,23,できる日本語 初中級 本冊
+恥ずかしい,はずかしい,embarrassing,embarrassing,間違えて恥ずかしかったです。,I was embarrassed because I made a mistake.,,14,2,23,できる日本語 初中級 本冊
+嫌（な）,いや,"disagreeable, unpleasant",unpleasant / disagreeable,嫌な思いをしました。,I had an unpleasant experience.,,14,2,23,できる日本語 初中級 本冊
+鬼,おに,"demon, devil",demon / ogre,節分で鬼の役をします。,I play the role of the demon during Setsubun.,,14,もう一度聞こう,23,できる日本語 初中級 本冊
+ハロウィーン,,Halloween,Halloween,ハロウィーンの仮装をします。,I dress up for Halloween.,,14,もう一度聞こう,23,できる日本語 初中級 本冊
+お化け,おばけ,ghost,ghost,子どもはお化けが怖いです。,Children are afraid of ghosts.,,14,もう一度聞こう,23,できる日本語 初中級 本冊
+いたずら・する,,"trick or treat, do mischief",to play a prank / to do mischief,子どもの頃、よくいたずらしました。,When I was a child, I often played pranks.,,14,もう一度聞こう,23,できる日本語 初中級 本冊
+気にする,きにする,"feel uneasy, be worried (about)",to worry about / to care about,他人の目を気にしません。,I don't care about other people's eyes.,,14,もう一度聞こう,23,できる日本語 初中級 本冊
+自信,じしん,confidence,confidence,自信を持って話してください。,Please speak with confidence.,,15,話読聞書,24,できる日本語 初中級 本冊
+知り合い,しりあい,acquaintance,acquaintance,知り合いの人に会いました。,I met an acquaintance.,,15,話読聞書,24,できる日本語 初中級 本冊
+大成功,だいせいこう,great success,great success,パーティーは大成功でした。,The party was a great success.,,15,話読聞書,24,できる日本語 初中級 本冊
+ポスター,,poster,poster,壁にポスターをはります。,I put up a poster on the wall.,,15,話読聞書,24,できる日本語 初中級 本冊
+積極的（な）,せっきょくてき,"proactive, positive",proactive / positive,授業に積極的に参加します。,I proactively participate in class.,,15,話読聞書,24,できる日本語 初中級 本冊
+原因,げんいん,cause,cause,事故の原因を調べています。,I am investigating the cause of the accident.,,15,1,24,できる日本語 初中級 本冊
+食料品,しょくりょうひん,food items,food items / groceries,スーパーで食料品を買います。,I buy groceries at the supermarket.,,15,1,24,できる日本語 初中級 本冊
+増加・する,ぞうか・する,increase,to increase,人口が増加しています。,The population is increasing.,,15,1,24,できる日本語 初中級 本冊
+問題,もんだい,"problem, issue",problem,環境問題は大切です。,Environmental problems are important.,,15,1,24,できる日本語 初中級 本冊
+レコード,,record,record (vinyl),古いレコードを聴きます。,I listen to old records.,,15,1,24,できる日本語 初中級 本冊
+貿易,ぼうえき,foreign trade,foreign trade,日本は貿易が盛んです。,Foreign trade is active in Japan.,,15,1,24,できる日本語 初中級 本冊
+事情,じじょう,"situation, circumstances, conditions",circumstances / situation,事情があって帰国します。,I am returning to my country due to circumstances.,,15,1,24,できる日本語 初中級 本冊
+温暖（な）,おんだん,warm,warm (climate),ここは冬も温暖です。,It is warm here even in winter.,,15,1,24,できる日本語 初中級 本冊
+英会話,えいかいわ,English conversation,English conversation,英会話を習っています。,I am learning English conversation.,,15,1,24,できる日本語 初中級 本冊
+女性,じょせい,female,woman / female,この会社は女性が多いです。,There are many women in this company.,,15,1,24,できる日本語 初中級 本冊
+男性,だんせい,male,man / male,男性用の服を探しています。,I am looking for men's clothes.,,15,1,24,できる日本語 初中級 本冊
+地球,ちきゅう,the Earth,the Earth,地球を守りましょう。,Let's protect the Earth.,,15,1,24,できる日本語 初中級 本冊
+直接,ちょくせつ,direct,direct / directly,直接言ったほうがいいですよ。,It's better to say it directly.,,15,1,24,できる日本語 初中級 本冊
+輸入・する,ゆにゅう・する,import,to import,外国から果物を輸入します。,We import fruits from foreign countries.,,15,1,24,できる日本語 初中級 本冊
+洋服,ようふく,(Western-style) clothing,Western-style clothes,洋服を買いに行きます。,I go to buy Western-style clothes.,,15,1,24,できる日本語 初中級 本冊
+理由,りゆう,reason,reason,遅刻した理由を言ってください。,Please tell me the reason you were late.,,15,1,24,できる日本語 初中級 本冊
+グラフ,,graph,graph,グラフを見て説明します。,I explain while looking at the graph.,,15,1,24,できる日本語 初中級 本冊
+～化,か,change into ~,~ization / turning into ~,温暖化が進んでいます。,Global warming is progressing.,,15,1,24,できる日本語 初中級 本冊
+～倍,ばい,by ~ times,~ times as much / ~ fold,値段が2倍になりました。,The price became twice as much.,,15,1,24,できる日本語 初中級 本冊
+下がる,さがる,"fall, drop",to drop / to fall,温度が下がりました。,The temperature dropped.,,15,1,24,できる日本語 初中級 本冊
+飼う,かう,raise (a pet or other animal),to keep (a pet),犬を飼っています。,I keep a dog.,,15,1,24,できる日本語 初中級 本冊
+咲く,さく,blossom,to bloom,春に花が咲きます。,Flowers bloom in the spring.,,15,1,24,できる日本語 初中級 本冊
+アンケート・する,,take a survey,to take a survey,店のアンケートに答えます。,I answer the store's survey.,,15,1,24,できる日本語 初中級 本冊
+インタビュー・する,,interview,to interview,大統領にインタビューします。,I interview the president.,,15,1,24,できる日本語 初中級 本冊
+発表・する,はっぴょう・する,announce,to present / to announce,研究の結果を発表します。,I present the results of the research.,,15,1,24,できる日本語 初中級 本冊
+来日・する,らいにち・する,visit Japan,to come to Japan,外国の人が来日しました。,A foreigner came to Japan.,,15,1,24,できる日本語 初中級 本冊
+流行・する,りゅうこう・する,"become fashionable, popular",to be in fashion / to be popular,その歌は若者の間で流行しています。,That song is popular among young people.,,15,1,24,できる日本語 初中級 本冊
+過ごす,すごす,spend time,to spend (time),週末は家でゆっくり過ごします。,I spend the weekend relaxing at home.,,15,1,24,できる日本語 初中級 本冊
+比べる,くらべる,compare,to compare,2つの国を比べます。,I compare two countries.,,15,1,24,できる日本語 初中級 本冊
+汚い,きたない,dirty,dirty,この川はとても汚いです。,This river is very dirty.,,15,1,24,できる日本語 初中級 本冊
+ほとんど,,hardly,hardly / almost not,昔に比べて、今は雪がほとんど降りません。,Compared to the past, it hardly snows now.,,15,1,24,できる日本語 初中級 本冊
+クッキー,,cookie,cookie,手作りのクッキーを焼きました。,I baked handmade cookies.,,15,2,24,できる日本語 初中級 本冊
+輸出・する,ゆしゅつ・する,export,to export,日本の車を海外に輸出します。,We export Japanese cars overseas.,,15,2,24,できる日本語 初中級 本冊
+インフルエンザ,,"flu, influenza",the flu,インフルエンザにかかりました。,I caught the flu.,,15,2,24,できる日本語 初中級 本冊
+円高,えんだか,"strong yen, yen appreciation",strong yen,円高だと輸入品が安くなります。,If the yen is strong, imported goods become cheaper.,,15,2,24,できる日本語 初中級 本冊
+気温,きおん,air temperature,temperature (air),今日の気温は低いです。,Today's temperature is low.,,15,2,24,できる日本語 初中級 本冊
+立入禁止,たちいりきんし,entry prohibited,no entry / off-limits,ここは立入禁止です。,Entry is prohibited here.,,15,2,24,できる日本語 初中級 本冊
+南極,なんきょく,south pole,the South Pole,南極はとても寒いです。,The South Pole is very cold.,,15,2,24,できる日本語 初中級 本冊
+北極,ほっきょく,north pole,the North Pole,北極にはシロクマが住んでいます。,Polar bears live in the North Pole.,,15,2,24,できる日本語 初中級 本冊
+ダウンロード・する,,download,to download,アプリをダウンロードします。,I download the app.,,15,2,24,できる日本語 初中級 本冊
+進む,すすむ,"move forward, advance",to progress,科学が進みました。,Science has progressed.,,15,2,24,できる日本語 初中級 本冊
+溶ける,とける,melt,to melt,氷が溶けました。,The ice melted.,,15,2,24,できる日本語 初中級 本冊
+減る,へる,"decrease, reduce in number",to decrease,人口が減っています。,The population is decreasing.,,15,2,24,できる日本語 初中級 本冊
+欠席・する,けっせき・する,"be absent, not attend",to be absent,病気で学校を欠席しました。,I was absent from school due to illness.,,15,2,24,できる日本語 初中級 本冊
+危険（な）,きけん,"dangerous, hazardous",dangerous,この道は危険です。,This road is dangerous.,,15,2,24,できる日本語 初中級 本冊
+大変,たいへん,very,terrible / extremely,大変な問題が起きました。,A terrible problem occurred.,,15,2,24,できる日本語 初中級 本冊
+しかし,,"however, but",however,値段が高いです。しかし、品質は良いです。,The price is high. However, the quality is good.,,15,2,24,できる日本語 初中級 本冊
+どんどん,,more and more,rapidly / more and more,日本語がどんどん上手になりました。,My Japanese rapidly became better.,,15,2,24,できる日本語 初中級 本冊
+～によると,,according to ~,according to ~,天気予報によると、明日は雨です。,According to the weather forecast, it will rain tomorrow.,,15,2,24,できる日本語 初中級 本冊
+いろんな,,various,various,いろんな人と友達になりました。,I became friends with various people.,,15,もう一度聞こう,24,できる日本語 初中級 本冊
+約,やく,"about, approximately",approximately / about,集合時間は約10時です。,The meeting time is approximately 10 o'clock.,,15,もう一度聞こう,24,できる日本語 初中級 本冊
+（お）礼,れい,"thanks, appreciation",expression of gratitude / thanks,お礼の手紙を書きました。,I wrote a letter of thanks.,,15,もう一度聞こう,24,できる日本語 初中級 本冊
