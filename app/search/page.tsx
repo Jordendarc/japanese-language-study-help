@@ -22,7 +22,7 @@ export default function SearchPage() {
   // Load both CSVs
   useEffect(() => {
     Promise.all([
-      fetch('/vocab.csv').then(r => r.text()),
+      fetch('/vocabfull.csv').then(r => r.text()),
       fetch('/grammar.csv').then(r => r.text())
     ]).then(([vocabText, grammarText]) => {
       Papa.parse<VocabCard>(vocabText, {
