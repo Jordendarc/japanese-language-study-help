@@ -23,7 +23,7 @@ export default function SearchPage() {
   useEffect(() => {
     Promise.all([
       fetch('/vocabfull.csv').then(r => r.text()),
-      fetch('/grammar.csv').then(r => r.text())
+      fetch('/grammarfull.csv').then(r => r.text())
     ]).then(([vocabText, grammarText]) => {
       Papa.parse<VocabCard>(vocabText, {
         header: true,
@@ -150,39 +150,59 @@ export default function SearchPage() {
 
               {result.type === 'vocab' ? (
                 // Vocabulary Result
-                <>
-                  <div className="text-3xl font-bold text-gray-800 mb-2">
-                    {(result.data as VocabCard).vocab}
-                  </div>
-                  <div className="text-xl text-indigo-600 mb-2">
-                    {(result.data as VocabCard).reading}
-                  </div>
-                  <div className="text-lg text-gray-700 mb-3">
-                    {(result.data as VocabCard).my_meaning || (result.data as VocabCard).english}
-                  </div>
-                  {((result.data as VocabCard).example_jp || (result.data as VocabCard).example) && (
-                    <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-indigo-600">
-                      {(result.data as VocabCard).example_jp ? (
-                        <>
-                          <Furigana text={(result.data as VocabCard).example_jp} className="text-base text-gray-700 mb-1" />
-                          {(result.data as VocabCard).example_en && (
-                            <div className="text-sm text-gray-500 italic">
-                              {(result.data as VocabCard).example_en}
-                            </div>
+                (() => {
+                  const vocabData = result.data as VocabCard;
+                  const isShochukyu = vocabData.textbook?.includes('初中級');
+                  const textbookName = vocabData.textbook ? (isShochukyu ? '初中級' : '中級') : null;
+                  const textbookColor = isShochukyu ? '#F9DD00' : '#01AAC9';
+                  const textbookTextColor = isShochukyu ? '#000000' : '#ffffff';
+
+                  return (
+                    <>
+                      <div className="flex items-start gap-3 mb-2">
+                        <div className="text-3xl font-bold text-gray-800 flex-1">
+                          {vocabData.vocab}
+                        </div>
+                        {textbookName && (
+                          <span
+                            className="px-3 py-1 rounded-lg text-sm font-bold flex-shrink-0"
+                            style={{ backgroundColor: textbookColor, color: textbookTextColor }}
+                          >
+                            {textbookName}
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-xl text-indigo-600 mb-2">
+                        {vocabData.reading}
+                      </div>
+                      <div className="text-lg text-gray-700 mb-3">
+                        {vocabData.my_meaning || vocabData.english}
+                      </div>
+                      {(vocabData.example_jp || vocabData.example) && (
+                        <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-indigo-600">
+                          {vocabData.example_jp ? (
+                            <>
+                              <Furigana text={vocabData.example_jp} className="text-base text-gray-700 mb-1" />
+                              {vocabData.example_en && (
+                                <div className="text-sm text-gray-500 italic">
+                                  {vocabData.example_en}
+                                </div>
+                              )}
+                            </>
+                          ) : (
+                            <Furigana text={vocabData.example} className="text-base text-gray-700" />
                           )}
-                        </>
-                      ) : (
-                        <Furigana text={(result.data as VocabCard).example} className="text-base text-gray-700" />
+                        </div>
                       )}
-                    </div>
-                  )}
-                  {(result.data as VocabCard).lesson && (
-                    <div className="text-sm text-gray-500 mt-3">
-                      Lesson {(result.data as VocabCard).lesson}
-                      {(result.data as VocabCard).page && `, p.${(result.data as VocabCard).page}`}
-                    </div>
-                  )}
-                </>
+                      {vocabData.lesson && (
+                        <div className="text-sm text-gray-500 mt-3">
+                          Lesson {vocabData.lesson}
+                          {vocabData.page && `, p.${vocabData.page}`}
+                        </div>
+                      )}
+                    </>
+                  );
+                })()
               ) : (
                 // Grammar Result
                 <>

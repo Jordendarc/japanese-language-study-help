@@ -20,7 +20,7 @@ export default function Home() {
     // Load CSV files and matome JSON to get counts and lessons
     Promise.all([
       fetch('/vocabfull.csv').then(r => r.text()),
-      fetch('/grammar.csv').then(r => r.text()),
+      fetch('/grammarfull.csv').then(r => r.text()),
       fetch('/matome/glmjsonwithhiragana.json').then(r => r.json()),
       fetch('/kanji/kanjiWithMeanings.json').then(r => r.json())
     ])
@@ -42,8 +42,8 @@ export default function Home() {
           skipEmptyLines: true,
           complete: (results) => {
             setGrammarCount(results.data.length);
-            const lessons = [...new Set(results.data.map(card => card.lesson).filter(Boolean))].sort();
-            setGrammarLessons(lessons);
+            const textbooks = [...new Set(results.data.map(card => card.textbook).filter(t => t && t.length > 5))].sort();
+            setGrammarLessons(textbooks);
           },
         });
 
@@ -133,7 +133,7 @@ export default function Home() {
 
           {/* Grammar Card */}
           <button
-            onClick={() => router.push('/grammar')}
+            onClick={() => router.push('/grammar/select')}
             className="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all hover:scale-105 text-left group"
           >
             <div className="flex items-center justify-between mb-4">
@@ -144,8 +144,8 @@ export default function Home() {
               Master Japanese grammar patterns and usage
             </p>
             <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">{grammarCount} cards</span>
-              <span className="text-gray-500">Lessons {grammarLessons[0]}-{grammarLessons[grammarLessons.length - 1]}</span>
+              <span className="text-gray-500">{grammarCount} grammar points</span>
+              <span className="text-gray-500">{grammarLessons.length} textbook{grammarLessons.length !== 1 ? 's' : ''}</span>
             </div>
             <div className="mt-4 text-purple-600 font-semibold group-hover:translate-x-2 transition-transform">
               Start studying →
@@ -193,28 +193,6 @@ export default function Home() {
               Browse kanji →
             </div>
           </button>
-        </div>
-
-        {/* Features */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white">
-          <h3 className="text-2xl font-bold mb-6 text-center">Features</h3>
-          <div className="grid sm:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="text-3xl mb-2">🔄</div>
-              <h4 className="font-semibold mb-1">Spaced Repetition</h4>
-              <p className="text-sm text-white/80">Review cards you struggle with</p>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl mb-2">📖</div>
-              <h4 className="font-semibold mb-1">Lesson Filter</h4>
-              <p className="text-sm text-white/80">Study specific lessons</p>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl mb-2">⌨️</div>
-              <h4 className="font-semibold mb-1">Keyboard Shortcuts</h4>
-              <p className="text-sm text-white/80">Arrow keys for fast review</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>

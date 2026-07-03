@@ -31,6 +31,20 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
   const meaning = card.my_meaning || card.english;
   const lessonText = card.lesson ? `Lesson ${card.lesson}${card.page ? ', p.' + card.page : ''}` : '';
 
+  // Get textbook info with color
+  const getTextbookInfo = () => {
+    if (!card.textbook) return null;
+
+    const isShochukyu = card.textbook.includes('初中級');
+    return {
+      name: isShochukyu ? '初中級' : '中級',
+      color: isShochukyu ? '#F9DD00' : '#01AAC9',
+      textColor: isShochukyu ? '#000000' : '#ffffff'
+    };
+  };
+
+  const textbookInfo = getTextbookInfo();
+
   // Function to extract kanji from text
   const extractKanji = (text: string): string[] => {
     if (!text) return [];
@@ -228,6 +242,16 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
 
         {/* Back of card */}
         <div className="absolute w-full h-full backface-hidden bg-gray-50 rounded-2xl shadow-2xl p-8 flex flex-col items-center justify-center rotate-y-180" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
+          {/* Textbook badge */}
+          {textbookInfo && (
+            <div
+              className="absolute top-4 right-4 px-3 py-1 rounded-lg text-xs sm:text-sm font-bold"
+              style={{ backgroundColor: textbookInfo.color, color: textbookInfo.textColor }}
+            >
+              {textbookInfo.name}
+            </div>
+          )}
+
           <div className="text-2xl sm:text-3xl text-indigo-600 mb-4">
             {card.reading}
           </div>

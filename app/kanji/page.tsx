@@ -13,6 +13,7 @@ interface VocabEntry {
   my_meaning: string;
   lesson: number;
   page: number;
+  textbook?: string;
 }
 
 interface KanjiData {
@@ -148,51 +149,67 @@ export default function KanjiPage() {
                 {isExpanded && (
                   <div className="border-t border-gray-200 p-4 sm:p-6 bg-orange-50/30">
                     <div className="space-y-4">
-                      {kanjiEntry.vocab.map((vocab, idx) => (
-                        <div
-                          key={idx}
-                          className="bg-white rounded-lg p-3 sm:p-4 shadow-sm border-l-4 border-orange-500"
-                        >
-                          <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4 mb-3">
-                            <div className="flex-1 min-w-0">
-                              <div className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 break-words">
-                                {vocab.word}
-                              </div>
-                              <div className="text-base sm:text-lg text-gray-600 mb-1">
-                                {vocab.reading}
-                              </div>
-                              <div className="text-sm sm:text-base text-orange-700 font-semibold">
-                                {vocab.english}
-                              </div>
-                              {vocab.my_meaning && vocab.my_meaning !== vocab.english && (
-                                <div className="text-xs sm:text-sm text-gray-600 mt-1 italic">
-                                  {vocab.my_meaning}
-                                </div>
-                              )}
-                            </div>
-                            <div className="flex gap-2 text-xs sm:text-sm text-gray-500 sm:flex-shrink-0">
-                              <span className="px-2 py-1 bg-orange-100 text-orange-700 rounded font-medium">
-                                L{vocab.lesson}
-                              </span>
-                              <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded font-medium">
-                                P{vocab.page}
-                              </span>
-                            </div>
-                          </div>
+                      {kanjiEntry.vocab.map((vocab, idx) => {
+                        // Get textbook info
+                        const isShochukyu = vocab.textbook?.includes('初中級');
+                        const textbookName = vocab.textbook ? (isShochukyu ? '初中級' : '中級') : null;
+                        const textbookColor = isShochukyu ? '#F9DD00' : '#01AAC9';
+                        const textbookTextColor = isShochukyu ? '#000000' : '#ffffff';
 
-                          {/* Examples */}
-                          {vocab.example_jp && (
-                            <div className="mt-3 pt-3 border-t border-gray-200 space-y-2">
-                              <div className="text-sm sm:text-base text-gray-800 leading-relaxed break-words overflow-wrap-anywhere">
-                                <Furigana text={vocab.example_jp} />
+                        return (
+                          <div
+                            key={idx}
+                            className="bg-white rounded-lg p-3 sm:p-4 shadow-sm border-l-4 border-orange-500"
+                          >
+                            <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4 mb-3">
+                              <div className="flex-1 min-w-0">
+                                <div className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 break-words">
+                                  {vocab.word}
+                                </div>
+                                <div className="text-base sm:text-lg text-gray-600 mb-1">
+                                  {vocab.reading}
+                                </div>
+                                <div className="text-sm sm:text-base text-orange-700 font-semibold">
+                                  {vocab.english}
+                                </div>
+                                {vocab.my_meaning && vocab.my_meaning !== vocab.english && (
+                                  <div className="text-xs sm:text-sm text-gray-600 mt-1 italic">
+                                    {vocab.my_meaning}
+                                  </div>
+                                )}
                               </div>
-                              <div className="text-xs sm:text-sm text-gray-600 italic break-words">
-                                {vocab.example_en}
+                              <div className="flex gap-2 text-xs sm:text-sm text-gray-500 sm:flex-shrink-0 flex-wrap">
+                                {textbookName && (
+                                  <span
+                                    className="px-2 py-1 rounded font-bold"
+                                    style={{ backgroundColor: textbookColor, color: textbookTextColor }}
+                                  >
+                                    {textbookName}
+                                  </span>
+                                )}
+                                <span className="px-2 py-1 bg-orange-100 text-orange-700 rounded font-medium">
+                                  L{vocab.lesson}
+                                </span>
+                                <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded font-medium">
+                                  P{vocab.page}
+                                </span>
                               </div>
                             </div>
-                          )}
-                        </div>
-                      ))}
+
+                            {/* Examples */}
+                            {vocab.example_jp && (
+                              <div className="mt-3 pt-3 border-t border-gray-200 space-y-2">
+                                <div className="text-sm sm:text-base text-gray-800 leading-relaxed break-words overflow-wrap-anywhere">
+                                  <Furigana text={vocab.example_jp} />
+                                </div>
+                                <div className="text-xs sm:text-sm text-gray-600 italic break-words">
+                                  {vocab.example_en}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 )}

@@ -24,6 +24,7 @@ export interface GrammarCard {
   example_jp: string;
   example_en: string;
   nuance: string;
+  textbook: string;
 }
 
 export type StudyMode = 'vocabulary' | 'grammar';
