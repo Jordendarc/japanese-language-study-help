@@ -193,6 +193,27 @@ export default function Home() {
               Browse kanji →
             </div>
           </button>
+
+          {/* N3 Quiz Card */}
+          <button
+            onClick={() => router.push('/n3-quiz')}
+            className="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all hover:scale-105 text-left group"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-3xl font-bold text-pink-600">N3 Practice Quiz</h2>
+              <div className="text-4xl">🎯</div>
+            </div>
+            <p className="text-gray-600 mb-4">
+              Review JLPT N3 kanji and vocabulary questions
+            </p>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-gray-500">19 questions</span>
+              <span className="text-gray-500">Multiple choice</span>
+            </div>
+            <div className="mt-4 text-pink-600 font-semibold group-hover:translate-x-2 transition-transform">
+              Start quiz →
+            </div>
+          </button>
         </div>
       </div>
     </div>
