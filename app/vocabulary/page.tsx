@@ -328,7 +328,7 @@ function VocabularyPageContent() {
             className="bg-gray-400 hover:bg-gray-500 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-all hover:scale-105 text-xl"
             aria-label="Previous Card"
           >
-            ↑
+            ↶
           </button>
           <button
             onClick={handleGotIt}

@@ -1,7 +1,7 @@
 'use client';
 
 import { VocabCard } from '../types';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Furigana from './Furigana';
 
 interface FlashcardProps {
@@ -19,14 +19,10 @@ interface KanjiMeaning {
 
 export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGreenAnimation, triggerRedAnimation }: FlashcardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [swipeOffset, setSwipeOffset] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
   const [animationState, setAnimationState] = useState<'none' | 'green' | 'red'>('none');
   const [showKanjiBreakdown, setShowKanjiBreakdown] = useState(false);
   const [kanjiBreakdown, setKanjiBreakdown] = useState<KanjiMeaning[]>([]);
   const [kanjiDataLoaded, setKanjiDataLoaded] = useState(false);
-  const startXRef = useRef(0);
-  const wasDraggingRef = useRef(false);
 
   const meaning = card.my_meaning || card.english;
   const lessonText = card.lesson ? `Lesson ${card.lesson}${card.page ? ', p.' + card.page : ''}` : '';
@@ -89,7 +85,6 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
   // Reset flip state when card changes
   useEffect(() => {
     setIsFlipped(false);
-    setSwipeOffset(0);
     setAnimationState('none');
     setShowKanjiBreakdown(false);
     setKanjiDataLoaded(false);
@@ -105,93 +100,26 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
     }
   }, [triggerGreenAnimation, triggerRedAnimation]);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    startXRef.current = e.touches[0].clientX;
-    setIsDragging(true);
-    wasDraggingRef.current = false;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
-    const currentX = e.touches[0].clientX;
-    const diff = currentX - startXRef.current;
-    setSwipeOffset(diff);
-    if (Math.abs(diff) > 5) {
-      wasDraggingRef.current = true;
-    }
-  };
-
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-    if (Math.abs(swipeOffset) > 100) {
-      if (swipeOffset > 0 && onSwipeRight) {
-        onSwipeRight();
-      } else if (swipeOffset < 0 && onSwipeLeft) {
-        onSwipeLeft();
-      }
-    }
-    setSwipeOffset(0);
-  };
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    startXRef.current = e.clientX;
-    setIsDragging(true);
-    wasDraggingRef.current = false;
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    const diff = e.clientX - startXRef.current;
-    setSwipeOffset(diff);
-    if (Math.abs(diff) > 5) {
-      wasDraggingRef.current = true;
-    }
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    if (Math.abs(swipeOffset) > 100) {
-      if (swipeOffset > 0 && onSwipeRight) {
-        onSwipeRight();
-      } else if (swipeOffset < 0 && onSwipeLeft) {
-        onSwipeLeft();
-      }
-    }
-    setSwipeOffset(0);
-    // Reset the dragging flag after a small delay to allow click to check it
-    setTimeout(() => {
-      wasDraggingRef.current = false;
-    }, 10);
-  };
-
   const handleClick = () => {
-    // Only flip if not dragging
-    if (!wasDraggingRef.current) {
+    // Only flip if not selecting text
+    const selection = window.getSelection();
+    const hasSelection = selection && selection.toString().length > 0;
+
+    if (!hasSelection) {
       setIsFlipped(prev => !prev);
     }
   };
-
-  const rotation = swipeOffset * 0.05;
-  const opacity = 1 - Math.abs(swipeOffset) / 300;
 
   return (
     <div className="w-full max-w-2xl mx-auto relative">
       <div
         className="relative w-full h-96 cursor-pointer"
         style={{
-          transform: `translateX(${swipeOffset}px) rotate(${rotation}deg) ${isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'}`,
-          opacity: opacity,
-          transition: isDragging ? 'none' : 'transform 0.5s, opacity 0.3s',
+          transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+          transition: 'transform 0.5s',
           transformStyle: 'preserve-3d'
         }}
         onClick={handleClick}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseUp}
       >
         {/* Front of card */}
         <div className="absolute w-full h-full backface-hidden bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center justify-center" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
@@ -229,7 +157,7 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
           )}
 
           <div className="flex-1 flex items-center justify-center">
-            <div className="text-4xl sm:text-6xl font-bold text-gray-800">
+            <div className="text-4xl sm:text-6xl font-bold text-gray-800 select-text cursor-text">
               {card.vocab}
             </div>
           </div>
