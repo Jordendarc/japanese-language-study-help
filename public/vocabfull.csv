@@ -3241,29 +3241,104 @@
 発動,はつどう,activation,"activation, invoking",免疫（めんえき）システムが発動（はつどう）した。,The immune system was activated.,,1,2,2,まなぼう！日本語中上級
 さらなる,,further,"further, additional",さらなる研究（けんきゅう）が必要（ひつよう）だ。,Further research is necessary.,,1,2,2,まなぼう！日本語中上級
 敵,てき,enemy,enemy,ウイルスは体（からだ）にとって敵（てき）だ。,Viruses are enemies to the body.,,1,2,2,まなぼう！日本語中上級
-共に,ともに,together,together,高齢化（こうれいか）は少子化（しょうしか）と共（とも）に進（すす）んでいる。,The aging population is progressing together with the declining birthrate.,,2,1,2,まなぼう！日本語中上級
-既に,すでに,already,already,既（すで）に人口（じんこう）の四分（よんぶん）の一（いち）が高齢者（こうれいしゃ）だ。,Already a quarter of the population is elderly.,,2,1,2,まなぼう！日本語中上級
-示唆,しさ,suggestion,"suggestion, implication",このデータは将来（しょうらい）の問題（もんだい）を示唆（しさ）している。,This data suggests a future problem.,,2,1,2,まなぼう！日本語中上級
-まったく,,completely,"completely, entirely",少子化（しょうしか）はまったく止（と）まる気配（けはい）がない。,The declining birthrate shows no sign of stopping at all.,,2,1,2,まなぼう！日本語中上級
-手につかない,てにつかない,unable to focus,unable to focus/concentrate on,心配（しんぱい）で仕事（しごと）が手（て）につかない。,I'm so worried I can't focus on my work.,,2,1,2,まなぼう！日本語中上級
-凄まじい,すさまじい,tremendous,"terrific, tremendous, dreadful",高齢化（こうれいか）のスピードが凄（すさ）まじい。,The speed of the aging population is tremendous.,,2,1,2,まなぼう！日本語中上級
-マニュアル,,manual,manual,介護（かいご）のマニュアルを読（よ）んだ。,I read the caregiving manual.,,2,1,2,まなぼう！日本語中上級
-専門家,せんもんか,expert,"expert, specialist",専門家（せんもんか）にこの問題（もんだい）について聞（き）いた。,I asked an expert about this problem.,,2,1,2,まなぼう！日本語中上級
-文字,もじ,character,"character, letter (writing)",高齢者（こうれいしゃ）には小（ちい）さい文字（もじ）が読（よ）みにくい。,Small letters are hard for elderly people to read.,,2,1,2,まなぼう！日本語中上級
-(問題を)解く,(もんだいを)とく,to solve,to solve (a problem),この社会（しゃかい）問題（もんだい）を解（と）くのは簡単（かんたん）ではない。,Solving this social problem isn't easy.,,2,1,2,まなぼう！日本語中上級
-上級,じょうきゅう,advanced level,advanced level,上級（じょうきゅう）レベルの介護（かいご）資格（しかく）を取（と）った。,I got an advanced-level caregiving qualification.,,2,1,2,まなぼう！日本語中上級
-一人旅,ひとりたび,solo travel,solo travel,定年後（ていねんご）に一人旅（ひとりたび）をする人（ひと）が増（ふ）えた。,More people travel alone after retirement.,,2,1,2,まなぼう！日本語中上級
-通信教育,つうしんきょういく,correspondence education,correspondence education,通信教育（つうしんきょういく）で介護（かいご）を学（まな）んでいる。,I'm studying caregiving through correspondence education.,,2,1,2,まなぼう！日本語中上級
-幅広い,はばひろい,wide-ranging,"wide-ranging, broad",高齢者（こうれいしゃ）には幅広（はばひろ）い支援（しえん）が必要（ひつよう）だ。,The elderly need wide-ranging support.,,2,1,2,まなぼう！日本語中上級
-知識,ちしき,knowledge,knowledge,介護（かいご）についての知識（ちしき）を身（み）につけた。,I acquired knowledge about caregiving.,,2,1,2,まなぼう！日本語中上級
-日本語能力試験,にほんごのうりょくしけん,JLPT,Japanese Language Proficiency Test (JLPT),日本語能力試験（にほんごのうりょくしけん）のN2に合格（ごうかく）した。,I passed the N2 level of the JLPT.,,2,1,2,まなぼう！日本語中上級
-流暢(な),りゅうちょう,fluent,fluent,彼女（かのじょ）は流暢（りゅうちょう）な日本語（にほんご）を話（はな）す。,She speaks fluent Japanese.,,2,1,2,まなぼう！日本語中上級
-わがまま(な),,selfish,"selfish, willful",高齢者（こうれいしゃ）だからといってわがままを許（ゆる）してはいけない。,Just because someone is elderly doesn't mean their selfishness should be excused.,,2,1,2,まなぼう！日本語中上級
-従来,じゅうらい,conventionally,"conventionally, up to now",従来（じゅうらい）の制度（せいど）では対応（たいおう）できない。,The conventional system can't handle this.,,2,1,2,まなぼう！日本語中上級
-成育,せいいく,growth,"growth, development",子供（こども）の健（すこ）やかな成育（せいいく）を願（ねが）う。,We hope for the child's healthy growth.,,2,1,2,まなぼう！日本語中上級
-増大,ぞうだい,increase,"increase, growth",医療費（いりょうひ）の増大（ぞうだい）が問題（もんだい）になっている。,The increase in medical costs has become a problem.,,2,1,2,まなぼう！日本語中上級
-支援,しえん,support,"support, assistance",政府（せいふ）は子育（こそだ）て支援（しえん）を強化（きょうか）した。,The government strengthened childcare support.,,2,1,2,まなぼう！日本語中上級
-世代,せだい,generation,generation,若（わか）い世代（せだい）の負担（ふたん）が増（ふ）えている。,The burden on the younger generation is increasing.,,2,1,2,まなぼう！日本語中上級
-平均値,へいきんち,average value,average value,平均値（へいきんち）を見（み）ると出生率（しゅっしょうりつ）は下（さ）がっている。,"Looking at the average, the birthrate is falling.",,2,1,2,まなぼう！日本語中上級
-～弱,じゃく,a little less than,"a little less than, e.g. 十人弱",参加者（さんかしゃ）は百人弱（ひゃくにんじゃく）だった。,There were a little under a hundred participants.,,2,1,2,まなぼう！日本語中上級
-補助線,ほじょせん,auxiliary line,auxiliary line (geometry),図（ず）に補助線（ほじょせん）を引（ひ）いて考（かんが）えた。,I drew an auxiliary line on the diagram and thought it through.,,2,1,2,まなぼう！日本語中上級
+共に,ともに,together,together,高齢化（こうれいか）は少子化（しょうしか）と共（とも）に進（すす）んでいる。,The aging population is progressing together with the declining birthrate.,,2,1,,まなぼう！日本語中上級
+既に,すでに,already,already,既（すで）に人口（じんこう）の四分（よんぶん）の一（いち）が高齢者（こうれいしゃ）だ。,Already a quarter of the population is elderly.,,2,1,,まなぼう！日本語中上級
+示唆,しさ,suggestion,"suggestion, implication",このデータは将来（しょうらい）の問題（もんだい）を示唆（しさ）している。,This data suggests a future problem.,,2,1,,まなぼう！日本語中上級
+まったく,,completely,"completely, entirely",少子化（しょうしか）はまったく止（と）まる気配（けはい）がない。,The declining birthrate shows no sign of stopping at all.,,2,1,,まなぼう！日本語中上級
+手につかない,てにつかない,unable to focus,unable to focus/concentrate on,心配（しんぱい）で仕事（しごと）が手（て）につかない。,I'm so worried I can't focus on my work.,,2,1,,まなぼう！日本語中上級
+凄まじい,すさまじい,tremendous,"terrific, tremendous, dreadful",高齢化（こうれいか）のスピードが凄（すさ）まじい。,The speed of the aging population is tremendous.,,2,1,,まなぼう！日本語中上級
+マニュアル,,manual,manual,介護（かいご）のマニュアルを読（よ）んだ。,I read the caregiving manual.,,2,1,,まなぼう！日本語中上級
+専門家,せんもんか,expert,"expert, specialist",専門家（せんもんか）にこの問題（もんだい）について聞（き）いた。,I asked an expert about this problem.,,2,1,,まなぼう！日本語中上級
+文字,もじ,character,"character, letter (writing)",高齢者（こうれいしゃ）には小（ちい）さい文字（もじ）が読（よ）みにくい。,Small letters are hard for elderly people to read.,,2,1,,まなぼう！日本語中上級
+(問題を)解く,(もんだいを)とく,to solve,to solve (a problem),この社会（しゃかい）問題（もんだい）を解（と）くのは簡単（かんたん）ではない。,Solving this social problem isn't easy.,,2,1,,まなぼう！日本語中上級
+上級,じょうきゅう,advanced level,advanced level,上級（じょうきゅう）レベルの介護（かいご）資格（しかく）を取（と）った。,I got an advanced-level caregiving qualification.,,2,1,,まなぼう！日本語中上級
+一人旅,ひとりたび,solo travel,solo travel,定年後（ていねんご）に一人旅（ひとりたび）をする人（ひと）が増（ふ）えた。,More people travel alone after retirement.,,2,1,,まなぼう！日本語中上級
+通信教育,つうしんきょういく,correspondence education,correspondence education,通信教育（つうしんきょういく）で介護（かいご）を学（まな）んでいる。,I'm studying caregiving through correspondence education.,,2,1,,まなぼう！日本語中上級
+幅広い,はばひろい,wide-ranging,"wide-ranging, broad",高齢者（こうれいしゃ）には幅広（はばひろ）い支援（しえん）が必要（ひつよう）だ。,The elderly need wide-ranging support.,,2,1,,まなぼう！日本語中上級
+知識,ちしき,knowledge,knowledge,介護（かいご）についての知識（ちしき）を身（み）につけた。,I acquired knowledge about caregiving.,,2,1,,まなぼう！日本語中上級
+日本語能力試験,にほんごのうりょくしけん,JLPT,Japanese Language Proficiency Test (JLPT),日本語能力試験（にほんごのうりょくしけん）のN2に合格（ごうかく）した。,I passed the N2 level of the JLPT.,,2,1,,まなぼう！日本語中上級
+流暢な,りゅうちょう,fluent,fluent,彼女（かのじょ）は流暢（りゅうちょう）な日本語（にほんご）を話（はな）す。,She speaks fluent Japanese.,,2,1,,まなぼう！日本語中上級
+わがままな,,selfish,"selfish, willful",高齢者（こうれいしゃ）だからといってわがままを許（ゆる）してはいけない。,Just because someone is elderly doesn't mean their selfishness should be excused.,,2,1,,まなぼう！日本語中上級
+従来,じゅうらい,conventionally,"conventionally, up to now",従来（じゅうらい）の制度（せいど）では対応（たいおう）できない。,The conventional system can't handle this.,,2,1,,まなぼう！日本語中上級
+成育,せいいく,growth,"growth, development",子供（こども）の健（すこ）やかな成育（せいいく）を願（ねが）う。,We hope for the child's healthy growth.,,2,1,,まなぼう！日本語中上級
+増大,ぞうだい,increase,"increase, growth",医療費（いりょうひ）の増大（ぞうだい）が問題（もんだい）になっている。,The increase in medical costs has become a problem.,,2,1,,まなぼう！日本語中上級
+支援,しえん,support,"support, assistance",政府（せいふ）は子育（こそだ）て支援（しえん）を強化（きょうか）した。,The government strengthened childcare support.,,2,1,,まなぼう！日本語中上級
+世代,せだい,generation,generation,若（わか）い世代（せだい）の負担（ふたん）が増（ふ）えている。,The burden on the younger generation is increasing.,,2,1,,まなぼう！日本語中上級
+平均値,へいきんち,average value,average value,平均値（へいきんち）を見（み）ると出生率（しゅっしょうりつ）は下（さ）がっている。,"Looking at the average, the birthrate is falling.",,2,1,,まなぼう！日本語中上級
+〜弱,じゃく,a little less than,"a little less than, e.g. 十人弱",参加者（さんかしゃ）は百人弱（ひゃくにんじゃく）だった。,There were a little under a hundred participants.,,2,1,,まなぼう！日本語中上級
+補助線,ほじょせん,auxiliary line,auxiliary line (geometry),図（ず）に補助線（ほじょせん）を引（ひ）いて考（かんが）えた。,I drew an auxiliary line on the diagram and thought it through.,,2,1,,まなぼう！日本語中上級
+ばらつき,,variation,"variation, dispersion, unevenness",地域（ちいき）によって出生率（しゅっしょうりつ）にばらつきがある。,There is variation in the birthrate depending on the region.,,2,1,,まなぼう！日本語中上級
+世の中,よのなか,society,"the world, society",世（よ）の中（なか）は少子高齢化（しょうしこうれいか）が進（すす）んでいる。,The world is experiencing the progression of the declining birthrate and aging population.,,2,1,,まなぼう！日本語中上級
+導入,どうにゅう,introduction,introduction (of a system),新（あたら）しい制度（せいど）を導入（どうにゅう）した。,A new system was introduced.,,2,1,,まなぼう！日本語中上級
+ファーストフード,,fast food,fast food,若（わか）い世代（せだい）はファーストフードをよく食（た）べる。,The younger generation eats fast food often.,,2,1,,まなぼう！日本語中上級
+労力,ろうりょく,labor,"labor, effort",育児（いくじ）には多（おお）くの労力（ろうりょく）がかかる。,Childcare requires a lot of labor/effort.,,2,1,,まなぼう！日本語中上級
+雇用,こよう,employment,employment,高齢者（こうれいしゃ）の雇用（こよう）を促進（そくしん）する。,They are promoting the employment of elderly people.,,2,1,,まなぼう！日本語中上級
+危機的な,ききてき,critical,"critical, in crisis",年金制度（ねんきんせいど）は危機的（ききてき）な状況（じょうきょう）にある。,The pension system is in a critical situation.,,2,1,,まなぼう！日本語中上級
+そのまま,,as is,"as is, unchanged",この問題（もんだい）をそのまま放置（ほうち）することはできない。,We can't just leave this problem as it is.,,2,1,,まなぼう！日本語中上級
+ケース,,case,"case, instance",こういうケースは珍（めずら）しくない。,Cases like this aren't rare.,,2,1,,まなぼう！日本語中上級
+悲観,ひかん,pessimism,pessimism,将来（しょうらい）を悲観（ひかん）してばかりもいられない。,We can't just keep being pessimistic about the future.,,2,1,,まなぼう！日本語中上級
+雇う,やとう,to hire,"to hire, employ",会社（かいしゃ）は新（あたら）しく社員（しゃいん）を雇（やと）った。,The company newly hired an employee.,,2,1,,まなぼう！日本語中上級
+独立,どくりつ,independence,independence,子供（こども）が独立（どくりつ）して家（いえ）を出（で）た。,The child became independent and left home.,,2,1,,まなぼう！日本語中上級
+夫婦,ふうふ,married couple,married couple,あの夫婦（ふうふ）は共働（ともばたら）きだ。,That couple both work.,,2,1,,まなぼう！日本語中上級
+前半,ぜんはん,first half,first half,20代（だい）前半（ぜんはん）で結婚（けっこん）する人（ひと）は減（へ）っている。,The number of people who marry in their early twenties is decreasing.,,2,1,,まなぼう！日本語中上級
+登校,とうこう,going to school,going to school,子供（こども）が毎日（まいにち）元気（げんき）に登校（とうこう）している。,The child goes to school energetically every day.,,2,1,,まなぼう！日本語中上級
+評判,ひょうばん,reputation,reputation,この保育園（ほいくえん）は評判（ひょうばん）がいい。,This nursery school has a good reputation.,,2,1,,まなぼう！日本語中上級
+魅力的な,みりょくてき,attractive,"attractive, charming",子育（こそだ）て支援（しえん）が魅力的（みりょくてき）な自治体（じちたい）に人（ひと）が集（あつ）まる。,People gather in municipalities with attractive childcare support.,,2,1,,まなぼう！日本語中上級
+秘訣,ひけつ,secret,"secret, key (to success)",長寿（ちょうじゅ）の秘訣（ひけつ）は規則正（きそくただ）しい生活（せいかつ）だ。,The secret to longevity is a regular lifestyle.,,2,1,,まなぼう！日本語中上級
+子育て,こそだて,child-rearing,child-rearing,夫婦（ふうふ）で子育（こそだ）てをしている。,The couple is raising their children together.,,2,1,,まなぼう！日本語中上級
+別人,べつじん,different person,a different/changed person,引退後（いんたいご）の彼（かれ）はまるで別人（べつじん）のようだ。,"After retiring, he seems like a completely different person.",,2,1,,まなぼう！日本語中上級
+老後,ろうご,old age,"one's later years, old age",老後（ろうご）の生活（せいかつ）が心配（しんぱい）だ。,I'm worried about my life in old age.,,2,1,,まなぼう！日本語中上級
+(体の自由が)利く,(からだのじゆうが)きく,to move freely,for one's body to still move/function freely,年（とし）を取（と）っても体（からだ）の自由（じゆう）が利（き）くうちは働（はたら）きたい。,"As long as I can still move my body freely even as I age, I want to work.",,2,1,,まなぼう！日本語中上級
+前提,ぜんてい,premise,"premise, precondition",この計画（けいかく）は人口（じんこう）が増（ふ）えることを前提（ぜんてい）にしている。,This plan is premised on the population increasing.,,2,1,,まなぼう！日本語中上級
+メリット,,merit,"merit, advantage",早（はや）く結婚（けっこん）するメリットは何（なん）ですか。,What are the merits of marrying early?,,2,1,,まなぼう！日本語中上級
+デメリット,,demerit,"demerit, disadvantage",一人暮（ひとりぐ）らしにはデメリットもある。,Living alone also has demerits.,,2,1,,まなぼう！日本語中上級
+ディスカッション,,discussion,discussion,少子化（しょうしか）についてディスカッションをした。,We had a discussion about the declining birthrate.,,2,1,,まなぼう！日本語中上級
+強める,つよめる,to strengthen,to strengthen,政府（せいふ）は子育（こそだ）て支援（しえん）を強（つよ）めた。,The government strengthened childcare support.,,2,1,,まなぼう！日本語中上級
+少子高齢化,しょうしこうれいか,declining birthrate/aging population,declining birthrate and aging population,少子高齢化（しょうしこうれいか）は日本（にほん）の大（おお）きな課題（かだい）だ。,The declining birthrate and aging population is a major issue in Japan.,,2,2,,まなぼう！日本語中上級
+現状,げんじょう,current situation,current situation,少子化（しょうしか）の現状（げんじょう）を調査（ちょうさ）した。,They investigated the current state of the declining birthrate.,,2,2,,まなぼう！日本語中上級
+国際連合,こくさいれんごう,United Nations,United Nations,国際連合（こくさいれんごう）が人口（じんこう）統計（とうけい）を発表（はっぴょう）した。,The United Nations published population statistics.,,2,2,,まなぼう！日本語中上級
+総人口,そうじんこう,total population,total population,日本（にほん）の総人口（そうじんこう）は減少（げんしょう）している。,Japan's total population is decreasing.,,2,2,,まなぼう！日本語中上級
+産む,うむ,to give birth,"to give birth to, bear (a child)",もっと子供（こども）を産（う）みたいという人（ひと）は多（おお）い。,Many people say they want to have more children.,,2,2,,まなぼう！日本語中上級
+出生,しゅっせい,birth,birth,去年（きょねん）の出生（しゅっせい）数（すう）は過去最少（かこさいしょう）だった。,Last year's number of births was the lowest on record.,,2,2,,まなぼう！日本語中上級
+合計特殊出生率,ごうけいとくしゅしゅっしょうりつ,total fertility rate,total fertility rate,日本（にほん）の合計特殊出生率（ごうけいとくしゅしゅっしょうりつ）は1.2を下回（したまわ）った。,Japan's total fertility rate fell below 1.2.,,2,2,,まなぼう！日本語中上級
+下回る,したまわる,to fall below,"to fall below, be under",出生数（しゅっしょうすう）が予想（よそう）を下回（したまわ）った。,The number of births fell below expectations.,,2,2,,まなぼう！日本語中上級
+急速な,きゅうそく,rapid,rapid,高齢化（こうれいか）は急速（きゅうそく）なスピードで進（すす）んでいる。,The aging of the population is progressing at a rapid pace.,,2,2,,まなぼう！日本語中上級
+医学,いがく,medicine (science),medical science,医学（いがく）の進歩（しんぽ）で平均寿命（へいきんじゅみょう）が伸（の）びた。,Average life expectancy has increased due to advances in medicine.,,2,2,,まなぼう！日本語中上級
+晩婚,ばんこん,late marriage,marrying late in life,晩婚（ばんこん）化が進（すす）んでいる。,The trend toward marrying later in life is progressing.,,2,2,,まなぼう！日本語中上級
+未婚,みこん,unmarried,unmarried,未婚（みこん）の人（ひと）の割合（わりあい）が増（ふ）えた。,The proportion of unmarried people has increased.,,2,2,,まなぼう！日本語中上級
+歯止め,はどめ,brake/check,"a brake, a check/stop (on something)",少子化（しょうしか）に歯止（はど）めがかからない。,There's no stopping the declining birthrate.,,2,2,,まなぼう！日本語中上級
+生産力,せいさんりょく,production capacity,production capacity,労働人口（ろうどうじんこう）の減少（げんしょう）は生産力（せいさんりょく）の低下（ていか）につながる。,The decrease in the working population leads to a decline in production capacity.,,2,2,,まなぼう！日本語中上級
+社会保障,しゃかいほうしょう,social security,social security,社会保障（しゃかいほうしょう）制度（せいど）の見直（みなお）しが必要（ひつよう）だ。,A review of the social security system is necessary.,,2,2,,まなぼう！日本語中上級
+負担,ふたん,burden,burden,若（わか）い世代（せだい）の負担（ふたん）が増（ふ）えている。,The burden on the younger generation is increasing.,,2,2,,まなぼう！日本語中上級
+制度,せいど,system,system,年金（ねんきん）制度（せいど）を改革（かいかく）する必要（ひつよう）がある。,There's a need to reform the pension system.,,2,2,,まなぼう！日本語中上級
+自主性,じしゅせい,independence/initiative,"self-reliance, independence (of spirit)",子供（こども）の自主性（じしゅせい）を育（そだ）てる教育（きょういく）が求（もと）められている。,Education that fosters children's independence is being sought.,,2,2,,まなぼう！日本語中上級
+年金,ねんきん,pension,pension,年金（ねんきん）だけでは生活（せいかつ）できない。,One can't live on pension alone.,,2,2,,まなぼう！日本語中上級
+財政,ざいせい,finances,(national/fiscal) finances,国（くに）の財政（ざいせい）が厳（きび）しい状況（じょうきょう）にある。,The nation's finances are in a difficult situation.,,2,2,,まなぼう！日本語中上級
+厳しい,きびしい,severe,"severe, harsh, tight",年金財政（ねんきんざいせい）は厳（きび）しい。,Pension finances are severe/tight.,,2,2,,まなぼう！日本語中上級
+貯蓄,ちょちく,savings,savings,老後（ろうご）のために貯蓄（ちょちく）をしている。,I'm saving up for old age.,,2,2,,まなぼう！日本語中上級
+切り崩す,きりくずす,to dip into,"to dip into (savings), to erode",貯蓄（ちょちく）を切（き）り崩（くず）して生活（せいかつ）している。,I'm living by dipping into my savings.,,2,2,,まなぼう！日本語中上級
+大多数,だいたすう,vast majority,vast majority,大多数（だいたすう）の人（ひと）が年金（ねんきん）に不安（ふあん）を感（かん）じている。,The vast majority of people feel anxious about pensions.,,2,2,,まなぼう！日本語中上級
+消費,しょうひ,consumption,consumption,高齢者（こうれいしゃ）の消費（しょうひ）が経済（けいざい）を支（ささ）えている。,Elderly consumption is supporting the economy.,,2,2,,まなぼう！日本語中上級
+資本,しほん,capital,capital,人（ひと）は最（もっと）も大切（たいせつ）な資本（しほん）だ。,People are the most important capital.,,2,2,,まなぼう！日本語中上級
+活発化,かっぱつか,becoming active,becoming more active/vigorous,高齢者（こうれいしゃ）向（む）けの市場（しじょう）が活発化（かっぱつか）している。,The market geared toward the elderly is becoming more active.,,2,2,,まなぼう！日本語中上級
+原動力,げんどうりょく,driving force,driving force,若者（わかもの）は社会（しゃかい）の原動力（げんどうりょく）だ。,Young people are the driving force of society.,,2,2,,まなぼう！日本語中上級
+最大,さいだい,biggest,"biggest, maximum",少子高齢化（しょうしこうれいか）は最大（さいだい）の課題（かだい）だ。,The declining birthrate and aging population is the biggest challenge.,,2,2,,まなぼう！日本語中上級
+介護保険法,かいごほけんほう,Long-Term Care Insurance Act,Long-Term Care Insurance Act,介護保険法（かいごほけんほう）が制定（せいてい）された。,The Long-Term Care Insurance Act was enacted.,,2,2,,まなぼう！日本語中上級
+実施,じっし,implementation,implementation,新（あたら）しい制度（せいど）が来年（らいねん）から実施（じっし）される。,The new system will be implemented starting next year.,,2,2,,まなぼう！日本語中上級
+財源,ざいげん,funding source,source of funds/revenue,社会保障（しゃかいほうしょう）の財源（ざいげん）をどう確保（かくほ）するか。,How to secure funding for social security.,,2,2,,まなぼう！日本語中上級
+サービス,,service,service,介護（かいご）サービスを利用（りよう）している。,I'm using nursing care services.,,2,2,,まなぼう！日本語中上級
+再配分,さいはいぶん,redistribution,redistribution,富（とみ）の再配分（さいはいぶん）が求（もと）められている。,Redistribution of wealth is being called for.,,2,2,,まなぼう！日本語中上級
+食い止める,くいとめる,to stop,"to stop, curb, hold back",少子化（しょうしか）を食（く）い止（と）めるための対策（たいさく）を考（かんが）える。,We consider measures to stop the declining birthrate.,,2,2,,まなぼう！日本語中上級
+自治体,じちたい,municipality,local government/municipality,各自治体（かくじちたい）が独自（どくじ）の支援策（しえんさく）を行（おこな）っている。,Each municipality is carrying out its own support measures.,,2,2,,まなぼう！日本語中上級
+育児,いくじ,childcare,childcare,育児（いくじ）と仕事（しごと）の両立（りょうりつ）は大変（たいへん）だ。,Balancing childcare and work is tough.,,2,2,,まなぼう！日本語中上級
+整備,せいび,development,"development, maintenance (of infrastructure)",保育施設（ほいくしせつ）の整備（せいび）が急（いそ）がれる。,The development of childcare facilities is urgently needed.,,2,2,,まなぼう！日本語中上級
+提供,ていきょう,provision,"provision, offering",自治体（じちたい）が子育（こそだ）て支援（しえん）サービスを提供（ていきょう）している。,The municipality provides childcare support services.,,2,2,,まなぼう！日本語中上級
+進出,しんしゅつ,advancement,advancement (into a field/society),女性（じょせい）の社会進出（しゃかいしんしゅつ）が進（すす）んでいる。,Women's advancement into society is progressing.,,2,2,,まなぼう！日本語中上級
+妨げ,さまたげ,obstacle,"obstacle, hindrance",保育園（ほいくえん）不足（ぶそく）が女性（じょせい）の社会進出（しゃかいしんしゅつ）の妨（さまた）げになっている。,The shortage of nursery schools is an obstacle to women's advancement in society.,,2,2,,まなぼう！日本語中上級
+一向に,いっこうに,not at all,"(not) at all, in the least",少子化（しょうしか）は一向（いっこう）に改善（かいぜん）される気配（けはい）がない。,There's no sign at all that the declining birthrate will improve.,,2,2,,まなぼう！日本語中上級
+気配,けはい,sign,"sign, indication",景気（けいき）が回復（かいふく）する気配（けはい）が見（み）える。,There are signs that the economy is recovering.,,2,2,,まなぼう！日本語中上級
+構築,こうちく,construction,"construction, building (a system)",新（あたら）しい社会保障（しゃかいほうしょう）制度（せいど）を構築（こうちく）する。,We build a new social security system.,,2,2,,まなぼう！日本語中上級
+移民,いみん,immigrant,"immigrant, immigration",労働力不足（ろうどうりょくぶそく）を移民（いみん）で補（おぎな）う国（くに）もある。,Some countries make up for labor shortages with immigrants.,,2,2,,まなぼう！日本語中上級
+引き受ける,ひきうける,to take on,"to take on, undertake (a responsibility)",彼女（かのじょ）は親（おや）の介護（かいご）を引（ひ）き受（う）けた。,She took on the responsibility of caring for her parent.,,2,2,,まなぼう！日本語中上級
+柔軟な,じゅうなん,flexible,flexible,柔軟（じゅうなん）な働（はたら）き方（かた）を導入（どうにゅう）する会社（かいしゃ）が増（ふ）えている。,More companies are introducing flexible ways of working.,,2,2,,まなぼう！日本語中上級
+姿勢,しせい,stance,"stance, posture, attitude",政府（せいふ）は問題（もんだい）に取（と）り組（く）む姿勢（しせい）を示（しめ）した。,The government showed its stance on tackling the problem.,,2,2,,まなぼう！日本語中上級
