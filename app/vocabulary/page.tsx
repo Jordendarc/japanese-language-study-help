@@ -110,12 +110,19 @@ function VocabularyPageContent() {
     setTriggerGreen(true);
     setTimeout(() => {
       setTriggerGreen(false);
-      if (currentIndex < currentQueue.length - 1) {
-        setCurrentIndex(currentIndex + 1);
-      } else {
-        startNextRound();
-      }
       setTotalReviewed(prev => prev + 1);
+
+      // Check if this was the last card in the current queue
+      const isLastCard = currentIndex >= currentQueue.length - 1;
+
+      if (isLastCard) {
+        // Start next round (will check if there are cards to review)
+        startNextRound();
+      } else {
+        // Move to next card
+        setCurrentIndex(currentIndex + 1);
+      }
+
       setIsProcessing(false);
     }, 600);
   };
@@ -126,6 +133,7 @@ function VocabularyPageContent() {
     setTriggerRed(true);
     setTimeout(() => {
       setTriggerRed(false);
+      setTotalReviewed(prev => prev + 1);
 
       // Only add to review queue if it's not already there
       const currentCard = currentQueue[currentIndex];
@@ -133,16 +141,23 @@ function VocabularyPageContent() {
         card => card.vocab === currentCard.vocab && card.lesson === currentCard.lesson
       );
 
+      let updatedReviewQueue = reviewQueue;
       if (!isAlreadyInReview) {
-        setReviewQueue([...reviewQueue, currentCard]);
+        updatedReviewQueue = [...reviewQueue, currentCard];
+        setReviewQueue(updatedReviewQueue);
       }
 
-      if (currentIndex < currentQueue.length - 1) {
-        setCurrentIndex(currentIndex + 1);
+      // Check if this was the last card in the current queue
+      const isLastCard = currentIndex >= currentQueue.length - 1;
+
+      if (isLastCard) {
+        // Start next round with updated review queue
+        startNextRoundWithQueue(updatedReviewQueue);
       } else {
-        startNextRound();
+        // Move to next card
+        setCurrentIndex(currentIndex + 1);
       }
-      setTotalReviewed(prev => prev + 1);
+
       setIsProcessing(false);
     }, 600);
   };
@@ -155,9 +170,13 @@ function VocabularyPageContent() {
   };
 
   const startNextRound = () => {
-    if (reviewQueue.length > 0) {
+    startNextRoundWithQueue(reviewQueue);
+  };
+
+  const startNextRoundWithQueue = (queueToUse: VocabCard[]) => {
+    if (queueToUse.length > 0) {
       // Shuffle the review queue before starting next round
-      const shuffled = [...reviewQueue];
+      const shuffled = [...queueToUse];
       for (let i = shuffled.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
