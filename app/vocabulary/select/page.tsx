@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Papa from 'papaparse';
 import { VocabCard } from '../../types';
+import { getTextbookColor } from '../../utils/textbookColors';
 
 export default function VocabularySelectPage() {
   const router = useRouter();
@@ -231,10 +232,9 @@ export default function VocabularySelectPage() {
 
           <div className="flex flex-col gap-3">
             {availableTextbooks.map(textbook => {
-              // Check for 初中級 first (more specific), then 中級
-              const isShochukyu = textbook.includes('初中級');
-              const textbookColor = isShochukyu ? '#F9DD00' : '#01AAC9';
-              const textbookTextColor = isShochukyu ? '#000000' : '#ffffff';
+              const colors = getTextbookColor(textbook);
+              const textbookColor = colors.backgroundColor;
+              const textbookTextColor = colors.textColor;
 
               return (
                 <button
@@ -282,10 +282,10 @@ export default function VocabularySelectPage() {
                   allVocabCards.some(card => card.textbook === textbook && card.lesson === lesson)
                 );
 
-                // Determine textbook color - check for 初中級 first (more specific)
-                const isShochukyu = textbook.includes('初中級');
-                const textbookColor = isShochukyu ? '#F9DD00' : '#01AAC9';
-                const textbookTextColor = isShochukyu ? '#000000' : '#ffffff';
+                // Determine textbook color
+                const colors = getTextbookColor(textbook);
+                const textbookColor = colors.backgroundColor;
+                const textbookTextColor = colors.textColor;
 
                 // Get selected lessons for this textbook
                 const selectedLessonsForTextbook = selectedLessonsByTextbook.get(textbook) || new Set();

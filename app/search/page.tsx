@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Papa from 'papaparse';
 import { VocabCard, GrammarCard } from '../types';
 import Furigana from '../components/Furigana';
+import { getTextbookColor, getTextbookShortName } from '../utils/textbookColors';
 
 type SearchResult = {
   type: 'vocab' | 'grammar';
@@ -152,10 +153,10 @@ export default function SearchPage() {
                 // Vocabulary Result
                 (() => {
                   const vocabData = result.data as VocabCard;
-                  const isShochukyu = vocabData.textbook?.includes('初中級');
-                  const textbookName = vocabData.textbook ? (isShochukyu ? '初中級' : '中級') : null;
-                  const textbookColor = isShochukyu ? '#F9DD00' : '#01AAC9';
-                  const textbookTextColor = isShochukyu ? '#000000' : '#ffffff';
+                  const colors = vocabData.textbook ? getTextbookColor(vocabData.textbook) : null;
+                  const textbookName = vocabData.textbook ? getTextbookShortName(vocabData.textbook) : null;
+                  const textbookColor = colors?.backgroundColor || '#01AAC9';
+                  const textbookTextColor = colors?.textColor || '#ffffff';
 
                   return (
                     <>

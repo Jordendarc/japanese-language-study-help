@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Furigana from '../components/Furigana';
+import { getTextbookColor, getTextbookShortName } from '../utils/textbookColors';
 
 interface VocabEntry {
   word: string;
@@ -151,10 +152,10 @@ export default function KanjiPage() {
                     <div className="space-y-4">
                       {kanjiEntry.vocab.map((vocab, idx) => {
                         // Get textbook info
-                        const isShochukyu = vocab.textbook?.includes('初中級');
-                        const textbookName = vocab.textbook ? (isShochukyu ? '初中級' : '中級') : null;
-                        const textbookColor = isShochukyu ? '#F9DD00' : '#01AAC9';
-                        const textbookTextColor = isShochukyu ? '#000000' : '#ffffff';
+                        const colors = vocab.textbook ? getTextbookColor(vocab.textbook) : null;
+                        const textbookName = vocab.textbook ? getTextbookShortName(vocab.textbook) : null;
+                        const textbookColor = colors?.backgroundColor || '#01AAC9';
+                        const textbookTextColor = colors?.textColor || '#ffffff';
 
                         return (
                           <div

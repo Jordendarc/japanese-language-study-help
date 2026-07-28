@@ -3,6 +3,7 @@
 import { VocabCard } from '../types';
 import { useState, useEffect } from 'react';
 import Furigana from './Furigana';
+import { getTextbookColor, getTextbookShortName } from '../utils/textbookColors';
 
 interface FlashcardProps {
   card: VocabCard;
@@ -31,11 +32,12 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
   const getTextbookInfo = () => {
     if (!card.textbook) return null;
 
-    const isShochukyu = card.textbook.includes('初中級');
+    const colors = getTextbookColor(card.textbook);
+
     return {
-      name: isShochukyu ? '初中級' : '中級',
-      color: isShochukyu ? '#F9DD00' : '#01AAC9',
-      textColor: isShochukyu ? '#000000' : '#ffffff'
+      name: getTextbookShortName(card.textbook),
+      color: colors.backgroundColor,
+      textColor: colors.textColor
     };
   };
 
