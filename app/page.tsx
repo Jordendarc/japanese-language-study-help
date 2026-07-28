@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import Papa from 'papaparse';
-import { VocabCard, GrammarCard, MatomeTest } from './types';
+import { MatomeTest } from './types';
+import { createClient } from './utils/supabase/client';
 
 export default function Home() {
   const router = useRouter();
@@ -17,37 +17,55 @@ export default function Home() {
   const [kanjiCount, setKanjiCount] = useState(0);
 
   useEffect(() => {
-    // Load CSV files and matome JSON to get counts and lessons
-    Promise.all([
-      fetch('/vocabfull.csv').then(r => r.text()),
-      fetch('/grammarfull.csv').then(r => r.text()),
-      fetch('/matome/glmjsonwithhiragana.json').then(r => r.json()),
-      fetch('/kanji/kanjiWithMeanings.json').then(r => r.json())
-    ])
-      .then(([vocabText, grammarText, matomeData, kanjiData]) => {
-        // Parse vocabulary
-        Papa.parse<VocabCard>(vocabText, {
-          header: true,
-          skipEmptyLines: true,
-          complete: (results) => {
-            setVocabCount(results.data.length);
-            const textbooks = [...new Set(results.data.map(card => card.textbook).filter(t => t && t.length > 5))].sort();
-            setVocabLessons(textbooks);
-          },
-        });
+    const supabase = createClient();
 
-        // Parse grammar
-        Papa.parse<GrammarCard>(grammarText, {
-          header: true,
-          skipEmptyLines: true,
-          complete: (results) => {
-            setGrammarCount(results.data.length);
-            const textbooks = [...new Set(results.data.map(card => card.textbook).filter(t => t && t.length > 5))].sort();
-            setGrammarLessons(textbooks);
-          },
-        });
+    async function loadData() {
+      try {
+        // Fetch vocabulary count
+        const { count: vocabCount, error: vocabCountError } = await supabase
+          .from('vocabulary')
+          .select('*', { count: 'exact', head: true });
 
-        // Parse matome data
+        // Fetch distinct vocabulary textbooks using RPC function
+        const { data: vocabTextbooks, error: vocabError } = await supabase
+          .rpc('get_vocab_textbooks');
+
+        // Fetch grammar count
+        const { count: grammarCount, error: grammarCountError } = await supabase
+          .from('grammar')
+          .select('*', { count: 'exact', head: true });
+
+        // Fetch distinct grammar textbooks using RPC function
+        const { data: grammarTextbooks, error: grammarError } = await supabase
+          .rpc('get_grammar_textbooks');
+
+        // Fetch matome and kanji from JSON
+        const [matomeData, kanjiData] = await Promise.all([
+          fetch('/matome/glmjsonwithhiragana.json').then(r => r.json()),
+          fetch('/kanji/kanjiWithMeanings.json').then(r => r.json())
+        ]);
+
+        // Vocabulary
+        if (vocabTextbooks && !vocabError && !vocabCountError) {
+          setVocabCount(vocabCount || 0);
+          const textbooks = vocabTextbooks.map((row: any) => row.textbook).filter(Boolean).sort();
+          console.log('📚 Vocab - Total:', vocabCount, 'Textbooks:', textbooks);
+          setVocabLessons(textbooks);
+        } else {
+          console.error('❌ Vocab error:', vocabError || vocabCountError);
+        }
+
+        // Grammar
+        if (grammarTextbooks && !grammarError && !grammarCountError) {
+          setGrammarCount(grammarCount || 0);
+          const textbooks = grammarTextbooks.map((row: any) => row.textbook).filter(Boolean).sort();
+          console.log('📗 Grammar - Total:', grammarCount, 'Textbooks:', textbooks);
+          setGrammarLessons(textbooks);
+        } else {
+          console.error('❌ Grammar error:', grammarError || grammarCountError);
+        }
+
+        // Matome tests
         const tests = matomeData.tests as MatomeTest[];
         const totalQuestions = tests.reduce((sum, test) => {
           return sum + test.problems.reduce((pSum, problem) => {
@@ -63,15 +81,17 @@ export default function Home() {
         const lessons = tests.map(t => t.lesson).sort((a, b) => a - b);
         setMatomeLessons(lessons);
 
-        // Set kanji count
+        // Kanji count
         setKanjiCount(kanjiData.length);
 
         setLoading(false);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error('Error loading data:', error);
         setLoading(false);
-      });
+      }
+    }
+
+    loadData();
   }, []);
 
   if (loading) {
@@ -88,7 +108,7 @@ export default function Home() {
         {/* Header */}
         <header className="text-center mb-12">
           <h1 className="text-5xl sm:text-6xl font-bold text-white mb-4">
-            Japanese Study App
+            Jojos Study Buddy
           </h1>
           <p className="text-white/80 text-xl">
             Choose what you'd like to study

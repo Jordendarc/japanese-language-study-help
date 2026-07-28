@@ -2,13 +2,21 @@
 
 import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import Papa from 'papaparse';
 import Flashcard from '../components/Flashcard';
 import { VocabCard } from '../types';
+import { useAuth } from '../contexts/AuthContext';
+import {
+  createStudySession,
+  updateStudySession,
+  recordCardReview,
+} from '../services/progressService';
+import type { StudySession } from '../types/database';
+import { createClient } from '../utils/supabase/client';
 
 function VocabularyPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { user } = useAuth();
 
   const [currentQueue, setCurrentQueue] = useState<VocabCard[]>([]);
   const [reviewQueue, setReviewQueue] = useState<VocabCard[]>([]);
@@ -22,64 +30,120 @@ function VocabularyPageContent() {
   const [triggerRed, setTriggerRed] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
 
-  // Load data
+  // Progress tracking state
+  const [studySession, setStudySession] = useState<StudySession | null>(null);
+  const [cardStartTime, setCardStartTime] = useState<number>(Date.now());
+
+  // Load data from Supabase
   useEffect(() => {
-    fetch('/vocabfull.csv')
-      .then(r => r.text())
-      .then(csvText => {
-        Papa.parse<VocabCard>(csvText, {
-          header: true,
-          skipEmptyLines: true,
-          complete: (results) => {
-            // Try to restore from localStorage first
-            const savedSession = localStorage.getItem('vocab-flashcard-session');
-            if (savedSession) {
-              try {
-                const session = JSON.parse(savedSession);
-                setCurrentQueue(session.currentQueue || []);
-                setReviewQueue(session.reviewQueue || []);
-                setCurrentIndex(session.currentIndex || 0);
-                setRound(session.round || 1);
-                setTotalReviewed(session.totalReviewed || 0);
-              } catch (e) {
-                console.error('Error restoring session:', e);
-              }
-            }
+    const supabase = createClient();
 
-            // If no session restored, filter by URL selections
-            if (!savedSession) {
-              const selectionsParam = searchParams.get('selections');
-              if (selectionsParam) {
-                try {
-                  const selections: { textbook: string; lessons: string[] }[] = JSON.parse(selectionsParam);
+    async function loadVocabulary() {
+      // Try to restore from localStorage first
+      const savedSession = localStorage.getItem('vocab-flashcard-session');
+      if (savedSession) {
+        try {
+          const session = JSON.parse(savedSession);
+          setCurrentQueue(session.currentQueue || []);
+          setReviewQueue(session.reviewQueue || []);
+          setCurrentIndex(session.currentIndex || 0);
+          setRound(session.round || 1);
+          setTotalReviewed(session.totalReviewed || 0);
+          setLoading(false);
+          return;
+        } catch (e) {
+          console.error('Error restoring session:', e);
+        }
+      }
 
-                  // Filter cards based on selections
-                  const filtered = results.data.filter(card => {
-                    return selections.some(sel =>
-                      sel.textbook === card.textbook && sel.lessons.includes(card.lesson)
-                    );
-                  });
+      // If no session restored, load from Supabase based on URL selections
+      const selectionsParam = searchParams.get('selections');
+      if (!selectionsParam) {
+        router.push('/vocabulary/select');
+        return;
+      }
 
-                  setCurrentQueue(filtered);
-                } catch (e) {
-                  console.error('Error parsing selections:', e);
-                  router.push('/vocabulary/select');
-                }
-              } else {
-                // No selections, redirect to select page
-                router.push('/vocabulary/select');
-              }
-            }
+      try {
+        const selections: { textbook: string; lessons: string[] }[] = JSON.parse(selectionsParam);
 
-            setLoading(false);
-          },
-        });
-      })
-      .catch(error => {
-        console.error('Error loading CSV:', error);
-        setLoading(false);
-      });
+        // Fetch vocabulary from Supabase based on selections
+        const allCards: VocabCard[] = [];
+
+        for (const selection of selections) {
+          // Use RPC function to fetch vocabulary cards
+          const { data, error } = await supabase
+            .rpc('get_vocab_by_selection', {
+              p_textbook: selection.textbook,
+              p_lessons: selection.lessons
+            });
+
+          if (error) {
+            console.error('Error fetching vocabulary:', error);
+            continue;
+          }
+
+          // Transform database format to app format
+          const cards = data.map((row: any) => ({
+            id: row.id,  // Include vocabulary ID for progress tracking
+            vocab: row.vocab,
+            reading: row.reading || '',
+            english: row.english,
+            my_meaning: row.my_meaning || '',
+            example_jp: row.example_jp || '',
+            example_en: row.example_en || '',
+            example: row.example || '',
+            lesson: row.lesson,
+            section: row.section || '',
+            page: row.page || '',
+            textbook: row.textbook,
+          }));
+
+          allCards.push(...cards);
+        }
+
+        setCurrentQueue(allCards);
+      } catch (e) {
+        console.error('Error parsing selections:', e);
+        router.push('/vocabulary/select');
+      }
+
+      setLoading(false);
+    }
+
+    loadVocabulary();
   }, [searchParams, router]);
+
+  // Create study session when queue is loaded (for logged-in users)
+  useEffect(() => {
+    if (!user || currentQueue.length === 0 || studySession) return;
+
+    // Get unique textbook and lessons from current queue
+    const textbooks = [...new Set(currentQueue.map(c => c.textbook))];
+    const lessons = [...new Set(currentQueue.map(c => c.lesson))];
+
+    // Create study session
+    createStudySession({
+      user_id: user.id,
+      textbook: textbooks[0] || 'Unknown',
+      lessons: lessons,
+      session_type: 'study',
+      cards_studied: 0,
+      cards_correct: 0,
+      cards_incorrect: 0,
+      duration_seconds: 0,
+      started_at: new Date().toISOString(),
+      ended_at: null,
+    }).then(session => {
+      if (session) {
+        setStudySession(session);
+      }
+    });
+  }, [user, currentQueue, studySession]);
+
+  // Reset card timer when current card changes
+  useEffect(() => {
+    setCardStartTime(Date.now());
+  }, [currentIndex]);
 
   // Save session state whenever it changes
   useEffect(() => {
@@ -104,10 +168,32 @@ function VocabularyPageContent() {
     };
   }, []);
 
-  const handleGotIt = () => {
+  const handleGotIt = async () => {
     if (isProcessing) return;
     setIsProcessing(true);
     setTriggerGreen(true);
+
+    const currentCard = currentQueue[currentIndex];
+    const responseTime = Date.now() - cardStartTime;
+
+    // Record progress for logged-in users
+    if (user && studySession && currentCard.id) {
+      await recordCardReview({
+        userId: user.id,
+        vocabularyId: currentCard.id,
+        wasCorrect: true,
+        responseTimeMs: responseTime,
+        sessionId: studySession.id,
+      });
+
+      // Update session stats
+      await updateStudySession(studySession.id, {
+        cards_studied: (studySession.cards_studied || 0) + 1,
+        cards_correct: (studySession.cards_correct || 0) + 1,
+        duration_seconds: Math.floor((Date.now() - new Date(studySession.started_at).getTime()) / 1000),
+      });
+    }
+
     setTimeout(() => {
       setTriggerGreen(false);
       setTotalReviewed(prev => prev + 1);
@@ -127,16 +213,37 @@ function VocabularyPageContent() {
     }, 600);
   };
 
-  const handleNeedPractice = () => {
+  const handleNeedPractice = async () => {
     if (isProcessing) return;
     setIsProcessing(true);
     setTriggerRed(true);
+
+    const currentCard = currentQueue[currentIndex];
+    const responseTime = Date.now() - cardStartTime;
+
+    // Record progress for logged-in users
+    if (user && studySession && currentCard.id) {
+      await recordCardReview({
+        userId: user.id,
+        vocabularyId: currentCard.id,
+        wasCorrect: false,
+        responseTimeMs: responseTime,
+        sessionId: studySession.id,
+      });
+
+      // Update session stats
+      await updateStudySession(studySession.id, {
+        cards_studied: (studySession.cards_studied || 0) + 1,
+        cards_incorrect: (studySession.cards_incorrect || 0) + 1,
+        duration_seconds: Math.floor((Date.now() - new Date(studySession.started_at).getTime()) / 1000),
+      });
+    }
+
     setTimeout(() => {
       setTriggerRed(false);
       setTotalReviewed(prev => prev + 1);
 
       // Only add to review queue if it's not already there
-      const currentCard = currentQueue[currentIndex];
       const isAlreadyInReview = reviewQueue.some(
         card => card.vocab === currentCard.vocab && card.lesson === currentCard.lesson
       );

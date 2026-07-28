@@ -2,56 +2,52 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import Papa from 'papaparse';
 import { VocabCard } from '../../types';
 import { getTextbookColor } from '../../utils/textbookColors';
+import { useAuth } from '../../contexts/AuthContext';
+import { getDifficultWords } from '../../services/progressService';
+import { createClient } from '../../utils/supabase/client';
 
 export default function VocabularySelectPage() {
   const router = useRouter();
   const processingRef = useRef(false);
+  const { user } = useAuth();
 
-  const [allVocabCards, setAllVocabCards] = useState<VocabCard[]>([]);
-  const [availableLessons, setAvailableLessons] = useState<string[]>([]);
+  const [vocabMetadata, setVocabMetadata] = useState<{ textbook: string; lessons: string[] }[]>([]);
   const [selectedLessonsByTextbook, setSelectedLessonsByTextbook] = useState<Map<string, Set<string>>>(new Map());
-  const [availableTextbooks, setAvailableTextbooks] = useState<string[]>([]);
   const [selectedTextbooks, setSelectedTextbooks] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingDifficult, setLoadingDifficult] = useState(false);
 
-  // Load data
+  // Load data from Supabase
   useEffect(() => {
-    fetch('/vocabfull.csv')
-      .then(r => r.text())
-      .then(csvText => {
-        Papa.parse<VocabCard>(csvText, {
-          header: true,
-          skipEmptyLines: true,
-          complete: (results) => {
-            setAllVocabCards(results.data);
+    const supabase = createClient();
 
-            // Extract unique lessons and textbooks
-            const lessons = [...new Set(results.data.map(card => card.lesson).filter(Boolean))].sort((a, b) => {
-              return parseInt(a) - parseInt(b);
-            });
-            setAvailableLessons(lessons);
+    async function loadVocabulary() {
+      // Fetch vocabulary metadata (textbooks with their lessons) using RPC
+      const { data, error } = await supabase
+        .rpc('get_vocab_metadata');
 
-            const textbooks = [...new Set(results.data.map(card => card.textbook).filter(Boolean))].sort();
-            setAvailableTextbooks(textbooks);
-
-            // Initialize lesson selection structure - empty by default
-            const initialLessonSelection = new Map<string, Set<string>>();
-            textbooks.forEach(tb => {
-              initialLessonSelection.set(tb, new Set());
-            });
-            setSelectedLessonsByTextbook(initialLessonSelection);
-
-            setLoading(false);
-          },
-        });
-      })
-      .catch(error => {
-        console.error('Error loading CSV:', error);
+      if (error) {
+        console.error('Error loading vocabulary metadata:', error);
         setLoading(false);
+        return;
+      }
+
+      console.log('📚 Vocab metadata loaded:', data);
+      setVocabMetadata(data || []);
+
+      // Initialize lesson selection structure - empty by default
+      const initialLessonSelection = new Map<string, Set<string>>();
+      data?.forEach((item: { textbook: string; lessons: string[] }) => {
+        initialLessonSelection.set(item.textbook, new Set());
       });
+      setSelectedLessonsByTextbook(initialLessonSelection);
+
+      setLoading(false);
+    }
+
+    loadVocabulary();
   }, []);
 
   const toggleLesson = (textbook: string, lesson: string) => {
@@ -90,10 +86,10 @@ export default function VocabularySelectPage() {
   const selectAllLessonsForTextbook = (textbook: string) => {
     setSelectedLessonsByTextbook(prev => {
       const newMap = new Map(prev);
-      const textbookLessons = allVocabCards
-        .filter(card => card.textbook === textbook)
-        .map(card => card.lesson);
-      newMap.set(textbook, new Set(textbookLessons));
+      const metadata = vocabMetadata.find(m => m.textbook === textbook);
+      if (metadata) {
+        newMap.set(textbook, new Set(metadata.lessons));
+      }
       return newMap;
     });
   };
@@ -109,15 +105,15 @@ export default function VocabularySelectPage() {
   const selectAllLessons = () => {
     const newMap = new Map<string, Set<string>>();
     selectedTextbooks.forEach(textbook => {
-      const textbookLessons = allVocabCards
-        .filter(card => card.textbook === textbook)
-        .map(card => card.lesson);
-      newMap.set(textbook, new Set(textbookLessons));
+      const metadata = vocabMetadata.find(m => m.textbook === textbook);
+      if (metadata) {
+        newMap.set(textbook, new Set(metadata.lessons));
+      }
     });
     // Keep empty sets for unselected textbooks
-    availableTextbooks.forEach(textbook => {
-      if (!newMap.has(textbook)) {
-        newMap.set(textbook, new Set());
+    vocabMetadata.forEach(metadata => {
+      if (!newMap.has(metadata.textbook)) {
+        newMap.set(metadata.textbook, new Set());
       }
     });
     setSelectedLessonsByTextbook(newMap);
@@ -125,8 +121,8 @@ export default function VocabularySelectPage() {
 
   const deselectAllLessons = () => {
     const newMap = new Map<string, Set<string>>();
-    availableTextbooks.forEach(textbook => {
-      newMap.set(textbook, new Set());
+    vocabMetadata.forEach(metadata => {
+      newMap.set(metadata.textbook, new Set());
     });
     setSelectedLessonsByTextbook(newMap);
   };
@@ -140,11 +136,51 @@ export default function VocabularySelectPage() {
   };
 
   const selectAllTextbooks = () => {
-    setSelectedTextbooks(availableTextbooks);
+    setSelectedTextbooks(vocabMetadata.map(m => m.textbook));
   };
 
   const deselectAllTextbooks = () => {
     setSelectedTextbooks([]);
+  };
+
+  const selectDifficultWords = async () => {
+    if (!user) {
+      alert('Please sign in to use this feature');
+      return;
+    }
+
+    setLoadingDifficult(true);
+
+    try {
+      // Get difficult words from database (difficulty score >= 50)
+      const difficultVocab = await getDifficultWords(user.id, undefined, undefined, 50);
+
+      if (difficultVocab.length === 0) {
+        alert('No difficult words found. Study some flashcards first to build your progress data!');
+        setLoadingDifficult(false);
+        return;
+      }
+
+      // Group by textbook and lesson
+      const selectionMap = new Map<string, Set<string>>();
+
+      difficultVocab.forEach(progress => {
+        if (!selectionMap.has(progress.textbook)) {
+          selectionMap.set(progress.textbook, new Set());
+        }
+        selectionMap.get(progress.textbook)!.add(progress.lesson);
+      });
+
+      // Update selections
+      setSelectedLessonsByTextbook(selectionMap);
+      setSelectedTextbooks(Array.from(selectionMap.keys()));
+
+      setLoadingDifficult(false);
+    } catch (error) {
+      console.error('Error loading difficult words:', error);
+      alert('Error loading difficult words. Please try again.');
+      setLoadingDifficult(false);
+    }
   };
 
   const handleStart = () => {
@@ -167,23 +203,19 @@ export default function VocabularySelectPage() {
     router.push(`/vocabulary?${params.toString()}`);
   };
 
-  const getTotalSelectedCards = () => {
+  const getTotalSelectedLessons = () => {
     let count = 0;
     selectedTextbooks.forEach(textbook => {
       const lessons = selectedLessonsByTextbook.get(textbook);
       if (lessons) {
-        lessons.forEach(lesson => {
-          count += allVocabCards.filter(
-            card => card.textbook === textbook && card.lesson === lesson
-          ).length;
-        });
+        count += lessons.size;
       }
     });
     return count;
   };
 
   const hasSelectedLessons = Array.from(selectedLessonsByTextbook.values()).some(lessons => lessons.size > 0);
-  const totalCards = getTotalSelectedCards();
+  const totalLessons = getTotalSelectedLessons();
 
   if (loading) {
     return (
@@ -207,8 +239,31 @@ export default function VocabularySelectPage() {
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2">
             Select Vocabulary
           </h1>
-          <p className="text-white/80 text-lg">Choose textbooks and lessons to study</p>
         </header>
+
+        {/* Difficult Words Button TODO: make this get specific cards from lesson */}
+        {/* {user && (
+          <button
+            onClick={selectDifficultWords}
+            disabled={loadingDifficult}
+            className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white rounded-xl shadow-lg mb-4 p-4 sm:p-5 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-between group"
+          >
+            <div className="flex items-center gap-3">
+              <div className="text-2xl sm:text-3xl">🔥</div>
+              <div className="text-left">
+                <div className="font-bold text-base sm:text-lg">Difficult Words</div>
+                <div className="text-white/90 text-xs sm:text-sm hidden sm:block">Practice your struggles</div>
+              </div>
+            </div>
+            {loadingDifficult ? (
+              <div className="animate-spin rounded-full h-6 w-6 border-2 border-white border-t-transparent"></div>
+            ) : (
+              <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            )}
+          </button>
+        )} */}
 
         {/* Textbook Selector */}
         <div className="bg-white rounded-xl shadow-lg mb-4 p-6">
@@ -231,23 +286,23 @@ export default function VocabularySelectPage() {
           </div>
 
           <div className="flex flex-col gap-3">
-            {availableTextbooks.map(textbook => {
-              const colors = getTextbookColor(textbook);
+            {vocabMetadata.map(metadata => {
+              const colors = getTextbookColor(metadata.textbook);
               const textbookColor = colors.backgroundColor;
               const textbookTextColor = colors.textColor;
 
               return (
                 <button
-                  key={textbook}
-                  onClick={() => toggleTextbook(textbook)}
+                  key={metadata.textbook}
+                  onClick={() => toggleTextbook(metadata.textbook)}
                   className="px-4 py-3 rounded-lg font-medium transition-all text-left shadow-sm"
                   style={
-                    selectedTextbooks.includes(textbook)
+                    selectedTextbooks.includes(metadata.textbook)
                       ? { backgroundColor: textbookColor, color: textbookTextColor }
                       : { backgroundColor: '#e5e7eb', color: '#374151' }
                   }
                 >
-                  {textbook}
+                  {metadata.textbook}
                 </button>
               );
             })}
@@ -277,10 +332,9 @@ export default function VocabularySelectPage() {
 
             <div className="space-y-6">
               {selectedTextbooks.map(textbook => {
-                // Get lessons for this textbook
-                const textbookLessons = availableLessons.filter(lesson =>
-                  allVocabCards.some(card => card.textbook === textbook && card.lesson === lesson)
-                );
+                // Get lessons for this textbook from metadata
+                const metadata = vocabMetadata.find(m => m.textbook === textbook);
+                const textbookLessons = metadata?.lessons || [];
 
                 // Determine textbook color
                 const colors = getTextbookColor(textbook);
@@ -352,8 +406,8 @@ export default function VocabularySelectPage() {
                 `Selected ${selectedTextbooks.length} textbook(s). Now select some lessons!`
               ) : (
                 <>
-                  <span className="font-bold text-indigo-600">{totalCards}</span> cards selected from{' '}
-                  <span className="font-bold">{selectedTextbooks.length}</span> textbook(s)
+                  <span className="font-bold text-indigo-600">{totalLessons}</span> lesson{totalLessons !== 1 ? 's' : ''} selected from{' '}
+                  <span className="font-bold">{selectedTextbooks.length}</span> textbook{selectedTextbooks.length !== 1 ? 's' : ''}
                 </>
               )}
             </p>

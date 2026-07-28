@@ -1,4 +1,5 @@
 export interface VocabCard {
+  id?: string;  // UUID from database
   vocab: string;
   reading: string;
   english: string;

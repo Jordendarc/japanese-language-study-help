@@ -198,7 +198,6 @@ export default function GrammarSelectPage() {
           <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2">
             Select Grammar
           </h1>
-          <p className="text-white/80 text-lg">Choose textbooks and lessons to study</p>
         </header>
 
         {/* Textbook Selector */}
