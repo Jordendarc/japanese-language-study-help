@@ -1,14 +1,13 @@
 'use client';
 
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState, Suspense, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Flashcard from '../components/Flashcard';
 import { VocabCard } from '../types';
 import { useAuth } from '../contexts/AuthContext';
 import {
   createStudySession,
-  updateStudySession,
-  recordCardReview,
+  recordCardReviewsBatch,
 } from '../services/progressService';
 import type { StudySession } from '../types/database';
 import { createClient } from '../utils/supabase/client';
@@ -33,6 +32,38 @@ function VocabularyPageContent() {
   // Progress tracking state
   const [studySession, setStudySession] = useState<StudySession | null>(null);
   const [cardStartTime, setCardStartTime] = useState<number>(Date.now());
+
+  // Batch review tracking - collect all reviews and send at the end
+  const [pendingReviews, setPendingReviews] = useState<Array<{
+    vocabularyId: string;
+    wasCorrect: boolean;
+    responseTimeMs: number;
+  }>>([]);
+
+  // Track session stats locally (will be sent at the end)
+  const [localSessionStats, setLocalSessionStats] = useState({
+    cardsStudied: 0,
+    cardsCorrect: 0,
+    cardsIncorrect: 0,
+  });
+
+  // Refs to access latest values in cleanup without re-running effect
+  const pendingReviewsRef = useRef(pendingReviews);
+  const localSessionStatsRef = useRef(localSessionStats);
+  const studySessionRef = useRef(studySession);
+
+  // Keep refs up to date
+  useEffect(() => {
+    pendingReviewsRef.current = pendingReviews;
+  }, [pendingReviews]);
+
+  useEffect(() => {
+    localSessionStatsRef.current = localSessionStats;
+  }, [localSessionStats]);
+
+  useEffect(() => {
+    studySessionRef.current = studySession;
+  }, [studySession]);
 
   // Load data from Supabase
   useEffect(() => {
@@ -160,13 +191,47 @@ function VocabularyPageContent() {
     localStorage.setItem('vocab-flashcard-session', JSON.stringify(session));
   }, [currentQueue, reviewQueue, currentIndex, round, totalReviewed]);
 
-  // Clear localStorage when navigating away
+  // Send batched reviews when navigating away or closing tab
   useEffect(() => {
-    // Clear session on component unmount (navigation)
-    return () => {
-      localStorage.removeItem('vocab-flashcard-session');
+    const handleBeforeUnload = () => {
+      // Use refs to get latest values without re-running effect
+      const currentSession = studySessionRef.current;
+      const currentReviews = pendingReviewsRef.current;
+
+      // Send batch synchronously before page unload
+      if (user && currentSession && currentReviews.length > 0) {
+        // Use sendBeacon for reliable delivery even as page unloads
+        const reviewsJson = JSON.stringify({
+          p_user_id: user.id,
+          p_session_id: currentSession.id,
+          p_reviews: currentReviews.map(r => ({
+            vocabulary_id: r.vocabularyId,
+            was_correct: r.wasCorrect,
+            response_time_ms: r.responseTimeMs,
+          })),
+        });
+
+        // Fallback to fetch with keepalive if sendBeacon not available
+        navigator.sendBeacon?.(
+          `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/rpc/record_card_reviews_batch`,
+          new Blob([reviewsJson], { type: 'application/json' })
+        );
+      }
     };
-  }, []);
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    // Cleanup on unmount - only runs when component unmounts, not on every state change
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      localStorage.removeItem('vocab-flashcard-session');
+
+      // Send batch if user navigates away (use refs for latest values)
+      if (pendingReviewsRef.current.length > 0) {
+        sendBatchedReviews();
+      }
+    };
+  }, [user]); // Only depend on user, not on state that changes frequently
 
   const handleGotIt = async () => {
     if (isProcessing) return;
@@ -176,22 +241,20 @@ function VocabularyPageContent() {
     const currentCard = currentQueue[currentIndex];
     const responseTime = Date.now() - cardStartTime;
 
-    // Record progress for logged-in users
+    // Add to batch for logged-in users (will be sent when session ends)
     if (user && studySession && currentCard.id) {
-      await recordCardReview({
-        userId: user.id,
-        vocabularyId: currentCard.id,
+      setPendingReviews(prev => [...prev, {
+        vocabularyId: currentCard.id!,
         wasCorrect: true,
         responseTimeMs: responseTime,
-        sessionId: studySession.id,
-      });
+      }]);
 
-      // Update session stats
-      await updateStudySession(studySession.id, {
-        cards_studied: (studySession.cards_studied || 0) + 1,
-        cards_correct: (studySession.cards_correct || 0) + 1,
-        duration_seconds: Math.floor((Date.now() - new Date(studySession.started_at).getTime()) / 1000),
-      });
+      // Update local session stats (NO API CALL)
+      setLocalSessionStats(prev => ({
+        cardsStudied: prev.cardsStudied + 1,
+        cardsCorrect: prev.cardsCorrect + 1,
+        cardsIncorrect: prev.cardsIncorrect,
+      }));
     }
 
     setTimeout(() => {
@@ -221,22 +284,20 @@ function VocabularyPageContent() {
     const currentCard = currentQueue[currentIndex];
     const responseTime = Date.now() - cardStartTime;
 
-    // Record progress for logged-in users
+    // Add to batch for logged-in users (will be sent when session ends)
     if (user && studySession && currentCard.id) {
-      await recordCardReview({
-        userId: user.id,
-        vocabularyId: currentCard.id,
+      setPendingReviews(prev => [...prev, {
+        vocabularyId: currentCard.id!,
         wasCorrect: false,
         responseTimeMs: responseTime,
-        sessionId: studySession.id,
-      });
+      }]);
 
-      // Update session stats
-      await updateStudySession(studySession.id, {
-        cards_studied: (studySession.cards_studied || 0) + 1,
-        cards_incorrect: (studySession.cards_incorrect || 0) + 1,
-        duration_seconds: Math.floor((Date.now() - new Date(studySession.started_at).getTime()) / 1000),
-      });
+      // Update local session stats (NO API CALL)
+      setLocalSessionStats(prev => ({
+        cardsStudied: prev.cardsStudied + 1,
+        cardsCorrect: prev.cardsCorrect,
+        cardsIncorrect: prev.cardsIncorrect + 1,
+      }));
     }
 
     setTimeout(() => {
@@ -280,7 +341,7 @@ function VocabularyPageContent() {
     startNextRoundWithQueue(reviewQueue);
   };
 
-  const startNextRoundWithQueue = (queueToUse: VocabCard[]) => {
+  const startNextRoundWithQueue = async (queueToUse: VocabCard[]) => {
     if (queueToUse.length > 0) {
       // Shuffle the review queue before starting next round
       const shuffled = [...queueToUse];
@@ -292,9 +353,48 @@ function VocabularyPageContent() {
       setReviewQueue([]);
       setCurrentIndex(0);
       setRound(round + 1);
+      // DO NOT send batch here - continue studying
     } else {
+      // Session complete - send all batched reviews ONCE
+      await sendBatchedReviews();
       setShowCompletionModal(true);
     }
+  };
+
+  // Send all pending reviews AND session stats in one final batch
+  const sendBatchedReviews = async () => {
+    if (!user || !studySession) return;
+
+    console.log(`📤 Sending final batch: ${pendingReviews.length} reviews + session stats...`);
+
+    // Send reviews batch (if any)
+    if (pendingReviews.length > 0) {
+      const result = await recordCardReviewsBatch({
+        userId: user.id,
+        sessionId: studySession.id,
+        reviews: pendingReviews,
+      });
+
+      if (result) {
+        console.log(`✅ Reviews batch sent: ${result.processed} processed, ${result.errors} errors`);
+      }
+    }
+
+    // Update final session stats in one call
+    const { updateStudySession } = await import('../services/progressService');
+    await updateStudySession(studySession.id, {
+      cards_studied: localSessionStats.cardsStudied,
+      cards_correct: localSessionStats.cardsCorrect,
+      cards_incorrect: localSessionStats.cardsIncorrect,
+      duration_seconds: Math.floor((Date.now() - new Date(studySession.started_at).getTime()) / 1000),
+      ended_at: new Date().toISOString(),
+    });
+
+    console.log(`✅ Session stats sent: ${localSessionStats.cardsStudied} cards studied`);
+
+    // Clear batches
+    setPendingReviews([]);
+    setLocalSessionStats({ cardsStudied: 0, cardsCorrect: 0, cardsIncorrect: 0 });
   };
 
   const resetAll = () => {

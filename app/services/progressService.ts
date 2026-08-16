@@ -109,6 +109,54 @@ export async function recordCardReview({
   }
 }
 
+// Batch record multiple card reviews at once (more efficient)
+export async function recordCardReviewsBatch({
+  userId,
+  sessionId,
+  reviews,
+}: {
+  userId: string;
+  sessionId: string;
+  reviews: Array<{
+    vocabularyId: string;
+    wasCorrect: boolean;
+    responseTimeMs: number;
+  }>;
+}): Promise<{ processed: number; errors: number } | null> {
+  if (reviews.length === 0) {
+    return { processed: 0, errors: 0 };
+  }
+
+  // Transform reviews to JSONB format expected by the database
+  const reviewsJson = reviews.map(r => ({
+    vocabulary_id: r.vocabularyId,
+    was_correct: r.wasCorrect,
+    response_time_ms: r.responseTimeMs,
+  }));
+
+  const { data, error } = await supabase.rpc('record_card_reviews_batch', {
+    p_user_id: userId,
+    p_session_id: sessionId,
+    p_reviews: reviewsJson,
+  });
+
+  if (error) {
+    console.error('Error recording batch reviews:', error);
+    return null;
+  }
+
+  if (data && data.length > 0) {
+    const result = data[0];
+    console.log(`📊 Batch processed - Cards: ${result.cards_processed}, Errors: ${result.errors_count}`);
+    return {
+      processed: result.cards_processed,
+      errors: result.errors_count,
+    };
+  }
+
+  return null;
+}
+
 // ============= STUDY SESSIONS =============
 
 export async function createStudySession(

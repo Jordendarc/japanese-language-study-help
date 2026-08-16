@@ -184,6 +184,9 @@ export default function VocabularySelectPage() {
   };
 
   const handleStart = () => {
+    // Clear any previous session data from localStorage
+    localStorage.removeItem('vocab-flashcard-session');
+
     // Build the selection data to pass via URL
     const selections: { textbook: string; lessons: string[] }[] = [];
 

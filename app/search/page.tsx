@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Papa from 'papaparse';
 import { VocabCard, GrammarCard } from '../types';
 import Furigana from '../components/Furigana';
 import { getTextbookColor, getTextbookShortName } from '../utils/textbookColors';
+import { createClient } from '../utils/supabase/client';
 
 type SearchResult = {
   type: 'vocab' | 'grammar';
@@ -15,90 +15,66 @@ type SearchResult = {
 export default function SearchPage() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
-  const [allVocab, setAllVocab] = useState<VocabCard[]>([]);
-  const [allGrammar, setAllGrammar] = useState<GrammarCard[]>([]);
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [searching, setSearching] = useState(false);
 
-  // Load both CSVs
-  useEffect(() => {
-    Promise.all([
-      fetch('/vocabfull.csv').then(r => r.text()),
-      fetch('/grammarfull.csv').then(r => r.text())
-    ]).then(([vocabText, grammarText]) => {
-      Papa.parse<VocabCard>(vocabText, {
-        header: true,
-        skipEmptyLines: true,
-        complete: (results) => {
-          setAllVocab(results.data);
-        },
-      });
-
-      Papa.parse<GrammarCard>(grammarText, {
-        header: true,
-        skipEmptyLines: true,
-        complete: (results) => {
-          setAllGrammar(results.data);
-          setLoading(false);
-        },
-      });
-    });
-  }, []);
-
-  // Search function
+  // Search with debouncing - wait 1.5 seconds after user stops typing
   useEffect(() => {
     if (!searchQuery.trim()) {
       setSearchResults([]);
+      setSearching(false);
       return;
     }
 
-    const query = searchQuery.toLowerCase();
-    const results: SearchResult[] = [];
+    // Show searching indicator immediately
+    setSearching(true);
 
-    // Search vocabulary
-    allVocab.forEach(card => {
-      const searchableText = [
-        card.vocab,
-        card.reading,
-        card.english,
-        card.my_meaning,
-        card.example_jp,
-        card.example_en,
-        card.example
-      ].join(' ').toLowerCase();
+    // Debounce: wait 1.5 seconds before actually searching
+    const timeoutId = setTimeout(async () => {
+      const supabase = createClient();
+      const query = searchQuery.trim();
 
-      if (searchableText.includes(query)) {
-        results.push({ type: 'vocab', data: card });
+      try {
+        // Search both vocabulary and grammar in parallel
+        const [vocabResponse, grammarResponse] = await Promise.all([
+          supabase.rpc('search_vocabulary', { p_query: query, p_limit: 50 }),
+          supabase.rpc('search_grammar', { p_query: query, p_limit: 50 })
+        ]);
+
+        const results: SearchResult[] = [];
+
+        // Add vocabulary results
+        if (vocabResponse.data) {
+          vocabResponse.data.forEach((vocabData: any) => {
+            results.push({
+              type: 'vocab',
+              data: vocabData as VocabCard
+            });
+          });
+        }
+
+        // Add grammar results
+        if (grammarResponse.data) {
+          grammarResponse.data.forEach((grammarData: any) => {
+            results.push({
+              type: 'grammar',
+              data: grammarData as GrammarCard
+            });
+          });
+        }
+
+        setSearchResults(results);
+        setSearching(false);
+      } catch (error) {
+        console.error('Search error:', error);
+        setSearching(false);
       }
-    });
+    }, 1500); // 1.5 second debounce
 
-    // Search grammar
-    allGrammar.forEach(card => {
-      const searchableText = [
-        card.point,
-        card.meaning,
-        card.formation,
-        card.example_jp,
-        card.example_en,
-        card.nuance,
-        card.context
-      ].join(' ').toLowerCase();
-
-      if (searchableText.includes(query)) {
-        results.push({ type: 'grammar', data: card });
-      }
-    });
-
-    setSearchResults(results);
-  }, [searchQuery, allVocab, allGrammar]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center">
-        <div className="text-2xl text-gray-600">Loading...</div>
-      </div>
-    );
-  }
+    // Cleanup timeout if user types again before 1.5 seconds
+    return () => clearTimeout(timeoutId);
+  }, [searchQuery]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-purple-100 p-4">
@@ -116,7 +92,7 @@ export default function SearchPage() {
         </div>
 
         {/* Search Bar */}
-        <div className="mb-6">
+        <div className="mb-6 relative">
           <input
             type="text"
             placeholder="Search for vocabulary or grammar..."
@@ -125,12 +101,22 @@ export default function SearchPage() {
             className="w-full px-6 py-4 text-lg rounded-xl border-2 border-indigo-300 focus:border-indigo-500 focus:outline-none bg-white text-gray-800"
             autoFocus
           />
+          {searching && (
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
+              <div className="animate-spin h-6 w-6 border-2 border-indigo-600 border-t-transparent rounded-full"></div>
+            </div>
+          )}
         </div>
 
         {/* Results Count */}
-        {searchQuery && (
+        {searchQuery && !searching && (
           <div className="mb-4 text-gray-600">
             Found {searchResults.length} result{searchResults.length !== 1 ? 's' : ''}
+          </div>
+        )}
+        {searching && (
+          <div className="mb-4 text-gray-600">
+            Searching...
           </div>
         )}
 
