@@ -101,9 +101,9 @@ function VocabularyPageContent() {
         const allCards: VocabCard[] = [];
 
         for (const selection of selections) {
-          // Use RPC function to fetch vocabulary cards
+          // Use RPC function to fetch vocabulary cards with kanji data
           const { data, error } = await supabase
-            .rpc('get_vocab_by_selection', {
+            .rpc('get_vocab_with_kanji_by_selection', {
               p_textbook: selection.textbook,
               p_lessons: selection.lessons
             });
@@ -127,6 +127,7 @@ function VocabularyPageContent() {
             section: row.section || '',
             page: row.page || '',
             textbook: row.textbook,
+            kanji_data: row.kanji_data || [],  // Include kanji data from database
           }));
 
           allCards.push(...cards);

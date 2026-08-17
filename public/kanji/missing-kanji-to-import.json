@@ -1,0 +1,1595 @@
+[
+  {
+    "kanji": "伴",
+    "meanings": [
+      "consort",
+      "accompany",
+      "bring with",
+      "companion"
+    ],
+    "yomikata": [
+      "ハン",
+      "バン",
+      "ともな.う"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "唱",
+    "meanings": [
+      "chant",
+      "recite",
+      "call upon",
+      "yell"
+    ],
+    "yomikata": [
+      "ショウ",
+      "とな.える"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "逐",
+    "meanings": [
+      "pursue",
+      "drive away",
+      "chase",
+      "accomplish",
+      "attain",
+      "commit"
+    ],
+    "yomikata": [
+      "チク"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "駆",
+    "meanings": [
+      "drive",
+      "run",
+      "gallop",
+      "advance",
+      "inspire",
+      "impel"
+    ],
+    "yomikata": [
+      "ク",
+      "か.ける",
+      "か.る"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "春",
+    "meanings": [
+      "springtime",
+      "spring (season)"
+    ],
+    "yomikata": [
+      "シュン",
+      "はる"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "膚",
+    "meanings": [
+      "skin",
+      "body",
+      "grain",
+      "texture",
+      "disposition"
+    ],
+    "yomikata": [
+      "フ",
+      "はだ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "繊",
+    "meanings": [
+      "slender",
+      "fine",
+      "thin kimono"
+    ],
+    "yomikata": [
+      "セン"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "米",
+    "meanings": [
+      "rice",
+      "USA",
+      "metre"
+    ],
+    "yomikata": [
+      "ベイ",
+      "マイ",
+      "メエトル",
+      "こめ",
+      "よね"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "喫",
+    "meanings": [
+      "consume",
+      "eat",
+      "drink",
+      "smoke",
+      "receive (a blow)"
+    ],
+    "yomikata": [
+      "キツ",
+      "の.む"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "牲",
+    "meanings": [
+      "animal sacrifice",
+      "offering"
+    ],
+    "yomikata": [
+      "セイ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "犠",
+    "meanings": [
+      "sacrifice"
+    ],
+    "yomikata": [
+      "ギ",
+      "キ",
+      "いけにえ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "闘",
+    "meanings": [
+      "fight",
+      "war"
+    ],
+    "yomikata": [
+      "トウ",
+      "たたか.う",
+      "あらそ.う"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "剰",
+    "meanings": [
+      "surplus",
+      "besides"
+    ],
+    "yomikata": [
+      "ジョウ",
+      "あまつさえ",
+      "あま.り",
+      "あま.る"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "爆",
+    "meanings": [
+      "bomb",
+      "burst open",
+      "pop",
+      "split"
+    ],
+    "yomikata": [
+      "バク",
+      "は.ぜる"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "鼻",
+    "meanings": [
+      "nose",
+      "snout"
+    ],
+    "yomikata": [
+      "ビ",
+      "はな"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "殺",
+    "meanings": [
+      "kill",
+      "murder",
+      "butcher",
+      "slice off",
+      "split",
+      "diminish",
+      "reduce",
+      "spoil"
+    ],
+    "yomikata": [
+      "サツ",
+      "サイ",
+      "セツ",
+      "ころ.す",
+      "-ごろ.し",
+      "そ.ぐ",
+      "あや.める"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "潔",
+    "meanings": [
+      "undefiled",
+      "pure",
+      "clean",
+      "righteous",
+      "gallant"
+    ],
+    "yomikata": [
+      "ケツ",
+      "いさぎよ.い"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "侵",
+    "meanings": [
+      "encroach",
+      "invade",
+      "raid",
+      "trespass",
+      "violate"
+    ],
+    "yomikata": [
+      "シン",
+      "おか.す"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "敵",
+    "meanings": [
+      "enemy",
+      "foe",
+      "opponent"
+    ],
+    "yomikata": [
+      "テキ",
+      "かたき",
+      "あだ",
+      "かな.う"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "衛",
+    "meanings": [
+      "defense",
+      "protection"
+    ],
+    "yomikata": [
+      "エイ",
+      "エ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "薬",
+    "meanings": [
+      "medicine",
+      "chemical",
+      "enamel",
+      "gunpowder",
+      "benefit"
+    ],
+    "yomikata": [
+      "ヤク",
+      "くすり"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "毒",
+    "meanings": [
+      "poison",
+      "virus",
+      "venom",
+      "germ",
+      "harm",
+      "injury",
+      "spite"
+    ],
+    "yomikata": [
+      "ドク"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "魅",
+    "meanings": [
+      "fascination",
+      "charm",
+      "bewitch"
+    ],
+    "yomikata": [
+      "ミ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "雇",
+    "meanings": [
+      "employ",
+      "hire"
+    ],
+    "yomikata": [
+      "コ",
+      "やと.う"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "軟",
+    "meanings": [
+      "soft"
+    ],
+    "yomikata": [
+      "ナン",
+      "やわ.らか",
+      "やわ.らかい"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "既",
+    "meanings": [
+      "previously",
+      "already",
+      "long ago"
+    ],
+    "yomikata": [
+      "キ",
+      "すで.に"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "訣",
+    "meanings": [
+      "separation",
+      "part",
+      "secret"
+    ],
+    "yomikata": [
+      "ケツ",
+      "わかれ",
+      "わかれ.る"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "唆",
+    "meanings": [
+      "tempt",
+      "seduce",
+      "instigate",
+      "promote"
+    ],
+    "yomikata": [
+      "サ",
+      "そそ.る",
+      "そそのか.す"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "従",
+    "meanings": [
+      "accompany",
+      "obey",
+      "submit to",
+      "comply",
+      "follow",
+      "secondary",
+      "incidental",
+      "subordinate"
+    ],
+    "yomikata": [
+      "ジュウ",
+      "ショウ",
+      "ジュ",
+      "したが.う",
+      "したが.える",
+      "より"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "晩",
+    "meanings": [
+      "nightfall",
+      "night"
+    ],
+    "yomikata": [
+      "バン"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "補",
+    "meanings": [
+      "supplement",
+      "supply",
+      "make good",
+      "offset",
+      "compensate",
+      "assistant",
+      "learner"
+    ],
+    "yomikata": [
+      "ホ",
+      "おぎな.う"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "殊",
+    "meanings": [
+      "particularly",
+      "especially",
+      "exceptionally"
+    ],
+    "yomikata": [
+      "シュ",
+      "こと"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "妨",
+    "meanings": [
+      "disturb",
+      "prevent",
+      "hamper",
+      "obstruct"
+    ],
+    "yomikata": [
+      "ボウ",
+      "さまた.げる"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "整",
+    "meanings": [
+      "organize",
+      "arranging",
+      "tune",
+      "tone",
+      "meter",
+      "key (music)"
+    ],
+    "yomikata": [
+      "セイ",
+      "ととの.える",
+      "ととの.う"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "凄",
+    "meanings": [
+      "uncanny",
+      "weird",
+      "threatening",
+      "horrible"
+    ],
+    "yomikata": [
+      "セイ",
+      "サイ",
+      "さむ.い",
+      "すご.い",
+      "すさ.まじい"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "暢",
+    "meanings": [
+      "stretch"
+    ],
+    "yomikata": [
+      "チョウ",
+      "のび.る"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "複",
+    "meanings": [
+      "duplicate",
+      "double",
+      "compound",
+      "multiple"
+    ],
+    "yomikata": [
+      "フク"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "熟",
+    "meanings": [
+      "mellow",
+      "ripen",
+      "mature",
+      "acquire skill"
+    ],
+    "yomikata": [
+      "ジュク",
+      "う.れる"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "啓",
+    "meanings": [
+      "disclose",
+      "open",
+      "say"
+    ],
+    "yomikata": [
+      "ケイ",
+      "ひら.く",
+      "さと.す"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "諍",
+    "meanings": [
+      "quarrel"
+    ],
+    "yomikata": [
+      "ソウ",
+      "ショウ",
+      "いさか.う",
+      "あらそ.う",
+      "いさ.める",
+      "うった.える"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "暗",
+    "meanings": [
+      "darkness",
+      "disappear",
+      "shade",
+      "informal",
+      "grow dark",
+      "be blinded"
+    ],
+    "yomikata": [
+      "アン",
+      "くら.い",
+      "くら.む",
+      "くれ.る"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "蝶",
+    "meanings": [
+      "butterfly"
+    ],
+    "yomikata": [
+      "チョウ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "呂",
+    "meanings": [
+      "spine",
+      "backbone"
+    ],
+    "yomikata": [
+      "ロ",
+      "リョ",
+      "せぼね"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "挟",
+    "meanings": [
+      "pinch",
+      "between"
+    ],
+    "yomikata": [
+      "キョウ",
+      "ショウ",
+      "はさ.む",
+      "はさ.まる",
+      "わきばさ.む",
+      "さしはさ.む"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "縁",
+    "meanings": [
+      "affinity",
+      "relation",
+      "connection",
+      "edge",
+      "border",
+      "verge",
+      "brink"
+    ],
+    "yomikata": [
+      "エン",
+      "-ネン",
+      "ふち",
+      "ふち.どる",
+      "ゆかり",
+      "よすが",
+      "へり",
+      "えにし"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "賽",
+    "meanings": [
+      "dice",
+      "temple visit"
+    ],
+    "yomikata": [
+      "サイ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "銭",
+    "meanings": [
+      "coin",
+      ".01 yen",
+      "money"
+    ],
+    "yomikata": [
+      "セン",
+      "ゼン",
+      "ぜに",
+      "すき"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "枕",
+    "meanings": [
+      "pillow"
+    ],
+    "yomikata": [
+      "チン",
+      "シン",
+      "まくら"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "脅",
+    "meanings": [
+      "threaten",
+      "coerce"
+    ],
+    "yomikata": [
+      "キョウ",
+      "おびや.かす",
+      "おど.す",
+      "おど.かす"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "丙",
+    "meanings": [
+      "third class",
+      "3rd",
+      "3rd calendar sign"
+    ],
+    "yomikata": [
+      "ヘイ",
+      "ひのえ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "柱",
+    "meanings": [
+      "pillar",
+      "post",
+      "cylinder",
+      "support"
+    ],
+    "yomikata": [
+      "チュウ",
+      "はしら"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "弊",
+    "meanings": [
+      "abuse",
+      "evil",
+      "vice",
+      "breakage"
+    ],
+    "yomikata": [
+      "ヘイ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "儀",
+    "meanings": [
+      "ceremony",
+      "rule",
+      "affair",
+      "case",
+      "a matter"
+    ],
+    "yomikata": [
+      "ギ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "鉢",
+    "meanings": [
+      "bowl",
+      "rice tub",
+      "pot",
+      "crown"
+    ],
+    "yomikata": [
+      "ハチ",
+      "ハツ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "骨",
+    "meanings": [
+      "skeleton",
+      "bone",
+      "remains",
+      "frame"
+    ],
+    "yomikata": [
+      "コツ",
+      "ほね"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "爪",
+    "meanings": [
+      "claw",
+      "nail",
+      "talon"
+    ],
+    "yomikata": [
+      "ソウ",
+      "つめ",
+      "つま-"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "勧",
+    "meanings": [
+      "persuade",
+      "recommend",
+      "advise",
+      "encourage",
+      "offer"
+    ],
+    "yomikata": [
+      "カン",
+      "ケン",
+      "すす.める"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "姪",
+    "meanings": [
+      "niece"
+    ],
+    "yomikata": [
+      "テツ",
+      "チツ",
+      "ジチ",
+      "イツ",
+      "イチ",
+      "めい",
+      "おい"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "該",
+    "meanings": [
+      "above-stated",
+      "the said",
+      "that specific"
+    ],
+    "yomikata": [
+      "ガイ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "罰",
+    "meanings": [
+      "penalty",
+      "punishment"
+    ],
+    "yomikata": [
+      "バツ",
+      "バチ",
+      "ハツ",
+      "ばっ.する"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "甥",
+    "meanings": [
+      "nephew"
+    ],
+    "yomikata": [
+      "セイ",
+      "ソウ",
+      "ショウ",
+      "おい",
+      "むこ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "仏",
+    "meanings": [
+      "Buddha",
+      "the dead",
+      "France"
+    ],
+    "yomikata": [
+      "ブツ",
+      "フツ",
+      "ほとけ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "眼",
+    "meanings": [
+      "eyeball"
+    ],
+    "yomikata": [
+      "ガン",
+      "ゲン",
+      "まなこ",
+      "め"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "吉",
+    "meanings": [
+      "good luck",
+      "joy",
+      "congratulations"
+    ],
+    "yomikata": [
+      "キチ",
+      "キツ",
+      "よし"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "怖",
+    "meanings": [
+      "dreadful",
+      "be frightened",
+      "fearful"
+    ],
+    "yomikata": [
+      "フ",
+      "ホ",
+      "こわ.い",
+      "こわ.がる",
+      "お.じる",
+      "おそ.れる"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "恐",
+    "meanings": [
+      "fear",
+      "dread",
+      "awe"
+    ],
+    "yomikata": [
+      "キョウ",
+      "おそ.れる",
+      "おそ.る",
+      "おそ.ろしい",
+      "こわ.い",
+      "こわ.がる"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "京",
+    "meanings": [
+      "capital",
+      "10**16"
+    ],
+    "yomikata": [
+      "キョウ",
+      "ケイ",
+      "キン",
+      "みやこ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "兼",
+    "meanings": [
+      "concurrently",
+      "and",
+      "beforehand",
+      "in advance"
+    ],
+    "yomikata": [
+      "ケン",
+      "か.ねる",
+      "-か.ねる"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "束",
+    "meanings": [
+      "bundle",
+      "sheaf",
+      "ream",
+      "tie in bundles",
+      "govern",
+      "manage",
+      "control"
+    ],
+    "yomikata": [
+      "ソク",
+      "たば",
+      "たば.ねる",
+      "つか",
+      "つか.ねる"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "縛",
+    "meanings": [
+      "truss",
+      "arrest",
+      "bind",
+      "tie",
+      "restrain"
+    ],
+    "yomikata": [
+      "バク",
+      "しば.る"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "膨",
+    "meanings": [
+      "swell",
+      "get fat",
+      "thick"
+    ],
+    "yomikata": [
+      "ボウ",
+      "ふく.らむ",
+      "ふく.れる"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "賄",
+    "meanings": [
+      "bribe",
+      "board",
+      "supply",
+      "finance"
+    ],
+    "yomikata": [
+      "ワイ",
+      "まかな.う"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "揮",
+    "meanings": [
+      "brandish",
+      "wave",
+      "wag",
+      "swing",
+      "shake"
+    ],
+    "yomikata": [
+      "キ",
+      "ふる.う"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "耳",
+    "meanings": [
+      "ear"
+    ],
+    "yomikata": [
+      "ジ",
+      "みみ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "把",
+    "meanings": [
+      "grasp",
+      "faggot",
+      "bunch",
+      "counter for bundles"
+    ],
+    "yomikata": [
+      "ハ",
+      "ワ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "握",
+    "meanings": [
+      "grip",
+      "hold",
+      "mould sushi",
+      "bribe"
+    ],
+    "yomikata": [
+      "アク",
+      "にぎ.る"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "仰",
+    "meanings": [
+      "face-up",
+      "look up",
+      "depend",
+      "seek",
+      "respect",
+      "revere",
+      "drink",
+      "take"
+    ],
+    "yomikata": [
+      "ギョウ",
+      "コウ",
+      "あお.ぐ",
+      "おお.せ",
+      "お.っしゃる",
+      "おっしゃ.る"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "枠",
+    "meanings": [
+      "frame",
+      "framework",
+      "spindle",
+      "spool",
+      "bounding-box",
+      "(kokuji)"
+    ],
+    "yomikata": [
+      "わく"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "諸",
+    "meanings": [
+      "various",
+      "many",
+      "several",
+      "together"
+    ],
+    "yomikata": [
+      "ショ",
+      "もろ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "携",
+    "meanings": [
+      "portable",
+      "carry (in hand)",
+      "armed with",
+      "bring along"
+    ],
+    "yomikata": [
+      "ケイ",
+      "たずさ.える",
+      "たずさ.わる"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "権",
+    "meanings": [
+      "authority",
+      "power",
+      "rights"
+    ],
+    "yomikata": [
+      "ケン",
+      "ゴン",
+      "おもり",
+      "かり",
+      "はか.る"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "編",
+    "meanings": [
+      "compilation",
+      "knit",
+      "plait",
+      "braid",
+      "twist",
+      "editing",
+      "completed poem",
+      "part of a book"
+    ],
+    "yomikata": [
+      "ヘン",
+      "あ.む",
+      "-あ.み"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "甘",
+    "meanings": [
+      "sweet",
+      "coax",
+      "pamper",
+      "be content",
+      "sugary"
+    ],
+    "yomikata": [
+      "カン",
+      "あま.い",
+      "あま.える",
+      "あま.やかす",
+      "うま.い"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "宗",
+    "meanings": [
+      "religion",
+      "sect",
+      "denomination",
+      "main point",
+      "origin",
+      "essence"
+    ],
+    "yomikata": [
+      "シュウ",
+      "ソウ",
+      "むね"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "須",
+    "meanings": [
+      "ought",
+      "by all means",
+      "necessarily"
+    ],
+    "yomikata": [
+      "ス",
+      "シュ",
+      "すべから.く",
+      "すべし",
+      "ひげ",
+      "まつ",
+      "もち.いる",
+      "もと.める"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "範",
+    "meanings": [
+      "pattern",
+      "example",
+      "model"
+    ],
+    "yomikata": [
+      "ハン"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "扶",
+    "meanings": [
+      "aid",
+      "help",
+      "assist"
+    ],
+    "yomikata": [
+      "フ",
+      "たす.ける"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "童",
+    "meanings": [
+      "juvenile",
+      "child"
+    ],
+    "yomikata": [
+      "ドウ",
+      "わらべ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "税",
+    "meanings": [
+      "tax",
+      "duty"
+    ],
+    "yomikata": [
+      "ゼイ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "捨",
+    "meanings": [
+      "discard",
+      "throw away",
+      "abandon",
+      "resign",
+      "reject",
+      "sacrifice"
+    ],
+    "yomikata": [
+      "シャ",
+      "す.てる"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "占",
+    "meanings": [
+      "fortune-telling",
+      "divining",
+      "forecasting",
+      "occupy",
+      "hold",
+      "have",
+      "get",
+      "take"
+    ],
+    "yomikata": [
+      "セン",
+      "し.める",
+      "うらな.う"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "審",
+    "meanings": [
+      "hearing",
+      "judge",
+      "trial"
+    ],
+    "yomikata": [
+      "シン",
+      "つまび.らか",
+      "つぶさ.に"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "概",
+    "meanings": [
+      "outline",
+      "condition",
+      "approximation",
+      "generally"
+    ],
+    "yomikata": [
+      "ガイ",
+      "おおむ.ね"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "盾",
+    "meanings": [
+      "shield",
+      "escutcheon",
+      "pretext"
+    ],
+    "yomikata": [
+      "ジュン",
+      "たて"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "矛",
+    "meanings": [
+      "halberd",
+      "arms",
+      "festival float"
+    ],
+    "yomikata": [
+      "ム",
+      "ボウ",
+      "ほこ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "貧",
+    "meanings": [
+      "poverty",
+      "poor"
+    ],
+    "yomikata": [
+      "ヒン",
+      "ビン",
+      "まず.しい"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "叶",
+    "meanings": [
+      "grant",
+      "answer"
+    ],
+    "yomikata": [
+      "キョウ",
+      "かな.える",
+      "かな.う"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "租",
+    "meanings": [
+      "tariff",
+      "crop tax",
+      "borrowing"
+    ],
+    "yomikata": [
+      "ソ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "欧",
+    "meanings": [
+      "Europe"
+    ],
+    "yomikata": [
+      "オウ",
+      "うた.う",
+      "は.く"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "輝",
+    "meanings": [
+      "radiance",
+      "shine",
+      "sparkle",
+      "gleam",
+      "twinkle"
+    ],
+    "yomikata": [
+      "キ",
+      "かがや.く"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "劣",
+    "meanings": [
+      "inferiority",
+      "be inferior to",
+      "be worse"
+    ],
+    "yomikata": [
+      "レツ",
+      "おと.る"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "麺",
+    "meanings": [
+      "noodles",
+      "wheat flour"
+    ],
+    "yomikata": [
+      "メン",
+      "ベン",
+      "むぎこ"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "措",
+    "meanings": [
+      "set aside",
+      "give up",
+      "suspend",
+      "discontinue",
+      "lay aside",
+      "except"
+    ],
+    "yomikata": [
+      "ソ",
+      "お.く"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "潜",
+    "meanings": [
+      "submerge",
+      "conceal",
+      "hide",
+      "lower (voice)",
+      "hush"
+    ],
+    "yomikata": [
+      "セン",
+      "ひそ.む",
+      "もぐ.る",
+      "かく.れる",
+      "くぐ.る",
+      "ひそ.める"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "拡",
+    "meanings": [
+      "broaden",
+      "extend",
+      "expand",
+      "enlarge"
+    ],
+    "yomikata": [
+      "カク",
+      "コウ",
+      "ひろ.がる",
+      "ひろ.げる",
+      "ひろ.める"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "憲",
+    "meanings": [
+      "constitution",
+      "law"
+    ],
+    "yomikata": [
+      "ケン"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "窮",
+    "meanings": [
+      "hard up",
+      "destitute",
+      "suffer",
+      "perplexed",
+      "cornered"
+    ],
+    "yomikata": [
+      "キュウ",
+      "キョウ",
+      "きわ.める",
+      "きわ.まる",
+      "きわ.まり",
+      "きわ.み"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "陥",
+    "meanings": [
+      "collapse",
+      "fall into",
+      "cave in",
+      "fall (castle)",
+      "slide into"
+    ],
+    "yomikata": [
+      "カン",
+      "おちい.る",
+      "おとしい.れる"
+    ],
+    "vocab": []
+  },
+  {
+    "kanji": "控",
+    "meanings": [
+      "withdraw",
+      "draw in",
+      "hold back",
+      "refrain from",
+      "be moderate"
+    ],
+    "yomikata": [
+      "コウ",
+      "ひか.える",
+      "ひか.え"
+    ],
+    "vocab": []
+  }
+]

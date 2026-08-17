@@ -65,6 +65,21 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
     }
 
     try {
+      // First, try to use kanji data from the card (from database)
+      if (card.kanji_data && card.kanji_data.length > 0) {
+        const breakdown: KanjiMeaning[] = card.kanji_data.map(k => ({
+          kanji: k.kanji,
+          meanings: k.meanings
+        }));
+
+        setKanjiBreakdown(breakdown);
+        setKanjiDataLoaded(true);
+        setShowKanjiBreakdown(true);
+        return;
+      }
+
+      // Fallback: Load from static JSON file (for backwards compatibility)
+      console.log('Kanji data not in card, falling back to static JSON file');
       const response = await fetch('/kanji/kanjiWithMeanings.json');
       const allKanjiData = await response.json();
 

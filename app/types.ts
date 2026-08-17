@@ -1,3 +1,12 @@
+export interface KanjiData {
+  kanji: string;
+  meanings: string[];
+  on_readings: string[];
+  kun_readings: string[];
+  all_readings: string[];
+  position: number;
+}
+
 export interface VocabCard {
   id?: string;  // UUID from database
   vocab: string;
@@ -11,6 +20,7 @@ export interface VocabCard {
   section: string;
   page: string;
   textbook: string;
+  kanji_data?: KanjiData[];  // Optional kanji data from database
 }
 
 export interface GrammarCard {

@@ -4,77 +4,107 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Furigana from '../components/Furigana';
 import { getTextbookColor, getTextbookShortName } from '../utils/textbookColors';
+import { createClient } from '../utils/supabase/client';
 
 interface VocabEntry {
-  word: string;
+  id: string;
+  vocab: string;
   reading: string;
   english: string;
   example_jp: string;
   example_en: string;
   my_meaning: string;
-  lesson: number;
-  page: number;
-  textbook?: string;
+  lesson: string;
+  page: string;
+  textbook: string;
 }
 
 interface KanjiData {
-  kanji: string;
+  id: string;
+  character: string;
   meanings: string[];
-  yomikata: string[];
-  vocab: VocabEntry[];
+  on_readings: string[];
+  kun_readings: string[];
+  all_readings: string[];
+  vocabulary: VocabEntry[];
 }
 
 export default function KanjiPage() {
   const router = useRouter();
   const [kanjiData, setKanjiData] = useState<KanjiData[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [searching, setSearching] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedKanji, setExpandedKanji] = useState<Set<string>>(new Set());
 
+  // Search with debouncing - wait 1.5 seconds after user stops typing
   useEffect(() => {
-    fetch('/kanji/kanjiWithMeanings.json')
-      .then(r => r.json())
-      .then(data => {
-        setKanjiData(data);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error loading kanji:', error);
-        setLoading(false);
-      });
-  }, []);
+    if (!searchTerm.trim()) {
+      setKanjiData([]);
+      setSearching(false);
+      return;
+    }
 
-  const toggleKanji = (kanji: string) => {
+    // Show searching indicator immediately
+    setSearching(true);
+
+    // Debounce: wait 1.5 seconds before actually searching
+    const timeoutId = setTimeout(async () => {
+      const supabase = createClient();
+      const query = searchTerm.trim();
+
+      try {
+        // Search kanji using RPC function
+        const { data: searchResults, error } = await supabase
+          .rpc('search_kanji', { p_query: query, p_limit: 100 });
+
+        if (error) {
+          console.error('Search error:', error);
+          setSearching(false);
+          return;
+        }
+
+        // For each kanji result, fetch its full vocabulary
+        if (searchResults && searchResults.length > 0) {
+          const kanjiWithVocab = await Promise.all(
+            searchResults.map(async (kanji: any) => {
+              const { data: kanjiDetails } = await supabase
+                .rpc('get_kanji_with_vocabulary', { p_kanji_character: kanji.character });
+
+              if (kanjiDetails && kanjiDetails.length > 0) {
+                return {
+                  ...kanjiDetails[0],
+                  vocabulary: kanjiDetails[0].vocabulary || [],
+                };
+              }
+              return null;
+            })
+          );
+
+          setKanjiData(kanjiWithVocab.filter(k => k !== null) as KanjiData[]);
+        } else {
+          setKanjiData([]);
+        }
+
+        setSearching(false);
+      } catch (error) {
+        console.error('Search error:', error);
+        setSearching(false);
+      }
+    }, 1500); // 1.5 second debounce
+
+    // Cleanup timeout if user types again before 1.5 seconds
+    return () => clearTimeout(timeoutId);
+  }, [searchTerm]);
+
+  const toggleKanji = (character: string) => {
     const newExpanded = new Set(expandedKanji);
-    if (newExpanded.has(kanji)) {
-      newExpanded.delete(kanji);
+    if (newExpanded.has(character)) {
+      newExpanded.delete(character);
     } else {
-      newExpanded.add(kanji);
+      newExpanded.add(character);
     }
     setExpandedKanji(newExpanded);
   };
-
-  const filteredKanji = kanjiData.filter(k => {
-    if (!searchTerm) return true;
-    const term = searchTerm.toLowerCase();
-    return (
-      k.kanji.includes(searchTerm) ||
-      k.meanings.some(m => m.toLowerCase().includes(term)) ||
-      k.vocab.some(v =>
-        v.word.includes(searchTerm) ||
-        v.reading.includes(searchTerm) ||
-        v.english.toLowerCase().includes(term)
-      )
-    );
-  });
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading kanji...</div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-500 to-red-600 p-4 sm:p-8">
@@ -93,52 +123,72 @@ export default function KanjiPage() {
               <h1 className="text-3xl sm:text-5xl font-bold text-orange-600 mb-2">
                 漢字 Dictionary
               </h1>
-              <p className="text-gray-600 text-sm sm:text-base">
-                {filteredKanji.length} kanji • {kanjiData.reduce((sum, k) => sum + k.vocab.length, 0)} vocabulary words
-              </p>
+              {searchTerm && !searching && (
+                <p className="text-gray-600 text-sm sm:text-base">
+                  Found {kanjiData.length} kanji • {kanjiData.reduce((sum, k) => sum + k.vocabulary.length, 0)} vocabulary words
+                </p>
+              )}
+              {searching && (
+                <p className="text-gray-600 text-sm sm:text-base">
+                  Searching...
+                </p>
+              )}
+              {!searchTerm && (
+                <p className="text-gray-600 text-sm sm:text-base">
+                  Type to search kanji, meanings, or vocabulary
+                </p>
+              )}
             </div>
             <div className="text-4xl sm:text-6xl">📚</div>
           </div>
 
           {/* Search */}
-          <input
-            type="text"
-            placeholder="Search kanji, meanings, or vocabulary..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none text-base sm:text-lg"
-          />
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search kanji, meanings, or vocabulary..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:border-orange-500 focus:outline-none text-base sm:text-lg text-gray-900 placeholder-gray-500"
+              autoFocus
+            />
+            {searching && (
+              <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
+                <div className="animate-spin h-6 w-6 border-2 border-orange-600 border-t-transparent rounded-full"></div>
+              </div>
+            )}
+          </div>
         </header>
 
         {/* Kanji List */}
         <div className="space-y-4">
-          {filteredKanji.map((kanjiEntry) => {
-            const isExpanded = expandedKanji.has(kanjiEntry.kanji);
+          {kanjiData.map((kanjiEntry) => {
+            const isExpanded = expandedKanji.has(kanjiEntry.character);
 
             return (
               <div
-                key={kanjiEntry.kanji}
+                key={kanjiEntry.id}
                 className="bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden"
               >
                 {/* Kanji Header */}
                 <button
-                  onClick={() => toggleKanji(kanjiEntry.kanji)}
+                  onClick={() => toggleKanji(kanjiEntry.character)}
                   className="w-full p-4 sm:p-6 flex items-center gap-4 sm:gap-6 hover:bg-orange-50 transition-colors"
                 >
                   <div className="text-5xl sm:text-7xl font-bold text-orange-600 flex-shrink-0">
-                    {kanjiEntry.kanji}
+                    {kanjiEntry.character}
                   </div>
                   <div className="flex-1 text-left min-w-0">
                     <div className="text-xl sm:text-2xl font-semibold text-gray-800 mb-1 break-words">
                       {kanjiEntry.meanings.join(', ') || 'No meanings listed'}
                     </div>
-                    {kanjiEntry.yomikata.length > 0 && (
+                    {kanjiEntry.all_readings && kanjiEntry.all_readings.length > 0 && (
                       <div className="text-sm sm:text-base text-gray-600 break-words">
-                        読み方: {kanjiEntry.yomikata.join(', ')}
+                        読み方: {kanjiEntry.all_readings.join(', ')}
                       </div>
                     )}
                     <div className="text-xs sm:text-sm text-orange-600 mt-2">
-                      {kanjiEntry.vocab.length} vocabulary word{kanjiEntry.vocab.length !== 1 ? 's' : ''}
+                      {kanjiEntry.vocabulary.length} vocabulary word{kanjiEntry.vocabulary.length !== 1 ? 's' : ''}
                     </div>
                   </div>
                   <div className="text-2xl sm:text-3xl text-orange-600 flex-shrink-0">
@@ -150,7 +200,7 @@ export default function KanjiPage() {
                 {isExpanded && (
                   <div className="border-t border-gray-200 p-4 sm:p-6 bg-orange-50/30">
                     <div className="space-y-4">
-                      {kanjiEntry.vocab.map((vocab, idx) => {
+                      {kanjiEntry.vocabulary.map((vocab: VocabEntry, idx: number) => {
                         // Get textbook info
                         const colors = vocab.textbook ? getTextbookColor(vocab.textbook) : null;
                         const textbookName = vocab.textbook ? getTextbookShortName(vocab.textbook) : null;
@@ -159,13 +209,13 @@ export default function KanjiPage() {
 
                         return (
                           <div
-                            key={idx}
+                            key={vocab.id || idx}
                             className="bg-white rounded-lg p-3 sm:p-4 shadow-sm border-l-4 border-orange-500"
                           >
                             <div className="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-4 mb-3">
                               <div className="flex-1 min-w-0">
                                 <div className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 break-words">
-                                  {vocab.word}
+                                  {vocab.vocab}
                                 </div>
                                 <div className="text-base sm:text-lg text-gray-600 mb-1">
                                   {vocab.reading}
@@ -219,12 +269,24 @@ export default function KanjiPage() {
           })}
         </div>
 
-        {filteredKanji.length === 0 && (
+        {/* Empty State */}
+        {searchTerm && !searching && kanjiData.length === 0 && (
           <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
             <div className="text-6xl mb-4">🔍</div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">No kanji found</h2>
             <p className="text-gray-600">
               Try searching for a different term
+            </p>
+          </div>
+        )}
+
+        {/* Initial State */}
+        {!searchTerm && (
+          <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
+            <div className="text-6xl mb-4">🔎</div>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">Start typing to search</h2>
+            <p className="text-gray-600">
+              Search by kanji character, meaning, or vocabulary word
             </p>
           </div>
         )}

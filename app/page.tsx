@@ -39,11 +39,13 @@ export default function Home() {
         const { data: grammarTextbooks, error: grammarError } = await supabase
           .rpc('get_grammar_textbooks');
 
-        // Fetch matome and kanji from JSON
-        const [matomeData, kanjiData] = await Promise.all([
-          fetch('/matome/glmjsonwithhiragana.json').then(r => r.json()),
-          fetch('/kanji/kanjiWithMeanings.json').then(r => r.json())
-        ]);
+        // Fetch kanji count from database
+        const { count: kanjiCount, error: kanjiCountError } = await supabase
+          .from('kanji')
+          .select('*', { count: 'exact', head: true });
+
+        // Fetch matome from JSON
+        const matomeData = await fetch('/matome/glmjsonwithhiragana.json').then(r => r.json());
 
         // Vocabulary
         if (vocabTextbooks && !vocabError && !vocabCountError) {
@@ -81,8 +83,13 @@ export default function Home() {
         const lessons = tests.map(t => t.lesson).sort((a, b) => a - b);
         setMatomeLessons(lessons);
 
-        // Kanji count
-        setKanjiCount(kanjiData.length);
+        // Kanji count from database
+        if (!kanjiCountError) {
+          setKanjiCount(kanjiCount || 0);
+          console.log('📝 Kanji - Total:', kanjiCount);
+        } else {
+          console.error('❌ Kanji error:', kanjiCountError);
+        }
 
         setLoading(false);
       } catch (error) {
