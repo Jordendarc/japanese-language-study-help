@@ -9,14 +9,31 @@ export default function Furigana({ text, className = '' }: FuriganaProps) {
   if (!text) return null;
 
   // Parse text like "試合（しあい）の後半（こうはん）で逆転（ぎゃくてん）した"
+  // Also handles regular parentheses: "会社(かいしゃ)"
+  // And mixed kana+kanji like "お小遣(こづか)い" and "当(あ)たり"
   // into segments with kanji and their readings
   const parseText = (input: string) => {
     const segments: Array<{ kanji: string; reading: string } | { text: string }> = [];
 
-    // Regex to match kanji/symbols (not hiragana or katakana) followed by reading in parentheses
+    // New strategy: Find parentheses first, then look backwards to find the word
+    // Match pattern: any sequence of kanji/kana directly before parentheses that contains at least one kanji
+    // This handles:
+    // - 会社(かいしゃ) - consecutive kanji
+    // - お小遣(こづか)い - prefix kana + kanji + suffix kana
+    // - 当(あ)たり - kanji + okurigana between word parts
+    // - 働(はたら)いて - kanji + okurigana
+    //
     // [\u4E00-\u9FAF] = Kanji
+    // [\u3040-\u309F] = Hiragana (ぁ-ん)
+    // [\u30A0-\u30FF] = Katakana
     // \u3005 = 々 (iteration mark)
-    const regex = /([\u4E00-\u9FAF\u3005]+)（([^（）]+?)）/g;
+
+    // Use a more specific pattern:
+    // Match any continuous sequence of kanji/kana immediately before parentheses
+    // But ONLY if it starts with kanji (no leading standalone hiragana particles)
+    // Changed to greedy (*) to capture full word like 会社, not just 社
+    const regex = /([\u4E00-\u9FAF\u3005][\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u3005]*)[（(]([^（）()]+?)[）)]/g;
+
     let match;
     let lastIndex = 0;
 
