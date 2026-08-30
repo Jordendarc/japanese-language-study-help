@@ -19,11 +19,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const supabase = createClient();
 
   useEffect(() => {
+    // Add timeout to prevent hanging on slow connections
+    const timeout = setTimeout(() => {
+      if (loading) {
+        console.warn('Auth session check timed out, continuing without auth');
+        setLoading(false);
+        setUser(null);
+      }
+    }, 5000); // 5 second timeout
+
     // Check active session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-      setLoading(false);
-    });
+    supabase.auth.getSession()
+      .then(({ data: { session } }) => {
+        clearTimeout(timeout);
+        setUser(session?.user ?? null);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error getting session:', error);
+        clearTimeout(timeout);
+        setUser(null);
+        setLoading(false);
+      });
 
     // Listen for auth changes
     const {
@@ -32,7 +49,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUser(session?.user ?? null);
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      clearTimeout(timeout);
+      subscription.unsubscribe();
+    };
   }, [supabase.auth]);
 
   const signInWithGoogle = async () => {

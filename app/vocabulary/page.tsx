@@ -96,6 +96,7 @@ function VocabularyPageContent() {
 
       try {
         const selections: { textbook: string; lessons: string[] }[] = JSON.parse(selectionsParam);
+        const kanjiOnlyParam = searchParams.get('kanjiOnly') === 'true';
 
         // Fetch vocabulary from Supabase based on selections
         const allCards: VocabCard[] = [];
@@ -133,7 +134,12 @@ function VocabularyPageContent() {
           allCards.push(...cards);
         }
 
-        setCurrentQueue(allCards);
+        // Filter for kanji-only cards if requested
+        const filteredCards = kanjiOnlyParam
+          ? allCards.filter(card => card.kanji_data && card.kanji_data.length > 0)
+          : allCards;
+
+        setCurrentQueue(filteredCards);
       } catch (e) {
         console.error('Error parsing selections:', e);
         router.push('/vocabulary/select');

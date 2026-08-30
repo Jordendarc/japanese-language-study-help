@@ -18,6 +18,7 @@ export default function VocabularySelectPage() {
   const [selectedTextbooks, setSelectedTextbooks] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingDifficult, setLoadingDifficult] = useState(false);
+  const [kanjiOnly, setKanjiOnly] = useState(false);
 
   // Load data from Supabase
   useEffect(() => {
@@ -203,6 +204,9 @@ export default function VocabularySelectPage() {
     // Encode selections as JSON in URL
     const params = new URLSearchParams();
     params.set('selections', JSON.stringify(selections));
+    if (kanjiOnly) {
+      params.set('kanjiOnly', 'true');
+    }
     router.push(`/vocabulary?${params.toString()}`);
   };
 
@@ -316,7 +320,18 @@ export default function VocabularySelectPage() {
         {selectedTextbooks.length > 0 && (
           <div className="bg-white rounded-xl shadow-lg mb-4 p-6">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-gray-800">Select Lessons</h2>
+              <div className="flex items-center gap-4">
+                <h2 className="text-xl font-bold text-gray-800">Select Lessons</h2>
+                <label className="flex items-center gap-2 text-sm cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={kanjiOnly}
+                    onChange={(e) => setKanjiOnly(e.target.checked)}
+                    className="w-4 h-4 text-indigo-600 rounded focus:ring-indigo-500"
+                  />
+                  <span className="text-gray-700 font-medium">漢字 Kanji Only</span>
+                </label>
+              </div>
               <div className="flex gap-2">
                 <button
                   onClick={selectAllLessons}
