@@ -120,6 +120,7 @@ function VocabularyPageContent() {
             vocab: row.vocab,
             reading: row.reading || '',
             english: row.english,
+            jp_meaning: row.jp_meaning || '',
             my_meaning: row.my_meaning || '',
             example_jp: row.example_jp || '',
             example_en: row.example_en || '',

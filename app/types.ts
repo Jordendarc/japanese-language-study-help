@@ -12,6 +12,7 @@ export interface VocabCard {
   vocab: string;
   reading: string;
   english: string;
+  jp_meaning?: string;  // Japanese meaning/definition
   my_meaning: string;
   example_jp: string;
   example_en: string;

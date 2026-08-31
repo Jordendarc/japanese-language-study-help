@@ -186,7 +186,7 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
         </div>
 
         {/* Back of card */}
-        <div className="absolute w-full h-full backface-hidden bg-gray-50 rounded-2xl shadow-2xl p-8 flex flex-col items-center justify-center rotate-y-180" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
+        <div className="absolute w-full h-full backface-hidden bg-gray-50 rounded-2xl shadow-2xl p-6 sm:p-8 flex flex-col items-center justify-center rotate-y-180" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
           {/* Textbook badge */}
           {textbookInfo && (
             <div
@@ -197,10 +197,19 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
             </div>
           )}
 
-          <div className="text-2xl sm:text-3xl text-indigo-600 mb-4">
+          <div className="text-xl sm:text-2xl md:text-3xl text-indigo-600 mb-3 sm:mb-4">
             {card.reading}
           </div>
-          <div className="text-2xl sm:text-4xl font-semibold text-gray-800 mb-4 text-center">
+
+          {/* Japanese meaning (if available) */}
+          {card.jp_meaning && (
+            <div className="text-base sm:text-lg md:text-xl text-gray-700 mb-2 sm:mb-3 text-center px-2 leading-relaxed">
+              {card.jp_meaning}
+            </div>
+          )}
+
+          {/* English meaning */}
+          <div className="text-xl sm:text-3xl md:text-4xl font-semibold text-gray-800 mb-3 sm:mb-4 text-center px-2">
             {meaning}
           </div>
 
