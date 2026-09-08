@@ -203,9 +203,7 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
 
           {/* Japanese meaning (if available) */}
           {card.jp_meaning && (
-            <div className="text-base sm:text-lg md:text-xl text-gray-700 mb-2 sm:mb-3 text-center px-2 leading-relaxed">
-              {card.jp_meaning}
-            </div>
+            <Furigana text={card.jp_meaning} className="text-base sm:text-lg md:text-xl text-gray-700 mb-2 sm:mb-3 text-center px-2 leading-relaxed" />
           )}
 
           {/* English meaning */}
@@ -214,15 +212,15 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
           </div>
 
           {(card.example_jp && card.example_en) ? (
-            <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-indigo-600 w-full max-w-lg">
-              <Furigana text={card.example_jp} className="text-base sm:text-lg text-gray-700 mb-2" />
-              <div className="text-sm sm:text-base text-gray-500 italic">
+            <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-indigo-600 w-full max-w-lg overflow-hidden">
+              <Furigana text={card.example_jp} className="text-base sm:text-lg text-gray-700 mb-2 break-words" />
+              <div className="text-sm sm:text-base text-gray-500 italic break-words">
                 {card.example_en}
               </div>
             </div>
           ) : card.example ? (
-            <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-indigo-600 w-full max-w-lg">
-              <Furigana text={card.example} className="text-base sm:text-lg text-gray-700" />
+            <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-indigo-600 w-full max-w-lg overflow-hidden">
+              <Furigana text={card.example} className="text-base sm:text-lg text-gray-700 break-words" />
             </div>
           ) : null}
 
