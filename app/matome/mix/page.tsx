@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { MatomeTest } from '../../types';
 
 interface LessonOption {
@@ -9,7 +9,7 @@ interface LessonOption {
   totalQuestions: number;
 }
 
-export default function MatomeMixPage() {
+function MatomeMixContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const textbook = searchParams.get('textbook') || 'dekiru';
@@ -212,5 +212,17 @@ export default function MatomeMixPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function MatomeMixPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+        <div className="text-white text-2xl">Loading...</div>
+      </div>
+    }>
+      <MatomeMixContent />
+    </Suspense>
   );
 }

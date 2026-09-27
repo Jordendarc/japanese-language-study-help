@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useParams, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { MatomeTest, MatomeProblem } from '../../types';
 import { WordBankQuestion } from '../components/WordBankQuestion';
 import { MultipleChoiceQuestion } from '../components/MultipleChoiceQuestion';
@@ -20,7 +20,7 @@ interface FlatQuestion {
   correctOrder?: string[];
 }
 
-export default function MatomeTestPage() {
+function MatomeTestContent() {
   const router = useRouter();
   const params = useParams();
   const searchParams = useSearchParams();
@@ -364,5 +364,17 @@ export default function MatomeTestPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function MatomeTestPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+        <div className="text-white text-2xl">Loading test...</div>
+      </div>
+    }>
+      <MatomeTestContent />
+    </Suspense>
   );
 }
