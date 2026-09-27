@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { MatomeTest } from '../../types';
 
@@ -11,12 +11,18 @@ interface LessonOption {
 
 export default function MatomeMixPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const textbook = searchParams.get('textbook') || 'dekiru';
   const [loading, setLoading] = useState(true);
   const [lessons, setLessons] = useState<LessonOption[]>([]);
   const [selectedLessons, setSelectedLessons] = useState<Set<number>>(new Set());
 
   useEffect(() => {
-    fetch('/matome/glmjsonwithhiragana.json')
+    const jsonFile = textbook === 'dekiru'
+      ? '/matome/glmjsonwithhiragana.json'
+      : '/manaboumatome.json';
+
+    fetch(jsonFile)
       .then(r => r.json())
       .then(data => {
         const tests = data.tests as MatomeTest[];
@@ -68,7 +74,7 @@ export default function MatomeMixPage() {
   const startMixedTest = () => {
     if (selectedLessons.size === 0) return;
     const lessonParam = Array.from(selectedLessons).sort((a, b) => a - b).join(',');
-    router.push(`/matome/test?lessons=${lessonParam}`);
+    router.push(`/matome/test?lessons=${lessonParam}&textbook=${textbook}`);
   };
 
   const totalQuestions = lessons

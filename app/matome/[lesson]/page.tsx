@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter, useParams, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { MatomeTest, MatomeProblem } from '../../types';
 import { WordBankQuestion } from '../components/WordBankQuestion';
@@ -23,7 +23,9 @@ interface FlatQuestion {
 export default function MatomeTestPage() {
   const router = useRouter();
   const params = useParams();
+  const searchParams = useSearchParams();
   const lesson = Number(params.lesson);
+  const textbook = searchParams.get('textbook') || 'dekiru';
 
   const [loading, setLoading] = useState(true);
   const [flatQuestions, setFlatQuestions] = useState<FlatQuestion[]>([]);
@@ -32,7 +34,11 @@ export default function MatomeTestPage() {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
-    fetch('/matome/glmjsonwithhiragana.json')
+    const jsonFile = textbook === 'dekiru'
+      ? '/matome/glmjsonwithhiragana.json'
+      : '/manaboumatome.json';
+
+    fetch(jsonFile)
       .then(r => r.json())
       .then(data => {
         const tests = data.tests as MatomeTest[];

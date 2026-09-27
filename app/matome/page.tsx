@@ -13,15 +13,24 @@ interface LessonSummary {
     wordOrder: number;
     reading: number;
   };
+  textbook: string;
 }
+
+type Textbook = 'dekiru' | 'manabou';
 
 export default function MatomePage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [lessons, setLessons] = useState<LessonSummary[]>([]);
+  const [selectedTextbook, setSelectedTextbook] = useState<Textbook>('dekiru');
 
   useEffect(() => {
-    fetch('/matome/glmjsonwithhiragana.json')
+    const jsonFile = selectedTextbook === 'dekiru'
+      ? '/matome/glmjsonwithhiragana.json'
+      : '/manaboumatome.json';
+
+    setLoading(true);
+    fetch(jsonFile)
       .then(r => r.json())
       .then(data => {
         const tests = data.tests as MatomeTest[];
@@ -60,6 +69,7 @@ export default function MatomePage() {
             lesson: test.lesson,
             totalQuestions,
             sections,
+            textbook: selectedTextbook,
           };
         });
 
@@ -71,7 +81,7 @@ export default function MatomePage() {
         console.error('Error loading matome tests:', error);
         setLoading(false);
       });
-  }, []);
+  }, [selectedTextbook]);
 
   if (loading) {
     return (
@@ -96,15 +106,39 @@ export default function MatomePage() {
           <h1 className="text-5xl sm:text-6xl font-bold text-white mb-4">
             Matome Tests
           </h1>
-          <p className="text-white/80 text-xl">
+          <p className="text-white/80 text-xl mb-6">
             Select a lesson to test your knowledge
           </p>
+
+          {/* Textbook Selector */}
+          <div className="flex justify-center gap-4 mt-8">
+            <button
+              onClick={() => setSelectedTextbook('dekiru')}
+              className={`px-6 py-3 rounded-xl font-semibold transition-all ${
+                selectedTextbook === 'dekiru'
+                  ? 'bg-white text-emerald-600 shadow-lg scale-105'
+                  : 'bg-white/20 text-white hover:bg-white/30'
+              }`}
+            >
+              できる日本語 中級
+            </button>
+            <button
+              onClick={() => setSelectedTextbook('manabou')}
+              className={`px-6 py-3 rounded-xl font-semibold transition-all ${
+                selectedTextbook === 'manabou'
+                  ? 'bg-white text-emerald-600 shadow-lg scale-105'
+                  : 'bg-white/20 text-white hover:bg-white/30'
+              }`}
+            >
+              まなぼう！中上級
+            </button>
+          </div>
         </header>
 
         {/* Mix Lessons Button */}
         <div className="mb-6">
           <button
-            onClick={() => router.push('/matome/mix')}
+            onClick={() => router.push(`/matome/mix?textbook=${selectedTextbook}`)}
             className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl sm:rounded-2xl shadow-2xl p-6 sm:p-8 hover:shadow-3xl transition-all hover:scale-[1.02] group"
           >
             <div className="flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-4">
@@ -125,7 +159,7 @@ export default function MatomePage() {
           {lessons.map(lesson => (
             <button
               key={lesson.lesson}
-              onClick={() => router.push(`/matome/${lesson.lesson}`)}
+              onClick={() => router.push(`/matome/${lesson.lesson}?textbook=${selectedTextbook}`)}
               className="bg-white rounded-xl sm:rounded-2xl shadow-2xl p-6 sm:p-8 hover:shadow-3xl transition-all hover:scale-[1.02] text-left group"
             >
               <div className="flex items-center justify-between mb-4 sm:mb-6">

@@ -24,6 +24,7 @@ function MatomeTestMixedContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const lessonsParam = searchParams.get('lessons');
+  const textbook = searchParams.get('textbook') || 'dekiru';
 
   const [loading, setLoading] = useState(true);
   const [flatQuestions, setFlatQuestions] = useState<FlatQuestion[]>([]);
@@ -41,7 +42,11 @@ function MatomeTestMixedContent() {
     const lessons = lessonsParam.split(',').map(Number);
     setSelectedLessons(lessons);
 
-    fetch('/matome/glmjsonwithhiragana.json')
+    const jsonFile = textbook === 'dekiru'
+      ? '/matome/glmjsonwithhiragana.json'
+      : '/manaboumatome.json';
+
+    fetch(jsonFile)
       .then(r => r.json())
       .then(data => {
         const tests = data.tests as MatomeTest[];
