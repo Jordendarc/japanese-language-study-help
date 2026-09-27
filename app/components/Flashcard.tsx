@@ -198,7 +198,7 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
           )}
 
           {/* Scrollable content area */}
-          <div className="flex-1 overflow-y-auto p-6 sm:p-8 flex flex-col items-center justify-center">
+          <div className="flex-1 overflow-y-auto p-6 sm:p-8 pt-8 flex flex-col items-center">
             <div className="text-xl sm:text-2xl md:text-3xl text-indigo-600 mb-3 sm:mb-4">
               {card.reading}
             </div>
