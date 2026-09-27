@@ -186,46 +186,50 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
         </div>
 
         {/* Back of card */}
-        <div className="absolute w-full h-full backface-hidden bg-gray-50 rounded-2xl shadow-2xl p-6 sm:p-8 flex flex-col items-center justify-center rotate-y-180" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
+        <div className="absolute w-full h-full backface-hidden bg-gray-50 rounded-2xl shadow-2xl rotate-y-180 flex flex-col" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
           {/* Textbook badge */}
           {textbookInfo && (
             <div
-              className="absolute top-4 right-4 px-3 py-1 rounded-lg text-xs sm:text-sm font-bold"
+              className="absolute top-4 right-4 px-3 py-1 rounded-lg text-xs sm:text-sm font-bold z-10"
               style={{ backgroundColor: textbookInfo.color, color: textbookInfo.textColor }}
             >
               {textbookInfo.name}
             </div>
           )}
 
-          <div className="text-xl sm:text-2xl md:text-3xl text-indigo-600 mb-3 sm:mb-4">
-            {card.reading}
-          </div>
+          {/* Scrollable content area */}
+          <div className="flex-1 overflow-y-auto p-6 sm:p-8 flex flex-col items-center justify-center">
+            <div className="text-xl sm:text-2xl md:text-3xl text-indigo-600 mb-3 sm:mb-4">
+              {card.reading}
+            </div>
 
-          {/* Japanese meaning (if available) */}
-          {card.jp_meaning && (
-            <Furigana text={card.jp_meaning} className="text-base sm:text-lg md:text-xl text-gray-700 mb-2 sm:mb-3 text-center px-2 leading-relaxed" />
-          )}
+            {/* Japanese meaning (if available) */}
+            {card.jp_meaning && (
+              <Furigana text={card.jp_meaning} className="text-base sm:text-lg md:text-xl text-gray-700 mb-2 sm:mb-3 text-center px-2 leading-relaxed" />
+            )}
 
-          {/* English meaning */}
-          <div className="text-xl sm:text-3xl md:text-4xl font-semibold text-gray-800 mb-3 sm:mb-4 text-center px-2">
-            {meaning}
-          </div>
+            {/* English meaning */}
+            <div className="text-xl sm:text-3xl md:text-4xl font-semibold text-gray-800 mb-3 sm:mb-4 text-center px-2">
+              {meaning}
+            </div>
 
-          {(card.example_jp && card.example_en) ? (
-            <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-indigo-600 w-full max-w-lg overflow-hidden">
-              <Furigana text={card.example_jp} className="text-base sm:text-lg text-gray-700 mb-2 break-words" />
-              <div className="text-sm sm:text-base text-gray-500 italic break-words">
-                {card.example_en}
+            {(card.example_jp && card.example_en) ? (
+              <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-indigo-600 w-full max-w-lg">
+                <Furigana text={card.example_jp} className="text-base sm:text-lg text-gray-700 mb-2 break-words" />
+                <div className="text-sm sm:text-base text-gray-500 italic break-words">
+                  {card.example_en}
+                </div>
               </div>
-            </div>
-          ) : card.example ? (
-            <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-indigo-600 w-full max-w-lg overflow-hidden">
-              <Furigana text={card.example} className="text-base sm:text-lg text-gray-700 break-words" />
-            </div>
-          ) : null}
+            ) : card.example ? (
+              <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-indigo-600 w-full max-w-lg">
+                <Furigana text={card.example} className="text-base sm:text-lg text-gray-700 break-words" />
+              </div>
+            ) : null}
+          </div>
 
+          {/* Lesson text at bottom */}
           {lessonText && (
-            <div className="text-sm text-gray-500 mt-auto">
+            <div className="text-sm text-gray-500 p-4 text-center border-t border-gray-200">
               {lessonText}
             </div>
           )}
