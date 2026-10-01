@@ -94,7 +94,7 @@ export default function N3QuizPage() {
 
   if (questions.length === 0) {
     return (
-      <div className="min-h-screen bg-app flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-fg text-2xl">Loading quiz...</div>
       </div>
     );
@@ -104,7 +104,7 @@ export default function N3QuizPage() {
     const percentage = Math.round((correctCount / questions.length) * 100);
 
     return (
-      <div className="min-h-screen bg-app flex items-center justify-center p-4">
+      <div className="min-h-screen flex items-center justify-center p-4">
         <div className="bg-surface rounded-2xl p-8 max-w-2xl w-full border border-line">
           <h1 className="text-4xl font-medium text-fg mb-6 text-center">Quiz Complete!</h1>
 
@@ -152,7 +152,7 @@ export default function N3QuizPage() {
   const isCorrect = selectedAnswer === currentQuestion.answer;
 
   return (
-    <div className="min-h-screen bg-app p-4">
+    <div className="min-h-screen p-4">
       <div className="max-w-4xl mx-auto pt-8">
         {/* Header */}
         <div className="mb-6">

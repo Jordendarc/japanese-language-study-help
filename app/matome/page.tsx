@@ -85,14 +85,14 @@ export default function MatomePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-app flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-fg text-2xl">Loading tests...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-app p-4 sm:p-8">
+    <div className="min-h-screen p-4 sm:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-12">

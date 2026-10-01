@@ -77,7 +77,7 @@ export default function SearchPage() {
   }, [searchQuery]);
 
   return (
-    <div className="min-h-screen bg-app p-4">
+    <div className="min-h-screen p-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-6">

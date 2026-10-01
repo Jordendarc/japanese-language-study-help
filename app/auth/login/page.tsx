@@ -21,7 +21,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-app px-4">
+    <div className="min-h-screen flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-surface rounded-lg p-8 border border-line">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-medium text-fg mb-2">Welcome!</h1>

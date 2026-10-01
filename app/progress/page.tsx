@@ -9,7 +9,7 @@ import ProgressView from './ProgressView';
 
 function Message({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-app flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="bg-surface border border-line rounded-2xl p-8 max-w-md text-center">
         <h1 className="text-2xl font-medium text-fg mb-2">{title}</h1>
         <div className="text-fg-muted">{children}</div>

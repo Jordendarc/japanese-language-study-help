@@ -456,7 +456,7 @@ function VocabularyPageContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-app flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-fg-muted text-lg">Loading vocabulary...</div>
       </div>
     );
@@ -465,7 +465,7 @@ function VocabularyPageContent() {
   // Nothing to study (e.g. no cards are due for review)
   if (currentQueue.length === 0) {
     return (
-      <div className="min-h-screen bg-app flex items-center justify-center p-4">
+      <div className="min-h-screen flex items-center justify-center p-4">
         <div className="bg-surface border border-line rounded-2xl p-8 max-w-md text-center">
           <h2 className="text-2xl font-medium text-fg mb-2">No cards to study</h2>
           <p className="text-fg-muted mb-6">
@@ -484,7 +484,7 @@ function VocabularyPageContent() {
   // Completion screen
   if (currentIndex >= currentQueue.length && reviewQueue.length === 0) {
     return (
-      <div className="min-h-screen bg-app flex items-center justify-center p-4">
+      <div className="min-h-screen flex items-center justify-center p-4">
         <div className="bg-surface border border-line rounded-2xl p-8 max-w-md text-center">
           <h2 className="text-3xl font-medium text-success mb-4">Completed!</h2>
           <p className="text-lg text-fg mb-2">You reviewed all {totalReviewed} cards!</p>
@@ -508,7 +508,7 @@ function VocabularyPageContent() {
   const progress = ((currentIndex + 1) / currentQueue.length) * 100;
 
   return (
-    <div className="min-h-screen bg-app p-4 sm:p-8">
+    <div className="min-h-screen p-4 sm:p-8">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <header className="flex items-center justify-between gap-3 text-sm text-fg-muted mb-3">
@@ -613,7 +613,7 @@ function VocabularyPageContent() {
 export default function VocabularyPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-app flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-fg-muted text-lg">Loading...</div>
       </div>
     }>

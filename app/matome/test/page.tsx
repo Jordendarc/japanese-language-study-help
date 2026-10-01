@@ -149,7 +149,7 @@ function MatomeTestMixedContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-app flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-fg text-2xl">Loading mixed test...</div>
       </div>
     );
@@ -157,7 +157,7 @@ function MatomeTestMixedContent() {
 
   if (flatQuestions.length === 0) {
     return (
-      <div className="min-h-screen bg-app flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="text-fg text-2xl mb-4">No questions found</div>
           <button
@@ -172,7 +172,7 @@ function MatomeTestMixedContent() {
   }
 
   return (
-    <div className="min-h-screen bg-app p-4 sm:p-8">
+    <div className="min-h-screen p-4 sm:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="bg-surface rounded-2xl p-6 sm:p-8 mb-8 border border-line">
@@ -345,7 +345,7 @@ function MatomeTestMixedContent() {
 export default function MatomeTestMixedPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-app flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-fg text-2xl">Loading mixed test...</div>
       </div>
     }>

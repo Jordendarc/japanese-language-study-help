@@ -4,6 +4,7 @@ import { useAuth } from '@/app/contexts/AuthContext';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ThemeToggle from './ThemeToggle';
+import SceneryToggle from './SceneryToggle';
 import UserMenu from './UserMenu';
 
 export default function Navigation() {
@@ -24,6 +25,7 @@ export default function Navigation() {
           </Link>
 
           <div className="flex items-center gap-2">
+            <SceneryToggle />
             <ThemeToggle />
             {loading ? (
               <div className="w-8 h-8 flex items-center justify-center">

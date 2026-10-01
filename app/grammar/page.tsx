@@ -208,7 +208,7 @@ function GrammarPageContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-app flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-fg-muted text-lg">Loading grammar...</div>
       </div>
     );
@@ -220,7 +220,7 @@ function GrammarPageContent() {
   // Completion screen
   if (currentQueue.length > 0 && currentIndex >= currentQueue.length && reviewQueue.length === 0) {
     return (
-      <div className="min-h-screen bg-app flex items-center justify-center p-4">
+      <div className="min-h-screen flex items-center justify-center p-4">
         <div className="bg-surface border border-line rounded-2xl p-8 max-w-md text-center">
           <h2 className="text-3xl font-medium text-success mb-4">Completed!</h2>
           <p className="text-lg text-fg mb-2">You reviewed all {totalReviewed} grammar points!</p>
@@ -244,7 +244,7 @@ function GrammarPageContent() {
   const progress = currentQueue.length > 0 ? ((currentIndex + 1) / currentQueue.length) * 100 : 0;
 
   return (
-    <div className="min-h-screen bg-app p-4 sm:p-8">
+    <div className="min-h-screen p-4 sm:p-8">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <header className="flex items-center justify-between gap-3 text-sm text-fg-muted mb-3">
@@ -349,7 +349,7 @@ function GrammarPageContent() {
 export default function GrammarPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-app flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-fg-muted text-lg">Loading...</div>
       </div>
     }>

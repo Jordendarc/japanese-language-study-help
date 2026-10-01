@@ -48,7 +48,7 @@ export default function ProgressView({ stats }: { stats: ProgressStats }) {
   const reviewsLastTwoWeeks = stats.activity.reduce((sum, d) => sum + d.count, 0);
 
   return (
-    <div className="min-h-screen bg-app p-4 sm:p-8">
+    <div className="min-h-screen p-4 sm:p-8">
       <div className="max-w-3xl mx-auto">
         <header className="mb-6">
           <Link href="/" className="text-fg-muted hover:text-fg text-sm transition-colors">← Back to Home</Link>

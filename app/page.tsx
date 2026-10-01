@@ -113,7 +113,7 @@ export default function Home() {
   const count = (n: number) => (loading ? '—' : n);
 
   return (
-    <div className="min-h-screen bg-app p-4 sm:p-8">
+    <div className="min-h-screen p-4 sm:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-12">

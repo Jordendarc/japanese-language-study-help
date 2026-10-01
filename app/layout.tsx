@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { AuthProvider } from "./contexts/AuthContext";
 import Navigation from "./components/Navigation";
+import Scenery from "./components/Scenery";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "./utils/site";
 
 const geistSans = Geist({
@@ -58,8 +59,8 @@ export const viewport: Viewport = {
 };
 
 // Applies the saved theme before first paint so there's no flash of the wrong one.
-// Keep in sync with ThemeToggle.tsx (storage key "theme", values "night" | "day").
-const themeScript = `try{var t=localStorage.getItem('theme');if(t==='day'||t==='night'){document.documentElement.dataset.theme=t;if(t==='day'){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content','#f6f1e7')}}}catch(e){}`;
+// Keep in sync with ThemeToggle.tsx (key "theme": "night" | "day") and SceneryToggle.tsx (key "scenery": a scene id or "off").
+const themeScript = `try{var t=localStorage.getItem('theme');if(t==='day'||t==='night'){document.documentElement.dataset.theme=t;if(t==='day'){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content','#f6f1e7')}}var s=localStorage.getItem('scenery');if(s==='off')document.documentElement.dataset.scene='off';else if(s&&s!=='on')document.documentElement.dataset.sceneStyle=s}catch(e){}`;
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -90,6 +91,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-full flex flex-col">
+        <Scenery />
         <AuthProvider>
           <Navigation />
           {children}

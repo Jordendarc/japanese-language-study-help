@@ -95,3 +95,220 @@ body {
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
+
+/* ---------- Background scenery (components/Scenery.tsx, components/scenes/) ---------- */
+
+/* Palettes, one block per scene style and time of day. A scene is drawn entirely from these, so another
+   time of day (or another scene) is another block. */
+.scenery[data-style="sunset-valley"][data-time="sunset"] {
+  --sky-0: #141845; --sky-1: #352f7c; --sky-2: #8a4688; --sky-3: #d9605c; --sky-4: #f6975a; --sky-5: #ffd08c;
+  --glow-a: #fff3c4; --glow-b: #ffab52;
+  --stars: 0.3;
+  --cloud-lit: #ffc19a; --cloud-shade: #6a3c84;
+  --fuji-l: #9a5c9c; --fuji-m: #4f4489; --fuji-r: #29265f; --fuji-rim: #ffc98a; --fuji-haze: #b9749a;
+  --snow-l: #fff0e2; --snow-m: #f3d2e2; --snow-r: #a995d2;
+  --ridge-far: #6f4a8c; --ridge-near: #3a2f72; --mist: #ffc79a;
+  --land-far: #8a5a8e; --land-near: #2b2458;
+  --lake-top: #ffbe82; --lake-mid: #b65c88; --lake-bot: #3a3180; --lake-glint: #ffeab8; --shore: #2a2456;
+  --town: #2c2456; --town-roof: #c98a8f; --town-lit: #ffd98a; --lights: 0.8;
+  --tree-haze: #b06c94; --tree-dark: #271b4c; --trunk: #3a2450;
+  --bloom-lit: #ffc0c6; --bloom-mid: #ea86a8; --bloom-shade: #a4558f; --bloom-deep: #80428c; --bloom-hi: #fff2ee;
+  --roof-lit: #6cc7b4; --roof-mid: #2f7c7e; --roof-dark: #1a4458; --roof-rim: #ffc888;
+  --wall-lit: #e25a3e; --wall-shade: #7f2233; --wall-dark: #4a1528; --panel: #f7e6cf; --spire: #251d30; --gold: #ffd27c;
+}
+
+.scenery[data-style="anime-valley"][data-time="day"] {
+  --sky-top: #1f6fd0; --sky-mid: #4aa5ec; --sky-low: #b4e2fb;
+  --sun: transparent; --sun-halo1: transparent; --sun-halo2: transparent;
+  --cloud-lit: #ffffff; --cloud-shade: #a3c6ec;
+  --fuji: #5d82c8; --fuji-shade: #3f5da0; --snow: #ffffff; --snow-shade: #c6d6f2;
+  --mist: #e4f4fd; --ridge-far: #7db2c9; --ridge-near: #4c9076;
+  --land: #8ecb6c; --land-2: #79b95c; --land-3: #a8d982; --road: #ece3bd;
+  --lake: #4aa6e4; --lake-reflect: #3a84c6; --lake-hi: #f0faff;
+  --house-wall: #f6eedb; --roof-a: #e0703c; --roof-b: #5d7fa8; --roof-c: #b84a3a; --town-lit: #ffe08a; --lights: 0;
+  --tree-haze: #b5d6ea; --bush: #c9578c; --trunk: #6b4636;
+  --bloom-shade: #e0739f; --bloom-mid: #f7a6c2; --bloom-lit: #ffd3e1; --bloom-hi: #fff4f8;
+  --pg-roof: #2f9c8c; --pg-roof-shade: #1e6a68; --pg-roof-lit: #77d6c2; --pg-wall: #dc452e; --pg-wall-shade: #a82b28;
+  --pg-panel: #fbf1dc; --pg-dark: #5a2024; --gold: #f2c14e; --ink: #262034;
+}
+
+.scenery[data-style="anime-valley"][data-time="sunset"] {
+  --sky-top: #2a2a70; --sky-mid: #c2537c; --sky-low: #ffb45f;
+  --sun: #fff3b6; --sun-halo1: rgb(255 216 122 / 0.75); --sun-halo2: rgb(255 172 92 / 0.42);
+  --cloud-lit: #ffe0bc; --cloud-shade: #d86f88;
+  --fuji: #5c4c9e; --fuji-shade: #382f74; --snow: #ffe7dc; --snow-shade: #b59ad4;
+  --mist: #ffc49b; --ridge-far: #7a4f93; --ridge-near: #3f3278;
+  --land: #6a4a87; --land-2: #5a3f7b; --land-3: #7e5992; --road: #dba581;
+  --lake: #f39a62; --lake-reflect: #9a5088; --lake-hi: #fff0c4;
+  --house-wall: #caa0b3; --roof-a: #7b406f; --roof-b: #4b3a7b; --roof-c: #8b405d; --town-lit: #ffe08a; --lights: 1;
+  --tree-haze: #b57097; --bush: #6e3572; --trunk: #3a2245;
+  --bloom-shade: #b8508c; --bloom-mid: #f08cb0; --bloom-lit: #ffc3cd; --bloom-hi: #fff1e7;
+  --pg-roof: #2b8b87; --pg-roof-shade: #1c4f67; --pg-roof-lit: #80d7c0; --pg-wall: #da4930; --pg-wall-shade: #8b2541;
+  --pg-panel: #ffe2c4; --pg-dark: #4a1731; --gold: #ffd070; --ink: #1c1430;
+}
+
+.scenery {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+[data-scene="off"] .scenery {
+  display: none;
+}
+
+/* Sized in JS to cover the viewport, anchored to the bottom centre */
+.scenery-stage {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.scenery-stage[data-ready="true"] {
+  opacity: 1;
+}
+
+.scene-layer {
+  position: absolute;
+  display: block;
+  will-change: transform;
+}
+
+/* A wash of the page colour over the scene so text sitting directly on the background stays readable,
+   strongest at the top where page headings are */
+.scenery::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--app) 38%, transparent) 0%,
+    color-mix(in srgb, var(--app) 24%, transparent) 38%,
+    color-mix(in srgb, var(--app) 10%, transparent) 72%,
+    color-mix(in srgb, var(--app) 24%, transparent) 100%
+  );
+}
+
+.scene-clouds {
+  animation: scene-drift 160s ease-in-out infinite alternate;
+}
+
+/* Wind: the two front tree rows lean slightly, out of step with each other */
+.scene-trees {
+  transform-origin: 50% 100%;
+  animation: scene-sway 7s ease-in-out infinite alternate;
+}
+
+.scene-trees-3 {
+  animation-duration: 9s;
+  animation-delay: -3s;
+}
+
+.scene-glint {
+  animation: scene-twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes scene-drift {
+  from { transform: translateX(-2.5%); }
+  to { transform: translateX(2.5%); }
+}
+
+@keyframes scene-sway {
+  from { transform: skewX(-0.5deg); }
+  to { transform: skewX(0.7deg); }
+}
+
+@keyframes scene-twinkle {
+  from { opacity: 0.1; }
+  to { opacity: 1; }
+}
+
+/* Petals blow in from the right and drift left as they fall */
+.petals {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  top: -5vh;
+  left: var(--x);
+  width: var(--s);
+  height: var(--s);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: petal-fall var(--d) linear var(--delay) infinite;
+}
+
+.petal i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--bloom-lit);
+  border-radius: 80% 0 80% 0;
+  animation: petal-flutter 2.4s ease-in-out var(--delay) infinite alternate;
+}
+
+@keyframes petal-fall {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
+  8% { opacity: 0.85; }
+  85% { opacity: 0.85; }
+  100% { transform: translate3d(var(--drift), 108vh, 0) rotate(540deg); opacity: 0; }
+}
+
+@keyframes petal-flutter {
+  from { transform: rotate(-25deg) scale(1, 0.55); }
+  to { transform: rotate(35deg) scale(0.8, 1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-clouds,
+  .scene-trees,
+  .scene-glint,
+  .petal,
+  .petal i {
+    animation: none;
+  }
+
+  .petals {
+    display: none;
+  }
+}
+
+/* Dark text needs a stronger wash over the sunset than light text does */
+[data-theme="day"] .scenery::after {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--app) 70%, transparent) 0%,
+    color-mix(in srgb, var(--app) 52%, transparent) 38%,
+    color-mix(in srgb, var(--app) 24%, transparent) 72%,
+    color-mix(in srgb, var(--app) 34%, transparent) 100%
+  );
+}
+
+.scenery[data-style="anime-valley"]::after {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--app) 30%, transparent) 0%,
+    color-mix(in srgb, var(--app) 16%, transparent) 38%,
+    color-mix(in srgb, var(--app) 6%, transparent) 72%,
+    color-mix(in srgb, var(--app) 16%, transparent) 100%
+  );
+}
+
+[data-theme="day"] .scenery[data-style="anime-valley"]::after {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--app) 46%, transparent) 0%,
+    color-mix(in srgb, var(--app) 28%, transparent) 38%,
+    color-mix(in srgb, var(--app) 10%, transparent) 72%,
+    color-mix(in srgb, var(--app) 20%, transparent) 100%
+  );
+}

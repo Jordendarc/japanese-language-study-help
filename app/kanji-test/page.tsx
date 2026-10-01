@@ -254,7 +254,7 @@ function KanjiTestContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-app flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-fg-muted text-lg">Picking words...</div>
       </div>
     );
@@ -262,7 +262,7 @@ function KanjiTestContent() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-app flex items-center justify-center p-4">
+      <div className="min-h-screen flex items-center justify-center p-4">
         <div className="bg-surface border border-line rounded-2xl p-8 max-w-md text-center">
           <h2 className="text-2xl font-medium text-fg mb-2">No kanji words found</h2>
           <p className="text-fg-muted mb-6">Those chapters don&apos;t have words with kanji readings to test. Try another selection.</p>
@@ -283,7 +283,7 @@ function KanjiTestContent() {
     const missed = items.filter(item => item.mark === 'wrong');
 
     return (
-      <div className="min-h-screen bg-app p-4 sm:p-8">
+      <div className="min-h-screen p-4 sm:p-8">
         <div className="max-w-2xl mx-auto">
           <div className="bg-surface border border-line rounded-2xl p-8 text-center mb-4">
             <div className="text-6xl font-light text-accent mb-1">
@@ -343,7 +343,7 @@ function KanjiTestContent() {
   const progress = ((index + (revealed ? 1 : 0)) / items.length) * 100;
 
   return (
-    <div className="min-h-screen bg-app p-4 sm:p-8">
+    <div className="min-h-screen p-4 sm:p-8">
       <div className="max-w-2xl mx-auto">
         <header className="flex items-center justify-between gap-3 text-sm text-fg-muted mb-3">
           <button onClick={() => router.push('/kanji-test/select')} className="hover:text-fg transition-colors shrink-0">
@@ -429,7 +429,7 @@ export default function KanjiTestPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-app flex items-center justify-center">
+        <div className="min-h-screen flex items-center justify-center">
           <div className="text-fg-muted text-lg">Loading...</div>
         </div>
       }

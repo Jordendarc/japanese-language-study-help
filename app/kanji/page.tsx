@@ -107,7 +107,7 @@ export default function KanjiPage() {
   };
 
   return (
-    <div className="min-h-screen bg-app p-4 sm:p-8">
+    <div className="min-h-screen p-4 sm:p-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <header className="bg-surface rounded-xl sm:rounded-2xl p-4 sm:p-8 mb-6 sm:mb-8 border border-line">
