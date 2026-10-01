@@ -3,6 +3,7 @@
 export interface VocabProgress {
   id: string;
   user_id: string;
+  vocabulary_id?: string | null;
   vocab: string;
   reading: string | null;
   textbook: string;
@@ -26,7 +27,7 @@ export interface StudySession {
   user_id: string;
   textbook: string;
   lessons: string[];
-  session_type: 'study' | 'review' | 'difficult';
+  session_type: 'study' | 'review' | 'difficult' | 'kanji_test';
   cards_studied: number;
   cards_correct: number;
   cards_incorrect: number;

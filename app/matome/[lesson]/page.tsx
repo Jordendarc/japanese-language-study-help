@@ -146,20 +146,20 @@ function MatomeTestContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading test...</div>
+      <div className="min-h-screen bg-app flex items-center justify-center">
+        <div className="text-fg text-2xl">Loading test...</div>
       </div>
     );
   }
 
   if (flatQuestions.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+      <div className="min-h-screen bg-app flex items-center justify-center">
         <div className="text-center">
-          <div className="text-white text-2xl mb-4">No test found for Lesson {lesson}</div>
+          <div className="text-fg text-2xl mb-4">No test found for Lesson {lesson}</div>
           <button
             onClick={() => router.push('/matome')}
-            className="px-6 py-3 bg-white text-emerald-600 font-bold rounded-lg hover:bg-emerald-50 transition-colors"
+            className="px-6 py-3 bg-surface text-accent font-medium rounded-lg hover:bg-accent/25 transition-colors"
           >
             Back to Tests
           </button>
@@ -178,56 +178,56 @@ function MatomeTestContent() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-500 to-teal-600 p-4 sm:p-8">
+    <div className="min-h-screen bg-app p-4 sm:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <header className="bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 mb-6 sm:mb-8">
+        <header className="bg-surface rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 sm:mb-8 border border-line">
           <button
             onClick={() => router.push('/matome')}
-            className="mb-3 sm:mb-4 text-emerald-600 hover:text-emerald-700 transition-colors flex items-center gap-2 text-sm sm:text-base"
+            className="mb-3 sm:mb-4 text-accent hover:text-accent transition-colors flex items-center gap-2 text-sm sm:text-base"
           >
             <span>←</span>
             <span>Back to Tests</span>
           </button>
           <div className="flex items-center justify-between mb-3 sm:mb-4">
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-emerald-600">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-medium text-accent">
               Lesson {lesson}
             </h1>
             <div className="text-3xl sm:text-4xl">✅</div>
           </div>
 
           {submitted ? (
-            <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg sm:rounded-xl p-4 sm:p-6 border-2 border-emerald-200">
+            <div className="bg-accent/15 rounded-lg sm:rounded-xl p-4 sm:p-6 border-2 border-accent/40">
               <div className="text-center mb-4">
-                <div className="text-3xl sm:text-5xl font-bold text-emerald-600 mb-2">
+                <div className="text-3xl sm:text-5xl font-medium text-accent mb-2">
                   {score} / {flatQuestions.length}
                 </div>
-                <div className="text-lg sm:text-xl text-gray-700">
+                <div className="text-lg sm:text-xl text-fg">
                   {Math.round((score / flatQuestions.length) * 100)}% Correct
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <button
                   onClick={handleRetry}
-                  className="px-6 py-3 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-700 transition-colors text-sm sm:text-base"
+                  className="px-6 py-3 bg-accent text-on-accent font-medium rounded-lg hover:opacity-90 transition-colors text-sm sm:text-base"
                 >
                   Try Again
                 </button>
                 <button
                   onClick={() => router.push('/matome')}
-                  className="px-6 py-3 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-700 transition-colors text-sm sm:text-base"
+                  className="px-6 py-3 bg-surface-raised text-fg font-medium rounded-lg hover:bg-line transition-colors text-sm sm:text-base"
                 >
                   Back to Tests
                 </button>
               </div>
             </div>
           ) : (
-            <div className="flex items-center justify-between text-gray-600 text-sm sm:text-base">
+            <div className="flex items-center justify-between text-fg-soft text-sm sm:text-base">
               <div>
-                <span className="font-semibold">{flatQuestions.length}</span> questions
+                <span className="font-medium">{flatQuestions.length}</span> questions
               </div>
               <div>
-                <span className="font-semibold">{userAnswers.size}</span> / {flatQuestions.length} answered
+                <span className="font-medium">{userAnswers.size}</span> / {flatQuestions.length} answered
               </div>
             </div>
           )}
@@ -251,14 +251,14 @@ function MatomeTestContent() {
           return (
             <div key={problemId} className="mb-6 sm:mb-8">
               {/* Section Header */}
-              <div className="bg-white rounded-t-xl sm:rounded-t-2xl shadow-lg p-2 sm:p-6">
-                <h2 className="text-xl sm:text-2xl font-bold text-emerald-700">
+              <div className="bg-surface rounded-t-xl sm:rounded-t-2xl p-2 sm:p-6 border border-line">
+                <h2 className="text-xl sm:text-2xl font-medium text-accent">
                   {sectionTitle}
                 </h2>
                 {firstQuestion.passage && (
-                  <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-emerald-50 rounded-lg border-l-4 border-emerald-500">
-                    <div className="text-xs sm:text-sm text-emerald-700 font-semibold mb-2">Reading Passage:</div>
-                    <div className="text-sm sm:text-base leading-relaxed text-gray-900 whitespace-pre-wrap">
+                  <div className="mt-3 sm:mt-4 p-3 sm:p-4 bg-accent/15 rounded-lg border-l-4 border-accent">
+                    <div className="text-xs sm:text-sm text-accent font-medium mb-2">Reading Passage:</div>
+                    <div className="text-sm sm:text-base leading-relaxed text-fg whitespace-pre-wrap">
                       <Furigana text={firstQuestion.passage} />
                     </div>
                   </div>
@@ -266,7 +266,7 @@ function MatomeTestContent() {
               </div>
 
               {/* Questions */}
-              <div className="bg-white rounded-b-xl sm:rounded-b-2xl shadow-lg p-2 sm:p-6 space-y-3 sm:space-y-4">
+              <div className="bg-surface rounded-b-xl sm:rounded-b-2xl p-2 sm:p-6 space-y-3 sm:space-y-4 border border-line">
                 {problemQuestions.map((question) => {
                   const questionIndex = flatQuestions.indexOf(question);
                   const userAnswer = userAnswers.get(questionIndex) || '';
@@ -342,16 +342,16 @@ function MatomeTestContent() {
 
         {/* Submit Button */}
         {!submitted && (
-          <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl p-4 sm:p-8 sticky bottom-2 sm:bottom-4">
+          <div className="bg-surface rounded-xl sm:rounded-2xl p-4 sm:p-8 sticky bottom-2 sm:bottom-4 border border-line">
             <button
               onClick={handleSubmit}
               disabled={userAnswers.size === 0}
-              className={`w-full py-3 sm:py-4 rounded-lg sm:rounded-xl font-bold text-base sm:text-xl transition-all ${
+              className={`w-full py-3 sm:py-4 rounded-lg sm:rounded-xl font-medium text-base sm:text-xl transition-all ${
                 userAnswers.size === 0
-                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  ? 'bg-surface-raised text-fg-muted cursor-not-allowed'
                   : userAnswers.size === flatQuestions.length
-                  ? 'bg-emerald-600 text-white hover:bg-emerald-700 hover:scale-[1.02] shadow-lg'
-                  : 'bg-yellow-500 text-white hover:bg-yellow-600 hover:scale-[1.02] shadow-lg'
+                  ? 'bg-accent text-on-accent hover:opacity-90 hover:scale-[1.02]'
+                  : 'bg-warn text-on-accent hover:opacity-90 hover:scale-[1.02]'
               }`}
             >
               {userAnswers.size === 0
@@ -370,8 +370,8 @@ function MatomeTestContent() {
 export default function MatomeTestPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading test...</div>
+      <div className="min-h-screen bg-app flex items-center justify-center">
+        <div className="text-fg text-2xl">Loading test...</div>
       </div>
     }>
       <MatomeTestContent />

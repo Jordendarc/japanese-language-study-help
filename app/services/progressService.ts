@@ -6,8 +6,6 @@ import type {
   StudySession,
   StudySessionInsert,
   StudySessionUpdate,
-  CardReview,
-  CardReviewInsert,
 } from '@/app/types/database';
 
 const supabase = createClient();
@@ -89,7 +87,7 @@ export async function recordCardReview({
 }): Promise<void> {
   // Use RPC function to record card review in one call
   // This replaces 3-4 separate API calls with a single database transaction
-  const { data, error} = await supabase.rpc('record_card_review', {
+  const { error } = await supabase.rpc('record_card_review', {
     p_user_id: userId,
     p_session_id: sessionId,
     p_vocabulary_id: vocabularyId,
@@ -99,13 +97,6 @@ export async function recordCardReview({
 
   if (error) {
     console.error('Error recording card review:', error);
-    return;
-  }
-
-  // Optional: log the returned stats for debugging
-  if (data && data.length > 0) {
-    const stats = data[0];
-    console.log(`📊 Card reviewed - Times: ${stats.times_reviewed}, Streak: ${stats.current_streak}, Difficulty: ${stats.difficulty_score}`);
   }
 }
 
@@ -147,7 +138,6 @@ export async function recordCardReviewsBatch({
 
   if (data && data.length > 0) {
     const result = data[0];
-    console.log(`📊 Batch processed - Cards: ${result.cards_processed}, Errors: ${result.errors_count}`);
     return {
       processed: result.cards_processed,
       errors: result.errors_count,
@@ -247,22 +237,44 @@ export async function getDifficultWords(
   return data || [];
 }
 
-export async function getWordsForReview(userId: string): Promise<VocabProgress[]> {
+// Ids of vocabulary whose spaced-repetition review date has arrived, most overdue first.
+// `next_review_date` is set by the record_card_review database function.
+export async function getDueVocabularyIds(userId: string, limit = 100): Promise<string[]> {
   const today = new Date().toISOString().split('T')[0];
 
   const { data, error } = await supabase
     .from('vocab_progress')
-    .select('*')
+    .select('vocabulary_id')
     .eq('user_id', userId)
+    .not('vocabulary_id', 'is', null)
     .lte('next_review_date', today)
-    .order('next_review_date', { ascending: true });
+    .order('next_review_date', { ascending: true })
+    .limit(limit);
 
   if (error) {
-    console.error('Error fetching words for review:', error);
+    console.error('Error fetching due cards:', error);
     return [];
   }
 
-  return data || [];
+  return (data ?? []).map(row => row.vocabulary_id as string);
+}
+
+export async function getDueVocabularyCount(userId: string): Promise<number> {
+  const today = new Date().toISOString().split('T')[0];
+
+  const { count, error } = await supabase
+    .from('vocab_progress')
+    .select('*', { count: 'exact', head: true })
+    .eq('user_id', userId)
+    .not('vocabulary_id', 'is', null)
+    .lte('next_review_date', today);
+
+  if (error) {
+    console.error('Error counting due cards:', error);
+    return 0;
+  }
+
+  return count ?? 0;
 }
 
 // ============= STATISTICS =============
@@ -295,4 +307,92 @@ export async function getUserStats(userId: string) {
     currentStreakWords,
     longestStreak,
   };
+}
+
+// ============= PROGRESS OVERVIEW =============
+
+export type ProgressWord = Pick<
+  VocabProgress,
+  | 'vocab'
+  | 'textbook'
+  | 'lesson'
+  | 'times_reviewed'
+  | 'times_correct'
+  | 'times_incorrect'
+  | 'total_time_spent_ms'
+  | 'difficulty_score'
+  | 'current_streak'
+  | 'best_streak'
+  | 'last_reviewed_at'
+  | 'next_review_date'
+>;
+
+export interface ProgressOverview {
+  words: ProgressWord[];
+  sessions: StudySession[];
+  /** reviewed_at timestamps for roughly the last two weeks, for the activity chart */
+  recentReviewTimes: string[];
+}
+
+const ACTIVITY_DAYS = 14;
+
+// Supabase returns at most 1000 rows per request, so read in pages
+async function fetchAll<T>(
+  page: (from: number, to: number) => PromiseLike<{ data: T[] | null; error: unknown }>,
+  maxRows = 10000
+): Promise<T[]> {
+  const pageSize = 1000;
+  const rows: T[] = [];
+
+  while (rows.length < maxRows) {
+    const { data, error } = await page(rows.length, rows.length + pageSize - 1);
+    if (error) throw error;
+    rows.push(...(data ?? []));
+    if (!data || data.length < pageSize) break;
+  }
+
+  return rows;
+}
+
+export async function getProgressOverview(userId: string): Promise<ProgressOverview | null> {
+  const since = new Date(Date.now() - ACTIVITY_DAYS * 24 * 60 * 60 * 1000).toISOString();
+
+  try {
+    const [words, sessions, reviews] = await Promise.all([
+      fetchAll<ProgressWord>((from, to) =>
+        supabase
+          .from('vocab_progress')
+          .select(
+            'vocab, textbook, lesson, times_reviewed, times_correct, times_incorrect, total_time_spent_ms, difficulty_score, current_streak, best_streak, last_reviewed_at, next_review_date'
+          )
+          .eq('user_id', userId)
+          .order('id')
+          .range(from, to)
+      ),
+      fetchAll<StudySession>(
+        (from, to) =>
+          supabase
+            .from('study_sessions')
+            .select('*')
+            .eq('user_id', userId)
+            .order('started_at', { ascending: false })
+            .range(from, to),
+        3000
+      ),
+      fetchAll<{ reviewed_at: string }>((from, to) =>
+        supabase
+          .from('card_reviews')
+          .select('reviewed_at')
+          .eq('user_id', userId)
+          .gte('reviewed_at', since)
+          .order('reviewed_at')
+          .range(from, to)
+      ),
+    ]);
+
+    return { words, sessions, recentReviewTimes: reviews.map(r => r.reviewed_at) };
+  } catch (error) {
+    console.error('Error loading progress:', error);
+    return null;
+  }
 }

@@ -149,20 +149,20 @@ function MatomeTestMixedContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading mixed test...</div>
+      <div className="min-h-screen bg-app flex items-center justify-center">
+        <div className="text-fg text-2xl">Loading mixed test...</div>
       </div>
     );
   }
 
   if (flatQuestions.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+      <div className="min-h-screen bg-app flex items-center justify-center">
         <div className="text-center">
-          <div className="text-white text-2xl mb-4">No questions found</div>
+          <div className="text-fg text-2xl mb-4">No questions found</div>
           <button
             onClick={() => router.push('/matome/mix')}
-            className="px-6 py-3 bg-white text-purple-600 font-bold rounded-lg hover:bg-purple-50 transition-colors"
+            className="px-6 py-3 bg-surface text-accent font-medium rounded-lg hover:bg-accent/25 transition-colors"
           >
             Back to Mix Lessons
           </button>
@@ -172,23 +172,23 @@ function MatomeTestMixedContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-500 to-pink-600 p-4 sm:p-8">
+    <div className="min-h-screen bg-app p-4 sm:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <header className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 mb-8">
+        <header className="bg-surface rounded-2xl p-6 sm:p-8 mb-8 border border-line">
           <button
             onClick={() => router.push('/matome/mix')}
-            className="mb-4 text-purple-600 hover:text-purple-700 transition-colors flex items-center gap-2"
+            className="mb-4 text-accent hover:text-accent transition-colors flex items-center gap-2"
           >
             <span>←</span>
             <span>Back to Mix Lessons</span>
           </button>
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-4xl sm:text-5xl font-bold text-purple-600 mb-2">
+              <h1 className="text-4xl sm:text-5xl font-medium text-accent mb-2">
                 Mixed Test
               </h1>
-              <div className="text-gray-600">
+              <div className="text-fg-soft">
                 Lessons: {selectedLessons.join(', ')}
               </div>
             </div>
@@ -196,37 +196,37 @@ function MatomeTestMixedContent() {
           </div>
 
           {submitted ? (
-            <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border-2 border-purple-200">
+            <div className="bg-accent/15 rounded-xl p-6 border-2 border-accent/40">
               <div className="text-center mb-4">
-                <div className="text-5xl font-bold text-purple-600 mb-2">
+                <div className="text-5xl font-medium text-accent mb-2">
                   {score} / {flatQuestions.length}
                 </div>
-                <div className="text-xl text-gray-700">
+                <div className="text-xl text-fg">
                   {Math.round((score / flatQuestions.length) * 100)}% Correct
                 </div>
               </div>
               <div className="flex gap-4 justify-center">
                 <button
                   onClick={handleRetry}
-                  className="px-6 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition-colors"
+                  className="px-6 py-3 bg-accent text-on-accent font-medium rounded-lg hover:opacity-90 transition-colors"
                 >
                   Retry (Reshuffle)
                 </button>
                 <button
                   onClick={() => router.push('/matome/mix')}
-                  className="px-6 py-3 bg-gray-600 text-white font-bold rounded-lg hover:bg-gray-700 transition-colors"
+                  className="px-6 py-3 bg-surface-raised text-fg font-medium rounded-lg hover:bg-line transition-colors"
                 >
                   Change Lessons
                 </button>
               </div>
             </div>
           ) : (
-            <div className="flex items-center justify-between text-gray-600">
+            <div className="flex items-center justify-between text-fg-soft">
               <div>
-                <span className="font-semibold">{flatQuestions.length}</span> questions (shuffled)
+                <span className="font-medium">{flatQuestions.length}</span> questions (shuffled)
               </div>
               <div>
-                <span className="font-semibold">{userAnswers.size}</span> / {flatQuestions.length} answered
+                <span className="font-medium">{userAnswers.size}</span> / {flatQuestions.length} answered
               </div>
             </div>
           )}
@@ -239,8 +239,8 @@ function MatomeTestMixedContent() {
             const questionNumber = questionIndex + 1;
 
             return (
-              <div key={questionIndex} className="bg-white rounded-2xl shadow-lg p-6">
-                <div className="text-xs text-purple-600 font-semibold mb-3">
+              <div key={questionIndex} className="bg-surface rounded-2xl p-6 border border-line">
+                <div className="text-xs text-accent font-medium mb-3">
                   Question {questionNumber} • Lesson {question.lessonNumber} • {
                     question.problemType === 'word_bank' ? 'Word Bank' :
                     question.problemType === 'multiple_choice' ? 'Multiple Choice' :
@@ -250,9 +250,9 @@ function MatomeTestMixedContent() {
                 </div>
 
                 {question.passage && (
-                  <div className="mb-4 p-4 bg-purple-50 rounded-lg border-l-4 border-purple-500">
-                    <div className="text-sm text-purple-700 font-semibold mb-2">Reading Passage:</div>
-                    <div className="text-base leading-relaxed text-gray-900 whitespace-pre-wrap">
+                  <div className="mb-4 p-4 bg-accent/15 rounded-lg border-l-4 border-accent">
+                    <div className="text-sm text-accent font-medium mb-2">Reading Passage:</div>
+                    <div className="text-base leading-relaxed text-fg whitespace-pre-wrap">
                       <Furigana text={question.passage} />
                     </div>
                   </div>
@@ -317,16 +317,16 @@ function MatomeTestMixedContent() {
 
         {/* Submit Button */}
         {!submitted && (
-          <div className="bg-white rounded-2xl shadow-2xl p-8 sticky bottom-4">
+          <div className="bg-surface rounded-2xl p-8 sticky bottom-4 border border-line">
             <button
               onClick={handleSubmit}
               disabled={userAnswers.size === 0}
-              className={`w-full py-4 rounded-xl font-bold text-xl transition-all ${
+              className={`w-full py-4 rounded-xl font-medium text-xl transition-all ${
                 userAnswers.size === 0
-                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  ? 'bg-surface-raised text-fg-muted cursor-not-allowed'
                   : userAnswers.size === flatQuestions.length
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 hover:scale-[1.02] shadow-lg'
-                  : 'bg-yellow-500 text-white hover:bg-yellow-600 hover:scale-[1.02] shadow-lg'
+                  ? 'bg-accent hover:opacity-90 text-on-accent hover:scale-[1.02]'
+                  : 'bg-warn text-on-accent hover:opacity-90 hover:scale-[1.02]'
               }`}
             >
               {userAnswers.size === 0
@@ -345,8 +345,8 @@ function MatomeTestMixedContent() {
 export default function MatomeTestMixedPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading mixed test...</div>
+      <div className="min-h-screen bg-app flex items-center justify-center">
+        <div className="text-fg text-2xl">Loading mixed test...</div>
       </div>
     }>
       <MatomeTestMixedContent />

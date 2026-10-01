@@ -85,28 +85,28 @@ export default function MatomePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading tests...</div>
+      <div className="min-h-screen bg-app flex items-center justify-center">
+        <div className="text-fg text-2xl">Loading tests...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-500 to-teal-600 p-4 sm:p-8">
+    <div className="min-h-screen bg-app p-4 sm:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-12">
           <button
             onClick={() => router.push('/')}
-            className="mb-6 text-white/80 hover:text-white transition-colors flex items-center gap-2 mx-auto"
+            className="mb-6 text-fg-soft hover:text-fg transition-colors flex items-center gap-2 mx-auto"
           >
             <span>←</span>
             <span>Back to Home</span>
           </button>
-          <h1 className="text-5xl sm:text-6xl font-bold text-white mb-4">
+          <h1 className="text-5xl sm:text-6xl font-medium text-fg mb-4">
             Matome Tests
           </h1>
-          <p className="text-white/80 text-xl mb-6">
+          <p className="text-fg-soft text-xl mb-6">
             Select a lesson to test your knowledge
           </p>
 
@@ -114,20 +114,20 @@ export default function MatomePage() {
           <div className="flex justify-center gap-4 mt-8">
             <button
               onClick={() => setSelectedTextbook('dekiru')}
-              className={`px-6 py-3 rounded-xl font-semibold transition-all ${
+              className={`px-6 py-3 rounded-xl font-medium transition-all ${
                 selectedTextbook === 'dekiru'
-                  ? 'bg-white text-emerald-600 shadow-lg scale-105'
-                  : 'bg-white/20 text-white hover:bg-white/30'
+                  ? 'bg-surface text-accent scale-105 border border-line'
+                  : 'bg-surface-raised text-fg hover:bg-surface-raised'
               }`}
             >
               できる日本語 中級
             </button>
             <button
               onClick={() => setSelectedTextbook('manabou')}
-              className={`px-6 py-3 rounded-xl font-semibold transition-all ${
+              className={`px-6 py-3 rounded-xl font-medium transition-all ${
                 selectedTextbook === 'manabou'
-                  ? 'bg-white text-emerald-600 shadow-lg scale-105'
-                  : 'bg-white/20 text-white hover:bg-white/30'
+                  ? 'bg-surface text-accent scale-105 border border-line'
+                  : 'bg-surface-raised text-fg hover:bg-surface-raised'
               }`}
             >
               まなぼう！中上級
@@ -139,16 +139,16 @@ export default function MatomePage() {
         <div className="mb-6">
           <button
             onClick={() => router.push(`/matome/mix?textbook=${selectedTextbook}`)}
-            className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl sm:rounded-2xl shadow-2xl p-6 sm:p-8 hover:shadow-3xl transition-all hover:scale-[1.02] group"
+            className="w-full bg-accent text-on-accent rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-all hover:scale-[1.02] group"
           >
             <div className="flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-4">
               <div className="text-4xl sm:text-5xl">🎲</div>
-              <h2 className="text-2xl sm:text-4xl font-bold">Mix Lessons</h2>
+              <h2 className="text-2xl sm:text-4xl font-medium">Mix Lessons</h2>
             </div>
-            <p className="text-white/90 text-sm sm:text-lg mb-2">
+            <p className="text-on-accent/80 text-sm sm:text-lg mb-2">
               Select multiple lessons and get a shuffled mixed test
             </p>
-            <div className="text-white font-semibold group-hover:translate-x-2 transition-transform inline-block text-sm sm:text-base">
+            <div className="text-on-accent font-medium group-hover:translate-x-2 transition-transform inline-block text-sm sm:text-base">
               Start mixing →
             </div>
           </button>
@@ -160,50 +160,50 @@ export default function MatomePage() {
             <button
               key={lesson.lesson}
               onClick={() => router.push(`/matome/${lesson.lesson}?textbook=${selectedTextbook}`)}
-              className="bg-white rounded-xl sm:rounded-2xl shadow-2xl p-6 sm:p-8 hover:shadow-3xl transition-all hover:scale-[1.02] text-left group"
+              className="bg-surface rounded-xl sm:rounded-2xl p-6 sm:p-8 transition-all hover:scale-[1.02] text-left group border border-line"
             >
               <div className="flex items-center justify-between mb-4 sm:mb-6">
-                <h2 className="text-3xl sm:text-4xl font-bold text-emerald-600">
+                <h2 className="text-3xl sm:text-4xl font-medium text-accent">
                   Lesson {lesson.lesson}
                 </h2>
                 <div className="text-4xl sm:text-5xl">✅</div>
               </div>
 
               <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-4 sm:mb-6">
-                <div className="bg-emerald-50 rounded-lg p-3 sm:p-4">
-                  <div className="text-xs sm:text-sm text-gray-600 mb-1">Word Bank</div>
-                  <div className="text-lg sm:text-2xl font-bold text-emerald-600">
+                <div className="bg-accent/15 rounded-lg p-3 sm:p-4">
+                  <div className="text-xs sm:text-sm text-fg-soft mb-1">Word Bank</div>
+                  <div className="text-lg sm:text-2xl font-medium text-accent">
                     {lesson.sections.wordBank}
                   </div>
                 </div>
 
-                <div className="bg-emerald-50 rounded-lg p-3 sm:p-4">
-                  <div className="text-xs sm:text-sm text-gray-600 mb-1">Multiple Choice</div>
-                  <div className="text-lg sm:text-2xl font-bold text-emerald-600">
+                <div className="bg-accent/15 rounded-lg p-3 sm:p-4">
+                  <div className="text-xs sm:text-sm text-fg-soft mb-1">Multiple Choice</div>
+                  <div className="text-lg sm:text-2xl font-medium text-accent">
                     {lesson.sections.multipleChoice}
                   </div>
                 </div>
 
-                <div className="bg-emerald-50 rounded-lg p-3 sm:p-4">
-                  <div className="text-xs sm:text-sm text-gray-600 mb-1">Word Order</div>
-                  <div className="text-lg sm:text-2xl font-bold text-emerald-600">
+                <div className="bg-accent/15 rounded-lg p-3 sm:p-4">
+                  <div className="text-xs sm:text-sm text-fg-soft mb-1">Word Order</div>
+                  <div className="text-lg sm:text-2xl font-medium text-accent">
                     {lesson.sections.wordOrder}
                   </div>
                 </div>
 
-                <div className="bg-emerald-50 rounded-lg p-3 sm:p-4">
-                  <div className="text-xs sm:text-sm text-gray-600 mb-1">Reading</div>
-                  <div className="text-lg sm:text-2xl font-bold text-emerald-600">
+                <div className="bg-accent/15 rounded-lg p-3 sm:p-4">
+                  <div className="text-xs sm:text-sm text-fg-soft mb-1">Reading</div>
+                  <div className="text-lg sm:text-2xl font-medium text-accent">
                     {lesson.sections.reading}
                   </div>
                 </div>
               </div>
 
               <div className="flex items-center justify-between text-sm sm:text-base">
-                <div className="text-gray-600">
-                  Total: <span className="font-bold text-gray-800">{lesson.totalQuestions}</span>
+                <div className="text-fg-soft">
+                  Total: <span className="font-medium text-fg">{lesson.totalQuestions}</span>
                 </div>
-                <div className="text-emerald-600 font-semibold group-hover:translate-x-2 transition-transform">
+                <div className="text-accent font-medium group-hover:translate-x-2 transition-transform">
                   Start test →
                 </div>
               </div>
@@ -212,42 +212,42 @@ export default function MatomePage() {
         </div>
 
         {/* Instructions */}
-        <div className="mt-12 bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-white">
-          <h3 className="text-2xl font-bold mb-6 text-center">Test Format</h3>
+        <div className="mt-12 bg-surface-raised backdrop-blur-sm rounded-2xl p-8 text-fg">
+          <h3 className="text-2xl font-medium mb-6 text-center">Test Format</h3>
           <div className="grid sm:grid-cols-2 gap-6">
             <div>
-              <h4 className="font-semibold mb-2 flex items-center gap-2">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
                 <span>📝</span>
                 <span>Word Bank Questions</span>
               </h4>
-              <p className="text-sm text-white/80">
+              <p className="text-sm text-fg-soft">
                 Choose the correct word from a list to complete each sentence
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-2 flex items-center gap-2">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
                 <span>✏️</span>
                 <span>Multiple Choice</span>
               </h4>
-              <p className="text-sm text-white/80">
+              <p className="text-sm text-fg-soft">
                 Select the best answer from multiple options
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-2 flex items-center gap-2">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
                 <span>📖</span>
                 <span>Reading Comprehension</span>
               </h4>
-              <p className="text-sm text-white/80">
+              <p className="text-sm text-fg-soft">
                 Read passages and determine if statements are true or false
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-2 flex items-center gap-2">
+              <h4 className="font-medium mb-2 flex items-center gap-2">
                 <span>🎯</span>
                 <span>Instant Grading</span>
               </h4>
-              <p className="text-sm text-white/80">
+              <p className="text-sm text-fg-soft">
                 See your results immediately after submitting
               </p>
             </div>

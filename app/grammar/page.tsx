@@ -208,37 +208,31 @@ function GrammarPageContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading grammar...</div>
+      <div className="min-h-screen bg-app flex items-center justify-center">
+        <div className="text-fg-muted text-lg">Loading grammar...</div>
       </div>
     );
   }
 
+  const primaryButton = 'bg-accent text-on-accent px-6 py-3 rounded-xl font-medium hover:opacity-90 transition';
+  const secondaryButton = 'bg-surface-raised text-fg px-6 py-3 rounded-xl font-medium hover:bg-line transition';
+
   // Completion screen
   if (currentQueue.length > 0 && currentIndex >= currentQueue.length && reviewQueue.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md text-center">
-          <h2 className="text-4xl font-bold text-green-600 mb-4">Completed!</h2>
-          <p className="text-xl text-gray-700 mb-2">You reviewed all {totalReviewed} grammar points!</p>
-          <p className="text-lg text-gray-600 mb-6">Total rounds: {round}</p>
+      <div className="min-h-screen bg-app flex items-center justify-center p-4">
+        <div className="bg-surface border border-line rounded-2xl p-8 max-w-md text-center">
+          <h2 className="text-3xl font-medium text-success mb-4">Completed!</h2>
+          <p className="text-lg text-fg mb-2">You reviewed all {totalReviewed} grammar points!</p>
+          <p className="text-fg-muted mb-6">Total rounds: {round}</p>
           <div className="flex gap-3">
-            <button
-              onClick={resetAll}
-              className="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
-            >
+            <button onClick={resetAll} className={`flex-1 ${primaryButton}`}>
               Start Over
             </button>
-            <button
-              onClick={() => router.push('/grammar/select')}
-              className="flex-1 bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
-            >
+            <button onClick={() => router.push('/grammar/select')} className={`flex-1 ${secondaryButton}`}>
               Change Selection
             </button>
-            <button
-              onClick={() => router.push('/')}
-              className="flex-1 bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
-            >
+            <button onClick={() => router.push('/')} className={`flex-1 ${secondaryButton}`}>
               Home
             </button>
           </div>
@@ -247,61 +241,50 @@ function GrammarPageContent() {
     );
   }
 
+  const progress = currentQueue.length > 0 ? ((currentIndex + 1) / currentQueue.length) * 100 : 0;
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-500 to-teal-600 p-4 sm:p-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-app p-4 sm:p-8">
+      <div className="max-w-2xl mx-auto">
         {/* Header */}
-        <header className="text-center mb-4">
+        <header className="flex items-center justify-between gap-3 text-sm text-fg-muted mb-3">
           <button
             onClick={() => router.push('/grammar/select')}
-            className="text-white/80 hover:text-white mb-1 text-sm"
+            className="hover:text-fg transition-colors shrink-0"
           >
-            ← Change Selection
+            ← Change
           </button>
-          <h1 className="text-2xl sm:text-3xl font-bold text-white">
-            Grammar GrammarCardComponents
-          </h1>
+          <span>Grammar</span>
+          <span className="shrink-0 tabular-nums">{currentIndex + 1} / {currentQueue.length}</span>
         </header>
 
-        {/* Stats */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-xl px-2 py-2 mb-4 flex flex-nowrap gap-2 sm:gap-4 items-center justify-between text-white text-xs sm:text-sm">
-          <div className="text-center flex-1">
-            <div className="opacity-80 text-[10px] sm:text-xs">Round</div>
-            <div className="text-lg sm:text-xl font-bold">{round}</div>
-          </div>
-          <div className="text-center flex-1">
-            <div className="opacity-80 text-[10px] sm:text-xs">Queue</div>
-            <div className="text-lg sm:text-xl font-bold">{currentIndex + 1}/{currentQueue.length}</div>
-          </div>
-          <div className="text-center flex-1">
-            <div className="opacity-80 text-[10px] sm:text-xs">Review</div>
-            <div className="text-lg sm:text-xl font-bold text-yellow-300">{reviewQueue.length}</div>
-          </div>
-          <div className="text-center flex-1">
-            <div className="opacity-80 text-[10px] sm:text-xs">Total</div>
-            <div className="text-lg sm:text-xl font-bold">{totalReviewed}</div>
-          </div>
+        {/* Progress */}
+        <div className="h-1 rounded-full bg-surface-raised overflow-hidden mb-3">
+          <div className="h-full bg-accent transition-all duration-300" style={{ width: `${progress}%` }} />
         </div>
 
-        {/* Controls */}
-        <div className="bg-white rounded-xl shadow-lg p-2 sm:p-3 mb-4 flex flex-wrap gap-2 items-center justify-center">
-          <button
-            onClick={shuffle}
-            className="bg-green-600 hover:bg-green-700 text-white px-4 py-1.5 rounded-lg font-medium transition-colors text-sm"
-          >
-            Shuffle
-          </button>
-          <button
-            onClick={resetAll}
-            className="bg-green-600 hover:bg-green-700 text-white px-4 py-1.5 rounded-lg font-medium transition-colors text-sm"
-          >
-            Reset All
-          </button>
+        {/* Round info + controls */}
+        <div className="flex items-center justify-between gap-2 text-xs mb-4">
+          <div className="flex gap-2 text-fg-muted">
+            <span className="px-2.5 py-1 rounded-full bg-surface">Round {round}</span>
+            <span className={`px-2.5 py-1 rounded-full bg-surface ${reviewQueue.length > 0 ? 'text-warn' : ''}`}>
+              Review {reviewQueue.length}
+            </span>
+            <span className="px-2.5 py-1 rounded-full bg-surface">Total {totalReviewed}</span>
+          </div>
+          <div className="flex gap-1">
+            <button onClick={shuffle} className="px-2.5 py-1 rounded-full text-fg-muted hover:text-fg hover:bg-surface transition-colors">
+              Shuffle
+            </button>
+            <button onClick={resetAll} className="px-2.5 py-1 rounded-full text-fg-muted hover:text-fg hover:bg-surface transition-colors">
+              Reset
+            </button>
+          </div>
         </div>
 
         {/* GrammarCardComponent */}
         {currentQueue.length > 0 && currentIndex < currentQueue.length && (
-          <div className="mb-6">
+          <div className="mb-5">
             <GrammarCardComponent
               key={`${currentQueue[currentIndex].point}-${currentIndex}`}
               card={currentQueue[currentIndex]}
@@ -314,50 +297,44 @@ function GrammarPageContent() {
         )}
 
         {/* Action Buttons */}
-        <div className="flex gap-3 w-full max-w-2xl items-center justify-center mb-4 mx-auto">
+        <div className="flex gap-3 w-full items-stretch">
           <button
             onClick={handleNeedPractice}
-            className="flex-1 bg-red-500 hover:bg-red-600 text-white font-bold py-6 px-6 rounded-xl shadow-lg transition-all hover:scale-105 text-4xl"
+            className="flex-1 h-16 rounded-2xl bg-surface border border-line text-danger text-lg font-medium hover:bg-surface-raised active:scale-[0.98] transition flex items-center justify-center gap-2"
             aria-label="Need Practice"
           >
-            ✗
+            <span className="text-2xl leading-none">✗</span> Again
           </button>
           <button
             onClick={handlePrevious}
             disabled={currentIndex === 0}
-            className="bg-gray-400 hover:bg-gray-500 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-all hover:scale-105 text-xl"
+            className="w-14 rounded-2xl bg-surface border border-line text-fg-muted text-xl hover:text-fg hover:bg-surface-raised disabled:opacity-40 disabled:hover:bg-surface disabled:hover:text-fg-muted disabled:cursor-not-allowed transition"
             aria-label="Previous Card"
           >
-            ↑
+            ↶
           </button>
           <button
             onClick={handleGotIt}
-            className="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-6 px-6 rounded-xl shadow-lg transition-all hover:scale-105 text-4xl"
+            className="flex-1 h-16 rounded-2xl bg-accent text-on-accent text-lg font-medium hover:opacity-90 active:scale-[0.98] transition flex items-center justify-center gap-2"
             aria-label="Got It"
           >
-            ✓
+            <span className="text-2xl leading-none">✓</span> Got it
           </button>
         </div>
 
         {/* Completion Modal */}
         {showCompletionModal && (
-          <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center animate-fade-in">
-              <div className="text-6xl mb-4">🎉</div>
-              <h2 className="text-4xl font-bold text-green-600 mb-4">Completed!</h2>
-              <p className="text-xl text-gray-700 mb-2">You reviewed all {totalReviewed} grammar points!</p>
-              <p className="text-lg text-gray-600 mb-6">Total rounds: {round}</p>
+          <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
+            <div className="bg-surface border border-line rounded-2xl p-8 max-w-md w-full text-center animate-fade-in">
+              <div className="text-5xl mb-4">🎉</div>
+              <h2 className="text-3xl font-medium text-success mb-4">Completed!</h2>
+              <p className="text-lg text-fg mb-2">You reviewed all {totalReviewed} grammar points!</p>
+              <p className="text-fg-muted mb-6">Total rounds: {round}</p>
               <div className="flex gap-3">
-                <button
-                  onClick={resetAll}
-                  className="flex-1 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
-                >
+                <button onClick={resetAll} className={`flex-1 ${primaryButton}`}>
                   Start Over
                 </button>
-                <button
-                  onClick={() => router.push('/grammar/select')}
-                  className="flex-1 bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
-                >
+                <button onClick={() => router.push('/grammar/select')} className={`flex-1 ${secondaryButton}`}>
                   Change Selection
                 </button>
               </div>
@@ -372,8 +349,8 @@ function GrammarPageContent() {
 export default function GrammarPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading...</div>
+      <div className="min-h-screen bg-app flex items-center justify-center">
+        <div className="text-fg-muted text-lg">Loading...</div>
       </div>
     }>
       <GrammarPageContent />

@@ -101,7 +101,7 @@ export default function Furigana({ text, className = '' }: FuriganaProps) {
         }
         .furigana-reading {
           font-size: 0.5em;
-          color: #666;
+          color: var(--fg-muted);
         }
       `}</style>
     </span>

@@ -1,12 +1,17 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import Papa from 'papaparse';
 import { useEffect, useState } from 'react';
 import { MatomeTest } from './types';
 import { createClient } from './utils/supabase/client';
+import ContinueSessionBanner from './components/ContinueSessionBanner';
+
+interface TextbookRow {
+  textbook: string | null;
+}
 
 export default function Home() {
-  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [vocabCount, setVocabCount] = useState(0);
   const [grammarCount, setGrammarCount] = useState(0);
@@ -15,6 +20,7 @@ export default function Home() {
   const [grammarLessons, setGrammarLessons] = useState<string[]>([]);
   const [matomeLessons, setMatomeLessons] = useState<number[]>([]);
   const [kanjiCount, setKanjiCount] = useState(0);
+  const [n3Count, setN3Count] = useState(0);
 
   useEffect(() => {
     const supabase = createClient();
@@ -50,8 +56,7 @@ export default function Home() {
         // Vocabulary
         if (vocabTextbooks && !vocabError && !vocabCountError) {
           setVocabCount(vocabCount || 0);
-          const textbooks = vocabTextbooks.map((row: any) => row.textbook).filter(Boolean).sort();
-          console.log('📚 Vocab - Total:', vocabCount, 'Textbooks:', textbooks);
+          const textbooks = (vocabTextbooks as TextbookRow[]).map(row => row.textbook).filter((t): t is string => !!t).sort();
           setVocabLessons(textbooks);
         } else {
           console.error('❌ Vocab error:', vocabError || vocabCountError);
@@ -60,8 +65,7 @@ export default function Home() {
         // Grammar
         if (grammarTextbooks && !grammarError && !grammarCountError) {
           setGrammarCount(grammarCount || 0);
-          const textbooks = grammarTextbooks.map((row: any) => row.textbook).filter(Boolean).sort();
-          console.log('📗 Grammar - Total:', grammarCount, 'Textbooks:', textbooks);
+          const textbooks = (grammarTextbooks as TextbookRow[]).map(row => row.textbook).filter((t): t is string => !!t).sort();
           setGrammarLessons(textbooks);
         } else {
           console.error('❌ Grammar error:', grammarError || grammarCountError);
@@ -83,10 +87,14 @@ export default function Home() {
         const lessons = tests.map(t => t.lesson).sort((a, b) => a - b);
         setMatomeLessons(lessons);
 
+        // JLPT N3 quiz questions
+        const n3Csv = await fetch('/n3_quiz.csv').then(r => r.text());
+        const n3Rows = Papa.parse<{ id?: string; sentence_jp?: string }>(n3Csv, { header: true }).data;
+        setN3Count(n3Rows.filter(q => q.id && q.sentence_jp).length);
+
         // Kanji count from database
         if (!kanjiCountError) {
           setKanjiCount(kanjiCount || 0);
-          console.log('📝 Kanji - Total:', kanjiCount);
         } else {
           console.error('❌ Kanji error:', kanjiCountError);
         }
@@ -101,146 +109,164 @@ export default function Home() {
     loadData();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading...</div>
-      </div>
-    );
-  }
+  // Counts show a dash until they load so the page itself renders immediately
+  const count = (n: number) => (loading ? '—' : n);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 to-purple-700 p-4 sm:p-8">
+    <div className="min-h-screen bg-app p-4 sm:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-12">
-          <h1 className="text-5xl sm:text-6xl font-bold text-white mb-4">
+          <h1 className="text-5xl sm:text-6xl font-medium text-fg mb-4">
             Jojos Study Buddy
           </h1>
-          <p className="text-white/80 text-xl">
-            Choose what you'd like to study
+          <p className="text-fg-soft text-xl">
+            Choose what you&apos;d like to study
           </p>
         </header>
 
+        <ContinueSessionBanner />
+
         {/* Search Button */}
         <div className="mb-8">
-          <button
-            onClick={() => router.push('/search')}
-            className="w-full bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all hover:scale-[1.02] group"
+          <Link
+            href="/search"
+            className="block w-full bg-surface rounded-2xl p-6 transition-all hover:scale-[1.02] group border border-line"
           >
             <div className="flex items-center justify-center gap-4">
               <div className="text-3xl">🔍</div>
-              <div className="text-2xl font-bold text-gray-800">Search All Content</div>
+              <div className="text-2xl font-medium text-fg">Search All Content</div>
             </div>
-          </button>
+          </Link>
         </div>
 
         {/* Study Mode Cards */}
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Vocabulary Card */}
-          <button
-            onClick={() => router.push('/vocabulary/select')}
-            className="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all hover:scale-105 text-left group"
+          <Link
+            href="/vocabulary/select"
+            className="block bg-surface rounded-2xl p-8 transition-all hover:scale-105 text-left group border border-line"
           >
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-3xl font-bold text-indigo-600">Vocabulary</h2>
+              <h2 className="text-3xl font-medium text-accent">Vocabulary</h2>
               <div className="text-4xl">📝</div>
             </div>
-            <p className="text-gray-600 mb-4">
+            <p className="text-fg-soft mb-4">
               Study Japanese vocabulary with example sentences
             </p>
             <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">{vocabCount} cards</span>
-              <span className="text-gray-500">{vocabLessons.length} textbook{vocabLessons.length !== 1 ? 's' : ''}</span>
+              <span className="text-fg-muted">{count(vocabCount)} cards</span>
+              <span className="text-fg-muted">{count(vocabLessons.length)} textbook{vocabLessons.length !== 1 ? 's' : ''}</span>
             </div>
-            <div className="mt-4 text-indigo-600 font-semibold group-hover:translate-x-2 transition-transform">
+            <div className="mt-4 text-accent font-medium group-hover:translate-x-2 transition-transform">
               Start studying →
             </div>
-          </button>
+          </Link>
 
           {/* Grammar Card */}
-          <button
-            onClick={() => router.push('/grammar/select')}
-            className="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all hover:scale-105 text-left group"
+          <Link
+            href="/grammar/select"
+            className="block bg-surface rounded-2xl p-8 transition-all hover:scale-105 text-left group border border-line"
           >
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-3xl font-bold text-purple-600">Grammar</h2>
+              <h2 className="text-3xl font-medium text-accent">Grammar</h2>
               <div className="text-4xl">📚</div>
             </div>
-            <p className="text-gray-600 mb-4">
+            <p className="text-fg-soft mb-4">
               Master Japanese grammar patterns and usage
             </p>
             <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">{grammarCount} grammar points</span>
-              <span className="text-gray-500">{grammarLessons.length} textbook{grammarLessons.length !== 1 ? 's' : ''}</span>
+              <span className="text-fg-muted">{count(grammarCount)} grammar points</span>
+              <span className="text-fg-muted">{count(grammarLessons.length)} textbook{grammarLessons.length !== 1 ? 's' : ''}</span>
             </div>
-            <div className="mt-4 text-purple-600 font-semibold group-hover:translate-x-2 transition-transform">
+            <div className="mt-4 text-accent font-medium group-hover:translate-x-2 transition-transform">
               Start studying →
             </div>
-          </button>
+          </Link>
 
           {/* Matome Tests Card */}
-          <button
-            onClick={() => router.push('/matome')}
-            className="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all hover:scale-105 text-left group"
+          <Link
+            href="/matome"
+            className="block bg-surface rounded-2xl p-8 transition-all hover:scale-105 text-left group border border-line"
           >
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-3xl font-bold text-emerald-600">Matome Tests</h2>
+              <h2 className="text-3xl font-medium text-accent">Matome Tests</h2>
               <div className="text-4xl">✅</div>
             </div>
-            <p className="text-gray-600 mb-4">
+            <p className="text-fg-soft mb-4">
               Practice with comprehensive lesson tests
             </p>
             <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">{matomeCount} questions</span>
-              <span className="text-gray-500">Lessons {matomeLessons[0]}-{matomeLessons[matomeLessons.length - 1]}</span>
+              <span className="text-fg-muted">{count(matomeCount)} questions</span>
+              <span className="text-fg-muted">{loading ? '—' : `Lessons ${matomeLessons[0]}-${matomeLessons[matomeLessons.length - 1]}`}</span>
             </div>
-            <div className="mt-4 text-emerald-600 font-semibold group-hover:translate-x-2 transition-transform">
+            <div className="mt-4 text-accent font-medium group-hover:translate-x-2 transition-transform">
               Take a test →
             </div>
-          </button>
+          </Link>
 
           {/* Kanji Dictionary Card */}
-          <button
-            onClick={() => router.push('/kanji')}
-            className="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all hover:scale-105 text-left group"
+          <Link
+            href="/kanji"
+            className="block bg-surface rounded-2xl p-8 transition-all hover:scale-105 text-left group border border-line"
           >
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-3xl font-bold text-orange-600">漢字 Dictionary</h2>
+              <h2 className="text-3xl font-medium text-accent">漢字 Dictionary</h2>
               <div className="text-4xl">📚</div>
             </div>
-            <p className="text-gray-600 mb-4">
+            <p className="text-fg-soft mb-4">
               Browse kanji with all related vocabulary
             </p>
             <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">{kanjiCount} kanji</span>
-              <span className="text-gray-500">With examples</span>
+              <span className="text-fg-muted">{count(kanjiCount)} kanji</span>
+              <span className="text-fg-muted">With examples</span>
             </div>
-            <div className="mt-4 text-orange-600 font-semibold group-hover:translate-x-2 transition-transform">
+            <div className="mt-4 text-accent font-medium group-hover:translate-x-2 transition-transform">
               Browse kanji →
             </div>
-          </button>
+          </Link>
 
-          {/* N3 Quiz Card */}
-          <button
-            onClick={() => router.push('/n3-quiz')}
-            className="bg-white rounded-2xl shadow-2xl p-8 hover:shadow-3xl transition-all hover:scale-105 text-left group"
+          {/* Kanji Test Card */}
+          <Link
+            href="/kanji-test/select"
+            className="block bg-surface rounded-2xl p-8 transition-all hover:scale-105 text-left group border border-line"
           >
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-3xl font-bold text-pink-600">N3 Practice Quiz</h2>
+              <h2 className="text-3xl font-medium text-accent">Kanji Test</h2>
+              <div className="text-4xl">✍️</div>
+            </div>
+            <p className="text-fg-soft mb-4">
+              Type the reading of random kanji words from a chapter
+            </p>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-fg-muted">10 words per test</span>
+              <span className="text-fg-muted">Instant answer check</span>
+            </div>
+            <div className="mt-4 text-accent font-medium group-hover:translate-x-2 transition-transform">
+              Take a test →
+            </div>
+          </Link>
+
+          {/* N3 Quiz Card */}
+          <Link
+            href="/n3-quiz"
+            className="block bg-surface rounded-2xl p-8 transition-all hover:scale-105 text-left group border border-line"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-3xl font-medium text-accent">N3 Practice Quiz</h2>
               <div className="text-4xl">🎯</div>
             </div>
-            <p className="text-gray-600 mb-4">
+            <p className="text-fg-soft mb-4">
               Review JLPT N3 kanji and vocabulary questions
             </p>
             <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-500">19 questions</span>
-              <span className="text-gray-500">Multiple choice</span>
+              <span className="text-fg-muted">{count(n3Count)} questions</span>
+              <span className="text-fg-muted">Multiple choice</span>
             </div>
-            <div className="mt-4 text-pink-600 font-semibold group-hover:translate-x-2 transition-transform">
+            <div className="mt-4 text-accent font-medium group-hover:translate-x-2 transition-transform">
               Start quiz →
             </div>
-          </button>
+          </Link>
         </div>
       </div>
     </div>

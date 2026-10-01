@@ -178,42 +178,42 @@ export default function GrammarSelectPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading grammar...</div>
+      <div className="min-h-screen bg-app flex items-center justify-center">
+        <div className="text-fg text-2xl">Loading grammar...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-500 to-teal-600 p-4 sm:p-8">
+    <div className="min-h-screen bg-app p-4 sm:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-6">
           <button
             onClick={() => router.push('/')}
-            className="text-white/80 hover:text-white mb-2 text-sm"
+            className="text-fg-soft hover:text-fg mb-2 text-sm"
           >
             ← Back to Home
           </button>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2">
+          <h1 className="text-4xl sm:text-5xl font-medium text-fg mb-2">
             Select Grammar
           </h1>
         </header>
 
         {/* Textbook Selector */}
-        <div className="bg-white rounded-xl shadow-lg mb-4 p-6">
+        <div className="bg-surface rounded-xl mb-4 p-6 border border-line">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-gray-800">Select Textbooks</h2>
+            <h2 className="text-xl font-medium text-fg">Select Textbooks</h2>
             <div className="flex gap-2">
               <button
                 onClick={selectAllTextbooks}
-                className="px-3 py-1 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors text-sm font-medium"
+                className="px-3 py-1 bg-success/15 text-success rounded-lg hover:bg-success/25 transition-colors text-sm font-medium"
               >
                 All
               </button>
               <button
                 onClick={deselectAllTextbooks}
-                className="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium"
+                className="px-3 py-1 bg-surface-raised text-fg rounded-lg hover:bg-line transition-colors text-sm font-medium"
               >
                 None
               </button>
@@ -230,11 +230,11 @@ export default function GrammarSelectPage() {
                 <button
                   key={textbook}
                   onClick={() => toggleTextbook(textbook)}
-                  className="px-4 py-3 rounded-lg font-medium transition-all text-left shadow-sm"
+                  className="px-4 py-3 rounded-lg font-medium transition-all text-left"
                   style={
                     selectedTextbooks.includes(textbook)
                       ? { backgroundColor: textbookColor, color: textbookTextColor }
-                      : { backgroundColor: '#e5e7eb', color: '#374151' }
+                      : { backgroundColor: 'var(--surface-raised)', color: 'var(--fg-soft)' }
                   }
                 >
                   {textbook}
@@ -246,19 +246,19 @@ export default function GrammarSelectPage() {
 
         {/* Lesson Selector - only show for selected textbooks */}
         {selectedTextbooks.length > 0 && (
-          <div className="bg-white rounded-xl shadow-lg mb-4 p-6">
+          <div className="bg-surface rounded-xl mb-4 p-6 border border-line">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-bold text-gray-800">Select Lessons</h2>
+              <h2 className="text-xl font-medium text-fg">Select Lessons</h2>
               <div className="flex gap-2">
                 <button
                   onClick={selectAllLessons}
-                  className="px-3 py-1 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors text-sm font-medium"
+                  className="px-3 py-1 bg-success/15 text-success rounded-lg hover:bg-success/25 transition-colors text-sm font-medium"
                 >
                   All
                 </button>
                 <button
                   onClick={deselectAllLessons}
-                  className="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium"
+                  className="px-3 py-1 bg-surface-raised text-fg rounded-lg hover:bg-line transition-colors text-sm font-medium"
                 >
                   None
                 </button>
@@ -284,7 +284,7 @@ export default function GrammarSelectPage() {
                   <div key={textbook}>
                     <div className="flex items-center justify-between mb-3">
                       <div
-                        className="text-sm font-semibold px-3 py-1 rounded"
+                        className="text-sm font-medium px-3 py-1 rounded"
                         style={{ backgroundColor: textbookColor, color: textbookTextColor }}
                       >
                         {textbook}
@@ -292,13 +292,13 @@ export default function GrammarSelectPage() {
                       <div className="flex gap-2">
                         <button
                           onClick={() => selectAllLessonsForTextbook(textbook)}
-                          className="px-2 py-1 bg-green-50 text-green-600 rounded text-xs hover:bg-green-100"
+                          className="px-2 py-1 bg-success/15 text-success rounded text-xs hover:bg-success/25"
                         >
                           All
                         </button>
                         <button
                           onClick={() => deselectAllLessonsForTextbook(textbook)}
-                          className="px-2 py-1 bg-gray-50 text-gray-600 rounded text-xs hover:bg-gray-100"
+                          className="px-2 py-1 bg-surface-raised text-fg-soft rounded text-xs hover:bg-line"
                         >
                           None
                         </button>
@@ -313,11 +313,11 @@ export default function GrammarSelectPage() {
                             e.stopPropagation();
                             toggleLesson(textbook, lesson);
                           }}
-                          className="px-4 py-2 rounded-lg font-medium transition-all shadow-sm cursor-pointer"
+                          className="px-4 py-2 rounded-lg font-medium transition-all cursor-pointer"
                           style={
                             selectedLessonsForTextbook.has(lesson)
                               ? { backgroundColor: textbookColor, color: textbookTextColor }
-                              : { backgroundColor: '#e5e7eb', color: '#374151' }
+                              : { backgroundColor: 'var(--surface-raised)', color: 'var(--fg-soft)' }
                           }
                         >
                           L{lesson}
@@ -332,25 +332,25 @@ export default function GrammarSelectPage() {
         )}
 
         {/* Summary and Start Button */}
-        <div className="bg-white rounded-xl shadow-lg p-6">
+        <div className="bg-surface rounded-xl p-6 border border-line">
           <div className="text-center">
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">Ready to Start?</h3>
-            <p className="text-gray-600 mb-4">
+            <h3 className="text-lg font-medium text-fg mb-2">Ready to Start?</h3>
+            <p className="text-fg-soft mb-4">
               {selectedTextbooks.length === 0 ? (
                 'Select at least one textbook to continue'
               ) : !hasSelectedLessons ? (
                 `Selected ${selectedTextbooks.length} textbook(s). Now select some lessons!`
               ) : (
                 <>
-                  <span className="font-bold text-green-600">{totalCards}</span> grammar points selected from{' '}
-                  <span className="font-bold">{selectedTextbooks.length}</span> textbook(s)
+                  <span className="font-medium text-success">{totalCards}</span> grammar points selected from{' '}
+                  <span className="font-medium">{selectedTextbooks.length}</span> textbook(s)
                 </>
               )}
             </p>
             <button
               onClick={handleStart}
               disabled={selectedTextbooks.length === 0 || !hasSelectedLessons}
-              className="bg-green-600 hover:bg-green-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-8 py-3 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl disabled:hover:shadow-lg"
+              className="bg-success hover:opacity-90 disabled:bg-surface-raised disabled:cursor-not-allowed text-on-accent px-8 py-3 rounded-lg font-medium text-lg transition-all"
             >
               Start Studying
             </button>

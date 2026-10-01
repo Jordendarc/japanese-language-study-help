@@ -79,12 +79,11 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
       }
 
       // Fallback: Load from static JSON file (for backwards compatibility)
-      console.log('Kanji data not in card, falling back to static JSON file');
       const response = await fetch('/kanji/kanjiWithMeanings.json');
       const allKanjiData = await response.json();
 
       const breakdown: KanjiMeaning[] = kanji.map(k => {
-        const found = allKanjiData.find((item: any) => item.kanji === k);
+        const found = (allKanjiData as KanjiMeaning[]).find(item => item.kanji === k);
         return {
           kanji: k,
           meanings: found?.meanings || ['(meaning not found)']
@@ -139,7 +138,7 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
         onClick={handleClick}
       >
         {/* Front of card */}
-        <div className="absolute w-full h-full backface-hidden bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center justify-center" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
+        <div className="absolute w-full h-full backface-hidden bg-surface border border-line rounded-2xl p-8 flex flex-col items-center justify-center" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
           {/* Kanji Breakdown Button */}
           {extractKanji(card.vocab).length > 0 && (
             <button
@@ -147,7 +146,7 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
                 e.stopPropagation();
                 loadKanjiBreakdown();
               }}
-              className="absolute top-4 right-4 px-3 py-1.5 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-lg text-xs sm:text-sm font-medium transition-colors z-10"
+              className="absolute top-4 right-4 px-3 py-1.5 bg-surface-raised hover:bg-line text-accent rounded-lg text-xs sm:text-sm font-medium transition-colors z-10"
             >
               漢字 {showKanjiBreakdown ? '▲' : '▼'}
             </button>
@@ -156,15 +155,15 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
           {/* Kanji Breakdown Display */}
           {showKanjiBreakdown && kanjiBreakdown.length > 0 && (
             <div
-              className="absolute top-14 right-4 bg-indigo-50 border-2 border-indigo-200 rounded-lg p-3 shadow-lg z-10 max-w-xs"
+              className="absolute top-14 right-4 bg-surface-raised border border-line rounded-xl p-3 z-10 max-w-xs"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="text-xs sm:text-sm font-semibold text-indigo-700 mb-2">Kanji Breakdown:</div>
+              <div className="text-xs sm:text-sm font-medium text-fg-muted mb-2">Kanji Breakdown:</div>
               <div className="space-y-2">
                 {kanjiBreakdown.map((k, idx) => (
                   <div key={idx} className="flex items-start gap-2">
-                    <div className="text-2xl font-bold text-indigo-600 flex-shrink-0">{k.kanji}</div>
-                    <div className="text-xs sm:text-sm text-gray-700 pt-1">
+                    <div className="text-2xl text-accent flex-shrink-0">{k.kanji}</div>
+                    <div className="text-xs sm:text-sm text-fg-soft pt-1">
                       {k.meanings.join(', ')}
                     </div>
                   </div>
@@ -174,23 +173,23 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
           )}
 
           <div className="flex-1 flex items-center justify-center">
-            <div className="text-4xl sm:text-6xl font-bold text-gray-800 select-text cursor-text">
+            <div className="text-5xl sm:text-7xl font-light text-fg select-text cursor-text">
               {card.vocab}
             </div>
           </div>
           {lessonText && (
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-fg-muted">
               {lessonText}
             </div>
           )}
         </div>
 
         {/* Back of card */}
-        <div className="absolute w-full h-full backface-hidden bg-gray-50 rounded-2xl shadow-2xl rotate-y-180 flex flex-col" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
+        <div className="absolute w-full h-full backface-hidden bg-surface border border-line rounded-2xl rotate-y-180 flex flex-col" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
           {/* Textbook badge */}
           {textbookInfo && (
             <div
-              className="absolute top-4 right-4 px-3 py-1 rounded-lg text-xs sm:text-sm font-bold z-10"
+              className="absolute top-4 right-4 px-3 py-1 rounded-lg text-xs sm:text-sm font-medium z-10"
               style={{ backgroundColor: textbookInfo.color, color: textbookInfo.textColor }}
             >
               {textbookInfo.name}
@@ -199,37 +198,37 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
 
           {/* Scrollable content area */}
           <div className="flex-1 overflow-y-auto p-6 sm:p-8 pt-8 flex flex-col items-center">
-            <div className="text-xl sm:text-2xl md:text-3xl text-indigo-600 mb-3 sm:mb-4">
+            <div className="text-xl sm:text-2xl md:text-3xl text-accent mb-3 sm:mb-4">
               {card.reading}
             </div>
 
             {/* Japanese meaning (if available) */}
             {card.jp_meaning && (
-              <Furigana text={card.jp_meaning} className="text-base sm:text-lg md:text-xl text-gray-700 mb-2 sm:mb-3 text-center px-2 leading-relaxed" />
+              <Furigana text={card.jp_meaning} className="text-base sm:text-lg md:text-xl text-fg-soft mb-2 sm:mb-3 text-center px-2 leading-relaxed" />
             )}
 
             {/* English meaning */}
-            <div className="text-xl sm:text-3xl md:text-4xl font-semibold text-gray-800 mb-3 sm:mb-4 text-center px-2">
+            <div className="text-xl sm:text-3xl md:text-4xl font-medium text-fg mb-3 sm:mb-4 text-center px-2">
               {meaning}
             </div>
 
             {(card.example_jp && card.example_en) ? (
-              <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-indigo-600 w-full max-w-lg">
-                <Furigana text={card.example_jp} className="text-base sm:text-lg text-gray-700 mb-2 break-words" />
-                <div className="text-sm sm:text-base text-gray-500 italic break-words">
+              <div className="mt-6 p-4 bg-surface-raised rounded-xl w-full max-w-lg">
+                <Furigana text={card.example_jp} className="text-base sm:text-lg text-fg mb-2 break-words" />
+                <div className="text-sm sm:text-base text-fg-muted break-words">
                   {card.example_en}
                 </div>
               </div>
             ) : card.example ? (
-              <div className="mt-6 p-4 bg-white rounded-lg border-l-4 border-indigo-600 w-full max-w-lg">
-                <Furigana text={card.example} className="text-base sm:text-lg text-gray-700 break-words" />
+              <div className="mt-6 p-4 bg-surface-raised rounded-xl w-full max-w-lg">
+                <Furigana text={card.example} className="text-base sm:text-lg text-fg break-words" />
               </div>
             ) : null}
           </div>
 
           {/* Lesson text at bottom */}
           {lessonText && (
-            <div className="text-sm text-gray-500 p-4 text-center border-t border-gray-200">
+            <div className="text-sm text-fg-muted p-4 text-center border-t border-line">
               {lessonText}
             </div>
           )}
@@ -241,7 +240,7 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
         <div
           className="absolute inset-0 rounded-2xl pointer-events-none"
           style={{
-            backgroundColor: animationState === 'green' ? '#22c55e' : '#ef4444',
+            backgroundColor: animationState === 'green' ? 'var(--success)' : 'var(--danger)',
             animation: 'flash 0.4s ease-out forwards',
             zIndex: 10
           }}
@@ -254,7 +253,7 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
             opacity: 0;
           }
           50% {
-            opacity: 0.8;
+            opacity: 0.35;
           }
           100% {
             opacity: 0;

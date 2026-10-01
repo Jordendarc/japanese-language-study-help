@@ -125,43 +125,43 @@ export default function GrammarCardComponent({ card, onSwipeLeft, onSwipeRight, 
         onMouseLeave={handleMouseUp}
       >
         {/* Front of card */}
-        <div className="absolute w-full h-full backface-hidden bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center justify-center" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
-          <div className="text-3xl sm:text-5xl font-bold text-gray-800 mb-6 text-center">
+        <div className="absolute w-full h-full backface-hidden bg-surface rounded-2xl p-8 flex flex-col items-center justify-center border border-line" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
+          <div className="text-3xl sm:text-5xl font-medium text-fg mb-6 text-center">
             {card.point}
           </div>
           {card.jlpt && (
-            <div className="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full font-semibold mb-4">
+            <div className="bg-accent/15 text-accent px-4 py-2 rounded-full font-medium mb-4">
               {card.jlpt}
             </div>
           )}
-          <div className="text-sm text-gray-500 mt-auto">
+          <div className="text-sm text-fg-muted mt-auto">
             Lesson {card.lesson}: {card.lesson_title}
           </div>
         </div>
 
         {/* Back of card */}
-        <div className="absolute w-full h-full backface-hidden bg-gray-50 rounded-2xl shadow-2xl p-6 flex flex-col rotate-y-180 overflow-y-auto" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
+        <div className="absolute w-full h-full backface-hidden bg-surface-raised rounded-2xl p-6 flex flex-col rotate-y-180 overflow-y-auto" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
           <div className="space-y-4">
             <div>
-              <div className="text-sm font-semibold text-indigo-600 uppercase mb-1">Meaning</div>
-              <div className="text-2xl font-semibold text-gray-800">
+              <div className="text-sm font-medium text-accent uppercase mb-1">Meaning</div>
+              <div className="text-2xl font-medium text-fg">
                 {card.meaning}
               </div>
             </div>
 
             <div>
-              <div className="text-sm font-semibold text-indigo-600 uppercase mb-1">Formation</div>
-              <div className="text-lg text-gray-700 bg-white p-3 rounded-lg border-l-4 border-indigo-600">
+              <div className="text-sm font-medium text-accent uppercase mb-1">Formation</div>
+              <div className="text-lg text-fg bg-surface p-3 rounded-lg border-l-4 border-accent">
                 {card.formation}
               </div>
             </div>
 
             {card.example_jp && card.example_en && (
               <div>
-                <div className="text-sm font-semibold text-indigo-600 uppercase mb-1">Example</div>
-                <div className="bg-white p-4 rounded-lg border-l-4 border-green-500">
-                  <Furigana text={card.example_jp} className="text-lg text-gray-800 mb-2" />
-                  <div className="text-base text-gray-600 italic">
+                <div className="text-sm font-medium text-accent uppercase mb-1">Example</div>
+                <div className="bg-surface p-4 rounded-lg border-l-4 border-success">
+                  <Furigana text={card.example_jp} className="text-lg text-fg mb-2" />
+                  <div className="text-base text-fg-soft italic">
                     {card.example_en}
                   </div>
                 </div>
@@ -170,21 +170,21 @@ export default function GrammarCardComponent({ card, onSwipeLeft, onSwipeRight, 
 
             {card.nuance && (
               <div>
-                <div className="text-sm font-semibold text-indigo-600 uppercase mb-1">Nuance</div>
-                <div className="text-sm text-gray-600 bg-yellow-50 p-3 rounded-lg border-l-4 border-yellow-400">
+                <div className="text-sm font-medium text-accent uppercase mb-1">Nuance</div>
+                <div className="text-sm text-fg-soft bg-warn/15 p-3 rounded-lg border-l-4 border-warn">
                   {card.nuance}
                 </div>
               </div>
             )}
 
             {card.context && (
-              <div className="text-xs text-gray-500 mt-2">
+              <div className="text-xs text-fg-muted mt-2">
                 Context: {card.context}
               </div>
             )}
           </div>
 
-          <div className="text-sm text-gray-500 mt-auto pt-4">
+          <div className="text-sm text-fg-muted mt-auto pt-4">
             Lesson {card.lesson}: {card.lesson_title}
           </div>
         </div>
@@ -195,7 +195,7 @@ export default function GrammarCardComponent({ card, onSwipeLeft, onSwipeRight, 
         <div
           className="absolute inset-0 rounded-2xl pointer-events-none"
           style={{
-            backgroundColor: animationState === 'green' ? '#22c55e' : '#ef4444',
+            backgroundColor: animationState === 'green' ? 'var(--success)' : 'var(--danger)',
             animation: 'flash 0.4s ease-out forwards',
             zIndex: 10
           }}
@@ -208,7 +208,7 @@ export default function GrammarCardComponent({ card, onSwipeLeft, onSwipeRight, 
             opacity: 0;
           }
           50% {
-            opacity: 0.8;
+            opacity: 0.35;
           }
           100% {
             opacity: 0;

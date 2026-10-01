@@ -1,28 +1,76 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Theme tokens. Components use the semantic utilities below (bg-app, bg-surface,
+ * text-fg, text-accent, border-line, ...) and never raw colors, so a new theme
+ * is just another [data-theme="..."] block that overrides these variables.
+ * "night" (dark) is the default; "day" (light) is chosen with the toggle in the nav bar.
+ */
+:root,
+[data-theme="night"] {
+  color-scheme: dark;
+
+  --app: #14161c;            /* page background */
+  --surface: #1e212b;        /* cards, panels */
+  --surface-raised: #262b38; /* chips, progress track, hover */
+  --line: #2b3040;           /* borders */
+
+  --fg: #e8e6e1;             /* primary text */
+  --fg-soft: #c9ccd8;        /* secondary text */
+  --fg-muted: #9aa0b4;       /* captions, metadata */
+
+  --accent: #8b9dff;         /* actions, progress, readings */
+  --on-accent: #10131c;      /* text on accent fills */
+  --warn: #f2c46d;
+  --danger: #f09595;
+  --success: #7fd6a8;
+  --info: #6fc3d9;
+}
+
+/* Light theme: warm paper and ink with a vermilion accent. Chosen via the theme toggle. */
+[data-theme="day"] {
+  color-scheme: light;
+
+  --app: #f6f1e7;
+  --surface: #fffdf8;
+  --surface-raised: #efe8d8;
+  --line: #e3dac8;
+
+  --fg: #1f1b16;
+  --fg-soft: #4a4238;
+  --fg-muted: #7a6f5f;
+
+  --accent: #c8402b;
+  --on-accent: #fffdf8;
+  --warn: #9a6a12;
+  --danger: #b3392b;
+  --success: #2f7d4f;
+  --info: #2f6db5;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-app: var(--app);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-fg-soft: var(--fg-soft);
+  --color-fg-muted: var(--fg-muted);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --color-info: var(--info);
+
+  --font-sans: var(--font-geist-sans), "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Noto Sans CJK JP", "Noto Sans JP", sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--app);
+  color: var(--fg);
+  font-family: var(--font-sans);
   /* Force Japanese kanji variants instead of Chinese */
   font-language-override: "JAN";
 }

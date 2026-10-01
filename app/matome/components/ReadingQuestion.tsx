@@ -27,35 +27,35 @@ export function ReadingQuestion({
   const isAnswered = selectedAnswer !== '';
 
   return (
-    <div className={`bg-white rounded-lg sm:rounded-xl p-3 sm:p-6 shadow-md ${
+    <div className={`bg-surface rounded-lg sm:rounded-xl p-3 sm:p-6 border border-line ${
       showCorrect
         ? isCorrect
-          ? 'ring-2 ring-green-500'
+          ? 'ring-2 ring-success'
           : isAnswered
-          ? 'ring-2 ring-red-500'
+          ? 'ring-2 ring-danger'
           : ''
         : ''
     }`}>
       <div className="flex sm:hidden mb-2">
-        <div className="w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center font-bold text-sm">
+        <div className="w-6 h-6 bg-accent/15 text-accent rounded-full flex items-center justify-center font-medium text-sm">
           {questionNumber}
         </div>
       </div>
       <div className="flex items-start gap-3 sm:gap-4">
-        <div className="hidden sm:flex flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-full items-center justify-center font-bold">
+        <div className="hidden sm:flex flex-shrink-0 w-8 h-8 bg-accent/15 text-accent rounded-full items-center justify-center font-medium">
           {questionNumber}
         </div>
         <div className="flex-1 min-w-0">
           {passage && (
-            <div className="mb-3 sm:mb-4 p-2 sm:p-4 bg-gray-50 rounded-lg border-l-4 border-emerald-500">
-              <div className="text-xs sm:text-sm text-emerald-700 mb-2 font-semibold">Passage:</div>
-              <div className="text-sm sm:text-base leading-relaxed text-gray-900 break-words overflow-wrap-anywhere">
+            <div className="mb-3 sm:mb-4 p-2 sm:p-4 bg-surface-raised rounded-lg border-l-4 border-accent">
+              <div className="text-xs sm:text-sm text-accent mb-2 font-medium">Passage:</div>
+              <div className="text-sm sm:text-base leading-relaxed text-fg break-words overflow-wrap-anywhere">
                 <Furigana text={passage} />
               </div>
             </div>
           )}
 
-          <div className="text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed text-gray-900 break-words overflow-wrap-anywhere">
+          <div className="text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed text-fg break-words overflow-wrap-anywhere">
             <Furigana text={question.sentence_jp || ''} />
           </div>
 
@@ -63,24 +63,24 @@ export function ReadingQuestion({
             <button
               onClick={() => !showCorrect && onAnswerChange('true')}
               disabled={showCorrect}
-              className={`flex-1 p-3 sm:p-4 rounded-lg border-2 transition-all font-bold text-sm sm:text-base ${
+              className={`flex-1 p-3 sm:p-4 rounded-lg border-2 transition-all font-medium text-sm sm:text-base ${
                 showCorrect
                   ? correctAnswer === 'true'
-                    ? 'bg-green-50 border-green-500 text-green-700 ring-2 ring-green-200'
+                    ? 'bg-success/15 border-success text-success ring-2 ring-success/30'
                     : selectedAnswer === 'true'
-                    ? 'bg-red-50 border-red-500 text-red-700 ring-2 ring-red-200'
-                    : 'bg-gray-50 border-gray-200 text-gray-600'
+                    ? 'bg-danger/15 border-danger text-danger ring-2 ring-danger/30'
+                    : 'bg-surface-raised border-line text-fg-soft'
                   : selectedAnswer === 'true'
-                  ? 'bg-emerald-50 border-emerald-500 text-emerald-700 ring-2 ring-emerald-200'
-                  : 'bg-gray-50 border-gray-200 text-gray-700 hover:bg-emerald-50 hover:border-emerald-300'
+                  ? 'bg-accent/15 border-accent text-accent ring-2 ring-accent/30'
+                  : 'bg-surface-raised border-line text-fg hover:bg-accent/25 hover:border-accent/40'
               } ${!showCorrect ? 'cursor-pointer' : 'cursor-default'}`}
             >
               <div className="flex items-center justify-center gap-2">
                 {showCorrect && correctAnswer === 'true' && (
-                  <span className="text-green-600">✓</span>
+                  <span className="text-success">✓</span>
                 )}
                 {showCorrect && selectedAnswer === 'true' && correctAnswer !== 'true' && (
-                  <span className="text-red-600">✗</span>
+                  <span className="text-danger">✗</span>
                 )}
                 <span>⭕ True (正しい)</span>
               </div>
@@ -89,24 +89,24 @@ export function ReadingQuestion({
             <button
               onClick={() => !showCorrect && onAnswerChange('false')}
               disabled={showCorrect}
-              className={`flex-1 p-3 sm:p-4 rounded-lg border-2 transition-all font-bold text-sm sm:text-base ${
+              className={`flex-1 p-3 sm:p-4 rounded-lg border-2 transition-all font-medium text-sm sm:text-base ${
                 showCorrect
                   ? correctAnswer === 'false'
-                    ? 'bg-green-50 border-green-500 text-green-700 ring-2 ring-green-200'
+                    ? 'bg-success/15 border-success text-success ring-2 ring-success/30'
                     : selectedAnswer === 'false'
-                    ? 'bg-red-50 border-red-500 text-red-700 ring-2 ring-red-200'
-                    : 'bg-gray-50 border-gray-200 text-gray-600'
+                    ? 'bg-danger/15 border-danger text-danger ring-2 ring-danger/30'
+                    : 'bg-surface-raised border-line text-fg-soft'
                   : selectedAnswer === 'false'
-                  ? 'bg-emerald-50 border-emerald-500 text-emerald-700 ring-2 ring-emerald-200'
-                  : 'bg-gray-50 border-gray-200 text-gray-700 hover:bg-emerald-50 hover:border-emerald-300'
+                  ? 'bg-accent/15 border-accent text-accent ring-2 ring-accent/30'
+                  : 'bg-surface-raised border-line text-fg hover:bg-accent/25 hover:border-accent/40'
               } ${!showCorrect ? 'cursor-pointer' : 'cursor-default'}`}
             >
               <div className="flex items-center justify-center gap-2">
                 {showCorrect && correctAnswer === 'false' && (
-                  <span className="text-green-600">✓</span>
+                  <span className="text-success">✓</span>
                 )}
                 {showCorrect && selectedAnswer === 'false' && correctAnswer !== 'false' && (
-                  <span className="text-red-600">✗</span>
+                  <span className="text-danger">✗</span>
                 )}
                 <span>❌ False (間違い)</span>
               </div>
@@ -114,7 +114,7 @@ export function ReadingQuestion({
           </div>
 
           {question.note && (
-            <div className="mt-4 text-sm text-gray-600 italic">
+            <div className="mt-4 text-sm text-fg-soft italic">
               Note: {question.note}
             </div>
           )}

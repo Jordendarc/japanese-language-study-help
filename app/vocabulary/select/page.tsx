@@ -1,15 +1,17 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import { useRouter } from 'next/navigation';
-import { VocabCard } from '../../types';
+import { useRouter, usePathname } from 'next/navigation';
 import { getTextbookColor } from '../../utils/textbookColors';
 import { useAuth } from '../../contexts/AuthContext';
-import { getDifficultWords } from '../../services/progressService';
+import { getDueVocabularyCount } from '../../services/progressService';
 import { createClient } from '../../utils/supabase/client';
+import ContinueSessionBanner from '../../components/ContinueSessionBanner';
 
 export default function VocabularySelectPage() {
   const router = useRouter();
+  // The kanji test reuses this picker (see app/kanji-test/select/page.tsx)
+  const isKanjiTest = usePathname().startsWith('/kanji-test');
   const processingRef = useRef(false);
   const { user } = useAuth();
 
@@ -17,8 +19,16 @@ export default function VocabularySelectPage() {
   const [selectedLessonsByTextbook, setSelectedLessonsByTextbook] = useState<Map<string, Set<string>>>(new Map());
   const [selectedTextbooks, setSelectedTextbooks] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
-  const [loadingDifficult, setLoadingDifficult] = useState(false);
   const [kanjiOnly, setKanjiOnly] = useState(false);
+  const [testSize, setTestSize] = useState<'ten' | 'all'>('ten');
+  const [fetchedDueCount, setFetchedDueCount] = useState<number | null>(null);
+  const dueCount = user ? fetchedDueCount : null;
+
+  // How many cards are due for spaced-repetition review (signed-in users only)
+  useEffect(() => {
+    if (!user) return;
+    getDueVocabularyCount(user.id).then(setFetchedDueCount);
+  }, [user]);
 
   // Load data from Supabase
   useEffect(() => {
@@ -35,7 +45,6 @@ export default function VocabularySelectPage() {
         return;
       }
 
-      console.log('📚 Vocab metadata loaded:', data);
       setVocabMetadata(data || []);
 
       // Initialize lesson selection structure - empty by default
@@ -52,13 +61,9 @@ export default function VocabularySelectPage() {
   }, []);
 
   const toggleLesson = (textbook: string, lesson: string) => {
-    if (processingRef.current) {
-      console.log('Already processing, skipping');
-      return;
-    }
+    if (processingRef.current) return;
 
     processingRef.current = true;
-    console.log('Toggle lesson clicked:', textbook, lesson);
 
     setSelectedLessonsByTextbook(prev => {
       const newMap = new Map(prev);
@@ -66,14 +71,11 @@ export default function VocabularySelectPage() {
 
       if (textbookLessons.has(lesson)) {
         textbookLessons.delete(lesson);
-        console.log('Removed lesson:', lesson);
       } else {
         textbookLessons.add(lesson);
-        console.log('Added lesson:', lesson);
       }
 
       newMap.set(textbook, textbookLessons);
-      console.log('New map:', newMap);
 
       // Reset processing flag after a short delay
       setTimeout(() => {
@@ -144,50 +146,7 @@ export default function VocabularySelectPage() {
     setSelectedTextbooks([]);
   };
 
-  const selectDifficultWords = async () => {
-    if (!user) {
-      alert('Please sign in to use this feature');
-      return;
-    }
-
-    setLoadingDifficult(true);
-
-    try {
-      // Get difficult words from database (difficulty score >= 50)
-      const difficultVocab = await getDifficultWords(user.id, undefined, undefined, 50);
-
-      if (difficultVocab.length === 0) {
-        alert('No difficult words found. Study some flashcards first to build your progress data!');
-        setLoadingDifficult(false);
-        return;
-      }
-
-      // Group by textbook and lesson
-      const selectionMap = new Map<string, Set<string>>();
-
-      difficultVocab.forEach(progress => {
-        if (!selectionMap.has(progress.textbook)) {
-          selectionMap.set(progress.textbook, new Set());
-        }
-        selectionMap.get(progress.textbook)!.add(progress.lesson);
-      });
-
-      // Update selections
-      setSelectedLessonsByTextbook(selectionMap);
-      setSelectedTextbooks(Array.from(selectionMap.keys()));
-
-      setLoadingDifficult(false);
-    } catch (error) {
-      console.error('Error loading difficult words:', error);
-      alert('Error loading difficult words. Please try again.');
-      setLoadingDifficult(false);
-    }
-  };
-
   const handleStart = () => {
-    // Clear any previous session data from localStorage
-    localStorage.removeItem('vocab-flashcard-session');
-
     // Build the selection data to pass via URL
     const selections: { textbook: string; lessons: string[] }[] = [];
 
@@ -204,10 +163,15 @@ export default function VocabularySelectPage() {
     // Encode selections as JSON in URL
     const params = new URLSearchParams();
     params.set('selections', JSON.stringify(selections));
+    if (isKanjiTest) {
+      if (testSize === 'all') params.set('count', 'all');
+    } else {
+      params.set('fresh', '1'); // pressing Start always begins a new session
+    }
     if (kanjiOnly) {
       params.set('kanjiOnly', 'true');
     }
-    router.push(`/vocabulary?${params.toString()}`);
+    router.push(`${isKanjiTest ? '/kanji-test' : '/vocabulary'}?${params.toString()}`);
   };
 
   const getTotalSelectedLessons = () => {
@@ -226,66 +190,74 @@ export default function VocabularySelectPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading vocabulary...</div>
+      <div className="min-h-screen bg-app flex items-center justify-center">
+        <div className="text-fg text-2xl">Loading vocabulary...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600 p-4 sm:p-8">
+    <div className="min-h-screen bg-app p-4 sm:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <header className="text-center mb-6">
           <button
             onClick={() => router.push('/')}
-            className="text-white/80 hover:text-white mb-2 text-sm"
+            className="text-fg-soft hover:text-fg mb-2 text-sm"
           >
             ← Back to Home
           </button>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-2">
-            Select Vocabulary
+          <h1 className="text-4xl sm:text-5xl font-medium text-fg mb-2">
+            {isKanjiTest ? 'Kanji Test' : 'Select Vocabulary'}
           </h1>
         </header>
 
-        {/* Difficult Words Button TODO: make this get specific cards from lesson */}
-        {/* {user && (
+        {isKanjiTest ? (
+          <p className="text-fg-soft text-center mb-6">
+            Pick the chapters to draw from. Then type the hiragana reading of each kanji word, one at a time.
+          </p>
+        ) : (
+          <ContinueSessionBanner />
+        )}
+
+        {/* Spaced-repetition review: cards whose next_review_date has arrived */}
+        {!isKanjiTest && user && dueCount !== null && (
           <button
-            onClick={selectDifficultWords}
-            disabled={loadingDifficult}
-            className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white rounded-xl shadow-lg mb-4 p-4 sm:p-5 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-between group"
+            onClick={() => router.push('/vocabulary?review=1&fresh=1')}
+            disabled={dueCount === 0}
+            className="w-full bg-accent hover:opacity-90 disabled:bg-surface-raised disabled:text-fg-muted disabled:cursor-not-allowed text-on-accent rounded-xl mb-4 p-4 sm:p-5 transition-all flex items-center justify-between group"
           >
             <div className="flex items-center gap-3">
               <div className="text-2xl sm:text-3xl">🔥</div>
               <div className="text-left">
-                <div className="font-bold text-base sm:text-lg">Difficult Words</div>
-                <div className="text-white/90 text-xs sm:text-sm hidden sm:block">Practice your struggles</div>
+                <div className="font-medium text-base sm:text-lg">Review due cards</div>
+                <div className="text-on-accent/80 text-xs sm:text-sm">
+                  {dueCount === 0 ? 'Nothing due right now' : `${dueCount} due for review${dueCount > 100 ? ' (100 per session)' : ''}`}
+                </div>
               </div>
             </div>
-            {loadingDifficult ? (
-              <div className="animate-spin rounded-full h-6 w-6 border-2 border-white border-t-transparent"></div>
-            ) : (
+            {dueCount > 0 && (
               <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             )}
           </button>
-        )} */}
+        )}
 
         {/* Textbook Selector */}
-        <div className="bg-white rounded-xl shadow-lg mb-4 p-6">
+        <div className="bg-surface rounded-xl mb-4 p-6 border border-line">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-bold text-gray-800">Select Textbooks</h2>
+            <h2 className="text-xl font-medium text-fg">Select Textbooks</h2>
             <div className="flex gap-2">
               <button
                 onClick={selectAllTextbooks}
-                className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-lg hover:bg-indigo-200 transition-colors text-sm font-medium"
+                className="px-3 py-1 bg-accent/15 text-accent rounded-lg hover:bg-accent/25 transition-colors text-sm font-medium"
               >
                 All
               </button>
               <button
                 onClick={deselectAllTextbooks}
-                className="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium"
+                className="px-3 py-1 bg-surface-raised text-fg rounded-lg hover:bg-line transition-colors text-sm font-medium"
               >
                 None
               </button>
@@ -302,11 +274,11 @@ export default function VocabularySelectPage() {
                 <button
                   key={metadata.textbook}
                   onClick={() => toggleTextbook(metadata.textbook)}
-                  className="px-4 py-3 rounded-lg font-medium transition-all text-left shadow-sm"
+                  className="px-4 py-3 rounded-lg font-medium transition-all text-left"
                   style={
                     selectedTextbooks.includes(metadata.textbook)
                       ? { backgroundColor: textbookColor, color: textbookTextColor }
-                      : { backgroundColor: '#e5e7eb', color: '#374151' }
+                      : { backgroundColor: 'var(--surface-raised)', color: 'var(--fg-soft)' }
                   }
                 >
                   {metadata.textbook}
@@ -318,30 +290,32 @@ export default function VocabularySelectPage() {
 
         {/* Lesson Selector - only show for selected textbooks */}
         {selectedTextbooks.length > 0 && (
-          <div className="bg-white rounded-xl shadow-lg mb-4 p-6">
+          <div className="bg-surface rounded-xl mb-4 p-6 border border-line">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
-                <h2 className="text-xl font-bold text-gray-800">Select Lessons</h2>
+                <h2 className="text-xl font-medium text-fg">Select Lessons</h2>
+                {!isKanjiTest && (
                 <label className="flex items-center gap-2 text-sm cursor-pointer">
                   <input
                     type="checkbox"
                     checked={kanjiOnly}
                     onChange={(e) => setKanjiOnly(e.target.checked)}
-                    className="w-4 h-4 text-indigo-600 rounded focus:ring-indigo-500"
+                    className="w-4 h-4 text-accent rounded focus:ring-accent"
                   />
-                  <span className="text-gray-700 font-medium">漢字 Kanji Only</span>
+                  <span className="text-fg font-medium">漢字 Kanji Only</span>
                 </label>
+                )}
               </div>
               <div className="flex gap-2">
                 <button
                   onClick={selectAllLessons}
-                  className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-lg hover:bg-indigo-200 transition-colors text-sm font-medium"
+                  className="px-3 py-1 bg-accent/15 text-accent rounded-lg hover:bg-accent/25 transition-colors text-sm font-medium"
                 >
                   All
                 </button>
                 <button
                   onClick={deselectAllLessons}
-                  className="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium"
+                  className="px-3 py-1 bg-surface-raised text-fg rounded-lg hover:bg-line transition-colors text-sm font-medium"
                 >
                   None
                 </button>
@@ -366,7 +340,7 @@ export default function VocabularySelectPage() {
                   <div key={textbook}>
                     <div className="flex items-center justify-between mb-3">
                       <div
-                        className="text-sm font-semibold px-3 py-1 rounded"
+                        className="text-sm font-medium px-3 py-1 rounded"
                         style={{ backgroundColor: textbookColor, color: textbookTextColor }}
                       >
                         {textbook}
@@ -374,13 +348,13 @@ export default function VocabularySelectPage() {
                       <div className="flex gap-2">
                         <button
                           onClick={() => selectAllLessonsForTextbook(textbook)}
-                          className="px-2 py-1 bg-indigo-50 text-indigo-600 rounded text-xs hover:bg-indigo-100"
+                          className="px-2 py-1 bg-accent/15 text-accent rounded text-xs hover:bg-accent/25"
                         >
                           All
                         </button>
                         <button
                           onClick={() => deselectAllLessonsForTextbook(textbook)}
-                          className="px-2 py-1 bg-gray-50 text-gray-600 rounded text-xs hover:bg-gray-100"
+                          className="px-2 py-1 bg-surface-raised text-fg-soft rounded text-xs hover:bg-line"
                         >
                           None
                         </button>
@@ -395,11 +369,11 @@ export default function VocabularySelectPage() {
                             e.stopPropagation();
                             toggleLesson(textbook, lesson);
                           }}
-                          className="px-4 py-2 rounded-lg font-medium transition-all shadow-sm cursor-pointer"
+                          className="px-4 py-2 rounded-lg font-medium transition-all cursor-pointer"
                           style={
                             selectedLessonsForTextbook.has(lesson)
                               ? { backgroundColor: textbookColor, color: textbookTextColor }
-                              : { backgroundColor: '#e5e7eb', color: '#374151' }
+                              : { backgroundColor: 'var(--surface-raised)', color: 'var(--fg-soft)' }
                           }
                         >
                           L{lesson}
@@ -414,27 +388,43 @@ export default function VocabularySelectPage() {
         )}
 
         {/* Summary and Start Button */}
-        <div className="bg-white rounded-xl shadow-lg p-6">
+        <div className="bg-surface rounded-xl p-6 border border-line">
           <div className="text-center">
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">Ready to Start?</h3>
-            <p className="text-gray-600 mb-4">
+            <h3 className="text-lg font-medium text-fg mb-2">Ready to Start?</h3>
+            <p className="text-fg-soft mb-4">
               {selectedTextbooks.length === 0 ? (
                 'Select at least one textbook to continue'
               ) : !hasSelectedLessons ? (
                 `Selected ${selectedTextbooks.length} textbook(s). Now select some lessons!`
               ) : (
                 <>
-                  <span className="font-bold text-indigo-600">{totalLessons}</span> lesson{totalLessons !== 1 ? 's' : ''} selected from{' '}
-                  <span className="font-bold">{selectedTextbooks.length}</span> textbook{selectedTextbooks.length !== 1 ? 's' : ''}
+                  <span className="font-medium text-accent">{totalLessons}</span> lesson{totalLessons !== 1 ? 's' : ''} selected from{' '}
+                  <span className="font-medium">{selectedTextbooks.length}</span> textbook{selectedTextbooks.length !== 1 ? 's' : ''}
                 </>
               )}
             </p>
+            {isKanjiTest && (
+              <div className="flex w-fit mx-auto rounded-xl bg-surface-raised p-1 mb-4" role="group" aria-label="Test size">
+                {([['ten', '10 random words'], ['all', 'All words']] as const).map(([value, text]) => (
+                  <button
+                    key={value}
+                    onClick={() => setTestSize(value)}
+                    aria-pressed={testSize === value}
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+                      testSize === value ? 'bg-accent text-on-accent' : 'text-fg-muted hover:text-fg'
+                    }`}
+                  >
+                    {text}
+                  </button>
+                ))}
+              </div>
+            )}
             <button
               onClick={handleStart}
               disabled={selectedTextbooks.length === 0 || !hasSelectedLessons}
-              className="bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-8 py-3 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl disabled:hover:shadow-lg"
+              className="bg-accent hover:opacity-90 disabled:bg-surface-raised disabled:cursor-not-allowed text-on-accent px-8 py-3 rounded-lg font-medium text-lg transition-all"
             >
-              Start Studying
+              {isKanjiTest ? 'Start Test' : 'Start Studying'}
             </button>
           </div>
         </div>

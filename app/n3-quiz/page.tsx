@@ -94,8 +94,8 @@ export default function N3QuizPage() {
 
   if (questions.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-500 via-pink-500 to-purple-600 flex items-center justify-center">
-        <div className="text-white text-2xl">Loading quiz...</div>
+      <div className="min-h-screen bg-app flex items-center justify-center">
+        <div className="text-fg text-2xl">Loading quiz...</div>
       </div>
     );
   }
@@ -104,25 +104,25 @@ export default function N3QuizPage() {
     const percentage = Math.round((correctCount / questions.length) * 100);
 
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-500 via-pink-500 to-purple-600 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-2xl w-full">
-          <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">Quiz Complete!</h1>
+      <div className="min-h-screen bg-app flex items-center justify-center p-4">
+        <div className="bg-surface rounded-2xl p-8 max-w-2xl w-full border border-line">
+          <h1 className="text-4xl font-medium text-fg mb-6 text-center">Quiz Complete!</h1>
 
           <div className="text-center mb-8">
-            <div className="text-6xl font-bold text-purple-600 mb-2">{percentage}%</div>
-            <div className="text-xl text-gray-600">
+            <div className="text-6xl font-medium text-accent mb-2">{percentage}%</div>
+            <div className="text-xl text-fg-soft">
               {correctCount} / {questions.length} correct
             </div>
           </div>
 
           {missedQuestions.length > 0 && (
             <div className="mb-6 text-center">
-              <p className="text-gray-700 mb-4">
+              <p className="text-fg mb-4">
                 You missed {missedQuestions.length} question{missedQuestions.length !== 1 ? 's' : ''}
               </p>
               <button
                 onClick={handleReviewMissed}
-                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-bold transition-colors"
+                className="bg-accent hover:opacity-90 text-on-accent px-6 py-3 rounded-lg font-medium transition-colors"
               >
                 Review Missed Questions
               </button>
@@ -132,14 +132,14 @@ export default function N3QuizPage() {
           <div className="flex flex-col gap-3">
             <button
               onClick={handleRestart}
-              className="w-full bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-bold transition-colors"
+              className="w-full bg-accent hover:opacity-90 text-on-accent px-6 py-3 rounded-lg font-medium transition-colors"
             >
               Restart Quiz
             </button>
 
             <Link
               href="/"
-              className="w-full bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-bold transition-colors text-center"
+              className="w-full bg-surface-raised hover:bg-line text-fg px-6 py-3 rounded-lg font-medium transition-colors text-center"
             >
               Back to Home
             </Link>
@@ -152,42 +152,42 @@ export default function N3QuizPage() {
   const isCorrect = selectedAnswer === currentQuestion.answer;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-500 via-pink-500 to-purple-600 p-4">
+    <div className="min-h-screen bg-app p-4">
       <div className="max-w-4xl mx-auto pt-8">
         {/* Header */}
         <div className="mb-6">
           <Link
             href="/"
-            className="inline-block bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white px-4 py-2 rounded-lg transition-colors mb-4"
+            className="inline-block bg-surface-raised hover:bg-surface-raised backdrop-blur-sm text-fg px-4 py-2 rounded-lg transition-colors mb-4"
           >
             ← Back to Home
           </Link>
 
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl font-medium text-fg mb-4">
             JLPT N3 Practice Quiz
           </h1>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 flex justify-between items-center text-white">
+          <div className="bg-surface-raised backdrop-blur-sm rounded-xl px-4 py-3 flex justify-between items-center text-fg">
             <div>
               <span className="text-sm opacity-80">Question</span>
-              <div className="text-xl font-bold">{currentIndex + 1} / {questions.length}</div>
+              <div className="text-xl font-medium">{currentIndex + 1} / {questions.length}</div>
             </div>
             <div>
               <span className="text-sm opacity-80">Section</span>
-              <div className="text-xl font-bold">{currentQuestion.section}</div>
+              <div className="text-xl font-medium">{currentQuestion.section}</div>
             </div>
             <div>
               <span className="text-sm opacity-80">Score</span>
-              <div className="text-xl font-bold">{correctCount} / {answeredQuestions.size}</div>
+              <div className="text-xl font-medium">{correctCount} / {answeredQuestions.size}</div>
             </div>
           </div>
         </div>
 
         {/* Question Card */}
-        <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 mb-6">
+        <div className="bg-surface rounded-2xl p-6 sm:p-8 mb-6 border border-line">
           {/* Japanese Sentence */}
           <div className="mb-6">
-            <div className="text-3xl sm:text-4xl font-bold text-gray-800 mb-3 leading-relaxed">
+            <div className="text-3xl sm:text-4xl font-medium text-fg mb-3 leading-relaxed">
               {currentQuestion.section === '語彙' ? (
                 // For vocabulary questions, replace () with a visible blank
                 currentQuestion.sentence_jp.split(/(\([^)]*\)|（[^）]*）)/).map((part, idx) => {
@@ -198,7 +198,7 @@ export default function N3QuizPage() {
                     return (
                       <span
                         key={idx}
-                        className="inline-block min-w-[3rem] text-center border-b-4 border-purple-500 mx-1 px-2"
+                        className="inline-block min-w-[3rem] text-center border-b-4 border-accent mx-1 px-2"
                       >
                         {content || '\u00A0\u00A0\u00A0'}
                       </span>
@@ -215,12 +215,12 @@ export default function N3QuizPage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setShowEnglish(!showEnglish)}
-                className="text-sm text-purple-600 hover:text-purple-700 font-semibold flex items-center gap-1"
+                className="text-sm text-accent hover:text-accent font-medium flex items-center gap-1"
               >
                 {showEnglish ? '🙈 Hide' : '👁️ Show'} English
               </button>
               {showEnglish && (
-                <div className="text-lg text-gray-600 flex-1">
+                <div className="text-lg text-fg-soft flex-1">
                   {currentQuestion.sentence_en}
                 </div>
               )}
@@ -229,9 +229,9 @@ export default function N3QuizPage() {
 
           {/* Answer Reading (if exists) */}
           {currentQuestion.reading && showExplanation && (
-            <div className="mb-4 p-3 bg-blue-50 rounded-lg">
-              <span className="text-sm text-gray-600">Reading: </span>
-              <span className="text-lg font-bold text-blue-700">{currentQuestion.reading}</span>
+            <div className="mb-4 p-3 bg-accent/15 rounded-lg">
+              <span className="text-sm text-fg-soft">Reading: </span>
+              <span className="text-lg font-medium text-accent">{currentQuestion.reading}</span>
             </div>
           )}
 
@@ -241,18 +241,18 @@ export default function N3QuizPage() {
               const isSelected = selectedAnswer === choice;
               const isCorrectChoice = choice === currentQuestion.answer;
 
-              let buttonClass = 'w-full p-4 rounded-xl text-left font-bold text-lg transition-all border-2 ';
+              let buttonClass = 'w-full p-4 rounded-xl text-left font-medium text-lg transition-all border-2 ';
 
               if (showExplanation) {
                 if (isCorrectChoice) {
-                  buttonClass += 'bg-green-100 border-green-500 text-green-800';
+                  buttonClass += 'bg-success/15 border-success text-success';
                 } else if (isSelected && !isCorrectChoice) {
-                  buttonClass += 'bg-red-100 border-red-500 text-red-800';
+                  buttonClass += 'bg-danger/15 border-danger text-danger';
                 } else {
-                  buttonClass += 'bg-gray-100 border-gray-300 text-gray-600';
+                  buttonClass += 'bg-surface-raised border-line text-fg-soft';
                 }
               } else {
-                buttonClass += 'bg-white border-gray-300 text-gray-800 hover:bg-purple-50 hover:border-purple-400';
+                buttonClass += 'bg-surface border-line text-fg hover:bg-accent/25 hover:border-accent';
               }
 
               return (
@@ -272,21 +272,21 @@ export default function N3QuizPage() {
           {showExplanation && (
             <div className="space-y-4 mb-6">
               {isCorrect ? (
-                <div className="p-4 bg-green-50 rounded-xl border-2 border-green-500">
-                  <div className="text-green-800 font-bold text-xl mb-2">✓ Correct!</div>
+                <div className="p-4 bg-success/15 rounded-xl border-2 border-success">
+                  <div className="text-success font-medium text-xl mb-2">✓ Correct!</div>
                   {currentQuestion.why_correct && (
-                    <div className="text-green-700">{currentQuestion.why_correct}</div>
+                    <div className="text-success">{currentQuestion.why_correct}</div>
                   )}
                 </div>
               ) : (
-                <div className="p-4 bg-red-50 rounded-xl border-2 border-red-500">
-                  <div className="text-red-800 font-bold text-xl mb-2">✗ Incorrect</div>
+                <div className="p-4 bg-danger/15 rounded-xl border-2 border-danger">
+                  <div className="text-danger font-medium text-xl mb-2">✗ Incorrect</div>
                   {currentQuestion.why_incorrect && (
-                    <div className="text-red-700 mb-3">{currentQuestion.why_incorrect}</div>
+                    <div className="text-danger mb-3">{currentQuestion.why_incorrect}</div>
                   )}
                   {currentQuestion.why_correct && (
-                    <div className="text-gray-700">
-                      <span className="font-bold">Correct answer: </span>
+                    <div className="text-fg">
+                      <span className="font-medium">Correct answer: </span>
                       {currentQuestion.why_correct}
                     </div>
                   )}
@@ -299,7 +299,7 @@ export default function N3QuizPage() {
           {showExplanation && (
             <button
               onClick={handleNext}
-              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-4 rounded-xl font-bold text-xl transition-all shadow-lg"
+              className="w-full bg-accent hover:opacity-90 text-on-accent px-6 py-4 rounded-xl font-medium text-xl transition-all"
             >
               {currentIndex < questions.length - 1 ? 'Next Question →' : 'Finish Quiz'}
             </button>

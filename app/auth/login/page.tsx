@@ -21,15 +21,15 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
+    <div className="min-h-screen flex items-center justify-center bg-app px-4">
+      <div className="max-w-md w-full bg-surface rounded-lg p-8 border border-line">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome!</h1>
-          <p className="text-gray-600">Sign in to track your Japanese study progress</p>
+          <h1 className="text-3xl font-medium text-fg mb-2">Welcome!</h1>
+          <p className="text-fg-soft">Sign in to track your Japanese study progress</p>
         </div>
 
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm mb-6">
+          <div className="bg-danger/15 border border-danger/40 text-danger px-4 py-3 rounded-lg text-sm mb-6">
             {error}
           </div>
         )}
@@ -37,7 +37,7 @@ export default function LoginPage() {
         <button
           onClick={handleGoogleSignIn}
           disabled={loading}
-          className="w-full bg-white border-2 border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-3"
+          className="w-full bg-surface border-2 border-line text-fg py-3 px-4 rounded-lg font-medium hover:bg-line hover:border-line focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-3"
         >
           <svg className="w-5 h-5" viewBox="0 0 24 24">
             <path
@@ -60,7 +60,7 @@ export default function LoginPage() {
           {loading ? 'Signing in...' : 'Continue with Google'}
         </button>
 
-        <p className="mt-6 text-center text-sm text-gray-500">
+        <p className="mt-6 text-center text-sm text-fg-muted">
           By signing in, you agree to track your study progress
         </p>
       </div>

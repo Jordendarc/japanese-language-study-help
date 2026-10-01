@@ -77,18 +77,18 @@ export default function SearchPage() {
   }, [searchQuery]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-purple-100 p-4">
+    <div className="min-h-screen bg-app p-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-6">
           <button
             onClick={() => router.push('/')}
-            className="text-indigo-600 hover:text-indigo-800 mb-4 flex items-center gap-2"
+            className="text-accent hover:text-accent mb-4 flex items-center gap-2"
           >
             ← Back to Home
           </button>
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">Search</h1>
-          <p className="text-gray-600">Search across all vocabulary and grammar</p>
+          <h1 className="text-4xl font-medium text-fg mb-2">Search</h1>
+          <p className="text-fg-soft">Search across all vocabulary and grammar</p>
         </div>
 
         {/* Search Bar */}
@@ -98,24 +98,24 @@ export default function SearchPage() {
             placeholder="Search for vocabulary or grammar..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-6 py-4 text-lg rounded-xl border-2 border-indigo-300 focus:border-indigo-500 focus:outline-none bg-white text-gray-800"
+            className="w-full px-6 py-4 text-lg rounded-xl border-2 border-accent/40 focus:border-accent focus:outline-none bg-surface text-fg"
             autoFocus
           />
           {searching && (
             <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
-              <div className="animate-spin h-6 w-6 border-2 border-indigo-600 border-t-transparent rounded-full"></div>
+              <div className="animate-spin h-6 w-6 border-2 border-accent border-t-transparent rounded-full"></div>
             </div>
           )}
         </div>
 
         {/* Results Count */}
         {searchQuery && !searching && (
-          <div className="mb-4 text-gray-600">
+          <div className="mb-4 text-fg-soft">
             Found {searchResults.length} result{searchResults.length !== 1 ? 's' : ''}
           </div>
         )}
         {searching && (
-          <div className="mb-4 text-gray-600">
+          <div className="mb-4 text-fg-soft">
             Searching...
           </div>
         )}
@@ -123,13 +123,13 @@ export default function SearchPage() {
         {/* Results */}
         <div className="space-y-4">
           {searchResults.map((result, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-md p-6">
+            <div key={index} className="bg-surface rounded-xl p-6 border border-line">
               {/* Type Badge */}
               <div className="mb-3">
-                <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${
+                <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${
                   result.type === 'vocab'
-                    ? 'bg-blue-100 text-blue-700'
-                    : 'bg-purple-100 text-purple-700'
+                    ? 'bg-accent/15 text-accent'
+                    : 'bg-accent/15 text-accent'
                 }`}>
                   {result.type === 'vocab' ? 'Vocabulary' : 'Grammar'}
                 </span>
@@ -147,42 +147,42 @@ export default function SearchPage() {
                   return (
                     <>
                       <div className="flex items-start gap-3 mb-2">
-                        <div className="text-3xl font-bold text-gray-800 flex-1">
+                        <div className="text-3xl font-medium text-fg flex-1">
                           {vocabData.vocab}
                         </div>
                         {textbookName && (
                           <span
-                            className="px-3 py-1 rounded-lg text-sm font-bold flex-shrink-0"
+                            className="px-3 py-1 rounded-lg text-sm font-medium flex-shrink-0"
                             style={{ backgroundColor: textbookColor, color: textbookTextColor }}
                           >
                             {textbookName}
                           </span>
                         )}
                       </div>
-                      <div className="text-xl text-indigo-600 mb-2">
+                      <div className="text-xl text-accent mb-2">
                         {vocabData.reading}
                       </div>
-                      <div className="text-lg text-gray-700 mb-3">
+                      <div className="text-lg text-fg mb-3">
                         {vocabData.my_meaning || vocabData.english}
                       </div>
                       {(vocabData.example_jp || vocabData.example) && (
-                        <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-indigo-600">
+                        <div className="bg-surface-raised p-4 rounded-lg border-l-4 border-accent">
                           {vocabData.example_jp ? (
                             <>
-                              <Furigana text={vocabData.example_jp} className="text-base text-gray-700 mb-1" />
+                              <Furigana text={vocabData.example_jp} className="text-base text-fg mb-1" />
                               {vocabData.example_en && (
-                                <div className="text-sm text-gray-500 italic">
+                                <div className="text-sm text-fg-muted italic">
                                   {vocabData.example_en}
                                 </div>
                               )}
                             </>
                           ) : (
-                            <Furigana text={vocabData.example} className="text-base text-gray-700" />
+                            <Furigana text={vocabData.example} className="text-base text-fg" />
                           )}
                         </div>
                       )}
                       {vocabData.lesson && (
-                        <div className="text-sm text-gray-500 mt-3">
+                        <div className="text-sm text-fg-muted mt-3">
                           Lesson {vocabData.lesson}
                           {vocabData.page && `, p.${vocabData.page}`}
                         </div>
@@ -193,37 +193,37 @@ export default function SearchPage() {
               ) : (
                 // Grammar Result
                 <>
-                  <div className="text-3xl font-bold text-gray-800 mb-2">
+                  <div className="text-3xl font-medium text-fg mb-2">
                     {(result.data as GrammarCard).point}
                   </div>
-                  <div className="text-lg text-gray-700 mb-3">
+                  <div className="text-lg text-fg mb-3">
                     {(result.data as GrammarCard).meaning}
                   </div>
-                  <div className="bg-gray-50 p-3 rounded-lg mb-3">
-                    <div className="text-sm font-semibold text-gray-600 mb-1">Formation:</div>
-                    <div className="text-base text-gray-800">
+                  <div className="bg-surface-raised p-3 rounded-lg mb-3">
+                    <div className="text-sm font-medium text-fg-soft mb-1">Formation:</div>
+                    <div className="text-base text-fg">
                       {(result.data as GrammarCard).formation}
                     </div>
                   </div>
                   {(result.data as GrammarCard).example_jp && (
-                    <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-purple-600 mb-3">
-                      <Furigana text={(result.data as GrammarCard).example_jp} className="text-base text-gray-700 mb-1" />
+                    <div className="bg-surface-raised p-4 rounded-lg border-l-4 border-accent mb-3">
+                      <Furigana text={(result.data as GrammarCard).example_jp} className="text-base text-fg mb-1" />
                       {(result.data as GrammarCard).example_en && (
-                        <div className="text-sm text-gray-500 italic">
+                        <div className="text-sm text-fg-muted italic">
                           {(result.data as GrammarCard).example_en}
                         </div>
                       )}
                     </div>
                   )}
                   {(result.data as GrammarCard).nuance && (
-                    <div className="bg-yellow-50 p-3 rounded-lg border-l-4 border-yellow-400 mb-3">
-                      <div className="text-sm font-semibold text-gray-600 mb-1">Nuance:</div>
-                      <div className="text-sm text-gray-700">
+                    <div className="bg-warn/15 p-3 rounded-lg border-l-4 border-warn mb-3">
+                      <div className="text-sm font-medium text-fg-soft mb-1">Nuance:</div>
+                      <div className="text-sm text-fg">
                         {(result.data as GrammarCard).nuance}
                       </div>
                     </div>
                   )}
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-fg-muted">
                     Lesson {(result.data as GrammarCard).lesson}: {(result.data as GrammarCard).lesson_title}
                     {(result.data as GrammarCard).jlpt && ` • ${(result.data as GrammarCard).jlpt}`}
                   </div>
@@ -237,7 +237,7 @@ export default function SearchPage() {
         {searchQuery && searchResults.length === 0 && (
           <div className="text-center py-12">
             <div className="text-6xl mb-4">🔍</div>
-            <div className="text-xl text-gray-600">No results found for "{searchQuery}"</div>
+            <div className="text-xl text-fg-soft">No results found for "{searchQuery}"</div>
           </div>
         )}
 
@@ -245,7 +245,7 @@ export default function SearchPage() {
         {!searchQuery && (
           <div className="text-center py-12">
             <div className="text-6xl mb-4">🔎</div>
-            <div className="text-xl text-gray-600">Start typing to search</div>
+            <div className="text-xl text-fg-soft">Start typing to search</div>
           </div>
         )}
       </div>
