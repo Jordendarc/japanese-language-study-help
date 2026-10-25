@@ -74,10 +74,7 @@ export default function Furigana({ text, className = '' }: FuriganaProps) {
         if ('text' in segment) {
           // Plain text segment
           return (
-            <ruby key={index} className="furigana-plain">
-              {segment.text}
-              <rt className="furigana-reading" style={{ visibility: 'hidden' }}>　</rt>
-            </ruby>
+            <span key={index} className="furigana-plain">{segment.text}</span>
           );
         } else {
           // Kanji with furigana
@@ -94,9 +91,11 @@ export default function Furigana({ text, className = '' }: FuriganaProps) {
         .furigana-container {
           line-height: 2.2;
           display: inline;
+          /* Break between any two characters. Plain text is a normal span (not a ruby) so it can wrap mid-sentence. */
+          word-break: break-all;
+          overflow-wrap: anywhere;
         }
-        .furigana-ruby,
-        .furigana-plain {
+        .furigana-ruby {
           ruby-position: over;
         }
         .furigana-reading {

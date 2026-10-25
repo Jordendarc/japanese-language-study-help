@@ -173,7 +173,7 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
           )}
 
           <div className="flex-1 flex items-center justify-center">
-            <div className="text-5xl sm:text-7xl font-light text-fg select-text cursor-text">
+            <div className="text-5xl sm:text-7xl font-light text-fg select-text cursor-text text-center break-all">
               {card.vocab}
             </div>
           </div>
@@ -197,7 +197,7 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
           )}
 
           {/* Scrollable content area */}
-          <div className="flex-1 overflow-y-auto p-6 sm:p-8 pt-8 flex flex-col items-center">
+          <div className="flex-1 overflow-y-auto overflow-x-hidden p-6 sm:p-8 pt-8 flex flex-col items-center">
             <div className="text-xl sm:text-2xl md:text-3xl text-accent mb-3 sm:mb-4">
               {card.reading}
             </div>
