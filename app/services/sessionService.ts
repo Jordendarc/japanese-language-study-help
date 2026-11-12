@@ -21,6 +21,8 @@ export interface SavedVocabSession {
   round: number;
   totalReviewed: number;
   updatedAt: number;
+  /** started in Vocabulary V2, so "Continue" should reopen it there */
+  variant?: 'v2';
 }
 
 export function sessionLabel(source: SessionSource): string {

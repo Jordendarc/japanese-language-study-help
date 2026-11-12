@@ -42,3 +42,6 @@ next-env.d.ts
 
 /supabase
 /scripts
+# Vocabulary V2 script reports
+/scripts/v2/out/
+/scripts/v2/data/

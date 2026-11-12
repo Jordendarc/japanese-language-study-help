@@ -11,7 +11,10 @@ import ContinueSessionBanner from '../../components/ContinueSessionBanner';
 export default function VocabularySelectPage() {
   const router = useRouter();
   // The kanji test reuses this picker (see app/kanji-test/select/page.tsx)
-  const isKanjiTest = usePathname().startsWith('/kanji-test');
+  const pathname = usePathname();
+  const isKanjiTest = pathname.startsWith('/kanji-test');
+  // ...and so does Vocabulary V2 (app/vocabulary-v2/select)
+  const isV2 = pathname.startsWith('/vocabulary-v2');
   const processingRef = useRef(false);
   const { user } = useAuth();
 
@@ -171,7 +174,7 @@ export default function VocabularySelectPage() {
     if (kanjiOnly) {
       params.set('kanjiOnly', 'true');
     }
-    router.push(`${isKanjiTest ? '/kanji-test' : '/vocabulary'}?${params.toString()}`);
+    router.push(`${isKanjiTest ? '/kanji-test' : isV2 ? '/vocabulary-v2' : '/vocabulary'}?${params.toString()}`);
   };
 
   const getTotalSelectedLessons = () => {
@@ -208,7 +211,7 @@ export default function VocabularySelectPage() {
             ← Back to Home
           </button>
           <h1 className="text-4xl sm:text-5xl font-medium text-fg mb-2">
-            {isKanjiTest ? 'Kanji Test' : 'Select Vocabulary'}
+            {isKanjiTest ? 'Kanji Test' : isV2 ? 'Vocabulary V2' : 'Select Vocabulary'}
           </h1>
         </header>
 
@@ -223,7 +226,7 @@ export default function VocabularySelectPage() {
         {/* Spaced-repetition review: cards whose next_review_date has arrived */}
         {!isKanjiTest && user && dueCount !== null && (
           <button
-            onClick={() => router.push('/vocabulary?review=1&fresh=1')}
+            onClick={() => router.push(`${isV2 ? '/vocabulary-v2' : '/vocabulary'}?review=1&fresh=1`)}
             disabled={dueCount === 0}
             className="w-full bg-accent hover:opacity-90 disabled:bg-surface-raised disabled:text-fg-muted disabled:cursor-not-allowed text-on-accent rounded-xl mb-4 p-4 sm:p-5 transition-all flex items-center justify-between group"
           >

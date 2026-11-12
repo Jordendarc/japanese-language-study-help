@@ -38,7 +38,7 @@ export default function ContinueSessionBanner() {
   return (
     <div className="bg-surface border border-line rounded-2xl p-4 sm:p-5 mb-6 flex items-center gap-3">
       <button
-        onClick={() => router.push('/vocabulary?resume=1')}
+        onClick={() => router.push(saved.variant === 'v2' ? '/vocabulary-v2?resume=1' : '/vocabulary?resume=1')}
         className="flex-1 min-w-0 text-left group"
       >
         <div className="font-medium text-fg text-lg"><span className="text-accent">▶</span> Continue previous session</div>

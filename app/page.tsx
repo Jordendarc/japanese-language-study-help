@@ -163,6 +163,29 @@ export default function Home() {
             </div>
           </Link>
 
+          {/* Vocabulary V2 Card */}
+          <Link
+            href="/vocabulary-v2/select"
+            className="block bg-surface rounded-2xl p-8 transition-all hover:scale-105 text-left group border border-line"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-3xl font-medium text-accent">
+                Vocabulary V2 <span className="align-middle text-xs px-2 py-0.5 rounded-full bg-accent/15">beta</span>
+              </h2>
+              <div className="text-4xl">🔎</div>
+            </div>
+            <p className="text-fg-soft mb-4">
+              Flashcards with a kanji breakdown and related words under every card
+            </p>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-fg-muted">Same cards as Vocabulary</span>
+              <span className="text-fg-muted">More detail added over time</span>
+            </div>
+            <div className="mt-4 text-accent font-medium group-hover:translate-x-2 transition-transform">
+              Try it →
+            </div>
+          </Link>
+
           {/* Grammar Card */}
           <Link
             href="/grammar/select"

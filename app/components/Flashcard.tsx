@@ -11,6 +11,10 @@ interface FlashcardProps {
   onSwipeRight?: () => void;
   triggerGreenAnimation?: boolean;
   triggerRedAnimation?: boolean;
+  /** called when the card is turned over (true) or back (false) */
+  onFlipChange?: (flipped: boolean) => void;
+  /** the small 漢字 dropdown on the front; Vocabulary V2 shows a fuller panel under the card instead */
+  showKanjiButton?: boolean;
 }
 
 interface KanjiMeaning {
@@ -18,7 +22,7 @@ interface KanjiMeaning {
   meanings: string[];
 }
 
-export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGreenAnimation, triggerRedAnimation }: FlashcardProps) {
+export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGreenAnimation, triggerRedAnimation, onFlipChange, showKanjiButton = true }: FlashcardProps) {
   const [isFlipped, setIsFlipped] = useState(false);
   const [animationState, setAnimationState] = useState<'none' | 'green' | 'red'>('none');
   const [showKanjiBreakdown, setShowKanjiBreakdown] = useState(false);
@@ -122,7 +126,8 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
     const hasSelection = selection && selection.toString().length > 0;
 
     if (!hasSelection) {
-      setIsFlipped(prev => !prev);
+      setIsFlipped(!isFlipped);
+      onFlipChange?.(!isFlipped);
     }
   };
 
@@ -140,7 +145,7 @@ export default function Flashcard({ card, onSwipeLeft, onSwipeRight, triggerGree
         {/* Front of card */}
         <div className="absolute w-full h-full backface-hidden bg-surface border border-line rounded-2xl p-8 flex flex-col items-center justify-center" style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
           {/* Kanji Breakdown Button */}
-          {extractKanji(card.vocab).length > 0 && (
+          {showKanjiButton && extractKanji(card.vocab).length > 0 && (
             <button
               onClick={(e) => {
                 e.stopPropagation();

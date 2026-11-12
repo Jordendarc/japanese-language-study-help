@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useState, Suspense, useRef } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Flashcard from '../components/Flashcard';
+import WordDetails from '../components/WordDetails';
 import { VocabCard } from '../types';
 import { useAuth } from '../contexts/AuthContext';
 import {
@@ -54,6 +55,11 @@ function VocabularyPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { user, loading: authLoading } = useAuth();
+  // Vocabulary V2 (app/vocabulary-v2) is this page plus the word details panel under the card
+  const isV2 = usePathname().startsWith('/vocabulary-v2');
+  const base = isV2 ? '/vocabulary-v2' : '/vocabulary';
+  // which card is turned over, so the details panel only appears once you've seen the answer
+  const [flippedKey, setFlippedKey] = useState<string | null>(null);
 
   const [currentQueue, setCurrentQueue] = useState<VocabCard[]>([]);
   const [reviewQueue, setReviewQueue] = useState<VocabCard[]>([]);
@@ -168,7 +174,7 @@ function VocabularyPageContent() {
           return;
         }
         if (resume) {
-          router.replace('/vocabulary/select');
+          router.replace(`${base}/select`);
           return;
         }
       }
@@ -179,7 +185,7 @@ function VocabularyPageContent() {
       } else if (source) {
         startWith(source, await fetchCardsBySelections(source.selections, source.kanjiOnly));
       } else {
-        router.replace('/vocabulary/select');
+        router.replace(`${base}/select`);
         return;
       }
 
@@ -194,7 +200,7 @@ function VocabularyPageContent() {
     }
 
     init();
-  }, [authLoading, user, searchParams, router]);
+  }, [authLoading, user, searchParams, router, base]);
 
   // Create study session when queue is loaded (for logged-in users)
   useEffect(() => {
@@ -241,6 +247,7 @@ function VocabularyPageContent() {
       round,
       totalReviewed,
       updatedAt: Date.now(),
+      ...(isV2 ? { variant: 'v2' as const } : {}),
     };
     saveSessionLocal(latestSessionRef.current);
 
@@ -248,7 +255,7 @@ function VocabularyPageContent() {
     remoteDirtyRef.current = true;
     const timer = setTimeout(() => flushRemoteSessionRef.current(), REMOTE_SAVE_DELAY_MS);
     return () => clearTimeout(timer);
-  }, [user, loading, currentQueue, reviewQueue, currentIndex, round, totalReviewed, showCompletionModal]);
+  }, [user, loading, currentQueue, reviewQueue, currentIndex, round, totalReviewed, showCompletionModal, isV2]);
 
   // Send reviews + session stats to the database. Calls are queued so they never overlap.
   const flushReviews = (completed = false): Promise<void> => {
@@ -473,7 +480,7 @@ function VocabularyPageContent() {
               ? 'Nothing is due for review right now. Come back later!'
               : 'That selection has no cards.'}
           </p>
-          <button onClick={() => router.push('/vocabulary/select')} className={primaryButton}>
+          <button onClick={() => router.push(`${base}/select`)} className={primaryButton}>
             Change Selection
           </button>
         </div>
@@ -493,7 +500,7 @@ function VocabularyPageContent() {
             <button onClick={resetAll} className={`flex-1 ${primaryButton}`}>
               Start Over
             </button>
-            <button onClick={() => router.push('/vocabulary/select')} className={`flex-1 ${secondaryButton}`}>
+            <button onClick={() => router.push(`${base}/select`)} className={`flex-1 ${secondaryButton}`}>
               Change Selection
             </button>
             <button onClick={() => router.push('/')} className={`flex-1 ${secondaryButton}`}>
@@ -513,7 +520,7 @@ function VocabularyPageContent() {
         {/* Header */}
         <header className="flex items-center justify-between gap-3 text-sm text-fg-muted mb-3">
           <button
-            onClick={() => router.push('/vocabulary/select')}
+            onClick={() => router.push(`${base}/select`)}
             className="hover:text-fg transition-colors shrink-0"
           >
             ← Change
@@ -556,6 +563,8 @@ function VocabularyPageContent() {
               onSwipeRight={handleGotIt}
               triggerGreenAnimation={triggerGreen}
               triggerRedAnimation={triggerRed}
+              showKanjiButton={!isV2}
+              onFlipChange={flipped => setFlippedKey(flipped ? `${currentQueue[currentIndex].vocab}-${currentIndex}` : null)}
             />
           </div>
         )}
@@ -586,6 +595,10 @@ function VocabularyPageContent() {
           </button>
         </div>
 
+        {isV2 && currentIndex < currentQueue.length && flippedKey === `${currentQueue[currentIndex].vocab}-${currentIndex}` && (
+          <WordDetails key={currentQueue[currentIndex].id ?? currentIndex} card={currentQueue[currentIndex]} />
+        )}
+
         {/* Completion Modal */}
         {showCompletionModal && (
           <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
@@ -598,7 +611,7 @@ function VocabularyPageContent() {
                 <button onClick={resetAll} className={`flex-1 ${primaryButton}`}>
                   Start Over
                 </button>
-                <button onClick={() => router.push('/vocabulary/select')} className={`flex-1 ${secondaryButton}`}>
+                <button onClick={() => router.push(`${base}/select`)} className={`flex-1 ${secondaryButton}`}>
                   Change Selection
                 </button>
               </div>
