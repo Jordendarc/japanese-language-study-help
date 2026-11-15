@@ -7,6 +7,9 @@ import { useAuth } from '../../contexts/AuthContext';
 import { getDueVocabularyCount } from '../../services/progressService';
 import { createClient } from '../../utils/supabase/client';
 import ContinueSessionBanner from '../../components/ContinueSessionBanner';
+import { KIND_LABELS, KINDS, type Kind } from '../../utils/jlptQuestions';
+
+const JLPT_TEXTBOOK = 'ドリル&ドリルN2';
 
 export default function VocabularySelectPage() {
   const router = useRouter();
@@ -15,6 +18,10 @@ export default function VocabularySelectPage() {
   const isKanjiTest = pathname.startsWith('/kanji-test');
   // ...and so does Vocabulary V2 (app/vocabulary-v2/select)
   const isV2 = pathname.startsWith('/vocabulary-v2');
+  // ...and the JLPT-style kanji test (app/jlpt-kanji/select), which only uses the ドリル&ドリルN2 textbook
+  const isJlpt = pathname.startsWith('/jlpt-kanji');
+  // both tests: no flashcard session to continue, no review queue, a test-size choice
+  const isTest = isKanjiTest || isJlpt;
   const processingRef = useRef(false);
   const { user } = useAuth();
 
@@ -24,6 +31,7 @@ export default function VocabularySelectPage() {
   const [loading, setLoading] = useState(true);
   const [kanjiOnly, setKanjiOnly] = useState(false);
   const [testSize, setTestSize] = useState<'ten' | 'all'>('ten');
+  const [jlptKinds, setJlptKinds] = useState<Set<Kind>>(() => new Set(KINDS));
   const [fetchedDueCount, setFetchedDueCount] = useState<number | null>(null);
   const dueCount = user ? fetchedDueCount : null;
 
@@ -48,11 +56,14 @@ export default function VocabularySelectPage() {
         return;
       }
 
-      setVocabMetadata(data || []);
+      const textbooks = (data || []) as { textbook: string; lessons: string[] }[];
+      const shown = isJlpt ? textbooks.filter(t => t.textbook === JLPT_TEXTBOOK) : textbooks;
+      setVocabMetadata(shown);
+      if (isJlpt) setSelectedTextbooks(shown.map(t => t.textbook));
 
       // Initialize lesson selection structure - empty by default
       const initialLessonSelection = new Map<string, Set<string>>();
-      data?.forEach((item: { textbook: string; lessons: string[] }) => {
+      shown.forEach(item => {
         initialLessonSelection.set(item.textbook, new Set());
       });
       setSelectedLessonsByTextbook(initialLessonSelection);
@@ -61,7 +72,7 @@ export default function VocabularySelectPage() {
     }
 
     loadVocabulary();
-  }, []);
+  }, [isJlpt]);
 
   const toggleLesson = (textbook: string, lesson: string) => {
     if (processingRef.current) return;
@@ -166,15 +177,16 @@ export default function VocabularySelectPage() {
     // Encode selections as JSON in URL
     const params = new URLSearchParams();
     params.set('selections', JSON.stringify(selections));
-    if (isKanjiTest) {
+    if (isTest) {
       if (testSize === 'all') params.set('count', 'all');
+      if (isJlpt && jlptKinds.size < KINDS.length) params.set('types', KINDS.filter(k => jlptKinds.has(k)).join(','));
     } else {
       params.set('fresh', '1'); // pressing Start always begins a new session
     }
     if (kanjiOnly) {
       params.set('kanjiOnly', 'true');
     }
-    router.push(`${isKanjiTest ? '/kanji-test' : isV2 ? '/vocabulary-v2' : '/vocabulary'}?${params.toString()}`);
+    router.push(`${isJlpt ? '/jlpt-kanji' : isKanjiTest ? '/kanji-test' : isV2 ? '/vocabulary-v2' : '/vocabulary'}?${params.toString()}`);
   };
 
   const getTotalSelectedLessons = () => {
@@ -211,11 +223,15 @@ export default function VocabularySelectPage() {
             ← Back to Home
           </button>
           <h1 className="text-4xl sm:text-5xl font-medium text-fg mb-2">
-            {isKanjiTest ? 'Kanji Test' : isV2 ? 'Vocabulary V2' : 'Select Vocabulary'}
+            {isJlpt ? 'JLPT Kanji' : isKanjiTest ? 'Kanji Test' : isV2 ? 'Vocabulary V2' : 'Select Vocabulary'}
           </h1>
         </header>
 
-        {isKanjiTest ? (
+        {isJlpt ? (
+          <p className="text-fg-soft text-center mb-6">
+            JLPT-style questions from ドリル&amp;ドリルN2: pick the reading of the underlined kanji (漢字読み), or the right kanji for the underlined hiragana (表記). Pick the chapters to draw from.
+          </p>
+        ) : isKanjiTest ? (
           <p className="text-fg-soft text-center mb-6">
             Pick the chapters to draw from. Then type the hiragana reading of each kanji word, one at a time.
           </p>
@@ -224,7 +240,7 @@ export default function VocabularySelectPage() {
         )}
 
         {/* Spaced-repetition review: cards whose next_review_date has arrived */}
-        {!isKanjiTest && user && dueCount !== null && (
+        {!isTest && user && dueCount !== null && (
           <button
             onClick={() => router.push(`${isV2 ? '/vocabulary-v2' : '/vocabulary'}?review=1&fresh=1`)}
             disabled={dueCount === 0}
@@ -297,7 +313,7 @@ export default function VocabularySelectPage() {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
                 <h2 className="text-xl font-medium text-fg">Select Lessons</h2>
-                {!isKanjiTest && (
+                {!isTest && (
                 <label className="flex items-center gap-2 text-sm cursor-pointer">
                   <input
                     type="checkbox"
@@ -406,9 +422,36 @@ export default function VocabularySelectPage() {
                 </>
               )}
             </p>
-            {isKanjiTest && (
+            {isJlpt && (
+              <div className="mb-4">
+                <div className="text-sm text-fg-muted mb-2">Question types</div>
+                <div className="flex flex-wrap justify-center gap-2" role="group" aria-label="Question types">
+                  {KINDS.map((kind, i) => {
+                    const on = jlptKinds.has(kind);
+                    return (
+                      <button
+                        key={kind}
+                        aria-pressed={on}
+                        onClick={() =>
+                          setJlptKinds(prev => {
+                            const next = new Set(prev);
+                            if (on) next.delete(kind);
+                            else next.add(kind);
+                            return next.size ? next : prev; // keep at least one
+                          })
+                        }
+                        className={`px-3 py-1.5 rounded-lg text-sm transition ${on ? 'bg-accent text-on-accent' : 'bg-surface-raised text-fg-muted hover:text-fg'}`}
+                      >
+                        <span lang="ja">{i + 1} {KIND_LABELS[kind].jp}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+            {isTest && (
               <div className="flex w-fit mx-auto rounded-xl bg-surface-raised p-1 mb-4" role="group" aria-label="Test size">
-                {([['ten', '10 random words'], ['all', 'All words']] as const).map(([value, text]) => (
+                {([['ten', isJlpt ? '10 questions' : '10 random words'], ['all', 'All words']] as const).map(([value, text]) => (
                   <button
                     key={value}
                     onClick={() => setTestSize(value)}
@@ -427,7 +470,7 @@ export default function VocabularySelectPage() {
               disabled={selectedTextbooks.length === 0 || !hasSelectedLessons}
               className="bg-accent hover:opacity-90 disabled:bg-surface-raised disabled:cursor-not-allowed text-on-accent px-8 py-3 rounded-lg font-medium text-lg transition-all"
             >
-              {isKanjiTest ? 'Start Test' : 'Start Studying'}
+              {isTest ? 'Start Test' : 'Start Studying'}
             </button>
           </div>
         </div>

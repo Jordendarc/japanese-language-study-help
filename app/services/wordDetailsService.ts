@@ -46,7 +46,7 @@ export function lessonNumber(lesson: string): number {
 // ---------------------------------------------------------------------------------------------
 // Vocabulary V2 data (words / kanji_components / kanji_similar / word_relations tables)
 
-const KANJI_COLUMNS = 'id, character, meanings, on_readings, stroke_count, grade, radical';
+const KANJI_COLUMNS = 'id, character, meanings, on_readings, stroke_count, grade, radical, etymology_en, mnemonic_en';
 
 export interface KanjiFacts {
   id: string;
@@ -56,6 +56,9 @@ export interface KanjiFacts {
   stroke_count: number | null;
   grade: number | null;
   radical: string | null;
+  /** why the parts add up to the meaning (filled in by the AI pass) */
+  etymology_en: string | null;
+  mnemonic_en: string | null;
 }
 
 export interface PartNode {
@@ -64,6 +67,10 @@ export interface PartNode {
   layout: string | null;
   /** meaning of the part: from kanji_parts for parts that aren't kanji, else the kanji table */
   meaning: string | null;
+  /** a kanji in its own right: its own card shows its breakdown, so the tree stops here */
+  isKanji: boolean;
+  /** what the part does in this kanji: meaning, sound, radical (filled in by the AI pass) */
+  role: string | null;
   children: PartNode[];
 }
 
@@ -100,9 +107,10 @@ function kanjiFacts(characters: string[]): Promise<KanjiFacts[]> {
   }, []);
 }
 
-const partNameCache = new Map<string, Promise<Map<string, string>>>();
+type PartInfo = { meanings: Map<string, string>; kanji: Set<string> };
+const partNameCache = new Map<string, Promise<PartInfo>>();
 // Meanings for parts: the kanji table for parts that are kanji, kanji_parts for the rest (氵, 灬, ...)
-function partMeanings(parts: string[]): Promise<Map<string, string>> {
+function partMeanings(parts: string[]): Promise<PartInfo> {
   return once(partNameCache, keyOf(parts), async () => {
     const [named, asKanji] = await Promise.all([
       supabase.from('kanji_parts').select('part, name_en, meaning_en').in('part', parts),
@@ -115,11 +123,11 @@ function partMeanings(parts: string[]): Promise<Map<string, string>> {
       const text = p.meaning_en || p.name_en;
       if (text) out.set(p.part, text);
     }
-    return out;
-  }, new Map());
+    return { meanings: out, kanji: new Set(asKanji.map(k => k.character)) };
+  }, { meanings: new Map(), kanji: new Set() });
 }
 
-type ComponentRow = { id: string; kanji_id: string; parent_id: string | null; part: string; layout: string | null; sort: number };
+type ComponentRow = { id: string; kanji_id: string; parent_id: string | null; part: string; layout: string | null; sort: number; role: string | null };
 
 const breakdownCache = new Map<string, Promise<Map<string, KanjiBreakdown>>>();
 /** Strokes, grade, radical and the part tree for each kanji in a word. */
@@ -129,13 +137,13 @@ export function kanjiBreakdowns(characters: string[]): Promise<Map<string, Kanji
     if (!facts.length) return new Map();
     const { data, error } = await supabase
       .from('kanji_components')
-      .select('id, kanji_id, parent_id, part, layout, sort')
+      .select('id, kanji_id, parent_id, part, layout, sort, role')
       .in('kanji_id', facts.map(f => f.id));
     if (error) throw error;
     const rows = (data ?? []) as ComponentRow[];
 
     const parts = [...new Set([...rows.map(r => r.part), ...facts.map(f => f.radical).filter((r): r is string => !!r)])];
-    const meanings = parts.length ? await partMeanings(parts) : new Map<string, string>();
+    const { meanings, kanji } = parts.length ? await partMeanings(parts) : { meanings: new Map<string, string>(), kanji: new Set<string>() };
 
     const children = new Map<string, ComponentRow[]>();
     for (const r of rows) if (r.parent_id) children.set(r.parent_id, [...(children.get(r.parent_id) ?? []), r]);
@@ -143,6 +151,8 @@ export function kanjiBreakdowns(characters: string[]): Promise<Map<string, Kanji
       part: r.part,
       layout: r.layout,
       meaning: meanings.get(r.part) ?? null,
+      isKanji: kanji.has(r.part),
+      role: r.role,
       children: (children.get(r.id) ?? []).sort((a, b) => a.sort - b.sort).map(toNode),
     });
 
@@ -315,4 +325,39 @@ export function wordLinks(cardId: string): Promise<WordLinks> {
         })),
     };
   }, { word: null, tags: [], links: [] });
+}
+
+export interface WordKanjiNotes {
+  /** how the kanji combine into the word's meaning */
+  explanation: string | null;
+  /** what each kanji contributes to this word, by character */
+  inWord: Map<string, string>;
+}
+
+const notesCache = new Map<string, Promise<WordKanjiNotes>>();
+/** The word-level explanations for a flashcard (filled in by the AI pass; empty until then). */
+export function wordKanjiNotes(cardId: string): Promise<WordKanjiNotes> {
+  const empty: WordKanjiNotes = { explanation: null, inWord: new Map() };
+  return once(notesCache, cardId, async () => {
+    const item = await supabase.from('lesson_items').select('word_id').eq('id', cardId).maybeSingle();
+    if (item.error) throw item.error;
+    const wordId = (item.data as { word_id: string } | null)?.word_id;
+    if (!wordId) return empty;
+    // select('*') so this keeps working before vocab-v2-explanations.sql has added kanji_explanation_en
+    const [word, links] = await Promise.all([
+      supabase.from('words').select('*').eq('id', wordId).maybeSingle(),
+      supabase.from('word_kanji').select('kanji_id, meaning_in_word_en').eq('word_id', wordId),
+    ]);
+    if (word.error) throw word.error;
+    if (links.error) throw links.error;
+    const rows = ((links.data ?? []) as { kanji_id: string; meaning_in_word_en: string | null }[]).filter(r => r.meaning_in_word_en);
+    const inWord = new Map<string, string>();
+    if (rows.length) {
+      const { data, error } = await supabase.from('kanji').select('id, character').in('id', rows.map(r => r.kanji_id));
+      if (error) throw error;
+      const characters = new Map(((data ?? []) as { id: string; character: string }[]).map(k => [k.id, k.character]));
+      for (const r of rows) if (characters.has(r.kanji_id)) inWord.set(characters.get(r.kanji_id)!, r.meaning_in_word_en!);
+    }
+    return { explanation: ((word.data as { kanji_explanation_en?: string | null } | null)?.kanji_explanation_en) ?? null, inWord };
+  }, empty);
 }

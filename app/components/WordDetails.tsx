@@ -11,11 +11,13 @@ import {
   lessonNumber,
   lookalikes,
   wordLinks,
+  wordKanjiNotes,
   wordsWithKanji,
   type KanjiBreakdown,
   type Lookalike,
   type PartNode,
   type RelatedWord,
+  type WordKanjiNotes,
   type WordLinks,
 } from '../services/wordDetailsService';
 
@@ -72,27 +74,40 @@ const Loading = () => <p className="text-xs text-fg-muted">Loading...</p>;
 
 function PartLabel({ node }: { node: PartNode }) {
   const unencoded = isUnencoded(node.part);
-  const meaning = unencoded ? 'a shape with no character of its own' : node.meaning ?? PART_NAMES[node.part] ?? null;
+  // a group of parts with no character of its own is stored under its layout symbol (後: ⿱ of 幺 and 夂)
+  const group = node.part in LAYOUT_LABELS;
+  const meaning = group
+    ? 'these parts together'
+    : unencoded
+      ? 'a shape with no character of its own'
+      : node.meaning ?? PART_NAMES[node.part] ?? null;
   return (
     <div className="flex items-baseline gap-2 py-0.5">
-      <span lang="ja" className="text-lg leading-tight text-fg w-6 text-center shrink-0">{unencoded ? '□' : node.part}</span>
+      <span lang="ja" className={`text-lg leading-tight w-6 text-center shrink-0 ${group || unencoded ? 'text-fg-muted' : 'text-fg'}`}>
+        {group || unencoded ? '□' : node.part}
+      </span>
       <span className="text-xs text-fg-soft min-w-0">
         {meaning ?? <span className="text-fg-muted">no meaning recorded yet</span>}
-        {node.layout && LAYOUT_LABELS[node.layout] && (
+        {!node.isKanji && node.layout && LAYOUT_LABELS[node.layout] && (
           <span className="text-fg-muted"> · {LAYOUT_LABELS[node.layout]}</span>
         )}
+        {node.role && ROLE_LABELS[node.role] && <span className="ml-1.5"><Chip>{ROLE_LABELS[node.role]}</Chip></span>}
       </span>
     </div>
   );
 }
 
+const ROLE_LABELS: Record<string, string> = { meaning: 'gives the meaning', sound: 'gives the sound', radical: 'radical' };
+
+// A part that is a kanji in its own right (躯 = 身 + 区) isn't broken down further here: its own card does that.
+// Shapes that aren't kanji (䒑, unencoded pieces) are opened up, since they mean nothing on their own.
 function PartTree({ nodes }: { nodes: PartNode[] }) {
   return (
     <ul className="space-y-0.5">
       {nodes.map((node, i) => (
         <li key={`${node.part}-${i}`}>
           <PartLabel node={node} />
-          {node.children.length > 0 && (
+          {node.children.length > 0 && !node.isKanji && (
             <div className="ml-3 pl-3 border-l border-line">
               <PartTree nodes={node.children} />
             </div>
@@ -131,6 +146,18 @@ function Breakdown({ breakdown }: { breakdown: KanjiBreakdown | undefined }) {
           <PartTree nodes={tree.children} />
         </div>
       )}
+      {facts.etymology_en && (
+        <p className="text-xs text-fg-soft">
+          <span className="text-fg-muted">Why it means this: </span>
+          {facts.etymology_en}
+        </p>
+      )}
+      {facts.mnemonic_en && (
+        <p className="text-xs text-fg-soft">
+          <span className="text-fg-muted">Memory tip: </span>
+          {facts.mnemonic_en}
+        </p>
+      )}
     </div>
   );
 }
@@ -139,8 +166,20 @@ function KanjiTab({ card, characters }: { card: VocabCard; characters: string[] 
   const details = useMemo(() => new Map((card.kanji_data ?? []).map(k => [k.kanji, k])), [card.kanji_data]);
   const usedReadings = useMemo(() => readingsInWord(card.vocab, card.reading, card.kanji_data ?? []), [card]);
   const breakdowns = useLoaded(() => kanjiBreakdowns(characters), characters.join(''));
+  const cardId = card.id ?? '';
+  const notes = useLoaded<WordKanjiNotes>(
+    () => (cardId ? wordKanjiNotes(cardId) : Promise.resolve({ explanation: null, inWord: new Map() })),
+    cardId,
+  );
 
   return (
+    <>
+    {notes?.explanation && (
+      <div className="mb-3 pb-3 border-b border-line">
+        <div className="text-[11px] uppercase tracking-wide text-fg-muted mb-1">How the kanji make the word</div>
+        <p className="text-sm text-fg">{notes.explanation}</p>
+      </div>
+    )}
     <ul className="divide-y divide-line">
       {characters.map(character => {
         const info = details.get(character);
@@ -167,11 +206,14 @@ function KanjiTab({ card, characters }: { card: VocabCard; characters: string[] 
               ) : (
                 <div className="text-xs text-fg-muted">No details for this kanji yet.</div>
               )}
-              {here && (
-                <div className="mt-1.5">
-                  <Chip>
-                    read as <span lang="ja">{here}</span> here
-                  </Chip>
+              {(here || notes?.inWord.get(character)) && (
+                <div className="mt-1.5 flex flex-wrap gap-1">
+                  {notes?.inWord.get(character) && <Chip>means “{notes.inWord.get(character)}” here</Chip>}
+                  {here && (
+                    <Chip>
+                      read as <span lang="ja">{here}</span> here
+                    </Chip>
+                  )}
                 </div>
               )}
               {breakdowns === null ? <div className="mt-2"><Loading /></div> : <Breakdown breakdown={breakdowns.get(character)} />}
@@ -180,6 +222,7 @@ function KanjiTab({ card, characters }: { card: VocabCard; characters: string[] 
         );
       })}
     </ul>
+    </>
   );
 }
 
@@ -353,9 +396,10 @@ export default function WordDetails({ card }: { card: VocabCard }) {
   });
 
   const characters = useMemo(() => [...new Set(card.vocab.match(KANJI) ?? [])], [card.vocab]);
-  // words written only in kana get just the Related tab
-  const tabs: Tab[] = characters.length ? ['kanji', 'same', 'lookalikes', 'related'] : ['related'];
-  const [tab, setTab] = useState<Tab>(tabs[0]);
+  // Look-alikes and Related are built but switched off for now; add them back here to show them.
+  // Everything left is about kanji, so words written only in kana get no panel.
+  const tabs: Tab[] = characters.length ? ['kanji', 'same'] : [];
+  const [tab, setTab] = useState<Tab>('kanji');
 
   const toggle = () => {
     const next = !open;
@@ -366,6 +410,8 @@ export default function WordDetails({ card }: { card: VocabCard }) {
       // storage unavailable: the panel just won't remember being open
     }
   };
+
+  if (tabs.length === 0) return null;
 
   return (
     <section className="mt-4">

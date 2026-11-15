@@ -270,6 +270,27 @@ export default function Home() {
             </div>
           </Link>
 
+          {/* JLPT Kanji Card */}
+          <Link
+            href="/jlpt-kanji/select"
+            className="block bg-surface rounded-2xl p-8 transition-all hover:scale-105 text-left group border border-line"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-3xl font-medium text-accent">JLPT Kanji</h2>
+              <div lang="ja" className="text-3xl text-fg-soft">漢字</div>
+            </div>
+            <p className="text-fg-soft mb-4">
+              JLPT-style reading and writing questions from ドリル&amp;ドリルN2
+            </p>
+            <div className="flex items-center justify-between text-sm">
+              <span lang="ja" className="text-fg-muted">漢字読み · 表記</span>
+              <span className="text-fg-muted">Multiple choice</span>
+            </div>
+            <div className="mt-4 text-accent font-medium group-hover:translate-x-2 transition-transform">
+              Take a test →
+            </div>
+          </Link>
+
           {/* N3 Quiz Card */}
           <Link
             href="/n3-quiz"
